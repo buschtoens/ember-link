@@ -160,7 +160,7 @@ If enabled, the [`transitionTo`](#transitionto) and
 [`event.preventDefault()`][prevent-default] on the first argument, if it is an
 event. This is an anti-foot-gun to make `<Link>` _just work™️_ with `<a>` and
 `<button>`, which would otherwise trigger a native browser navigation / form
-submission
+submission.
 
 [prevent-default]: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
 
