@@ -49,7 +49,8 @@ as |l|>
 ```
 
 <sup>`{{on}}` is an element modifier provided by
-[`ember-on-modifier`][ember-on-modifier].</sup>
+[`ember-on-modifier`][ember-on-modifier]. You could just use
+`onclick={{l.transitionTo}}` instead.</sup>
 
 [ember-on-modifier]: https://github.com/buschtoens/ember-on-modifier#readme
 
