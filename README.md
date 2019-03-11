@@ -11,6 +11,12 @@
 
 It's like `{{link-to}}`, but renderless!
 
+[Renderless / Container / Provider Components][renderless-components] are
+components that don't emit any DOM, but only yield state and actions to nested
+components.
+
+[renderless-components]: https://embermap.com/ember-component-patterns
+
 ## Installation
 
 ```
