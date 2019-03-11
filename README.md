@@ -28,9 +28,9 @@ need to install
 
 ```hbs
 <Link
-  @routeName="some.route"
+  @route="some.route"
   @models={{array 123}}
-  @queryParams={{hash foo="bar"}}
+  @query={{hash foo="bar"}}
 as |l|>
   <a
     href={{l.href}}
@@ -49,7 +49,7 @@ as |l|>
 
 ### Arguments
 
-#### `@routeName`
+#### `@route`
 
 Required.
 
@@ -58,7 +58,7 @@ The target route name.
 **Example**
 
 ```hbs
-<Link @routeName="some.route" as |l|>
+<Link @route="some.route" as |l|>
   <a
     href={{l.href}}
     class={{if l.isActive "is-active"}}
@@ -86,7 +86,7 @@ An array of models / dynamic segments.
 **Example**
 
 ```hbs
-<Link @routeName="some.route" @models={{array someModel someNestedModel}} as |l|>
+<Link @route="some.route" @models={{array someModel someNestedModel}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActive "is-active"}}
@@ -105,7 +105,7 @@ An array of models / dynamic segments.
 {{/link-to}}
 ```
 
-#### `@queryParams`
+#### `@query`
 
 Optional.
 
@@ -114,7 +114,7 @@ Query Params object.
 **Example**
 
 ```hbs
-<Link @routeName="some.route" @queryParams={{hash foo="bar"}} as |l|>
+<Link @route="some.route" @query={{hash foo="bar"}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActive "is-active"}}
@@ -155,7 +155,7 @@ submission
 The URL for this link that you can pass to an `<a>` tag as the `href` attribute.
 
 ```hbs
-<Link @routeName="some.route" as |l|>
+<Link @route="some.route" as |l|>
   <a href={{l.href}} {{on "click" l.transitionTo}}>
     Click me
   </a>
@@ -172,7 +172,7 @@ and query params.
 In the following example, only one link will be `is-active` at any time.
 
 ```hbs
-<Link @routeName="some.route" @models={{array 123}} @queryParams={{hash foo="bar"}} as |l|>
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActive "is-active"}}
@@ -182,7 +182,7 @@ In the following example, only one link will be `is-active` at any time.
   </a>
 </Link>
 
-<Link @routeName="some.route" @models={{array 123}} @queryParams={{hash foo="quux"}} as |l|>
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActive "is-active"}}
@@ -203,7 +203,7 @@ but ignoring query params.
 In the following example, the first two links will be `is-active` simultaneously.
 
 ```hbs
-<Link @routeName="some.route" @models={{array 123}} @queryParams={{hash foo="bar"}} as |l|>
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActiveWithoutQueryParams "is-active"}}
@@ -213,7 +213,7 @@ In the following example, the first two links will be `is-active` simultaneously
   </a>
 </Link>
 
-<Link @routeName="some.route" @models={{array 123}} @queryParams={{hash foo="quux"}} as |l|>
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActiveWithoutQueryParams "is-active"}}
@@ -223,7 +223,7 @@ In the following example, the first two links will be `is-active` simultaneously
   </a>
 </Link>
 
-<Link @routeName="some.route" @models={{array 456}} @queryParams={{hash foo="quux"}} as |l|>
+<Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActiveWithoutQueryParams "is-active"}}
@@ -243,7 +243,7 @@ Whether this route is currently active, but ignoring models and query params.
 In the following example, both links will be `is-active` simultaneously.
 
 ```hbs
-<Link @routeName="some.route" @models={{array 123}} @queryParams={{hash foo="bar"}} as |l|>
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActiveWithoutModels "is-active"}}
@@ -253,7 +253,7 @@ In the following example, both links will be `is-active` simultaneously.
   </a>
 </Link>
 
-<Link @routeName="some.route" @models={{array 456}} @queryParams={{hash foo="quux"}} as |l|>
+<Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
   <a
     href={{l.href}}
     class={{if l.isActiveWithoutModels "is-active"}}
@@ -279,3 +279,10 @@ If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDef
 Transition into the target route while replacing the current URL, if possible.
 
 If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDefault()`.
+
+## Related RFCs / Projects
+
+- [`ember-router-helpers`](https://github.com/rwjblue/ember-router-helpers)
+- [RFC 391 "Router Helpers"](https://github.com/emberjs/rfcs/blob/master/text/0391-router-helpers.md)
+- [RFC 339 "Router link component and routing helpers"](https://github.com/emberjs/rfcs/pull/339)
+- [RFC 459 "Angle Bracket Invocations For Built-in Components"](https://github.com/emberjs/rfcs/blob/angle-built-ins/text/0459-angle-bracket-built-in-components.md#linkto)

@@ -4,6 +4,7 @@ import { inject as service } from '@ember-decorators/service';
 import { action } from '@ember-decorators/object';
 import { reads } from '@ember-decorators/object/computed';
 import SparklesComponent, { tracked } from 'sparkles-component';
+import { assert } from '@ember/debug';
 
 function isQueryParams(
   maybeQueryParam: any
@@ -23,7 +24,7 @@ export default class LinkComponent extends SparklesComponent<{
   /**
    * The target route name.
    */
-  routeName: string;
+  route: string;
 
   /**
    * Optional array of models / dynamic segments.
@@ -31,9 +32,14 @@ export default class LinkComponent extends SparklesComponent<{
   models?: RouteModel[];
 
   /**
+   * Optional shortcut for `@models={{array model}}`.
+   */
+  model?: RouteModel;
+
+  /**
    * Optional query params object.
    */
-  queryParams?: QueryParams;
+  query?: QueryParams;
 
   /**
    * Whether or not to call `event.preventDefault()`, if the first parameter to
@@ -52,23 +58,46 @@ export default class LinkComponent extends SparklesComponent<{
   // @ts-ignore
   private currentURL!: string;
 
+  didUpdate() {
+    super.didUpdate();
+
+    assert(
+      `You provided '@queryParams', but the argument you mean is just '@query'.`,
+      !('queryParams' in this.args)
+    );
+    assert(
+      `You provided '@routeName', but the argument you mean is just '@route'.`,
+      !('routeName' in this.args)
+    );
+    assert(
+      `'@route' needs to be a valid route name.`,
+      typeof this.args.route === 'string'
+    );
+    assert(
+      `You cannot use both '@model' ('${this.args.model}') and '@models' ('${
+        this.args.models
+      }') at the same time.`,
+      !(this.args.model && this.args.models)
+    );
+  }
+
   @tracked('args')
   private get modelsAndQueryParams(): [RouteModel[], null | QueryParams] {
-    const { models, queryParams } = this.args;
+    const { model, models, query } = this.args;
     if (models) {
       const lastModel = models[models.length - 1];
 
       if (isQueryParams(lastModel)) {
-        if (queryParams) {
-          return [models.slice(0, -1), { ...lastModel.values, ...queryParams }];
+        if (query) {
+          return [models.slice(0, -1), { ...lastModel.values, ...query }];
         }
         return [models.slice(0, -1), { ...lastModel.values }];
       }
 
-      return [models, queryParams ? { ...queryParams } : null];
+      return [models, query ? { ...query } : null];
     }
 
-    return [[], queryParams ? { ...queryParams } : null];
+    return [model ? [model] : [], query ? { ...query } : null];
   }
 
   @tracked
@@ -76,10 +105,10 @@ export default class LinkComponent extends SparklesComponent<{
     const [models, queryParams] = this.modelsAndQueryParams;
 
     if (queryParams) {
-      return [this.args.routeName, ...models, { queryParams }];
+      return [this.args.route, ...models, { queryParams }];
     }
 
-    return [this.args.routeName, ...models];
+    return [this.args.route, ...models];
   }
 
   /**
@@ -109,7 +138,7 @@ export default class LinkComponent extends SparklesComponent<{
   @tracked('args', 'currentURL')
   get isActiveWithoutQueryParams() {
     return this.router.isActive(
-      this.args.routeName,
+      this.args.route,
       // @ts-ignore
       ...this.modelsAndQueryParams[0]
     );
@@ -121,7 +150,7 @@ export default class LinkComponent extends SparklesComponent<{
    */
   @tracked('args', 'currentURL')
   get isActiveWithoutModels() {
-    return this.router.isActive(this.args.routeName);
+    return this.router.isActive(this.args.route);
   }
 
   /**

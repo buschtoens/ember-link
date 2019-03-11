@@ -45,7 +45,7 @@ module('Acceptance | link', function(hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @routeName="foo" as |l|>
+        <Link @route="foo" as |l|>
           <a
             data-test-link
             href={{l.href}}
@@ -77,7 +77,39 @@ module('Acceptance | link', function(hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @routeName="with-model" @models={{array 123}} as |l|>
+        <Link @route="with-model" @models={{array 123}} as |l|>
+          <a
+            data-test-link
+            href={{l.href}}
+            class={{if l.isActive "is-active"}}
+            {{on "click" l.transitionTo}}
+          >
+            Link
+          </a>
+        </Link>
+      `
+    );
+
+    await visit('/');
+    assert.equal(currentURL(), '/');
+
+    assert.dom('[data-test-link]').hasAttribute('href', '/with-model/123');
+    assert.dom('[data-test-link]').hasNoClass('is-active');
+
+    await click('[data-test-link]');
+    assert.equal(currentURL(), '/with-model/123');
+    assert.dom('[data-test-link]').hasClass('is-active');
+  });
+
+  test('@model shorthand', async function(this: TestContext, assert) {
+    this.Router.map(function() {
+      this.route('with-model', { path: 'with-model/:id' });
+    });
+
+    this.owner.register(
+      'template:application',
+      hbs`
+        <Link @route="with-model" @model="123" as |l|>
           <a
             data-test-link
             href={{l.href}}
@@ -111,7 +143,7 @@ module('Acceptance | link', function(hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @routeName="with-model.nested-model" @models={{array 123 456}} as |l|>
+        <Link @route="with-model.nested-model" @models={{array 123 456}} as |l|>
           <a
             data-test-link
             href={{l.href}}
@@ -145,7 +177,7 @@ module('Acceptance | link', function(hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @routeName="with-model" @models={{array 123}} as |l|>
+        <Link @route="with-model" @models={{array 123}} as |l|>
           <a
             data-test-123
             href={{l.href}}
@@ -155,7 +187,7 @@ module('Acceptance | link', function(hooks) {
             Link
           </a>
         </Link>
-        <Link @routeName="with-model" @models={{array 456}} as |l|>
+        <Link @route="with-model" @models={{array 456}} as |l|>
           <a
             data-test-456
             href={{l.href}}
@@ -213,7 +245,7 @@ module('Acceptance | link', function(hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @routeName="foo" @queryParams={{hash qp=123}} as |l|>
+        <Link @route="foo" @query={{hash qp=123}} as |l|>
           <a
             data-test-123
             href={{l.href}}
@@ -223,7 +255,7 @@ module('Acceptance | link', function(hooks) {
             Link
           </a>
         </Link>
-        <Link @routeName="foo" @queryParams={{hash qp=456}} as |l|>
+        <Link @route="foo" @query={{hash qp=456}} as |l|>
           <a
             data-test-456
             href={{l.href}}
