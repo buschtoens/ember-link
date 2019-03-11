@@ -79,7 +79,7 @@ The target route name.
 
 #### `@models`
 
-Optional.
+Optional. Mutually exclusive with [`@model`](#model).
 
 An array of models / dynamic segments.
 
@@ -103,6 +103,18 @@ An array of models / dynamic segments.
 {{#link-to "some.route" someModel someNestedModel}}
   Click me
 {{/link-to}}
+```
+
+#### `@model`
+
+Optional. Mutually exclusive with [`@models`](#models).
+
+Shorthand for providing a single model / dynamic segment. The following two
+invocations are equivalent:
+
+```hbs
+<Link @route="some.route" @model={{someModel}} />
+<Link @route="some.route" @models={{array someModel}} />
 ```
 
 #### `@query`
