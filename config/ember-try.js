@@ -7,14 +7,16 @@ module.exports = function() {
     getChannelURL('release'),
     getChannelURL('beta'),
     getChannelURL('canary')
-  ]).then((urls) => {
+  ]).then(urls => {
     return {
       useYarn: true,
       scenarios: [
         {
           name: 'ember-lts-2.18',
           env: {
-            EMBER_OPTIONAL_FEATURES: JSON.stringify({ 'jquery-integration': true })
+            EMBER_OPTIONAL_FEATURES: JSON.stringify({
+              'jquery-integration': true
+            })
           },
           npm: {
             devDependencies: {
