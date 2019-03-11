@@ -20,8 +20,8 @@
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each",
-    "prepublishOnly": "ember ts:precompile",
-    "postpublish": "ember ts:clean"
+    "prepublishOnly": "#ember ts:precompile",
+    "postpublish": "#ember ts:clean"
   },
   "dependencies": {
     "@ember-decorators/babel-transforms": "^5.1.4",
