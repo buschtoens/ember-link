@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@clark/eslint-config-ember": "^0.5.0",
-    "@clark/eslint-config-ember-typescript": "^0.4.0",
+    "@clark/eslint-config-ember-typescript": "^0.5.0",
     "@clark/eslint-config-node": "^0.5.0",
     "@ember/optional-features": "^0.7.0",
     "@types/ember": "^3.0.29",
