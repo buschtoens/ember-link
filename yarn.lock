@@ -3630,12 +3630,12 @@ ember-modifier-manager-polyfill@^1.0.3:
     ember-cli-version-checker "^2.1.2"
     ember-compatibility-helpers "^1.2.0"
 
-ember-on-modifier@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/ember-on-modifier/-/ember-on-modifier-0.7.0.tgz#51975bf393d8880df67610e7ec260c90ef8daa8e"
-  integrity sha512-AetUtHFF1MbiFrNbyBuNomo4ZEswT78PIJJQk1RtJlfL8DVFb/IGOp3d3QiKs+X7EPhH/A5Dt9lUkLeM0cTyhQ==
+ember-on-modifier@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/ember-on-modifier/-/ember-on-modifier-0.8.0.tgz#db69696c0f54c0e5bcbdd96236541121be8a1a73"
+  integrity sha512-9w3TYcQAaKCk5wuQj4qjRUXO0HBkd0wErOhT0BUWUGMf6C0lWpwM/OyV41glYF7tOhWxyeq1JPB/J9yIhS8jpw==
   dependencies:
-    ember-cli-babel "^7.5.0"
+    ember-cli-babel "^7.6.0"
     ember-modifier-manager-polyfill "^1.0.3"
 
 ember-qunit@^4.4.1:
