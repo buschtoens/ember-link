@@ -807,12 +807,12 @@
     ember-cli-babel "^7.1.3"
     ember-compatibility-helpers "^1.1.2"
 
-"@ember-decorators/service@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/service/-/service-5.1.4.tgz#a42525245eff3fc327845bdbca4bb38f9e3a6663"
-  integrity sha512-7Lmh8DDe21BhDi5ZKGHHmijl+QwTFBeVLeD6UqDlO8XBwPstPIyVUPXdpSSvqjSxaXx8gj1vke356JAEGxiN9g==
+"@ember-decorators/service@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/service/-/service-5.2.0.tgz#639065d5784067ccbfa7e70bf6dc88ca54a89e20"
+  integrity sha512-FAovjVDCqqwBVmrGbkZu7SLt4DsXG/QBa/5WFwOddDQI8i3w8E1jk2E/yEhJOWriZc7MGAgBVVV6LESEskY8Hg==
   dependencies:
-    "@ember-decorators/utils" "^5.1.4"
+    "@ember-decorators/utils" "^5.2.0"
     ember-cli-babel "^7.1.3"
     ember-compatibility-helpers "^1.1.2"
 
@@ -827,16 +827,16 @@
     ember-compatibility-helpers "^1.1.2"
     semver "^5.6.0"
 
-"@ember-decorators/utils@^5.1.4":
-  version "5.1.4"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/utils/-/utils-5.1.4.tgz#e8a18e614b3bd282c548803fd5e94d49d8fbaeee"
-  integrity sha512-wWJwhVIG1xwY0PbyWx7GHIkEvqDejzJ6trHtHSsTjBhhLbBtQqJN3DCHe4IltCyvizhzusRiFrZJB1g+eWiXCA==
+"@ember-decorators/utils@^5.1.4", "@ember-decorators/utils@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/utils/-/utils-5.2.0.tgz#75c79b6d2b69b7d9224a3697176bc198d4e274a9"
+  integrity sha512-GjVPkvqprQNOtsut16Nk3M/UWmqCDDFVSfvUyqasaPlYt9+d6w0y6XrjSnQ6+3VOyk4rUWE+3u0tJoukgeWVLw==
   dependencies:
     babel-plugin-debug-macros "^0.2.0"
     ember-cli-babel "^7.1.3"
     ember-cli-version-checker "^3.0.0"
     ember-compatibility-helpers "^1.1.2"
-    semver "^5.6.0"
+    semver "^6.0.0"
 
 "@ember/optional-features@^0.7.0":
   version "0.7.0"
@@ -7435,6 +7435,11 @@ semver@5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
   integrity sha512-4SJ3dm0WAwWy/NVeioZh5AntkdJoWKxHxcmyP622fOkgHa4z3R0TdBJICINyaSDE6uNwVc8gZr+ZinwZAH4xIA==
+
+semver@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-6.0.0.tgz#05e359ee571e5ad7ed641a6eec1e547ba52dea65"
+  integrity sha512-0UewU+9rFapKFnlbirLi3byoOuhrSsli/z/ihNnvM24vgF+8sNBiI1LZPBSH9wJKUwaUbw+s3hToDLCXkrghrQ==
 
 send@0.16.2:
   version "0.16.2"
