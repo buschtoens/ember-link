@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@ember-decorators/babel-transforms": "^5.1.4",
-    "@ember-decorators/object": "^5.1.4",
+    "@ember-decorators/object": "^5.2.0",
     "@ember-decorators/service": "^5.1.4",
     "ember-cli-babel": "^7.7.3",
     "ember-cli-htmlbars": "^3.0.1",
