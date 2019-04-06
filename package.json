@@ -24,7 +24,7 @@
     "postpublish": "#ember ts:clean"
   },
   "dependencies": {
-    "@ember-decorators/babel-transforms": "^5.1.4",
+    "@ember-decorators/babel-transforms": "^5.2.0",
     "@ember-decorators/object": "^5.1.4",
     "@ember-decorators/service": "^5.1.4",
     "ember-cli-babel": "^7.7.3",
