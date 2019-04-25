@@ -1,9 +1,9 @@
 import RouterService from '@ember/routing/router-service';
 import Transition from '@ember/routing/-private/transition';
-import { inject as service } from '@ember-decorators/service';
-import { action } from '@ember-decorators/object';
-import { reads } from '@ember-decorators/object/computed';
-import SparklesComponent, { tracked } from 'sparkles-component';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+import { reads } from '@ember/object/computed';
+import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
 function isQueryParams(
@@ -20,7 +20,7 @@ type RouteModel = object | string | number;
 
 type QueryParams = Record<string, any>;
 
-export default class LinkComponent extends SparklesComponent<{
+interface LinkArgs {
   /**
    * The target route name.
    */
@@ -50,7 +50,9 @@ export default class LinkComponent extends SparklesComponent<{
    * Defaults to `true`.
    */
   preventDefault?: boolean;
-}> {
+}
+
+export default class LinkComponent extends Component<LinkArgs> {
   @service
   private router!: RouterService;
 
@@ -81,7 +83,6 @@ export default class LinkComponent extends SparklesComponent<{
     );
   }
 
-  @tracked('args')
   private get modelsAndQueryParams(): [RouteModel[], null | QueryParams] {
     const { model, models, query } = this.args;
     if (models) {
@@ -100,7 +101,6 @@ export default class LinkComponent extends SparklesComponent<{
     return [model ? [model] : [], query ? { ...query } : null];
   }
 
-  @tracked
   private get routeArgs() {
     const [models, queryParams] = this.modelsAndQueryParams;
 
@@ -115,7 +115,6 @@ export default class LinkComponent extends SparklesComponent<{
    * The URL for this link that you can pass to an `<a>` tag as the `href`
    * attribute.
    */
-  @tracked('args')
   get href(): string {
     // @ts-ignore
     return this.router.urlFor(...this.routeArgs);
@@ -125,8 +124,8 @@ export default class LinkComponent extends SparklesComponent<{
    * Whether this route is currently active, including potentially supplied
    * models and query params.
    */
-  @tracked('args', 'currentURL')
   get isActive(): boolean {
+    this.currentURL; // eslint-disable-line no-unused-expressions
     // @ts-ignore
     return this.router.isActive(...this.routeArgs);
   }
@@ -135,8 +134,8 @@ export default class LinkComponent extends SparklesComponent<{
    * Whether this route is currently active, including potentially supplied
    * models, but ignoring query params.
    */
-  @tracked('args', 'currentURL')
   get isActiveWithoutQueryParams() {
+    this.currentURL; // eslint-disable-line no-unused-expressions
     return this.router.isActive(
       this.args.route,
       // @ts-ignore
@@ -148,8 +147,8 @@ export default class LinkComponent extends SparklesComponent<{
    * Whether this route is currently active, but ignoring models and query
    * params.
    */
-  @tracked('args', 'currentURL')
   get isActiveWithoutModels() {
+    this.currentURL; // eslint-disable-line no-unused-expressions
     return this.router.isActive(this.args.route);
   }
 
