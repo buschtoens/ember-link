@@ -8,8 +8,11 @@ module.exports = function(environment) {
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
+        EMBER_NATIVE_DECORATOR_SUPPORT: true,
+        EMBER_METAL_TRACKED_PROPERTIES: true,
+        EMBER_GLIMMER_ANGLE_BRACKET_NESTED_LOOKUP: true,
+        EMBER_GLIMMER_ANGLE_BRACKET_BUILT_INS: true,
+        EMBER_GLIMMER_FN_HELPER: true
       },
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
