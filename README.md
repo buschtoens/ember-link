@@ -23,12 +23,11 @@ components.
 ember install ember-link
 ```
 
-This addon uses the [`RouterService`][router-service]. Depending on your Ember version, you might
-need to install
-[`ember-router-service-polyfill`][ember-router-service-polyfill].
+> 👉 This is an [Ember Octane][octane] addon. For a version that is compatible
+> with older versions of Ember check out the [`0.x` series][pre-octane].
 
-[router-service]: https://api.emberjs.com/ember/release/classes/RouterService
-[ember-router-service-polyfill]: https://github.com/rwjblue/ember-router-service-polyfill#readme
+[octane]: https://emberjs.com/editions/octane/
+[pre-octane]: https://github.com/buschtoens/ember-link/tree/pre-octane
 
 ## Usage
 
@@ -47,12 +46,6 @@ as |l|>
   </a>
 </Link>
 ```
-
-<sup>`{{on}}` is an element modifier provided by
-[`ember-on-modifier`][ember-on-modifier]. You could just use
-`onclick={{l.transitionTo}}` instead.</sup>
-
-[ember-on-modifier]: https://github.com/buschtoens/ember-on-modifier#readme
 
 ### Arguments
 
