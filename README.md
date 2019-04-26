@@ -30,6 +30,12 @@ need to install
 [router-service]: https://api.emberjs.com/ember/release/classes/RouterService
 [ember-router-service-polyfill]: https://github.com/rwjblue/ember-router-service-polyfill#readme
 
+> 👉 This is the old pre-Octane version of the addon. If you are using
+> [Ember Octane][octane] already, jump over to the [`master`][master] branch.
+
+[octane]: https://emberjs.com/editions/octane/
+[master]: https://github.com/buschtoens/ember-link
+
 ## Usage
 
 ```hbs
