@@ -1,4 +1,6 @@
-{{yield
+{{~ember-link/validate-args this.args~}}
+
+{{~yield
   (hash
     href=this.href
     isActive=this.isActive
@@ -7,4 +9,4 @@
     transitionTo=this.transitionTo
     replaceWith=this.replaceWith
   )
-}}
+~}}

@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { reads } from '@ember/object/computed';
 import Component from '@glimmer/component';
-import { assert } from '@ember/debug';
 
 function isQueryParams(
   maybeQueryParam: any
@@ -20,7 +19,7 @@ type RouteModel = object | string | number;
 
 type QueryParams = Record<string, any>;
 
-interface LinkArgs {
+export interface LinkArgs {
   /**
    * The target route name.
    */
@@ -59,29 +58,6 @@ export default class LinkComponent extends Component<LinkArgs> {
   @reads('router.currentURL')
   // @ts-ignore
   private currentURL!: string;
-
-  didUpdate() {
-    super.didUpdate();
-
-    assert(
-      `You provided '@queryParams', but the argument you mean is just '@query'.`,
-      !('queryParams' in this.args)
-    );
-    assert(
-      `You provided '@routeName', but the argument you mean is just '@route'.`,
-      !('routeName' in this.args)
-    );
-    assert(
-      `'@route' needs to be a valid route name.`,
-      typeof this.args.route === 'string'
-    );
-    assert(
-      `You cannot use both '@model' ('${this.args.model}') and '@models' ('${
-        this.args.models
-      }') at the same time.`,
-      !(this.args.model && this.args.models)
-    );
-  }
 
   private get modelsAndQueryParams(): [RouteModel[], null | QueryParams] {
     const { model, models, query } = this.args;
