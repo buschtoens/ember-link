@@ -15,7 +15,12 @@ It's like `{{link-to}}`, but renderless!
 components that don't emit any DOM, but only yield state and actions to nested
 components.
 
+The idea for this component traces back to this [EmberMap][embermap] session:
+[Using Functional CSS with Ember][embermap-functional-css].
+
 [renderless-components]: https://embermap.com/ember-component-patterns
+[embermap]: https://embermap.com/
+[embermap-functional-css]: https://embermap.com/topics/using-functional-css-with-ember/building-the-workspace-selector-part-3
 
 ## Installation
 
