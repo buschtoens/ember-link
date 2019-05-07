@@ -728,13 +728,14 @@
     eslint-plugin-ember-best-practices "^1.1.1"
     lodash.merge "^4.6.1"
 
-"@clark/eslint-config-node@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.0.0.tgz#16debefa545078c2c7f5e45c8349f7cbd30b233a"
-  integrity sha512-0IXW2+7FSL3w+oAD1r3QODZ8ogxcBLmrZ+FSNmUP4W5B4FG8hRqoHel6RzNFtNtIu6BTx89Tj/X2idL36ceK5A==
+"@clark/eslint-config-node@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.1.1.tgz#8f1d6827f4f27c1ebb633d75be9fa792d33a19a2"
+  integrity sha512-nFZyuooyzXJbpnP1oJHXFUYte2wIbmLGvdzjapMvnDHsRNKIAPWPJUUEmZLHqZVb/CKAnKgv7xh1xoorLb8vYA==
   dependencies:
-    "@clark/eslint-config" "^1.0.0"
+    "@clark/eslint-config" "^1.1.1"
     eslint-plugin-node "^9.0.1"
+    lodash.merge "^4.6.1"
 
 "@clark/eslint-config-typescript@^1.1.1":
   version "1.1.1"
@@ -745,7 +746,7 @@
     "@typescript-eslint/eslint-plugin" "^1.7.0"
     "@typescript-eslint/parser" "^1.7.0"
 
-"@clark/eslint-config@^1.0.0", "@clark/eslint-config@^1.1.1":
+"@clark/eslint-config@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.1.1.tgz#fd1f25bedfa966323f97f33994a1f70e527ffddb"
   integrity sha512-Se5WKaEmuuEYl9efNE9VljKY7wzio1oBCa+yms5TRIwyzXKofIt1l47AcTHDEwOn/EzDHm8FVQzdhTNCuge7iw==
