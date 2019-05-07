@@ -29,7 +29,7 @@
     "ember-cli-typescript": "^2.0.1"
   },
   "devDependencies": {
-    "@clark/eslint-config-ember": "^0.5.1",
+    "@clark/eslint-config-ember": "^1.1.1",
     "@clark/eslint-config-ember-typescript": "^0.5.1",
     "@clark/eslint-config-node": "^1.0.0",
     "@ember/optional-features": "^0.7.0",
