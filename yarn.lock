@@ -701,6 +701,13 @@
   dependencies:
     "@clark/eslint-config" "^0.5.0"
 
+"@clark/eslint-config-browser@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-browser/-/eslint-config-browser-1.0.0.tgz#0f5c8b17c537dfa4039b04412af2c0de0e5e9af5"
+  integrity sha512-w+SZ9DrrJ1IWex3q1eywSboESie6yXbl0qiStH0Hm4k6kn+prPMqTa0lx8RT1J83VgdnFr9s93Fn0gUrPzIFvg==
+  dependencies:
+    "@clark/eslint-config" "^1.0.0"
+
 "@clark/eslint-config-ember-typescript@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@clark/eslint-config-ember-typescript/-/eslint-config-ember-typescript-0.5.1.tgz#d2d35cc77c78be0b63f3835289de70ddb1e05830"
@@ -716,6 +723,16 @@
   dependencies:
     "@clark/eslint-config-browser" "^0.5.0"
     eslint-plugin-ember "^6.3.0"
+    eslint-plugin-ember-best-practices "^1.1.1"
+
+"@clark/eslint-config-ember@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-ember/-/eslint-config-ember-1.0.0.tgz#92a6a04d8f0ee3827b54b182751178c64baa210d"
+  integrity sha512-4IvStU3UVSeBgl0m26QGEyzZswSXJzVonBSE94ndQHnLSAyfjonuFEmjSg7BhnUMFa9v3Bwz0N6n6ERsaOI/zA==
+  dependencies:
+    "@clark/eslint-config" "^1.0.0"
+    "@clark/eslint-config-browser" "^1.0.0"
+    eslint-plugin-ember "^6.4.1"
     eslint-plugin-ember-best-practices "^1.1.1"
 
 "@clark/eslint-config-node@^1.0.0":
@@ -4064,7 +4081,7 @@ eslint-plugin-ember-best-practices@^1.1.1:
   dependencies:
     requireindex "^1.1.0"
 
-eslint-plugin-ember@^6.3.0:
+eslint-plugin-ember@^6.3.0, eslint-plugin-ember@^6.4.1:
   version "6.4.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-6.4.1.tgz#9b6fc99bbd86b4f43e9098a5c07c446eb2e64a08"
   integrity sha512-eNzB3t/S4tR+4OhOucufIWs1UUzftxYrk97L7yErz5ETVXht6nEenV7T9FXt+wB2OBMWnlHvCeaSyhhaAR1DBw==
