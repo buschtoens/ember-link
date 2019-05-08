@@ -21,13 +21,28 @@
     "baseUrl": ".",
     "module": "es6",
     "paths": {
-      "dummy/tests/*": ["tests/*"],
-      "dummy/*": ["tests/dummy/app/*", "app/*"],
-      "ember-link": ["addon"],
-      "ember-link/*": ["addon/*"],
-      "ember-link/test-support": ["addon-test-support"],
-      "ember-link/test-support/*": ["addon-test-support/*"],
-      "*": ["types/*"]
+      "dummy/tests/*": [
+        "tests/*"
+      ],
+      "dummy/*": [
+        "tests/dummy/app/*",
+        "app/*"
+      ],
+      "ember-link": [
+        "addon"
+      ],
+      "ember-link/*": [
+        "addon/*"
+      ],
+      "ember-link/test-support": [
+        "addon-test-support"
+      ],
+      "ember-link/test-support/*": [
+        "addon-test-support/*"
+      ],
+      "*": [
+        "types/*"
+      ]
     }
   },
   "include": [
