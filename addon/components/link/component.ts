@@ -1,9 +1,9 @@
+import Component from '@ember/component';
 import RouterService from '@ember/routing/router-service';
 import Transition from '@ember/routing/-private/transition';
 import { inject as service } from '@ember-decorators/service';
-import { action } from '@ember-decorators/object';
+import { action, computed } from '@ember-decorators/object';
 import { reads } from '@ember-decorators/object/computed';
-import SparklesComponent, { tracked } from 'sparkles-component';
 import { assert } from '@ember/debug';
 
 function isQueryParams(
@@ -20,11 +20,18 @@ type RouteModel = object | string | number;
 
 type QueryParams = Record<string, any>;
 
-export default class LinkComponent extends SparklesComponent<{
+export default class LinkComponent extends Component {
+  @service
+  private router!: RouterService;
+
+  @reads('router.currentURL')
+  // @ts-ignore
+  private currentURL!: string;
+
   /**
    * The target route name.
    */
-  route: string;
+  route!: string;
 
   /**
    * Optional array of models / dynamic segments.
@@ -50,40 +57,33 @@ export default class LinkComponent extends SparklesComponent<{
    * Defaults to `true`.
    */
   preventDefault?: boolean;
-}> {
-  @service
-  private router!: RouterService;
 
-  @reads('router.currentURL')
-  // @ts-ignore
-  private currentURL!: string;
-
-  didUpdate() {
-    super.didUpdate();
+  didReceiveAttrs() {
+    super.didReceiveAttrs();
 
     assert(
       `You provided '@queryParams', but the argument you mean is just '@query'.`,
-      !('queryParams' in this.args)
+      !('queryParams' in this)
     );
     assert(
       `You provided '@routeName', but the argument you mean is just '@route'.`,
-      !('routeName' in this.args)
+      !('routeName' in this)
     );
     assert(
       `'@route' needs to be a valid route name.`,
-      typeof this.args.route === 'string'
+      typeof this.route === 'string'
     );
     assert(
-      `You cannot use both '@model' ('${this.args.model}') and '@models' ('${
-        this.args.models
+      `You cannot use both '@model' ('${this.model}') and '@models' ('${
+        this.models
       }') at the same time.`,
-      !(this.args.model && this.args.models)
+      !(this.model && this.models)
     );
   }
 
-  @tracked('args')
+  @computed('model', 'models', 'query')
   private get modelsAndQueryParams(): [RouteModel[], null | QueryParams] {
-    const { model, models, query } = this.args;
+    const { model, models, query } = this;
     if (models) {
       const lastModel = models[models.length - 1];
 
@@ -100,22 +100,22 @@ export default class LinkComponent extends SparklesComponent<{
     return [model ? [model] : [], query ? { ...query } : null];
   }
 
-  @tracked
+  @computed('route', 'modelsAndQueryParams')
   private get routeArgs() {
     const [models, queryParams] = this.modelsAndQueryParams;
 
     if (queryParams) {
-      return [this.args.route, ...models, { queryParams }];
+      return [this.route, ...models, { queryParams }];
     }
 
-    return [this.args.route, ...models];
+    return [this.route, ...models];
   }
 
   /**
    * The URL for this link that you can pass to an `<a>` tag as the `href`
    * attribute.
    */
-  @tracked('args')
+  @computed('routeArgs')
   get href(): string {
     // @ts-ignore
     return this.router.urlFor(...this.routeArgs);
@@ -125,7 +125,7 @@ export default class LinkComponent extends SparklesComponent<{
    * Whether this route is currently active, including potentially supplied
    * models and query params.
    */
-  @tracked('args', 'currentURL')
+  @computed('routeArgs', 'currentURL')
   get isActive(): boolean {
     // @ts-ignore
     return this.router.isActive(...this.routeArgs);
@@ -135,10 +135,10 @@ export default class LinkComponent extends SparklesComponent<{
    * Whether this route is currently active, including potentially supplied
    * models, but ignoring query params.
    */
-  @tracked('args', 'currentURL')
+  @computed('route', 'modelsAndQueryParams', 'currentURL')
   get isActiveWithoutQueryParams() {
     return this.router.isActive(
-      this.args.route,
+      this.route,
       // @ts-ignore
       ...this.modelsAndQueryParams[0]
     );
@@ -148,9 +148,9 @@ export default class LinkComponent extends SparklesComponent<{
    * Whether this route is currently active, but ignoring models and query
    * params.
    */
-  @tracked('args', 'currentURL')
+  @computed('route', 'currentURL')
   get isActiveWithoutModels() {
-    return this.router.isActive(this.args.route);
+    return this.router.isActive(this.route);
   }
 
   /**
@@ -158,7 +158,7 @@ export default class LinkComponent extends SparklesComponent<{
    */
   @action
   transitionTo(event?: Event | any): Transition {
-    this.preventDefault(event);
+    this._preventDefault(event);
 
     // @ts-ignore
     return this.router.transitionTo(...this.routeArgs);
@@ -170,15 +170,15 @@ export default class LinkComponent extends SparklesComponent<{
    */
   @action
   replaceWith(event?: Event | any): Transition {
-    this.preventDefault(event);
+    this._preventDefault(event);
 
     // @ts-ignore
     return this.router.replaceWith(...this.routeArgs);
   }
 
-  private preventDefault(event?: Event | any) {
+  private _preventDefault(event?: Event | any) {
     if (
-      (this.args.preventDefault || this.args.preventDefault === undefined) &&
+      (this.preventDefault || this.preventDefault === undefined) &&
       event &&
       typeof event.preventDefault === 'function'
     ) {

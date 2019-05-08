@@ -778,7 +778,7 @@
     ember-cli-babel-plugin-helpers "^1.0.0"
     ember-cli-version-checker "^3.0.0"
 
-"@ember-decorators/object@^5.1.4":
+"@ember-decorators/object@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@ember-decorators/object/-/object-5.2.0.tgz#48307792b0f8981b637de0229716b890ca0c5be2"
   integrity sha512-lKqwQ18DHT9TQCLQK6gyeskImaZBhe6C2qjD3wfbZDNxgn3FZI0u2GTSx5JZ3j8AraSHm/qT+1hOkUyktNBQsw==
@@ -795,17 +795,6 @@
     "@ember-decorators/utils" "^5.2.0"
     ember-cli-babel "^7.1.3"
     ember-compatibility-helpers "^1.1.2"
-
-"@ember-decorators/utils@^4.0.0":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@ember-decorators/utils/-/utils-4.0.3.tgz#41087d90fbd2caf851386785c954cd0839c6558e"
-  integrity sha512-ZxnKoN1GYbzVKCs/i757Psiwf7RSl42zEhYDXlctgWJe7HtgAkcM/PXXhKda1sWWEA1g9pF6VLaYldxajFMAig==
-  dependencies:
-    babel-plugin-debug-macros "^0.2.0"
-    ember-cli-babel "^7.1.3"
-    ember-cli-version-checker "^2.1.2"
-    ember-compatibility-helpers "^1.1.2"
-    semver "^5.6.0"
 
 "@ember-decorators/utils@^5.2.0":
   version "5.2.0"
@@ -857,11 +846,6 @@
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@glimmer/di/-/di-0.2.1.tgz#5286b6b32040232b751138f6d006130c728d4b3d"
   integrity sha512-0D53YVuEgGdHfTl9LGWDZqVzGhn4cT0CXqyAuOYkKFLvqboJXz6SnkRhQNPhhA2hLVrPnvUz3+choQmPhHLGGQ==
-
-"@glimmer/env@^0.1.7":
-  version "0.1.7"
-  resolved "https://registry.yarnpkg.com/@glimmer/env/-/env-0.1.7.tgz#fd2d2b55a9029c6b37a6c935e8c8871ae70dfa07"
-  integrity sha1-/S0rVakCnGs3psk16MiHGucN+gc=
 
 "@glimmer/interfaces@^0.38.4":
   version "0.38.4"
@@ -3344,7 +3328,7 @@ ember-cli-babel@^6.0.0-beta.4, ember-cli-babel@^6.0.0-beta.7, ember-cli-babel@^6
     ember-cli-version-checker "^2.1.2"
     semver "^5.5.0"
 
-ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.3, ember-cli-babel@^7.2.0, ember-cli-babel@^7.4.2, ember-cli-babel@^7.4.3, ember-cli-babel@^7.5.0, ember-cli-babel@^7.7.3:
+ember-cli-babel@^7.0.0, ember-cli-babel@^7.1.3, ember-cli-babel@^7.4.2, ember-cli-babel@^7.4.3, ember-cli-babel@^7.5.0, ember-cli-babel@^7.7.3:
   version "7.7.3"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-7.7.3.tgz#f94709f6727583d18685ca6773a995877b87b8a0"
   integrity sha512-/LWwyKIoSlZQ7k52P+6agC7AhcOBqPJ5C2u27qXHVVxKvCtg6ahNuRk/KmfZmV4zkuw4EjTZxfJE1PzpFyHkXg==
@@ -3506,7 +3490,7 @@ ember-cli-typescript-blueprints@^2.0.0:
     inflection "^1.12.0"
     silent-error "^1.1.0"
 
-ember-cli-typescript@^2.0.0-rc.1, ember-cli-typescript@^2.0.1:
+ember-cli-typescript@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/ember-cli-typescript/-/ember-cli-typescript-2.0.1.tgz#9c46729213b9e1d13f5c3ff8421d772134aa889e"
   integrity sha512-xwSEQOUNM621Wt+XJWpbLhBIeqC/dM1lDS+oZQ2nSjxp4MLZkpKuiVBqdbBWcURbvv8ghoVQPfy8wYU4JIFkLA==
@@ -7771,22 +7755,6 @@ sourcemap-validator@^1.1.0:
     lodash.foreach "~2.3.x"
     lodash.template "~2.3.x"
     source-map "~0.1.x"
-
-sparkles-component@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/sparkles-component/-/sparkles-component-1.3.0.tgz#1110db66edec300c80e8741229414e86b33004c3"
-  integrity sha512-19yH7S+PsA7Fn4tNk0Bu7ZqS/1P5asliNMD5d21J8YjIzKhlyzj40Ab0kB92lBLbrkxpb6D44KvbvD/TniUTZg==
-  dependencies:
-    "@ember-decorators/utils" "^4.0.0"
-    "@glimmer/env" "^0.1.7"
-    ember-cli-babel "^7.2.0"
-    ember-cli-get-component-path-option "^1.0.0"
-    ember-cli-is-package-missing "^1.0.0"
-    ember-cli-normalize-entity-name "^1.0.0"
-    ember-cli-path-utils "^1.0.0"
-    ember-cli-string-utils "^1.1.0"
-    ember-cli-typescript "^2.0.0-rc.1"
-    ember-compatibility-helpers "^1.1.2"
 
 spawn-args@^0.2.0:
   version "0.2.0"
