@@ -770,7 +770,7 @@
 
 "@ember-decorators/component@^6.0.0":
   version "6.0.0"
-  resolved "https://npm.bagaar.be/@ember-decorators%2fcomponent/-/component-6.0.0.tgz#1800cbd48ab478620b1fba93ca050b930ff957f8"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/component/-/component-6.0.0.tgz#1800cbd48ab478620b1fba93ca050b930ff957f8"
   integrity sha512-kdXZ+SV286vJ0l4ZJWK6ZbTApevebgSnLdi6++ld3H7uc7uI1XLGzxTIyp2/eFeclJlYiy/KnV0ElTAk35dPGQ==
   dependencies:
     "@ember-decorators/utils" "^6.0.0"
@@ -778,7 +778,7 @@
 
 "@ember-decorators/utils@^6.0.0":
   version "6.0.0"
-  resolved "https://npm.bagaar.be/@ember-decorators%2futils/-/utils-6.0.0.tgz#94ac94ce03b607fc0d2d6a058b9a27e20735ec8e"
+  resolved "https://registry.yarnpkg.com/@ember-decorators/utils/-/utils-6.0.0.tgz#94ac94ce03b607fc0d2d6a058b9a27e20735ec8e"
   integrity sha512-moW4Oa7X1CN15LvjHlJVuwI4PpwTjXTPHPCCJll+a0X1sowQhObcLRykn6OMwdm9naCROGnRmcwpVqnE0eFjBg==
   dependencies:
     ember-cli-babel "^7.1.3"
