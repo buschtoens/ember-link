@@ -4,6 +4,7 @@ import Transition from '@ember/routing/-private/transition';
 import { inject as service } from '@ember/service';
 import { action, computed } from '@ember/object';
 import { reads } from '@ember/object/computed';
+import { tagName } from '@ember-decorators/component';
 import { assert } from '@ember/debug';
 
 function isQueryParams(
@@ -20,6 +21,7 @@ type RouteModel = object | string | number;
 
 type QueryParams = Record<string, any>;
 
+@tagName('')
 export default class LinkComponent extends Component {
   @service
   private router!: RouterService;
