@@ -1,6 +1,6 @@
 {
   "name": "ember-link",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Renderless component for creating links. It's {{link-to}}, but better!",
   "keywords": [
     "ember-addon"
