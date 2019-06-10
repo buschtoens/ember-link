@@ -53,7 +53,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^2.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
-    "ember-on-modifier": "^0.12.2",
+    "ember-on-modifier": "^0.12.4",
     "ember-qunit": "^4.4.1",
     "ember-resolver": "^5.0.1",
     "ember-source": "https://s3.amazonaws.com/builds.emberjs.com/canary/shas/c8f479e7951c6888e70d7e7849668c9efe169611.tgz",
