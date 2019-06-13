@@ -16,9 +16,7 @@ export function emberLinkValidateArgs([args]: [LinkArgs]): void {
     typeof args.route === 'string'
   );
   assert(
-    `You cannot use both '@model' ('${args.model}') and '@models' ('${
-      args.models
-    }') at the same time.`,
+    `You cannot use both '@model' ('${args.model}') and '@models' ('${args.models}') at the same time.`,
     !(args.model && args.models)
   );
 }
