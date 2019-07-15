@@ -58,7 +58,7 @@
     "ember-resolver": "^5.0.1",
     "ember-source": "https://s3.amazonaws.com/builds.emberjs.com/canary/shas/319e3ce16e49e226baf6807042be4fe5ce5c8e01.tgz",
     "ember-source-channel-url": "^2.0.1",
-    "ember-template-lint": "^1.3.0",
+    "ember-template-lint": "^1.4.0",
     "ember-try": "^1.2.1",
     "eslint": "^6.0.1",
     "loader.js": "^4.7.0",
