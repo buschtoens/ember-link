@@ -748,14 +748,22 @@
     eslint-plugin-ember-best-practices "^1.1.1"
     lodash.merge "^4.6.1"
 
-"@clark/eslint-config-node@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.4.1.tgz#41561721ba75c8880264eda60b5cdba32e2c2ed8"
-  integrity sha512-kpSrc7WxsNdwjkwaor+gjO/lKLIIvXFhuryzYT1N2e5Zlu/q3O5LMBpkMUeT03iZXZL7zo23Eo5uHCHAJeHfXA==
+"@clark/eslint-config-node-order-imports@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node-order-imports/-/eslint-config-node-order-imports-1.8.0.tgz#e8f4d300144824cc5a01b394450d930f3054fd1f"
+  integrity sha512-514IfLrii7e3b3DgkSUt5tag3smZuOjr7Ej2lJ9QBhCwaRdFcTcPClAxUFV5Z2iWlpY77GD3HuYXaWdPRQoyiQ==
   dependencies:
-    "@clark/eslint-config" "^1.4.1"
+    eslint-plugin-import-helpers "^1.0.2"
+
+"@clark/eslint-config-node@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.8.0.tgz#7f4b6be726a8c70747cbf7988defc1aa861bf8b3"
+  integrity sha512-F2jzOuYUd1OEYXgFLjM8SNOLGXjwvinp1hMlrvR2qEpnyLk+UAdvLhhEbhDp9Iaxd27Qf/cHLu5M9ghC197yQg==
+  dependencies:
+    "@clark/eslint-config" "^1.8.0"
+    "@clark/eslint-config-node-order-imports" "^1.8.0"
     eslint-plugin-node "^9.1.0"
-    lodash.merge "^4.6.1"
+    lodash.merge "^4.6.2"
 
 "@clark/eslint-config-typescript@^1.4.1":
   version "1.4.1"
@@ -766,18 +774,18 @@
     "@typescript-eslint/eslint-plugin" "^1.11.0"
     "@typescript-eslint/parser" "^1.11.0"
 
-"@clark/eslint-config@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.4.1.tgz#43630f123b6bba12f4455087136b1f3ed889ed66"
-  integrity sha512-71zUj2NxNhCdj/gNKtG8dF4CeOFw6zqOv/fWdk1Pd39v/JIxnhS8sTfnhQtK1TRs2rijhNRi2wC0pqCtjW96Dg==
+"@clark/eslint-config@^1.4.1", "@clark/eslint-config@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.8.0.tgz#5d1c0930893e0b27332e6280924d815212eed303"
+  integrity sha512-CPDS0qhsw/342FjiOvoe35arww0Nkg1bVtF8qfBebMoIwmqnTDRDX01u2v5otwEGLkXGRBCy0KaetejtlLCGkw==
   dependencies:
-    eslint-config-airbnb-base "^13.1.0"
+    eslint-config-airbnb-base "^13.2.0"
     eslint-config-prettier "^6.0.0"
     eslint-config-xo-space "^0.21.0"
-    eslint-plugin-import "^2.18.0"
+    eslint-plugin-import "^2.18.2"
     eslint-plugin-node "^9.1.0"
     eslint-plugin-prettier "^3.1.0"
-    eslint-plugin-unicorn "^9.1.1"
+    eslint-plugin-unicorn "^10.0.0"
     prettier "^1.18.2"
 
 "@cnakazawa/watch@^1.0.3":
@@ -4057,7 +4065,7 @@ escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-eslint-ast-utils@^1.0.0:
+eslint-ast-utils@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/eslint-ast-utils/-/eslint-ast-utils-1.1.0.tgz#3d58ba557801cfb1c941d68131ee9f8c34bd1586"
   integrity sha512-otzzTim2/1+lVrlH19EfQQJEhVJSu0zOb9ygb3iapN6UlyaDtyRq4b5U1FuW0v1lRa9Fp/GJyHkSwm6NqABgCA==
@@ -4065,7 +4073,7 @@ eslint-ast-utils@^1.0.0:
     lodash.get "^4.4.2"
     lodash.zip "^4.2.0"
 
-eslint-config-airbnb-base@^13.1.0:
+eslint-config-airbnb-base@^13.2.0:
   version "13.2.0"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-13.2.0.tgz#f6ea81459ff4dec2dda200c35f1d8f7419d57943"
   integrity sha512-1mg/7eoB4AUeB0X1c/ho4vb2gYkNH8Trr/EgCT/aGmKhhG+F6vF5s8+iRBlWAzFIAphxIdp3YfEKgEl0f9Xg+w==
@@ -4132,15 +4140,15 @@ eslint-plugin-es@^1.4.0:
     eslint-utils "^1.3.0"
     regexpp "^2.0.1"
 
-eslint-plugin-import-helpers@^1.0.1:
+eslint-plugin-import-helpers@^1.0.1, eslint-plugin-import-helpers@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import-helpers/-/eslint-plugin-import-helpers-1.0.2.tgz#ae0ab47c991c65e1b25b6370f49afa2cab4cbd9c"
   integrity sha512-aSoqeEEkJou/1NhbSO7Xr2SKSs8mI53qe8uFh9tMl4WCbrOwoel0eA3hRajlJ7MLCG44umf+mY3/dWuufneFzw==
 
-eslint-plugin-import@^2.18.0:
-  version "2.18.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.18.0.tgz#7a5ba8d32622fb35eb9c8db195c2090bd18a3678"
-  integrity sha512-PZpAEC4gj/6DEMMoU2Df01C5c50r7zdGIN52Yfi7CvvWaYssG7Jt5R9nFG5gmqodxNOz9vQS87xk6Izdtpdrig==
+eslint-plugin-import@^2.18.2:
+  version "2.18.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.18.2.tgz#02f1180b90b077b33d447a17a2326ceb400aceb6"
+  integrity sha512-5ohpsHAiUBRNaBWAF08izwUGlbrJoJJ+W9/TBwsGoR1MnlgfwMIKrFeSjWbt6moabiXW9xNvtFz+97KHRfI4HQ==
   dependencies:
     array-includes "^3.0.3"
     contains-path "^0.1.0"
@@ -4149,8 +4157,8 @@ eslint-plugin-import@^2.18.0:
     eslint-import-resolver-node "^0.3.2"
     eslint-module-utils "^2.4.0"
     has "^1.0.3"
-    lodash "^4.17.11"
     minimatch "^3.0.4"
+    object.values "^1.1.0"
     read-pkg-up "^2.0.0"
     resolve "^1.11.0"
 
@@ -4173,23 +4181,23 @@ eslint-plugin-prettier@^3.1.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-unicorn@^9.1.1:
-  version "9.1.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-9.1.1.tgz#1588a0473f9a0e37cfbbcf7552065a0b0a96ce26"
-  integrity sha512-SHh/N54pRu5KXlS4Boa1qbWM7yTNl6VpuYJ8Qc1O3TJDr+CDUwEEdUtVlVSV/dBUE97BC8Xk0+Y5zphn21qlCA==
+eslint-plugin-unicorn@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-10.0.0.tgz#f3815a759f76dd490dbb5a560e3805e0556aff17"
+  integrity sha512-hJaDsoquO+2UMtxmURXA/6VNH+sNS4kyO5aaal8fEis7pdCuErwRsGzhhI9fOYmA7985M3XADPEWmK+29T525w==
   dependencies:
     clean-regexp "^1.0.0"
-    eslint-ast-utils "^1.0.0"
+    eslint-ast-utils "^1.1.0"
     import-modules "^1.1.0"
-    lodash.camelcase "^4.1.1"
+    lodash.camelcase "^4.3.0"
     lodash.defaultsdeep "^4.6.0"
-    lodash.kebabcase "^4.0.1"
-    lodash.snakecase "^4.0.1"
+    lodash.kebabcase "^4.1.1"
+    lodash.snakecase "^4.1.1"
     lodash.topairs "^4.3.0"
-    lodash.upperfirst "^4.2.0"
+    lodash.upperfirst "^4.3.1"
     regexpp "^2.0.1"
     reserved-words "^0.1.2"
-    safe-regex "^2.0.1"
+    safe-regex "^2.0.2"
 
 eslint-scope@^4.0.0:
   version "4.0.3"
@@ -6015,7 +6023,7 @@ lodash.bind@~2.3.0:
     lodash._renative "~2.3.0"
     lodash._slice "~2.3.0"
 
-lodash.camelcase@^4.1.1:
+lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
@@ -6121,7 +6129,7 @@ lodash.isobject@~2.3.0:
   dependencies:
     lodash._objecttypes "~2.3.0"
 
-lodash.kebabcase@^4.0.1:
+lodash.kebabcase@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.kebabcase/-/lodash.kebabcase-4.1.1.tgz#8489b1cb0d29ff88195cceca448ff6d6cc295c36"
   integrity sha1-hImxyw0p/4gZXM7KRI/21swpXDY=
@@ -6144,7 +6152,7 @@ lodash.keys@~2.3.0:
     lodash._shimkeys "~2.3.0"
     lodash.isobject "~2.3.0"
 
-lodash.merge@^4.3.1, lodash.merge@^4.6.0, lodash.merge@^4.6.1:
+lodash.merge@^4.3.1, lodash.merge@^4.6.0, lodash.merge@^4.6.1, lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
@@ -6164,7 +6172,7 @@ lodash.restparam@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
   integrity sha1-k2pOMJ7zMKdkXtQUWYbIWuWyCAU=
 
-lodash.snakecase@^4.0.1:
+lodash.snakecase@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lodash.snakecase/-/lodash.snakecase-4.1.1.tgz#39d714a35357147837aefd64b5dcbb16becd8f8d"
   integrity sha1-OdcUo1NXFHg3rv1ktdy7Fr7Nj40=
@@ -6232,7 +6240,7 @@ lodash.uniqby@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash.uniqby/-/lodash.uniqby-4.7.0.tgz#d99c07a669e9e6d24e1362dfe266c67616af1302"
   integrity sha1-2ZwHpmnp5tJOE2Lf4mbGdhavEwI=
 
-lodash.upperfirst@^4.2.0:
+lodash.upperfirst@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/lodash.upperfirst/-/lodash.upperfirst-4.3.1.tgz#1365edf431480481ef0d1c68957a5ed99d49f7ce"
   integrity sha1-E2Xt9DFIBIHvDRxolXpe2Z1J984=
@@ -6747,6 +6755,16 @@ object.pick@^1.3.0:
   integrity sha1-h6EKxMFpS9Lhy/U1kaZhQftd10c=
   dependencies:
     isobject "^3.0.1"
+
+object.values@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/object.values/-/object.values-1.1.0.tgz#bf6810ef5da3e5325790eaaa2be213ea84624da9"
+  integrity sha512-8mf0nKLAoFX6VlNVdhGj31SVYpaNFtUnuoOXWyFEstsWRgU837AK+JYM0iAxwkSzGRbwn8cbFmgbyxj1j4VbXg==
+  dependencies:
+    define-properties "^1.1.3"
+    es-abstract "^1.12.0"
+    function-bind "^1.1.1"
+    has "^1.0.3"
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -7609,7 +7627,7 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
-safe-regex@^2.0.1:
+safe-regex@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/safe-regex/-/safe-regex-2.0.2.tgz#3601b28d3aefe4b963d42f6c2cdb241265cbd63c"
   integrity sha512-rRALJT0mh4qVFIJ9HvfjKDN77F9vp7kltOpFFI/8e6oKyHFmmxz4aSkY/YVauRDe7U0RrHdw9Lsxdel3E19s0A==
