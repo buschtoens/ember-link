@@ -755,12 +755,12 @@
   dependencies:
     eslint-plugin-import-helpers "^1.0.2"
 
-"@clark/eslint-config-node@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.8.0.tgz#7f4b6be726a8c70747cbf7988defc1aa861bf8b3"
-  integrity sha512-F2jzOuYUd1OEYXgFLjM8SNOLGXjwvinp1hMlrvR2qEpnyLk+UAdvLhhEbhDp9Iaxd27Qf/cHLu5M9ghC197yQg==
+"@clark/eslint-config-node@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.10.0.tgz#ae11e358f6aec3316204b1bb15e00f6571d670a0"
+  integrity sha512-zW3MU6/2gTuC+Uyl4AjvleREq1+/OtoKtEVgVjSoxOIIAnweUOn56MMKPwmqy+9B389gRGtFFi1ZHCVeJWaoEg==
   dependencies:
-    "@clark/eslint-config" "^1.8.0"
+    "@clark/eslint-config" "^1.10.0"
     "@clark/eslint-config-node-order-imports" "^1.8.0"
     eslint-plugin-node "^9.1.0"
     lodash.merge "^4.6.2"
@@ -774,12 +774,12 @@
     "@typescript-eslint/eslint-plugin" "^1.11.0"
     "@typescript-eslint/parser" "^1.11.0"
 
-"@clark/eslint-config@^1.4.1", "@clark/eslint-config@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.8.0.tgz#5d1c0930893e0b27332e6280924d815212eed303"
-  integrity sha512-CPDS0qhsw/342FjiOvoe35arww0Nkg1bVtF8qfBebMoIwmqnTDRDX01u2v5otwEGLkXGRBCy0KaetejtlLCGkw==
+"@clark/eslint-config@^1.10.0", "@clark/eslint-config@^1.4.1":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.10.0.tgz#9fc487341f65324fc50037c503676069248159a4"
+  integrity sha512-gIVefTHtnZeyVfYt1QzfYLV2ZXQT0mkrucHupHISyUVKqOp/ta5k4OEGGm/9GfrjM2JvSYxii9+ZhNh3u9dB+g==
   dependencies:
-    eslint-config-airbnb-base "^13.2.0"
+    eslint-config-airbnb-base "^14.0.0"
     eslint-config-prettier "^6.0.0"
     eslint-config-xo-space "^0.21.0"
     eslint-plugin-import "^2.18.2"
@@ -3101,10 +3101,10 @@ configstore@^5.0.0:
     write-file-atomic "^3.0.0"
     xdg-basedir "^4.0.0"
 
-confusing-browser-globals@^1.0.5:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.7.tgz#5ae852bd541a910e7ffb2dbb864a2d21a36ad29b"
-  integrity sha512-cgHI1azax5ATrZ8rJ+ODDML9Fvu67PimB6aNxBrc/QwSaDaM9eTfIEUHx3bBLJJ82ioSb+/5zfsMCCEJax3ByQ==
+confusing-browser-globals@^1.0.7:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.8.tgz#93ffec1f82a6e2bf2bc36769cc3a92fa20e502f3"
+  integrity sha512-lI7asCibVJ6Qd3FGU7mu4sfG4try4LX3+GVS+Gv8UlrEf2AeW57piecapnog2UHZSbcX/P/1UDWVaTsblowlZg==
 
 connect@^3.6.6:
   version "3.7.0"
@@ -4078,12 +4078,12 @@ eslint-ast-utils@^1.1.0:
     lodash.get "^4.4.2"
     lodash.zip "^4.2.0"
 
-eslint-config-airbnb-base@^13.2.0:
-  version "13.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-13.2.0.tgz#f6ea81459ff4dec2dda200c35f1d8f7419d57943"
-  integrity sha512-1mg/7eoB4AUeB0X1c/ho4vb2gYkNH8Trr/EgCT/aGmKhhG+F6vF5s8+iRBlWAzFIAphxIdp3YfEKgEl0f9Xg+w==
+eslint-config-airbnb-base@^14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-14.0.0.tgz#8a7bcb9643d13c55df4dd7444f138bf4efa61e17"
+  integrity sha512-2IDHobw97upExLmsebhtfoD3NAKhV4H0CJWP3Uprd/uk+cHuWYOczPVxQ8PxLFUAw7o3Th1RAU8u1DoUpr+cMA==
   dependencies:
-    confusing-browser-globals "^1.0.5"
+    confusing-browser-globals "^1.0.7"
     object.assign "^4.1.0"
     object.entries "^1.1.0"
 
