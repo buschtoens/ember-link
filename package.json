@@ -40,7 +40,7 @@
     "@types/ember-testing-helpers": "^0.0.3",
     "@types/ember__test-helpers": "^0.7.8",
     "@types/qunit": "^2.9.0",
-    "@types/rsvp": "^4.0.2",
+    "@types/rsvp": "^4.0.3",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "github:ember-cli/ember-cli#0667d37709c7192c60f86e0c8c462334a52fd8d6",
     "ember-cli-dependency-checker": "^3.2.0",
