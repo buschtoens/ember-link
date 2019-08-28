@@ -1,17 +1,21 @@
 /* eslint-disable array-callback-return */
 
-import { module, test } from 'qunit';
 import { visit, currentURL, click } from '@ember/test-helpers';
-import { TestContext as OriginalTestContext } from 'ember-test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 import { setupApplicationTest } from 'ember-qunit';
-import DummyRouter from 'dummy/router';
-import Router from '@ember/routing/router';
-import Route from '@ember/routing/route';
+import { module, test } from 'qunit';
+
 import RouterDSL from '@ember/routing/-private/router-dsl';
+import Route from '@ember/routing/route';
+import Router from '@ember/routing/router';
+
+import { TestContext as OriginalTestContext } from 'ember-test-helpers';
+
+import hbs from 'htmlbars-inline-precompile';
+
+import DummyRouter from 'dummy/router';
 
 export interface Constructor<T = unknown> {
-  new (...args: any[]): T;
+  new (...args: unknown[]): T;
 }
 
 interface TestContext extends OriginalTestContext {

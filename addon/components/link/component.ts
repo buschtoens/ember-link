@@ -1,8 +1,8 @@
-import RouterService from '@ember/routing/router-service';
-import Transition from '@ember/routing/-private/transition';
-import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { reads } from '@ember/object/computed';
+import Transition from '@ember/routing/-private/transition';
+import RouterService from '@ember/routing/router-service';
+import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 
 function isQueryParams(
@@ -17,7 +17,9 @@ function isQueryParams(
 
 type RouteModel = object | string | number;
 
-type QueryParams = Record<string, any>;
+type QueryParams = Record<string, unknown>;
+
+type RouteArgs = Parameters<RouterService['urlFor']>;
 
 export interface LinkArgs {
   /**
@@ -56,10 +58,11 @@ export default class LinkComponent extends Component<LinkArgs> {
   private router!: RouterService;
 
   @reads('router.currentURL')
-  // @ts-ignore
   private currentURL!: string;
 
-  private get modelsAndQueryParams(): [RouteModel[], null | QueryParams] {
+  private get modelsAndQueryParams():
+    | [RouteModel[]]
+    | [RouteModel[], QueryParams] {
     const { model, models, query } = this.args;
     if (models) {
       const lastModel = models[models.length - 1];
@@ -71,20 +74,22 @@ export default class LinkComponent extends Component<LinkArgs> {
         return [models.slice(0, -1), { ...lastModel.values }];
       }
 
-      return [models, query ? { ...query } : null];
+      return query ? [models, { ...query }] : [models];
     }
 
-    return [model ? [model] : [], query ? { ...query } : null];
+    return query
+      ? [model ? [model] : [], { ...query }]
+      : [model ? [model] : []];
   }
 
-  private get routeArgs() {
+  private get routeArgs(): RouteArgs {
     const [models, queryParams] = this.modelsAndQueryParams;
 
     if (queryParams) {
-      return [this.args.route, ...models, { queryParams }];
+      return [this.args.route, ...models, { queryParams }] as RouteArgs;
     }
 
-    return [this.args.route, ...models];
+    return [this.args.route, ...models] as RouteArgs;
   }
 
   /**
@@ -92,7 +97,6 @@ export default class LinkComponent extends Component<LinkArgs> {
    * attribute.
    */
   get href(): string {
-    // @ts-ignore
     return this.router.urlFor(...this.routeArgs);
   }
 
@@ -102,7 +106,6 @@ export default class LinkComponent extends Component<LinkArgs> {
    */
   get isActive(): boolean {
     this.currentURL; // eslint-disable-line no-unused-expressions
-    // @ts-ignore
     return this.router.isActive(...this.routeArgs);
   }
 
@@ -114,6 +117,9 @@ export default class LinkComponent extends Component<LinkArgs> {
     this.currentURL; // eslint-disable-line no-unused-expressions
     return this.router.isActive(
       this.args.route,
+      // Unfortunately TypeScript is not clever enough to support "rest"
+      // parameters in the middle.
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
       // @ts-ignore
       ...this.modelsAndQueryParams[0]
     );
@@ -132,10 +138,9 @@ export default class LinkComponent extends Component<LinkArgs> {
    * Transition into the target route.
    */
   @action
-  transitionTo(event?: Event | any): Transition {
+  transitionTo(event?: Event | unknown): Transition {
     this.preventDefault(event);
 
-    // @ts-ignore
     return this.router.transitionTo(...this.routeArgs);
   }
 
@@ -144,20 +149,19 @@ export default class LinkComponent extends Component<LinkArgs> {
    * possible.
    */
   @action
-  replaceWith(event?: Event | any): Transition {
+  replaceWith(event?: Event | unknown): Transition {
     this.preventDefault(event);
 
-    // @ts-ignore
     return this.router.replaceWith(...this.routeArgs);
   }
 
-  private preventDefault(event?: Event | any) {
+  private preventDefault(event?: Event | unknown) {
     if (
       (this.args.preventDefault || this.args.preventDefault === undefined) &&
       event &&
-      typeof event.preventDefault === 'function'
+      typeof (event as Event).preventDefault === 'function'
     ) {
-      event.preventDefault();
+      (event as Event).preventDefault();
     }
   }
 }

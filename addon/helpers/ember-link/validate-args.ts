@@ -1,5 +1,6 @@
 import { helper } from '@ember/component/helper';
 import { assert } from '@ember/debug';
+
 import { LinkArgs } from 'ember-link/components/link/component';
 
 export function emberLinkValidateArgs([args]: [LinkArgs]): void {
