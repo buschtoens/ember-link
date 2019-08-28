@@ -1,7 +1,5 @@
 'use strict';
 
-process.env.EMBER_VERSION = 'OCTANE';
-
 module.exports = {
   /**
     Ember CLI sends analytics information by default. The data is completely

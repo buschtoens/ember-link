@@ -7,13 +7,7 @@ module.exports = function(environment) {
     rootURL: '/',
     locationType: 'auto',
     EmberENV: {
-      FEATURES: {
-        EMBER_NATIVE_DECORATOR_SUPPORT: true,
-        EMBER_METAL_TRACKED_PROPERTIES: true,
-        EMBER_GLIMMER_ANGLE_BRACKET_NESTED_LOOKUP: true,
-        EMBER_GLIMMER_ANGLE_BRACKET_BUILT_INS: true,
-        EMBER_GLIMMER_FN_HELPER: true
-      },
+      FEATURES: {},
       EXTEND_PROTOTYPES: {
         // Prevent Ember Data from overriding Date.parse.
         Date: false
