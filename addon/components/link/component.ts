@@ -1,3 +1,4 @@
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { reads } from '@ember/object/computed';
 import Transition from '@ember/routing/-private/transition';
@@ -57,6 +58,17 @@ export default class LinkComponent extends Component<LinkArgs> {
   @service
   private router!: RouterService;
 
+  /**
+   * Whether the router has been initialized. This will be false in render
+   * tests.
+   *
+   * @see https://github.com/buschtoens/ember-link/issues/126
+   */
+  private get isRouterInitialized() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return Boolean((this.router as any)._router._routerMicrolib);
+  }
+
   @reads('router.currentURL')
   private currentURL!: string;
 
@@ -97,6 +109,7 @@ export default class LinkComponent extends Component<LinkArgs> {
    * attribute.
    */
   get href(): string {
+    if (!this.isRouterInitialized) return '';
     return this.router.urlFor(...this.routeArgs);
   }
 
@@ -105,6 +118,7 @@ export default class LinkComponent extends Component<LinkArgs> {
    * models and query params.
    */
   get isActive(): boolean {
+    if (!this.isRouterInitialized) return false;
     this.currentURL; // eslint-disable-line no-unused-expressions
     return this.router.isActive(...this.routeArgs);
   }
@@ -114,6 +128,7 @@ export default class LinkComponent extends Component<LinkArgs> {
    * models, but ignoring query params.
    */
   get isActiveWithoutQueryParams() {
+    if (!this.isRouterInitialized) return false;
     this.currentURL; // eslint-disable-line no-unused-expressions
     return this.router.isActive(
       this.args.route,
@@ -130,6 +145,7 @@ export default class LinkComponent extends Component<LinkArgs> {
    * params.
    */
   get isActiveWithoutModels() {
+    if (!this.isRouterInitialized) return false;
     this.currentURL; // eslint-disable-line no-unused-expressions
     return this.router.isActive(this.args.route);
   }
@@ -139,7 +155,14 @@ export default class LinkComponent extends Component<LinkArgs> {
    */
   @action
   transitionTo(event?: Event | unknown): Transition {
+    // Intentionally putting this *before* the assertion to prevent navigating
+    // away in case of a failed assertion.
     this.preventDefault(event);
+
+    assert(
+      'You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.',
+      this.isRouterInitialized
+    );
 
     return this.router.transitionTo(...this.routeArgs);
   }
@@ -150,7 +173,14 @@ export default class LinkComponent extends Component<LinkArgs> {
    */
   @action
   replaceWith(event?: Event | unknown): Transition {
+    // Intentionally putting this *before* the assertion to prevent navigating
+    // away in case of a failed assertion.
     this.preventDefault(event);
+
+    assert(
+      'You can only call `replaceWith`, when the router is initialized, e.g. when using `setupApplicationTest`.',
+      this.isRouterInitialized
+    );
 
     return this.router.replaceWith(...this.routeArgs);
   }
