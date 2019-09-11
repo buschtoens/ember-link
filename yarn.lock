@@ -869,12 +869,12 @@
   dependencies:
     eslint-plugin-import-helpers "^1.0.2"
 
-"@clark/eslint-config-node@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.12.0.tgz#af90614431ec25e4578122284e33781417d25faa"
-  integrity sha512-kAOywZSkBLYop/JJN5tYfVPGo9gK63UN0bMKrQwiy4KvFFV17xx/+tOH5cZmOpy7nJXG9cwKDMbWgSNLJ78lEg==
+"@clark/eslint-config-node@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.14.1.tgz#16a9c04ee0761cd4b913c6c39e688d0460d2f559"
+  integrity sha512-7NwGh+RpnIjEfZqT8PGrTw1ZH5Uz/yrZYcHyQ17S/aHbszFiwNwYawjiE5Ru6aI1khpRVZCVZ7FB+JAEfHB8Xg==
   dependencies:
-    "@clark/eslint-config" "^1.12.0"
+    "@clark/eslint-config" "^1.14.1"
     "@clark/eslint-config-node-order-imports" "^1.12.0"
     eslint-plugin-node "^10.0.0"
     lodash.merge "^4.6.2"
@@ -888,24 +888,10 @@
     "@typescript-eslint/eslint-plugin" "^2.2.0"
     "@typescript-eslint/parser" "^2.2.0"
 
-"@clark/eslint-config@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.12.0.tgz#0ae68c6dd1e772006a38d1a36d96be771d26c38b"
-  integrity sha512-Txa6d5gggXmm+PfI9Qr8Ng5Cf+FAJSHqWax8D9if+CofnWYY5viIWMBH+lS3F2d6yKXehGrVC9QhBnA6Gxdiyg==
-  dependencies:
-    eslint-config-airbnb-base "^14.0.0"
-    eslint-config-prettier "^6.2.0"
-    eslint-config-xo-space "^0.21.0"
-    eslint-plugin-import "^2.18.2"
-    eslint-plugin-node "^10.0.0"
-    eslint-plugin-prettier "^3.1.0"
-    eslint-plugin-unicorn "^10.0.0"
-    prettier "^1.18.2"
-
-"@clark/eslint-config@^1.14.0":
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.14.0.tgz#d4601c811ba6f0bd69dc0114af64f962bbcb5674"
-  integrity sha512-+wKNXBFsQTk1+jKHR+j41vlAn945tSitigsTb6fFoLDyzdLL0+9k23CByL4AUY0z+Yp8CrkQqMIMBYRbywxsrg==
+"@clark/eslint-config@^1.14.0", "@clark/eslint-config@^1.14.1":
+  version "1.14.1"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.14.1.tgz#71e319df8d7f8624a048aef616c51ecda91f89af"
+  integrity sha512-b8mQI4GaXgChBPkw+S5/Z3wSYYPmDRoq7qO3XoW89KzWmWWsKYj3BpscKohmm4a6WRhHzmuBlIGFyK7alFpgeg==
   dependencies:
     eslint-config-airbnb-base "^14.0.0"
     eslint-config-prettier "^6.3.0"
@@ -4344,13 +4330,6 @@ eslint-config-airbnb-base@^14.0.0:
     confusing-browser-globals "^1.0.7"
     object.assign "^4.1.0"
     object.entries "^1.1.0"
-
-eslint-config-prettier@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.2.0.tgz#80e0b8714e3f6868c4ac2a25fbf39c02e73527a7"
-  integrity sha512-VLsgK/D+S/FEsda7Um1+N8FThec6LqE3vhcMyp8mlmto97y3fGf3DX7byJexGuOb1QY0Z/zz222U5t+xSfcZDQ==
-  dependencies:
-    get-stdin "^6.0.0"
 
 eslint-config-prettier@^6.3.0:
   version "6.3.0"
