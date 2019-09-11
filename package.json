@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@clark/eslint-config-ember": "^1.14.1",
-    "@clark/eslint-config-ember-typescript": "^1.14.0",
+    "@clark/eslint-config-ember-typescript": "^1.14.1",
     "@clark/eslint-config-node": "^1.14.1",
     "@ember/optional-features": "^0.7.0",
     "@glimmer/component": "^0.14.0-alpha.13",
