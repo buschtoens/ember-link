@@ -888,12 +888,12 @@
   dependencies:
     eslint-plugin-import-helpers "^1.0.2"
 
-"@clark/eslint-config-node@^1.14.1":
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.14.1.tgz#16a9c04ee0761cd4b913c6c39e688d0460d2f559"
-  integrity sha512-7NwGh+RpnIjEfZqT8PGrTw1ZH5Uz/yrZYcHyQ17S/aHbszFiwNwYawjiE5Ru6aI1khpRVZCVZ7FB+JAEfHB8Xg==
+"@clark/eslint-config-node@^1.15.0":
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.15.0.tgz#88d59298c473f24c5a7d74869cf6a5c2688bdb90"
+  integrity sha512-SnuINi9t/IXjZEQz5grjPSek/vu96IOZsl/8VfRz5c6hc0ItHf+xy2W0kk/xfAih66JESt99UuYmeNzlz4ytBA==
   dependencies:
-    "@clark/eslint-config" "^1.14.1"
+    "@clark/eslint-config" "^1.15.0"
     "@clark/eslint-config-node-order-imports" "^1.12.0"
     eslint-plugin-node "^10.0.0"
     lodash.merge "^4.6.2"
