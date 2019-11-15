@@ -946,19 +946,19 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@clark/eslint-config-browser@^1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-browser/-/eslint-config-browser-1.15.1.tgz#424150e8a6a100059f7b2418d4db0dae8d9ee7d8"
-  integrity sha512-AxqBN5fzt5+aG48L3Y0L0v/caB708QByTDxvfCq2JvYSjqDDIGc8QTLnB/40hIEKLOgJzN3HU0jaQ21Dp/HKDQ==
+"@clark/eslint-config-browser@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-browser/-/eslint-config-browser-1.16.0.tgz#db91a8f8b274b71c6842fcad63bd7f3ab9237a53"
+  integrity sha512-egA+FAX6acSEhb9gxKmVbeZV1JfjGodKZcE9moq/6ZqtfbHEuRd0+roIMeqU4RWZ/t6zkYizAiHh0M7ZGLWozQ==
   dependencies:
-    "@clark/eslint-config" "^1.15.1"
+    "@clark/eslint-config" "^1.16.0"
 
-"@clark/eslint-config-ember-order-imports@^1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-ember-order-imports/-/eslint-config-ember-order-imports-1.15.1.tgz#b7483257287e63b7faf5bd79cc7d365c68b84e33"
-  integrity sha512-fcGZUmBWjsUYQuTu+/w8Kcw0Iw+EP7sRmt8ACYkOsPondi4ul0CnrlwvGrlpKxRbziTdgGew2PNTrjGsEfXo4Q==
+"@clark/eslint-config-ember-order-imports@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-ember-order-imports/-/eslint-config-ember-order-imports-1.16.0.tgz#5a89b232a1723acc2be0911037f04143edea4421"
+  integrity sha512-vOVGpWgRB2jTRhDeUNemwO1t8WCCuX4GoxZ9TVeUH4PiZGgKvBl2Y71dF1QyD1SaOcVyKKfEJxh+3RST5ur8pw==
   dependencies:
-    "@clark/eslint-plugin-import-helpers-with-package" "^1.15.1"
+    "@clark/eslint-plugin-import-helpers-with-package" "^1.16.0"
 
 "@clark/eslint-config-ember-typescript@^1.15.1":
   version "1.15.1"
@@ -968,15 +968,15 @@
     "@clark/eslint-config-ember" "^1.15.1"
     "@clark/eslint-config-typescript" "^1.15.1"
 
-"@clark/eslint-config-ember@^1.15.0", "@clark/eslint-config-ember@^1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-ember/-/eslint-config-ember-1.15.1.tgz#111b245096be388e76376a60d2c0372a5016745e"
-  integrity sha512-KDY3MxQ4n+JeIE0nnRPT1VuoIGeFyTM64D213DMOJM3mU3DPOZA3/l9zhbR2PP7cwyY4AJxb7pKC1cZg+ssCYg==
+"@clark/eslint-config-ember@^1.15.1", "@clark/eslint-config-ember@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-ember/-/eslint-config-ember-1.16.0.tgz#417b69613dcce105d2da94193c6a8a419c414add"
+  integrity sha512-/HkJMv64R7BXlWk0BlAELXKeF4L2i/bV49bYqjE4OQzjiAFrr8PNyne5yfTfBPGVIwFI2hG149FjuDWty7MnoA==
   dependencies:
-    "@clark/eslint-config" "^1.15.1"
-    "@clark/eslint-config-browser" "^1.15.1"
-    "@clark/eslint-config-ember-order-imports" "^1.15.1"
-    eslint-plugin-ember "^7.2.0"
+    "@clark/eslint-config" "^1.16.0"
+    "@clark/eslint-config-browser" "^1.16.0"
+    "@clark/eslint-config-ember-order-imports" "^1.16.0"
+    eslint-plugin-ember "^7.5.0"
     eslint-plugin-ember-best-practices "^1.1.2"
     lodash.merge "^4.6.2"
 
@@ -1020,18 +1020,18 @@
     eslint-plugin-unicorn "^13.0.0"
     prettier "^1.19.1"
 
-"@clark/eslint-plugin-import-helpers-with-package@^1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-plugin-import-helpers-with-package/-/eslint-plugin-import-helpers-with-package-1.15.1.tgz#600bf2bd8074b646a09097d9ac5702ba5ac6b881"
-  integrity sha512-myRfq5W6JuIOXg1O0wODAQw78/Z10r9cHqMG/BP39buuRTJQtm2e4e8YDf/qIcjQHSVeDeG7w1vmV2qinwT+bA==
+"@clark/eslint-plugin-import-helpers-with-package@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-plugin-import-helpers-with-package/-/eslint-plugin-import-helpers-with-package-1.16.0.tgz#d69cc53d8533552b0470ca3b49d8e668733686b5"
+  integrity sha512-wuqOoHB+DH+xnaR5whiIS7GGVSxMI+f+sr7hn0sArK8dPCkB2Ywc4ZuP/1bkMDSd6+w3LlYHhpuf1b1lZAjHiw==
   dependencies:
-    "@clark/eslint-util-get-package" "^1.15.1"
+    "@clark/eslint-util-get-package" "^1.16.0"
     eslint-plugin-import-helpers "^1.0.2"
 
-"@clark/eslint-util-get-package@^1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-util-get-package/-/eslint-util-get-package-1.15.1.tgz#27aed5d934428d160cd61aee14187f6d7affbb66"
-  integrity sha512-Fa7niNgMmc8GrKo9UIl1SYLN4PaU/hSeFaHCtgEqqFa19+ltEpsvXKOZeA1McK+PMezevvSYrQSYKi/lW+cCCQ==
+"@clark/eslint-util-get-package@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-util-get-package/-/eslint-util-get-package-1.16.0.tgz#31178faf3440b04bc05da409ecd8f369851880a9"
+  integrity sha512-DXCAk0rnRZL3Vh3RQiuSl98U2/iv4+8tOuG64cWLeJADD+B4xjJEg6gc4dKD88sRhxBbZtpteqU7wECl4Qquig==
   dependencies:
     find-up "^4.1.0"
 
@@ -4549,10 +4549,10 @@ eslint-plugin-ember-best-practices@^1.1.2:
   dependencies:
     requireindex "^1.1.0"
 
-eslint-plugin-ember@^7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-7.2.0.tgz#668e20b2ab3442d6ee3ba18c016f37f794eb0104"
-  integrity sha512-W2Vtep3sbAkNhZOISv3ofMd1LD9fp0QtLR9088Zw5mZkvM9uSGBSENCZfpWdwhvebruOvGpb1r7F1sjC5Qjs0w==
+eslint-plugin-ember@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ember/-/eslint-plugin-ember-7.5.0.tgz#4085c4a70d5f3ef9aa44c1736f966f5f6fb9653b"
+  integrity sha512-dWXLKFHUkXTDU/Zd/JNQ1OrbovwoXSipfReCAdIm2tbG+zaheE7LjisHzxuPg/Q8mktAaVu6l9CM4FI0+mE0IQ==
   dependencies:
     "@ember-data/rfc395-data" "^0.0.4"
     ember-rfc176-data "^0.3.12"
