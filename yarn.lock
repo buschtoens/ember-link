@@ -4371,10 +4371,10 @@ ember-source-channel-url@^2.0.1:
     resolve "^1.11.1"
     silent-error "^1.1.1"
 
-ember-template-lint@^1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-1.10.0.tgz#490acdb312fa8e2d484c397c03b26bb366bc6f24"
-  integrity sha512-R7RsmOFoC+LlvM+Wu7TvSj8ZQxIM8ryCFCdGfcOEBCdlqRo6vgJ/jHy8CRITc8RlbrKJDPcaNDxHcNWfto1BqA==
+ember-template-lint@^1.11.0:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-1.11.0.tgz#973cae463979608bf1b3c7b17d896502e4abc8e5"
+  integrity sha512-pARhwSBa0OUKpP5ijKkdke0fmImVbYpfJDCjBnoLpZyKn0uLVtUHwYuJwNK1+DtrMo+2jFHRwFd5zqPVWDg2UQ==
   dependencies:
     "@glimmer/syntax" "^0.44.0"
     chalk "^2.0.0"
