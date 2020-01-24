@@ -1073,6 +1073,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@clark/ember-template-lint-config@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@clark/ember-template-lint-config/-/ember-template-lint-config-0.2.1.tgz#2a2127c0910dcd384bf4b72af2241d612c3490af"
+  integrity sha512-6iphCTbtfbu9xvWKVDmYr1DvUJSk8l0XSjrYqTYIg9t9/nVU8mwTfWRNSjRfDMoAUgO7S0djEBHJWjsHxFotsA==
+
 "@clark/eslint-config-browser@^1.19.0":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@clark/eslint-config-browser/-/eslint-config-browser-1.19.0.tgz#4815f1114e19f79368c372f25b79bf2567ec2bbf"
