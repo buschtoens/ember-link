@@ -8,9 +8,8 @@ import RouterDSL from '@ember/routing/-private/router-dsl';
 import Route from '@ember/routing/route';
 import Router from '@ember/routing/router';
 
+import { hbs } from 'ember-cli-htmlbars';
 import { TestContext as OriginalTestContext } from 'ember-test-helpers';
-
-import hbs from 'htmlbars-inline-precompile';
 
 import DummyRouter from 'dummy/router';
 

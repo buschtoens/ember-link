@@ -2,7 +2,7 @@ import { render, click } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 
 import waitForError from 'dummy/tests/helpers/wait-for-error';
 
