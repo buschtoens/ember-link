@@ -1,12 +1,9 @@
-{{~ember-link/validate-args this.args~}}
-
 {{~yield
-  (hash
-    href=this.href
-    isActive=this.isActive
-    isActiveWithoutQueryParams=this.isActiveWithoutQueryParams
-    isActiveWithoutModels=this.isActiveWithoutModels
-    transitionTo=this.transitionTo
-    replaceWith=this.replaceWith
+  (link
+    route=@route
+    models=@models
+    model=@model
+    query=@query
+    preventDefault=@preventDefault
   )
 ~}}
