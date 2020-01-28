@@ -1,7 +1,7 @@
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-import Evented from '@ember/object/evented';
+import { sendEvent } from '@ember/object/events';
 import Transition from '@ember/routing/-private/transition';
 import Service from '@ember/service';
 
@@ -37,7 +37,7 @@ module('Unit | Service | link-manager', function(hooks) {
   test('it manages currentTransitionStack correctly', function(assert) {
     this.owner.register(
       'service:router',
-      class MockRouterService extends Service.extend(Evented) {}
+      class MockRouterService extends Service {}
     );
 
     const linkManager = this.owner.lookup(
@@ -50,35 +50,35 @@ module('Unit | Service | link-manager', function(hooks) {
     const updateAssertionMessage =
       'transition stack is updated on routeWillChange with passed-in transition object';
 
-    router.trigger('routeWillChange', firstTransition);
+    sendEvent(router, 'routeWillChange', [firstTransition]);
 
     assert.strictEqual(
-      linkManager.currentTransitionStack.length,
+      linkManager.currentTransitionStack?.length,
       1,
       updateAssertionMessage
     );
 
     assert.strictEqual(
-      linkManager.currentTransitionStack[0],
+      (linkManager.currentTransitionStack as Transition[])[0],
       firstTransition,
       updateAssertionMessage
     );
 
-    router.trigger('routeWillChange', secondTransition);
+    sendEvent(router, 'routeWillChange', [secondTransition]);
 
     assert.strictEqual(
-      linkManager.currentTransitionStack.length,
+      linkManager.currentTransitionStack?.length,
       2,
       updateAssertionMessage
     );
 
     assert.strictEqual(
-      linkManager.currentTransitionStack[1],
+      (linkManager.currentTransitionStack as Transition[])[1],
       secondTransition,
       updateAssertionMessage
     );
 
-    router.trigger('routeDidChange');
+    sendEvent(router, 'routeDidChange');
 
     assert.strictEqual(
       linkManager.currentTransitionStack,

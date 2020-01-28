@@ -7,11 +7,15 @@ import { module, test } from 'qunit';
 import RouterDSL from '@ember/routing/-private/router-dsl';
 import Route from '@ember/routing/route';
 import Router from '@ember/routing/router';
+import { later } from '@ember/runloop';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { TestContext as OriginalTestContext } from 'ember-test-helpers';
 
+import lolex from 'lolex';
+
 import DummyRouter from 'dummy/router';
+import { settledExceptTimers } from 'dummy/tests/helpers/settled-except-timers';
 
 export interface Constructor<T = unknown> {
   new (...args: unknown[]): T;
@@ -299,5 +303,111 @@ module('Acceptance | link', function(hooks) {
 
     assert.dom('[data-test-456]').hasClass('is-active');
     assert.dom('[data-test-456]').hasClass('is-active-wqp');
+  });
+
+  test('it updates isEntering correctly', async function(this: TestContext, assert) {
+    const clock = lolex.install();
+    const duration = 1000;
+
+    this.Router.map(function() {
+      this.route('foo');
+    });
+
+    this.owner.register(
+      'route:foo',
+      Route.extend({
+        beforeModel() {
+          return new Promise(resolve => {
+            later(this, resolve, duration);
+          });
+        }
+      })
+    );
+
+    this.owner.register(
+      'template:application',
+      hbs`
+        <Link @route="foo" @query={{hash qp=123}} as |l|>
+          <a
+            data-test-123
+            href={{l.href}}
+            class="{{if l.isEntering "is-entering"}}"
+            {{on "click" l.transitionTo}}
+          >
+            Link
+          </a>
+        </Link>
+      `
+    );
+
+    await visit('/');
+    assert.strictEqual(currentURL(), '/');
+
+    click('[data-test-123');
+
+    await settledExceptTimers();
+
+    assert.dom('[data-test-123]').hasClass('is-entering');
+
+    clock.tick(duration);
+
+    await settledExceptTimers();
+
+    clock.uninstall();
+  });
+
+  test('it updates isExiting correctly', async function(this: TestContext, assert) {
+    const clock = lolex.install();
+    const duration = 1000;
+
+    this.Router.map(function() {
+      this.route('foo');
+      this.route('bar');
+    });
+
+    this.owner.register(
+      'route:bar',
+      Route.extend({
+        beforeModel() {
+          return new Promise(resolve => {
+            later(this, resolve, duration);
+          });
+        }
+      })
+    );
+
+    this.owner.register(
+      'template:application',
+      hbs`
+        <Link @route="foo" @query={{hash qp=123}} as |l|>
+          <a
+            data-test-123
+            href={{l.href}}
+            class="{{if l.isExiting "is-exiting"}}"
+            {{on "click" l.transitionTo}}
+          >
+            Link
+          </a>
+        </Link>
+      `
+    );
+
+    await visit('/foo');
+    assert.strictEqual(currentURL(), '/foo');
+
+    visit('/bar');
+    assert.strictEqual(currentURL(), '/foo');
+
+    await settledExceptTimers();
+
+    assert.dom('[data-test-123]').hasClass('is-exiting');
+
+    clock.tick(duration);
+
+    await settledExceptTimers();
+
+    assert.strictEqual(currentURL(), '/bar');
+
+    clock.uninstall();
   });
 });
