@@ -1,6 +1,6 @@
 /* eslint-disable array-callback-return */
 
-import { visit, currentURL, click } from '@ember/test-helpers';
+import { visit, currentURL, click, settled } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
@@ -12,7 +12,7 @@ import { later } from '@ember/runloop';
 import { hbs } from 'ember-cli-htmlbars';
 import { TestContext as OriginalTestContext } from 'ember-test-helpers';
 
-import lolex from 'lolex';
+import pDefer from 'p-defer';
 
 import DummyRouter from 'dummy/router';
 import { settledExceptTimers } from 'dummy/tests/helpers/settled-except-timers';
@@ -306,22 +306,19 @@ module('Acceptance | link', function(hooks) {
   });
 
   test('it updates isEntering correctly', async function(this: TestContext, assert) {
-    const clock = lolex.install();
-    const duration = 1000;
-
     this.Router.map(function() {
       this.route('foo');
     });
 
+    const deferred = pDefer();
+
     this.owner.register(
       'route:foo',
-      Route.extend({
-        beforeModel() {
-          return new Promise(resolve => {
-            later(this, resolve, duration);
-          });
+      class FooRoute extends Route {
+        async beforeModel() {
+          await deferred.promise;
         }
-      })
+      }
     );
 
     this.owner.register(
@@ -349,31 +346,24 @@ module('Acceptance | link', function(hooks) {
 
     assert.dom('[data-test-123]').hasClass('is-entering');
 
-    clock.tick(duration);
-
-    await settledExceptTimers();
-
-    clock.uninstall();
+    deferred.resolve();
   });
 
   test('it updates isExiting correctly', async function(this: TestContext, assert) {
-    const clock = lolex.install();
-    const duration = 1000;
-
     this.Router.map(function() {
       this.route('foo');
       this.route('bar');
     });
 
+    const deferred = pDefer();
+
     this.owner.register(
       'route:bar',
-      Route.extend({
-        beforeModel() {
-          return new Promise(resolve => {
-            later(this, resolve, duration);
-          });
+      class BarRoute extends Route {
+        async beforeModel() {
+          await deferred.promise;
         }
-      })
+      }
     );
 
     this.owner.register(
@@ -396,18 +386,11 @@ module('Acceptance | link', function(hooks) {
     assert.strictEqual(currentURL(), '/foo');
 
     visit('/bar');
-    assert.strictEqual(currentURL(), '/foo');
 
     await settledExceptTimers();
 
     assert.dom('[data-test-123]').hasClass('is-exiting');
 
-    clock.tick(duration);
-
-    await settledExceptTimers();
-
-    assert.strictEqual(currentURL(), '/bar');
-
-    clock.uninstall();
+    deferred.resolve();
   });
 });

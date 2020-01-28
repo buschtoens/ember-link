@@ -53,14 +53,26 @@ export default class LinkManagerService extends Service {
   constructor(properties?: object) {
     super(properties);
 
+    // Ignore `Argument of type '"routeWillChange"' is not assignable to parameter of type ...`
+
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
     addListener(this.router, 'routeWillChange', this.handleRouteWillChange);
+
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
     addListener(this.router, 'routeDidChange', this.handleRouteDidChange);
   }
 
   willDestroy() {
     super.willDestroy();
 
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
     removeListener(this.router, 'routeWillChange', this.handleRouteWillChange);
+
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
     removeListener(this.router, 'routeDidChange', this.handleRouteDidChange);
   }
 
