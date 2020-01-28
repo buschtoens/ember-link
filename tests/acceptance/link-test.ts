@@ -344,9 +344,23 @@ module('Acceptance | link', function(hooks) {
 
     await settledExceptTimers();
 
-    assert.dom('[data-test-123]').hasClass('is-entering');
+    assert
+      .dom('[data-test-123]')
+      .hasClass(
+        'is-entering',
+        'entering class is added when transition has begun'
+      );
 
     deferred.resolve();
+
+    await settledExceptTimers();
+
+    assert
+      .dom('[data-test-123]')
+      .doesNotHaveClass(
+        'is-entering',
+        'entering class is removed after transition has finished'
+      );
   });
 
   test('it updates isExiting correctly', async function(this: TestContext, assert) {
@@ -389,8 +403,22 @@ module('Acceptance | link', function(hooks) {
 
     await settledExceptTimers();
 
-    assert.dom('[data-test-123]').hasClass('is-exiting');
+    assert
+      .dom('[data-test-123]')
+      .hasClass(
+        'is-exiting',
+        'exiting class is added when transition has begun'
+      );
 
     deferred.resolve();
+
+    await settledExceptTimers();
+
+    assert
+      .dom('[data-test-123')
+      .doesNotHaveClass(
+        'is-exiting',
+        'exiting class is removed when transition has finished'
+      );
   });
 });
