@@ -126,7 +126,7 @@ export default class Link {
   }
 
   /**
-   * Whether this route is currently being transitioned out of / exit.
+   * Whether this route is currently being transitioned out of / exited.
    */
   get isExiting(): boolean {
     return this._isTransitioning('from');
@@ -192,10 +192,12 @@ export default class Link {
     return this._params.query;
   }
 
-  _isTransitioning(direction: 'from' | 'to') {
-    return this._linkManager.currentTransitionStack.some(transition => {
-      return transition[direction]?.name === this.qualifiedRouteName;
-    });
+  private _isTransitioning(direction: 'from' | 'to') {
+    return (
+      this._linkManager.currentTransitionStack?.some(transition => {
+        return transition[direction]?.name === this.qualifiedRouteName;
+      }) ?? false
+    );
   }
 
   /**

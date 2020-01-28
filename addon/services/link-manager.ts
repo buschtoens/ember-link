@@ -1,5 +1,5 @@
-import { A } from '@ember/array';
 import { action } from '@ember/object';
+import { addListener, removeListener } from '@ember/object/events';
 import Transition from '@ember/routing/-private/transition';
 import RouterService from '@ember/routing/router-service';
 import Service from '@ember/service';
@@ -10,7 +10,7 @@ import Link, { LinkParams, UILinkParams, UILink } from '../link';
 
 export default class LinkManagerService extends Service {
   @tracked
-  private _currentTransitionStack = A<Transition>();
+  private _currentTransitionStack?: Transition[];
 
   /**
    * The `RouterService` instance to be used by the generated `Link` instances.
@@ -53,29 +53,28 @@ export default class LinkManagerService extends Service {
   constructor(properties?: object) {
     super(properties);
 
-    this.router.on('routeWillChange', this.handleRouteWillChange);
-    this.router.on('routeDidChange', this.handleRouteDidChange);
+    addListener(this.router, 'routeWillChange', this.handleRouteWillChange);
+    addListener(this.router, 'routeDidChange', this.handleRouteDidChange);
   }
 
   willDestroy() {
-    // Ignore `Property 'off' does not exist on type 'RouterService'.`
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
-    this.router.off('routeWillChange', this.handleRouteWillChange);
+    super.willDestroy();
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
-    this.router.off('routeDidChange', this.handleRouteDidChange);
+    removeListener(this.router, 'routeWillChange', this.handleRouteWillChange);
+    removeListener(this.router, 'routeDidChange', this.handleRouteDidChange);
   }
 
   @action
   handleRouteWillChange(transition: Transition) {
-    this._currentTransitionStack.pushObject(transition);
+    this._currentTransitionStack = [
+      ...(this._currentTransitionStack || []),
+      transition
+    ];
   }
 
   @action
   handleRouteDidChange() {
-    this._currentTransitionStack.clear();
+    this._currentTransitionStack = undefined;
   }
 }
 

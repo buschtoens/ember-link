@@ -81,9 +81,9 @@ module('Unit | Service | link-manager', function(hooks) {
     router.trigger('routeDidChange');
 
     assert.strictEqual(
-      linkManager.currentTransitionStack.length,
-      0,
-      'transition stack is cleared on routeDidChange'
+      linkManager.currentTransitionStack,
+      undefined,
+      'transition stack is reset on routeDidChange'
     );
   });
 });
