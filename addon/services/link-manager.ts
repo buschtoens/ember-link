@@ -1,3 +1,4 @@
+import { A } from '@ember/array';
 import { action } from '@ember/object';
 import Transition from '@ember/routing/-private/transition';
 import RouterService from '@ember/routing/router-service';
@@ -9,7 +10,7 @@ import Link, { LinkParams, UILinkParams, UILink } from '../link';
 
 export default class LinkManagerService extends Service {
   @tracked
-  private _currentTransitionStack?: Transition[] | null;
+  private _currentTransitionStack = A<Transition>();
 
   /**
    * The `RouterService` instance to be used by the generated `Link` instances.
@@ -57,6 +58,7 @@ export default class LinkManagerService extends Service {
   }
 
   willDestroy() {
+    // Ignore `Property 'off' does not exist on type 'RouterService'.`
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     this.router.off('routeWillChange', this.handleRouteWillChange);
@@ -68,16 +70,12 @@ export default class LinkManagerService extends Service {
 
   @action
   handleRouteWillChange(transition: Transition) {
-    if (this._currentTransitionStack == null) {
-      this._currentTransitionStack = [];
-    }
-
-    this._currentTransitionStack.push(transition);
+    this._currentTransitionStack.pushObject(transition);
   }
 
   @action
   handleRouteDidChange() {
-    this._currentTransitionStack = null;
+    this._currentTransitionStack.clear();
   }
 }
 

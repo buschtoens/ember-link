@@ -170,6 +170,7 @@ export default class Link {
    * The fully qualified target route name of this link.
    */
   get qualifiedRouteName(): string {
+    // Ignore `Property 'recognize' does not exist on type 'RouterService'.`
     /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
     // @ts-ignore
     const routeInfo = this._linkManager.router.recognize(this.url);
@@ -192,12 +193,9 @@ export default class Link {
   }
 
   _isTransitioning(direction: 'from' | 'to') {
-    return Boolean(
-      this._linkManager.currentTransitionStack &&
-        this._linkManager.currentTransitionStack.some(transition => {
-          return transition[direction]?.name === this.qualifiedRouteName;
-        })
-    );
+    return this._linkManager.currentTransitionStack.some(transition => {
+      return transition[direction]?.name === this.qualifiedRouteName;
+    });
   }
 
   /**
