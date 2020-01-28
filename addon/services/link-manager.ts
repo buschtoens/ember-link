@@ -1,10 +1,16 @@
+import { action } from '@ember/object';
+import Transition from '@ember/routing/-private/transition';
 import RouterService from '@ember/routing/router-service';
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 import Link, { LinkParams, UILinkParams, UILink } from '../link';
 
 export default class LinkManagerService extends Service {
+  @tracked
+  private _currentTransitionStack?: Transition[] | null;
+
   /**
    * The `RouterService` instance to be used by the generated `Link` instances.
    */
@@ -23,6 +29,13 @@ export default class LinkManagerService extends Service {
   }
 
   /**
+   * The currently active `Transition` objects.
+   */
+  get currentTransitionStack() {
+    return this._currentTransitionStack;
+  }
+
+  /**
    * Creates a `Link` instance.
    */
   createLink(linkParams: LinkParams): Link {
@@ -34,6 +47,37 @@ export default class LinkManagerService extends Service {
    */
   createUILink(linkParams: LinkParams, uiParams: UILinkParams): UILink {
     return new UILink(this, { ...linkParams, ...uiParams });
+  }
+
+  constructor(properties?: object) {
+    super(properties);
+
+    this.router.on('routeWillChange', this.handleRouteWillChange);
+    this.router.on('routeDidChange', this.handleRouteDidChange);
+  }
+
+  willDestroy() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.router.off('routeWillChange', this.handleRouteWillChange);
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    this.router.off('routeDidChange', this.handleRouteDidChange);
+  }
+
+  @action
+  handleRouteWillChange(transition: Transition) {
+    if (this._currentTransitionStack == null) {
+      this._currentTransitionStack = [];
+    }
+
+    this._currentTransitionStack.push(transition);
+  }
+
+  @action
+  handleRouteDidChange() {
+    this._currentTransitionStack = null;
   }
 }
 

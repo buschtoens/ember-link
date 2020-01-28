@@ -121,12 +121,16 @@ export default class Link {
   /**
    * Whether this route is currently being transitioned into / entered.
    */
-  // get isEntering(): boolean {}
+  get isEntering(): boolean {
+    return this._isTransitioning('to');
+  }
 
   /**
    * Whether this route is currently being transitioned out of / exit.
    */
-  // get isExiting(): boolean {}
+  get isExiting(): boolean {
+    return this._isTransitioning('from');
+  }
 
   /**
    * The URL for this link that you can pass to an `<a>` tag as the `href`
@@ -163,6 +167,17 @@ export default class Link {
   }
 
   /**
+   * The fully qualified target route name of this link.
+   */
+  get qualifiedRouteName(): string {
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
+    const routeInfo = this._linkManager.router.recognize(this.url);
+
+    return routeInfo.name;
+  }
+
+  /**
    * The route models passed in this link.
    */
   get models(): RouteModel[] {
@@ -174,6 +189,15 @@ export default class Link {
    */
   get queryParams(): QueryParams | undefined {
     return this._params.query;
+  }
+
+  _isTransitioning(direction: 'from' | 'to') {
+    return Boolean(
+      this._linkManager.currentTransitionStack &&
+        this._linkManager.currentTransitionStack.some(transition => {
+          return transition[direction]?.name === this.qualifiedRouteName;
+        })
+    );
   }
 
   /**
