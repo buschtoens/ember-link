@@ -1,13 +1,12 @@
 /* eslint-disable array-callback-return */
 
-import { visit, currentURL, click, settled } from '@ember/test-helpers';
+import { visit, currentURL, click } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
 import RouterDSL from '@ember/routing/-private/router-dsl';
 import Route from '@ember/routing/route';
 import Router from '@ember/routing/router';
-import { later } from '@ember/runloop';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { TestContext as OriginalTestContext } from 'ember-test-helpers';
