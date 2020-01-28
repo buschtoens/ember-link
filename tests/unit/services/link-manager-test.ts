@@ -5,7 +5,7 @@ import { sendEvent } from '@ember/object/events';
 import Transition from '@ember/routing/-private/transition';
 import Service from '@ember/service';
 
-import LinkManagerService from 'dummy/services/link-manager';
+import LinkManagerService from 'ember-link/services/link-manager';
 
 function makeDummyTransition(): Transition {
   return {
