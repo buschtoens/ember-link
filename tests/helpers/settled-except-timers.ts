@@ -1,5 +1,4 @@
-// FIXME:: Merge this helper with identical helper in
-// `transition-class-provider` addon in separate addon
+// FIXME:: Use helper from Clark test helpers when available
 import { waitUntil, getSettledState } from '@ember/test-helpers';
 
 export function settledExceptTimers() {
