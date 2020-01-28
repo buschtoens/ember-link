@@ -11,7 +11,10 @@ import Router from '@ember/routing/router';
 import { hbs } from 'ember-cli-htmlbars';
 import { TestContext as OriginalTestContext } from 'ember-test-helpers';
 
+import pDefer from 'p-defer';
+
 import DummyRouter from 'dummy/router';
+import { settledExceptTimers } from 'dummy/tests/helpers/settled-except-timers';
 
 export interface Constructor<T = unknown> {
   new (...args: unknown[]): T;
@@ -299,5 +302,122 @@ module('Acceptance | link', function(hooks) {
 
     assert.dom('[data-test-456]').hasClass('is-active');
     assert.dom('[data-test-456]').hasClass('is-active-wqp');
+  });
+
+  test('it updates isEntering correctly', async function(this: TestContext, assert) {
+    this.Router.map(function() {
+      this.route('foo');
+    });
+
+    const deferred = pDefer();
+
+    this.owner.register(
+      'route:foo',
+      class FooRoute extends Route {
+        async beforeModel() {
+          await deferred.promise;
+        }
+      }
+    );
+
+    this.owner.register(
+      'template:application',
+      hbs`
+        <Link @route="foo" @query={{hash qp=123}} as |l|>
+          <a
+            data-test-123
+            href={{l.href}}
+            class="{{if l.isEntering "is-entering"}}"
+            {{on "click" l.transitionTo}}
+          >
+            Link
+          </a>
+        </Link>
+      `
+    );
+
+    await visit('/');
+    assert.strictEqual(currentURL(), '/');
+
+    click('[data-test-123');
+
+    await settledExceptTimers();
+
+    assert
+      .dom('[data-test-123]')
+      .hasClass(
+        'is-entering',
+        'entering class is added when transition has begun'
+      );
+
+    deferred.resolve();
+
+    await settledExceptTimers();
+
+    assert
+      .dom('[data-test-123]')
+      .doesNotHaveClass(
+        'is-entering',
+        'entering class is removed after transition has finished'
+      );
+  });
+
+  test('it updates isExiting correctly', async function(this: TestContext, assert) {
+    this.Router.map(function() {
+      this.route('foo');
+      this.route('bar');
+    });
+
+    const deferred = pDefer();
+
+    this.owner.register(
+      'route:bar',
+      class BarRoute extends Route {
+        async beforeModel() {
+          await deferred.promise;
+        }
+      }
+    );
+
+    this.owner.register(
+      'template:application',
+      hbs`
+        <Link @route="foo" @query={{hash qp=123}} as |l|>
+          <a
+            data-test-123
+            href={{l.href}}
+            class="{{if l.isExiting "is-exiting"}}"
+            {{on "click" l.transitionTo}}
+          >
+            Link
+          </a>
+        </Link>
+      `
+    );
+
+    await visit('/foo');
+    assert.strictEqual(currentURL(), '/foo');
+
+    visit('/bar');
+
+    await settledExceptTimers();
+
+    assert
+      .dom('[data-test-123]')
+      .hasClass(
+        'is-exiting',
+        'exiting class is added when transition has begun'
+      );
+
+    deferred.resolve();
+
+    await settledExceptTimers();
+
+    assert
+      .dom('[data-test-123')
+      .doesNotHaveClass(
+        'is-exiting',
+        'exiting class is removed when transition has finished'
+      );
   });
 });

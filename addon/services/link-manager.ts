@@ -1,10 +1,17 @@
+import { action } from '@ember/object';
+import { addListener, removeListener } from '@ember/object/events';
+import Transition from '@ember/routing/-private/transition';
 import RouterService from '@ember/routing/router-service';
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
 import Link, { LinkParams, UILinkParams, UILink } from '../link';
 
 export default class LinkManagerService extends Service {
+  @tracked
+  private _currentTransitionStack?: Transition[];
+
   /**
    * The `RouterService` instance to be used by the generated `Link` instances.
    */
@@ -23,6 +30,13 @@ export default class LinkManagerService extends Service {
   }
 
   /**
+   * The currently active `Transition` objects.
+   */
+  get currentTransitionStack() {
+    return this._currentTransitionStack;
+  }
+
+  /**
    * Creates a `Link` instance.
    */
   createLink(linkParams: LinkParams): Link {
@@ -34,6 +48,45 @@ export default class LinkManagerService extends Service {
    */
   createUILink(linkParams: LinkParams, uiParams: UILinkParams): UILink {
     return new UILink(this, { ...linkParams, ...uiParams });
+  }
+
+  constructor(properties?: object) {
+    super(properties);
+
+    // Ignore `Argument of type '"routeWillChange"' is not assignable to parameter of type ...`
+
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
+    addListener(this.router, 'routeWillChange', this.handleRouteWillChange);
+
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
+    addListener(this.router, 'routeDidChange', this.handleRouteDidChange);
+  }
+
+  willDestroy() {
+    super.willDestroy();
+
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
+    removeListener(this.router, 'routeWillChange', this.handleRouteWillChange);
+
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // @ts-ignore
+    removeListener(this.router, 'routeDidChange', this.handleRouteDidChange);
+  }
+
+  @action
+  handleRouteWillChange(transition: Transition) {
+    this._currentTransitionStack = [
+      ...(this._currentTransitionStack || []),
+      transition
+    ];
+  }
+
+  @action
+  handleRouteDidChange() {
+    this._currentTransitionStack = undefined;
   }
 }
 
