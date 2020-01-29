@@ -7,6 +7,8 @@ import Service from '@ember/service';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
+import { TestLink } from 'ember-link/test-support';
+
 import Link, { LinkParams, UILinkParams, UILink } from '../link';
 
 interface RouterServiceWithRecognize extends RouterService {
@@ -16,6 +18,11 @@ interface RouterServiceWithRecognize extends RouterService {
 export default class LinkManagerService extends Service {
   @tracked
   private _currentTransitionStack?: Transition[];
+
+  private _testLinkCache?: Map<string, TestLink>;
+
+  // This property is set in `addon-test-support/setup-link`
+  _useTestLink = false;
 
   /**
    * The `RouterService` instance to be used by the generated `Link` instances.
@@ -49,10 +56,34 @@ export default class LinkManagerService extends Service {
   }
 
   /**
-   * Creates a `UILink` instance.
+   * Creates a `UILink` instance, or a `TestLink` instance when `setupLink`
+   * has been called.
    */
-  createUILink(linkParams: LinkParams, uiParams?: UILinkParams): UILink {
-    return new UILink(this, { ...linkParams, ...uiParams });
+  createUILink(
+    linkParams: LinkParams,
+    uiParams?: UILinkParams
+  ): TestLink | UILink {
+    return this._useTestLink
+      ? this._createOrGetCachedTestLink(linkParams)
+      : new UILink(this, { ...linkParams, ...uiParams });
+  }
+
+  private _createOrGetCachedTestLink(linkParams: LinkParams): TestLink {
+    if (!this._testLinkCache) {
+      this._testLinkCache = new Map();
+    }
+
+    const cacheKey = JSON.stringify(linkParams);
+
+    if (this._testLinkCache.has(cacheKey)) {
+      return this._testLinkCache.get(cacheKey) as TestLink;
+    }
+
+    const link = new TestLink(this, linkParams);
+
+    this._testLinkCache.set(cacheKey, link);
+
+    return link;
   }
 
   /**
