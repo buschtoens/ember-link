@@ -1,6 +1,7 @@
 import { getOwner, setOwner } from '@ember/application';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
+import { tracked } from '@glimmer/tracking';
 
 import { LinkParams } from 'ember-link/link';
 
@@ -10,12 +11,12 @@ export default class TestLink {
   private _params: LinkParams;
 
   // Overwritable properties
-  isActive = false;
-  isActiveWithoutQueryParams = false;
-  isActiveWithoutModels = false;
-  isEntering = false;
-  isExiting = false;
-  url = guidFor(this);
+  @tracked isActive = false;
+  @tracked isActiveWithoutQueryParams = false;
+  @tracked isActiveWithoutModels = false;
+  @tracked isEntering = false;
+  @tracked isExiting = false;
+  @tracked url = guidFor(this);
 
   // Event handlers
   onTransitionTo?(): void;
@@ -46,14 +47,18 @@ export default class TestLink {
   transitionTo(event: Event) {
     this._preventTransitionOut(event);
 
-    this.onTransitionTo && this.onTransitionTo();
+    if (this.onTransitionTo) {
+      this.onTransitionTo();
+    }
   }
 
   @action
   replaceWith(event: Event) {
     this._preventTransitionOut(event);
 
-    this.onReplaceWith && this.onReplaceWith();
+    if (this.onReplaceWith) {
+      this.onReplaceWith();
+    }
   }
 
   private _preventTransitionOut(event: Event) {
