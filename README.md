@@ -12,6 +12,10 @@
 Introduces a new `Link` primitive to pass around self-contained references to
 routes. Also adds an accompanying template helper and component.
 
+> `ember-link` does to routing what `ember-concurrency` did to asynchrony!
+
+— [/r/whatjawsdid](https://www.reddit.com/r/whatjawsdid/)
+
 ## Installation
 
 ```
@@ -121,6 +125,41 @@ In addition to the parameters shown above, the `{{link}}` helper also accepts a
 prevents hard browser transitions when clicking `<a>` elements.
 
 See [`@preventDefault`](#preventdefault) and [`UILink`](#uilink).
+
+### 💡 Pro Tips
+
+Instead of using the `{{#let}}` helper, you can use the
+[`<Link>` component](#link-component) to achieve the same scoping effect, with
+subjectively nicer syntax.
+
+Even better yet, make [`Link`](#link) / [`UILink`](#uilink) a first-class
+primitive in your app architecture! Instead of manually wiring up
+[`Link#url`](#url) and [`Link#transitionTo()`](#transitionto) every time, rather
+create your own ready-to-use, style-guide-compliant link and button components
+that accept `@link` as an argument instead of `@href` and `@onClick`.
+
+This is akin to the
+[popular](https://github.com/rwjblue/ember-cli-async-button)
+[async](https://github.com/DockYard/ember-async-button)
+[task](https://github.com/quipuapp/ember-task-button)
+button component concept.
+
+```hbs
+<Ui::LinkButton @link={{link "subscribe"}}>
+  Become a Premium member
+</Ui::LinkButton>
+```
+
+```hbs
+<a
+  href={{@link.url}}
+  class="btn"
+  {{on "click" @link.transitionTo}}
+  ...attributes
+>
+  Become a Premium member
+</a>
+```
 
 ### `<Link>` Component
 
