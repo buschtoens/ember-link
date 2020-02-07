@@ -31,11 +31,364 @@ ember install ember-link@next
 
 ## Usage
 
+- [`{{link}}` helper](#link-helper)
+- [`<Link>` component](#link-component)
 - [`Link` class](#link)
 - [`UILink` class](#uilink)
 - [`LinkManager` service](#linkmanager)
-- [`{{link}}` helper](#link-helper)
-- [`<Link>` component](#link-component)
+
+### `{{link}}` Helper
+
+The `{{link}}` helper returns a [`UILink`](#uilink) instance.
+
+#### Invocation Styles
+
+##### Positional Parameters
+
+```hbs
+{{#let
+  (link
+    "blogs.posts.post"
+    @post.blog.id
+    @post.id
+    (query-params showFullPost=true)
+  )
+  as |l|
+}}
+  <a href={{l.url}} {{on "click" l.transitionTo}}>
+    Read the full "{{@post.title}}" story on our {{@post.blog.name}} blog!
+  </a>
+{{/let}}
+```
+
+##### Named Parameters
+
+```hbs
+{{#let
+  (link
+    route="blogs.posts.post"
+    models=(array @post.blog.id @post.id)
+    query=(hash showFullPost=true)
+  )
+  as |l|
+}}
+  <a href={{l.url}} {{on "click" l.transitionTo}}>
+    Read the full "{{@post.title}}" story on our {{@post.blog.name}} blog!
+  </a>
+{{/let}}
+```
+
+When passing a single model, you can use `model` instead of `models`:
+
+```hbs
+{{#let
+  (link
+    route="blogs.posts"
+    model=@post.blog.id
+  )
+  as |l|
+}}
+  <a href={{l.url}} {{on "click" l.transitionTo}}>
+    Read more stories in the {{@post.blog.name}} blog!
+  </a>
+{{/let}}
+```
+
+##### Mix & Match
+
+You can also mix and match the parameter styles, however you like.
+
+```hbs
+{{#let
+  (link
+    "blogs.posts.post"
+    @post.blog.id
+    @post.id
+    query=(hash showFullPost=true)
+  )
+  as |l|
+}}
+  <a href={{l.url}} {{on "click" l.transitionTo}}>
+    Read the full "{{@post.title}}" story on our {{@post.blog.name}} blog!
+  </a>
+{{/let}}
+```
+
+### Parameters
+
+In addition to the parameters shown above, the `{{link}}` helper also accepts a
+`preventDefault` default parameter. It defaults to `true` and intelligently
+prevents hard browser transitions when clicking `<a>` elements.
+
+See [`@preventDefault`](#preventdefault) and [`UILink`](#uilink).
+
+### `<Link>` Component
+
+Similar to the the [`{{link}}` helper](#link-helper), the `<Link>` component
+yields a [`UILink`](#uilink) instance.
+
+```hbs
+<Link
+  @route="some.route"
+  @models={{array 123}}
+  @query={{hash foo="bar"}}
+as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActive "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Click me
+  </a>
+</Link>
+```
+
+#### Arguments
+
+##### `@route`
+
+Required.
+
+The target route name.
+
+**Example**
+
+```hbs
+<Link @route="some.route" as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActive "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Click me
+  </a>
+</Link>
+```
+
+**`{{link-to}}` equivalent**
+
+```hbs
+{{#link-to "some.route"}}
+  Click me
+{{/link-to}}
+```
+
+##### `@models`
+
+Optional. Mutually exclusive with [`@model`](#model).
+
+An array of models / dynamic segments.
+
+**Example**
+
+```hbs
+<Link @route="some.route" @models={{array someModel someNestedModel}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActive "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Click me
+  </a>
+</Link>
+```
+
+**`{{link-to}}` equivalent**
+
+```hbs
+{{#link-to "some.route" someModel someNestedModel}}
+  Click me
+{{/link-to}}
+```
+
+##### `@model`
+
+Optional. Mutually exclusive with [`@models`](#models).
+
+Shorthand for providing a single model / dynamic segment. The following two
+invocations are equivalent:
+
+```hbs
+<Link @route="some.route" @model={{someModel}} />
+<Link @route="some.route" @models={{array someModel}} />
+```
+
+##### `@query`
+
+Optional.
+
+Query Params object.
+
+**Example**
+
+```hbs
+<Link @route="some.route" @query={{hash foo="bar"}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActive "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Click me
+  </a>
+</Link>
+```
+
+**`{{link-to}}` equivalent**
+
+```hbs
+{{#link-to "some.route" (query-params foo="bar")}}
+  Click me
+{{/link-to}}
+```
+
+##### `@preventDefault`
+
+Optional. Default: `true`
+
+If enabled, the [`transitionTo`](#transitionto) and
+[`replaceWith`](#replacewith) actions will try to call
+[`event.preventDefault()`][prevent-default] on the first argument, if it is an
+event. This is an anti-foot-gun to make `<Link>` _just work™️_ with `<a>` and
+`<button>`, which would otherwise trigger a native browser navigation / form
+submission.
+
+[prevent-default]: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+
+#### Yielded Parameters
+
+The `<Link>` component yields a [`UILink`](#uilink) instance.
+
+##### `href`
+
+`string`
+
+The URL for this link that you can pass to an `<a>` tag as the `href` attribute.
+
+```hbs
+<Link @route="some.route" as |l|>
+  <a href={{l.href}} {{on "click" l.transitionTo}}>
+    Click me
+  </a>
+</Link>
+```
+
+##### `isActive`
+
+`boolean`
+
+Whether this route is currently active, including potentially supplied models
+and query params.
+
+In the following example, only one link will be `is-active` at any time.
+
+```hbs
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActive "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    One
+  </a>
+</Link>
+
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActive "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Two
+  </a>
+</Link>
+```
+
+##### `isActiveWithoutQueryParams`
+
+`boolean`
+
+Whether this route is currently active, including potentially supplied models,
+but ignoring query params.
+
+In the following example, the first two links will be `is-active` simultaneously.
+
+```hbs
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActiveWithoutQueryParams "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    One
+  </a>
+</Link>
+
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActiveWithoutQueryParams "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Two
+  </a>
+</Link>
+
+<Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActiveWithoutQueryParams "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Three
+  </a>
+</Link>
+```
+
+##### `isActiveWithoutModels`
+
+`boolean`
+
+Whether this route is currently active, but ignoring models and query params.
+
+In the following example, both links will be `is-active` simultaneously.
+
+```hbs
+<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActiveWithoutModels "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    One
+  </a>
+</Link>
+
+<Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActiveWithoutModels "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Two
+  </a>
+</Link>
+```
+
+##### `transitionTo()`
+
+`(event?: Event) => Transition`
+
+Transition into the target route.
+
+If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDefault()`.
+
+##### `replaceWith()`
+
+`(event?: Event) => Transition`
+
+Transition into the target route while replacing the current URL, if possible.
+
+If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDefault()`.
 
 ### `Link`
 
@@ -174,268 +527,6 @@ interface UILinkParams {
 }
 ```
 
-### `<Link>` Component
-
-```hbs
-<Link
-  @route="some.route"
-  @models={{array 123}}
-  @query={{hash foo="bar"}}
-as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-#### Arguments
-
-##### `@route`
-
-Required.
-
-The target route name.
-
-**Example**
-
-```hbs
-<Link @route="some.route" as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-**`{{link-to}}` equivalent**
-
-```hbs
-{{#link-to "some.route"}}
-  Click me
-{{/link-to}}
-```
-
-##### `@models`
-
-Optional. Mutually exclusive with [`@model`](#model).
-
-An array of models / dynamic segments.
-
-**Example**
-
-```hbs
-<Link @route="some.route" @models={{array someModel someNestedModel}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-**`{{link-to}}` equivalent**
-
-```hbs
-{{#link-to "some.route" someModel someNestedModel}}
-  Click me
-{{/link-to}}
-```
-
-##### `@model`
-
-Optional. Mutually exclusive with [`@models`](#models).
-
-Shorthand for providing a single model / dynamic segment. The following two
-invocations are equivalent:
-
-```hbs
-<Link @route="some.route" @model={{someModel}} />
-<Link @route="some.route" @models={{array someModel}} />
-```
-
-##### `@query`
-
-Optional.
-
-Query Params object.
-
-**Example**
-
-```hbs
-<Link @route="some.route" @query={{hash foo="bar"}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-**`{{link-to}}` equivalent**
-
-```hbs
-{{#link-to "some.route" (query-params foo="bar")}}
-  Click me
-{{/link-to}}
-```
-
-##### `@preventDefault`
-
-Optional. Default: `true`
-
-If enabled, the [`transitionTo`](#transitionto) and
-[`replaceWith`](#replacewith) actions will try to call
-[`event.preventDefault()`][prevent-default] on the first argument, if it is an
-event. This is an anti-foot-gun to make `<Link>` _just work™️_ with `<a>` and
-`<button>`, which would otherwise trigger a native browser navigation / form
-submission.
-
-[prevent-default]: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
-
-#### Yielded Parameters
-
-#### `href`
-
-`string`
-
-The URL for this link that you can pass to an `<a>` tag as the `href` attribute.
-
-```hbs
-<Link @route="some.route" as |l|>
-  <a href={{l.href}} {{on "click" l.transitionTo}}>
-    Click me
-  </a>
-</Link>
-```
-
-#### `isActive`
-
-`boolean`
-
-Whether this route is currently active, including potentially supplied models
-and query params.
-
-In the following example, only one link will be `is-active` at any time.
-
-```hbs
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    One
-  </a>
-</Link>
-
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Two
-  </a>
-</Link>
-```
-
-#### `isActiveWithoutQueryParams`
-
-`boolean`
-
-Whether this route is currently active, including potentially supplied models,
-but ignoring query params.
-
-In the following example, the first two links will be `is-active` simultaneously.
-
-```hbs
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActiveWithoutQueryParams "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    One
-  </a>
-</Link>
-
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActiveWithoutQueryParams "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Two
-  </a>
-</Link>
-
-<Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActiveWithoutQueryParams "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Three
-  </a>
-</Link>
-```
-
-#### `isActiveWithoutModels`
-
-`boolean`
-
-Whether this route is currently active, but ignoring models and query params.
-
-In the following example, both links will be `is-active` simultaneously.
-
-```hbs
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActiveWithoutModels "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    One
-  </a>
-</Link>
-
-<Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
-  <a
-    href={{l.href}}
-    class={{if l.isActiveWithoutModels "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Two
-  </a>
-</Link>
-```
-
-#### `transitionTo()`
-
-`(event?: Event) => Transition`
-
-Transition into the target route.
-
-If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDefault()`.
-
-#### `replaceWith()`
-
-`(event?: Event) => Transition`
-
-Transition into the target route while replacing the current URL, if possible.
-
-If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDefault()`.
 
 ## Related RFCs / Projects
 
