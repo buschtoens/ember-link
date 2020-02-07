@@ -9,23 +9,13 @@
 [![dependencies Status](https://david-dm.org/buschtoens/ember-link/status.svg)](https://david-dm.org/buschtoens/ember-link)
 [![devDependencies Status](https://david-dm.org/buschtoens/ember-link/dev-status.svg)](https://david-dm.org/buschtoens/ember-link?type=dev)
 
-It's like `{{link-to}}`, but renderless!
-
-[Renderless / Container / Provider Components][renderless-components] are
-components that don't emit any DOM, but only yield state and actions to nested
-components.
-
-The idea for this component traces back to this [EmberMap][embermap] session:
-[Using Functional CSS with Ember][embermap-functional-css].
-
-[renderless-components]: https://embermap.com/ember-component-patterns
-[embermap]: https://embermap.com/
-[embermap-functional-css]: https://embermap.com/topics/using-functional-css-with-ember/building-the-workspace-selector-part-3
+Introduces a new `Link` primitive to pass around self-contained references to
+routes. Also adds an accompanying template helper and component.
 
 ## Installation
 
 ```
-ember install ember-link
+ember install ember-link@next
 ```
 
 > 👉 This is an [Ember Octane][octane] addon. For a version that is compatible
@@ -34,7 +24,157 @@ ember install ember-link
 [octane]: https://emberjs.com/editions/octane/
 [pre-octane]: https://github.com/buschtoens/ember-link/tree/pre-octane
 
+> 👉 You are viewing the docs for an improved & refactored pre-release of
+> `1.1.0`. See the [`1.0.0` tag][v1] for the current stable release.
+
+[v1]: https://github.com/buschtoens/ember-link/tree/v1.0.0
+
 ## Usage
+
+- [`Link` class](#link)
+- [`UILink` class](#uilink)
+- [`LinkManager` service](#linkmanager)
+- [`{{link}}` helper](#link-helper)
+- [`<Link>` component](#link-component)
+
+### `Link`
+
+A `Link` is a self-contained reference to a concrete route, including models and
+query params. It's basically like a
+[`<LinkTo>` / `{{link-to}}` component][link-to-component] you can pass around.
+
+[link-to-component]: https://api.emberjs.com/ember/release/classes/Ember.Templates.components/methods/input?anchor=LinkTo
+
+You can create a `Link` via the [`LinkManager` service](#linkmanager).
+
+[`UILink`](#uilink) extends `Link` with some anti-foot-guns and conveniences. It
+can also be created via the [`LinkManager` service](#linkmanager), but also via
+the [`{{link}}` helper](#link-helper) and [`<Link>` component](#link-component).
+
+#### Properties
+
+##### `isActive`
+
+Type: `boolean`
+
+Whether this route is currently active, including potentially supplied models
+and query params.
+
+##### `isActiveWithoutQueryParams`
+
+Type: `boolean`
+
+Whether this route is currently active, including potentially supplied models,
+but ignoring query params.
+
+##### `isActiveWithoutModels`
+
+Type: `boolean`
+
+Whether this route is currently active, but ignoring models and query params.
+
+##### `url`
+
+Type: `string`
+
+The URL for this link that you can pass to an `<a>` tag as the `href` attribute.
+
+##### `routeName`
+
+Type: `string`
+
+The target route name of this link.
+
+##### `models`
+
+Type: `RouteModel[]`
+
+The route models passed in this link.
+
+##### `queryParams`
+
+Type: `Record<string, unknown> | undefined`
+
+The query params for this link, if specified.
+
+#### Methods
+
+##### `transitionTo()`
+
+Returns: [`Transition`][transition]
+
+Transition into the target route.
+
+##### `replaceWith()`
+
+Returns: [`Transition`][transition]
+
+Transition into the target route while replacing the current URL, if possible.
+
+[transition]: https://api.emberjs.com/ember/release/classes/Transition
+
+### `UILink`
+
+`UILink` extends [`Link`](#link) with anti-foot-guns and conveniences. This
+class is meant to be used in templates, primarily through `<a>` & `<button>`
+elements.
+
+It wraps `transitionTo()` and `replaceWith()` to optionally accept an `event`
+argument. It will intelligently
+
+- call `event.preventDefault()` to prevent hard page reloads
+- TODO [#6](https://github.com/buschtoens/ember-link/issues/6):
+  open the page in a new tab, when `Cmd` / `Ctrl` clicking
+
+It can be created via the [`LinkManager` service](#linkmanager), but also via
+the [`{{link}}` helper](#link-helper) and [`<Link>` component](#link-component).
+
+### `LinkManager`
+
+The `LinkManager` service exposes two methods.
+
+#### `createLink(linkParams: LinkParams): Link`
+
+Returns: [`Link`](#link)
+
+```ts
+interface LinkParams {
+  /**
+   * The target route name.
+   */
+  route: string;
+
+  /**
+   * Optional array of models / dynamic segments.
+   */
+  models?: RouteModel[];
+
+  /**
+   * Optional query params object.
+   */
+  query?: QueryParams;
+}
+```
+
+#### `createUILink(linkParams: LinkParams, uiParams: UILinkParams): UILink`
+
+Returns: [`UILink`](#uilink)
+
+```ts
+interface UILinkParams {
+  /**
+   * Whether or not to call `event.preventDefault()`, if the first parameter to
+   * the `transitionTo` or `replaceWith` action is an `Event`. This is useful to
+   * prevent links from accidentally triggering real browser navigation or
+   * buttons from submitting a form.
+   *
+   * Defaults to `true`.
+   */
+  preventDefault?: boolean;
+}
+```
+
+### `<Link>` Component
 
 ```hbs
 <Link
@@ -52,9 +192,9 @@ as |l|>
 </Link>
 ```
 
-### Arguments
+#### Arguments
 
-#### `@route`
+##### `@route`
 
 Required.
 
@@ -82,7 +222,7 @@ The target route name.
 {{/link-to}}
 ```
 
-#### `@models`
+##### `@models`
 
 Optional. Mutually exclusive with [`@model`](#model).
 
@@ -110,7 +250,7 @@ An array of models / dynamic segments.
 {{/link-to}}
 ```
 
-#### `@model`
+##### `@model`
 
 Optional. Mutually exclusive with [`@models`](#models).
 
@@ -122,7 +262,7 @@ invocations are equivalent:
 <Link @route="some.route" @models={{array someModel}} />
 ```
 
-#### `@query`
+##### `@query`
 
 Optional.
 
@@ -150,7 +290,7 @@ Query Params object.
 {{/link-to}}
 ```
 
-#### `@preventDefault`
+##### `@preventDefault`
 
 Optional. Default: `true`
 
@@ -163,7 +303,7 @@ submission.
 
 [prevent-default]: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
 
-### Yielded Parameters
+#### Yielded Parameters
 
 #### `href`
 
@@ -299,6 +439,8 @@ If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDef
 
 ## Related RFCs / Projects
 
+- [`ember-engine-router-service`](https://github.com/buschtoens/ember-engine-router-service):
+  Allows you to use `ember-link` inside engines
 - [`ember-router-helpers`](https://github.com/rwjblue/ember-router-helpers)
 - [RFC 391 "Router Helpers"](https://github.com/emberjs/rfcs/blob/master/text/0391-router-helpers.md)
 - [RFC 339 "Router link component and routing helpers"](https://github.com/emberjs/rfcs/pull/339)
