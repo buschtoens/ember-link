@@ -420,4 +420,21 @@ module('Acceptance | link', function(hooks) {
         'exiting class is removed when transition has finished'
       );
   });
+
+  test('toString()', async function(this: TestContext, assert) {
+    this.Router.map(function() {
+      this.route('foo');
+      this.route('bar');
+    });
+
+    this.owner.register(
+      'template:application',
+      hbs`{{get (link "foo" query=(hash bar=(link "bar"))) "url"}}`
+    );
+
+    await visit('/');
+    assert.equal(currentURL(), '/');
+
+    assert.dom().hasText('/foo?bar=%2Fbar');
+  });
 });

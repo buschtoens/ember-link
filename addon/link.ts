@@ -153,6 +153,19 @@ export default class Link {
   }
 
   /**
+   * Alias for `url`.
+   *
+   * Allows for more ergonomic composition as query parameters.
+   *
+   * ```hbs
+   * {{link "foo" query=(hash bar=(link "bar"))}}
+   * ```
+   */
+  toString() {
+    return this.url;
+  }
+
+  /**
    * The `RouteInfo` object for the target route.
    */
   // get route(): RouteInfo {
