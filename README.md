@@ -193,7 +193,7 @@ yields a [`UILink`](#uilink) instance.
   @query={{hash foo="bar"}}
 as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActive "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -215,7 +215,7 @@ The target route name.
 ```hbs
 <Link @route="some.route" as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActive "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -243,7 +243,7 @@ An array of models / dynamic segments.
 ```hbs
 <Link @route="some.route" @models={{array someModel someNestedModel}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActive "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -283,7 +283,7 @@ Query Params object.
 ```hbs
 <Link @route="some.route" @query={{hash foo="bar"}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActive "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -310,7 +310,7 @@ Optional. Mutually exclusive with [`@route`](#route), [`@model`](#model) /
 ```hbs
 <Link @fromURL="/blogs/tech/posts/dont-break-the-web" as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActive "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -336,7 +336,7 @@ submission.
 
 The `<Link>` component yields a [`UILink`](#uilink) instance.
 
-##### `href`
+##### `url`
 
 `string`
 
@@ -344,7 +344,7 @@ The URL for this link that you can pass to an `<a>` tag as the `href` attribute.
 
 ```hbs
 <Link @route="some.route" as |l|>
-  <a href={{l.href}} {{on "click" l.transitionTo}}>
+  <a href={{l.url}} {{on "click" l.transitionTo}}>
     Click me
   </a>
 </Link>
@@ -362,7 +362,7 @@ In the following example, only one link will be `is-active` at any time.
 ```hbs
 <Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActive "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -372,7 +372,7 @@ In the following example, only one link will be `is-active` at any time.
 
 <Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActive "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -393,7 +393,7 @@ In the following example, the first two links will be `is-active` simultaneously
 ```hbs
 <Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActiveWithoutQueryParams "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -403,7 +403,7 @@ In the following example, the first two links will be `is-active` simultaneously
 
 <Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActiveWithoutQueryParams "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -413,7 +413,7 @@ In the following example, the first two links will be `is-active` simultaneously
 
 <Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActiveWithoutQueryParams "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -433,7 +433,7 @@ In the following example, both links will be `is-active` simultaneously.
 ```hbs
 <Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActiveWithoutModels "is-active"}}
     {{on "click" l.transitionTo}}
   >
@@ -443,7 +443,7 @@ In the following example, both links will be `is-active` simultaneously.
 
 <Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
   <a
-    href={{l.href}}
+    href={{l.url}}
     class={{if l.isActiveWithoutModels "is-active"}}
     {{on "click" l.transitionTo}}
   >
