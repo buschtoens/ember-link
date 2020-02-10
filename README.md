@@ -10,7 +10,9 @@
 [![devDependencies Status](https://david-dm.org/buschtoens/ember-link/dev-status.svg)](https://david-dm.org/buschtoens/ember-link?type=dev)
 
 Introduces a new `Link` primitive to pass around self-contained references to
-routes. Also adds an accompanying template helper and component.
+routes, like URLs, but with state (`isActive`, ...) and methods (`transitionTo`,
+...). Also brings along an accompanying template helper and component for easy
+usage in templates.
 
 > `ember-link` does to routing what `ember-concurrency` did to asynchrony!
 
@@ -28,8 +30,9 @@ ember install ember-link@next
 [octane]: https://emberjs.com/editions/octane/
 [pre-octane]: https://github.com/buschtoens/ember-link/tree/pre-octane
 
-> 👉 You are viewing the docs for an improved & refactored pre-release of
-> `1.1.0`. See the [`1.0.0` tag][v1] for the current stable release.
+> 👉 You are viewing the docs for an improved & refactored release (`^1.1.0`),
+> that is 100 % backwards compatible to the [`1.0.0` version][v1] you're used
+> to. There's no reason not to upgrade. ✨
 
 [v1]: https://github.com/buschtoens/ember-link/tree/v1.0.0
 
