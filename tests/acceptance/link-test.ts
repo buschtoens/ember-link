@@ -436,4 +436,20 @@ module('Acceptance | link', function(hooks) {
 
     assert.dom().hasText('/foo/123?bar=qux');
   });
+
+  test('positional parameters', async function(this: TestContext, assert) {
+    this.Router.map(function() {
+      this.route('foo', { path: 'foo/:id' });
+    });
+
+    this.owner.register(
+      'template:application',
+      hbs`{{get (link "foo" 123) "url"}}`
+    );
+
+    await visit('/');
+    assert.equal(currentURL(), '/');
+
+    assert.dom().hasText('/foo/123');
+  });
 });
