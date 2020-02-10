@@ -118,6 +118,23 @@ You can also mix and match the parameter styles, however you like.
 {{/let}}
 ```
 
+##### `fromURL`
+
+Instead of the positional & named link parameters described above, you can also
+create a `Link` instance from a serialized URL.
+
+```hbs
+{{! someURL = "/blogs/tech/posts/dont-break-the-web" }}
+{{#let (link fromURL=this.someURL) as |l|}}
+  <a href={{l.url}} {{on "click" l.transitionTo}}>
+    Read the next great post.
+  </a>
+{{/let}}
+```
+
+`fromURL` is mutually exclusive with the other link parameters: `route`, `model`
+& `models`, `query`
+
 ### Parameters
 
 In addition to the parameters shown above, the `{{link}}` helper also accepts a
@@ -278,6 +295,25 @@ Query Params object.
 {{#link-to "some.route" (query-params foo="bar")}}
   Click me
 {{/link-to}}
+```
+
+##### `@fromURL`
+
+Optional. Mutually exclusive with [`@route`](#route), [`@model`](#model) /
+[`@models`](#models), [`@query`](#query).
+
+**Example**
+
+```hbs
+<Link @fromURL="/blogs/tech/posts/dont-break-the-web" as |l|>
+  <a
+    href={{l.href}}
+    class={{if l.isActive "is-active"}}
+    {{on "click" l.transitionTo}}
+  >
+    Click me
+  </a>
+</Link>
 ```
 
 ##### `@preventDefault`

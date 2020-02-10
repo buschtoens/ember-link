@@ -1,5 +1,6 @@
 import { action } from '@ember/object';
 import { addListener, removeListener } from '@ember/object/events';
+import RouteInfo from '@ember/routing/-private/route-info';
 import Transition from '@ember/routing/-private/transition';
 import RouterService from '@ember/routing/router-service';
 import Service from '@ember/service';
@@ -7,6 +8,10 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
 import Link, { LinkParams, UILinkParams, UILink } from '../link';
+
+interface RouterServiceWithRecognize extends RouterService {
+  recognize(url: string): RouteInfo;
+}
 
 export default class LinkManagerService extends Service {
   @tracked
@@ -16,7 +21,7 @@ export default class LinkManagerService extends Service {
    * The `RouterService` instance to be used by the generated `Link` instances.
    */
   @service('router')
-  readonly router!: RouterService;
+  readonly router!: RouterServiceWithRecognize;
 
   /**
    * Whether the router has been initialized.
@@ -48,6 +53,29 @@ export default class LinkManagerService extends Service {
    */
   createUILink(linkParams: LinkParams, uiParams: UILinkParams): UILink {
     return new UILink(this, { ...linkParams, ...uiParams });
+  }
+
+  /**
+   * Deserializes the `LinkParams` to be passed to `createLink` / `createUILink`
+   * from a URL.
+   *
+   * If the URL cannot be recognized by the router, an error is thrown.
+   */
+  getLinkPramsFromURL(url: string): LinkParams {
+    const routeInfo = this.router.recognize(url);
+    return LinkManagerService.getLinkParamsFromRouteInfo(routeInfo);
+  }
+
+  /**
+   * Converts a `RouteInfo` object into `LinkParams`.
+   */
+  static getLinkParamsFromRouteInfo(routeInfo: RouteInfo): LinkParams {
+    const models = routeInfo.paramNames.map(name => routeInfo.params[name]!);
+    return {
+      route: routeInfo.name,
+      query: routeInfo.queryParams,
+      models
+    };
   }
 
   constructor(properties?: object) {
