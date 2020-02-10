@@ -22,6 +22,14 @@ export interface LinkHelperNamedParams
    * Optional shortcut for `models={{array model}}`.
    */
   model?: RouteModel;
+
+  /**
+   * Instead of any of the other `LinkParams` used to construct a
+   * `LinkInstance`, you can also provide a serialized URL instead.
+   *
+   * This is mutually exclusive with any other `LinkParams`.
+   */
+  fromURL?: string;
 }
 
 export default class LinkHelper extends Helper {
@@ -46,6 +54,20 @@ export default class LinkHelper extends Helper {
       `You provided 'routeName', but the parameter you mean is just 'route'.`,
       !('routeName' in named)
     );
+
+    if (named.fromURL) {
+      assert(
+        `When specifying a serialized 'fromURL' ('${named.fromURL}'), you can't provide any further 'LinkParams'.`,
+        !([
+          'route',
+          'models',
+          'model',
+          'query'
+        ] as (keyof LinkHelperNamedParams)[]).some(name => named[name])
+      );
+
+      return this.linkManager.getLinkPramsFromURL(named.fromURL);
+    }
 
     assert(
       `Either pass the target route name as a positional parameter ('${positional[0]}') or pass it as a named parameter ('${named.route}').`,

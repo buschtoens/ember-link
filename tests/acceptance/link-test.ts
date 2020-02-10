@@ -421,20 +421,19 @@ module('Acceptance | link', function(hooks) {
       );
   });
 
-  test('toString()', async function(this: TestContext, assert) {
+  test('fromURL', async function(this: TestContext, assert) {
     this.Router.map(function() {
-      this.route('foo');
-      this.route('bar');
+      this.route('foo', { path: 'foo/:id' });
     });
 
     this.owner.register(
       'template:application',
-      hbs`{{get (link "foo" query=(hash bar=(link "bar"))) "url"}}`
+      hbs`{{get (link fromURL="/foo/123?bar=qux") "url"}}`
     );
 
     await visit('/');
     assert.equal(currentURL(), '/');
 
-    assert.dom().hasText('/foo?bar=%2Fbar');
+    assert.dom().hasText('/foo/123?bar=qux');
   });
 });
