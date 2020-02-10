@@ -559,7 +559,11 @@ the [`{{link}}` helper](#link-helper) and [`<Link>` component](#link-component).
 
 ### `LinkManager`
 
-The `LinkManager` service exposes two methods.
+The `LinkManager` service is used by the [`{{link}} helper`](#link-helper) and
+[`<Link>` component](#link-component) to create [`UILink`](#uilink) instances.
+
+You can also use this service directly to programmatically create link
+references.
 
 #### `createLink(linkParams: LinkParams): Link`
 
@@ -602,6 +606,12 @@ interface UILinkParams {
 }
 ```
 
+#### `getLinkPramsFromURL(url: string): LinkParams`
+
+Returns: [`LinkParams`](#createlinklinkparams-linkparams-link)
+
+Use this method to derive `LinkParams` from a serialized, recognizable URL, that
+you can then pass into `createLink` / `createUILink`.
 
 ## Related RFCs / Projects
 
