@@ -959,12 +959,12 @@
   dependencies:
     eslint-plugin-import-helpers "^1.0.2"
 
-"@clark/eslint-config-node@^1.20.0":
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.20.0.tgz#b0dc2850840cfa9b29f81c3481fb0f7647b14855"
-  integrity sha512-3MKyOKeZJhP3jmbc5YcfkjMxkkkxjuEj3ANUCkPuqVltYvjqQGlemBLoTL1SmlIBoQ6dSzX9CUBNpqy1C6fiww==
+"@clark/eslint-config-node@^1.21.0":
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.21.0.tgz#699f14f5b17ab2f60a0a642c30a26c835e41d64f"
+  integrity sha512-Za010HR0iR4A3BebHJpSnsoUVC4SW5Jua/ldO361FFYa6N9f6cgdEMKRiXQwPLvojKxYlXoC9SdHkkYr3a2jow==
   dependencies:
-    "@clark/eslint-config" "^1.20.0"
+    "@clark/eslint-config" "^1.21.0"
     "@clark/eslint-config-node-order-imports" "^1.19.0"
     eslint-plugin-node "^11.0.0"
     lodash.merge "^4.6.2"
@@ -977,20 +977,6 @@
     "@clark/eslint-config" "^1.21.0"
     "@typescript-eslint/eslint-plugin" "^2.19.2"
     "@typescript-eslint/parser" "^2.19.2"
-
-"@clark/eslint-config@^1.20.0":
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.20.0.tgz#d34f70625931db6418cbd20dfb1fcfa387ac56e1"
-  integrity sha512-eog1qf+PZcXi/CoArx0M7EZJQxLUFsSeemLiBUeD2qdfiI8L9QBUV++LOA8Wfm4bYcCjMLGcEX6sls/Y3PvKGQ==
-  dependencies:
-    eslint-config-airbnb-base "^14.0.0"
-    eslint-config-prettier "^6.10.0"
-    eslint-config-xo-space "^0.22.0"
-    eslint-plugin-import "^2.20.1"
-    eslint-plugin-node "^11.0.0"
-    eslint-plugin-prettier "^3.1.2"
-    eslint-plugin-unicorn "^16.0.0"
-    prettier "^1.19.1"
 
 "@clark/eslint-config@^1.21.0":
   version "1.21.0"
@@ -5491,28 +5477,6 @@ eslint-plugin-qunit@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-qunit/-/eslint-plugin-qunit-4.0.0.tgz#5945ba3434bfe8879bea195192e906701051cf01"
   integrity sha512-+0i2xcYryUoLawi47Lp0iJKzkP931G5GXwIOq1KBKQc2pknV1VPjfE6b4mI2mR2RnL7WRoS30YjwC9SjQgJDXQ==
-
-eslint-plugin-unicorn@^16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-16.0.0.tgz#5fc03d70b2944fa85099bf511c352b3d50201738"
-  integrity sha512-zqWMYzTopdixyqu0+3td4vIGmpBxwdBVeWBm3TzwnFMvHoAE6tTQ/w2Xv5RG/MklKkfQdHsRqa8CVsSpjSA4qQ==
-  dependencies:
-    ci-info "^2.0.0"
-    clean-regexp "^1.0.0"
-    eslint-ast-utils "^1.1.0"
-    eslint-template-visitor "^1.1.0"
-    import-modules "^2.0.0"
-    lodash.camelcase "^4.3.0"
-    lodash.defaultsdeep "^4.6.1"
-    lodash.kebabcase "^4.1.1"
-    lodash.snakecase "^4.1.1"
-    lodash.upperfirst "^4.3.1"
-    read-pkg-up "^7.0.1"
-    regexp-tree "^0.1.17"
-    regexpp "^3.0.0"
-    reserved-words "^0.1.2"
-    safe-regex "^2.1.1"
-    semver "^7.1.2"
 
 eslint-plugin-unicorn@^16.1.1:
   version "16.1.1"
