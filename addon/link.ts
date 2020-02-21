@@ -87,7 +87,7 @@ export default class Link {
    */
   get isActive(): boolean {
     if (!this._linkManager.isRouterInitialized) return false;
-    this._linkManager.router.currentURL; // eslint-disable-line no-unused-expressions
+    this._linkManager.router.currentURL; // eslint-disable-line @typescript-eslint/no-unused-expressions
     return this._linkManager.router.isActive(...this._routeArgs);
   }
 
@@ -97,7 +97,7 @@ export default class Link {
    */
   get isActiveWithoutQueryParams(): boolean {
     if (!this._linkManager.isRouterInitialized) return false;
-    this._linkManager.router.currentURL; // eslint-disable-line no-unused-expressions
+    this._linkManager.router.currentURL; // eslint-disable-line @typescript-eslint/no-unused-expressions
     return this._linkManager.router.isActive(
       this.routeName,
       // Unfortunately TypeScript is not clever enough to support "rest"
@@ -114,7 +114,7 @@ export default class Link {
    */
   get isActiveWithoutModels(): boolean {
     if (!this._linkManager.isRouterInitialized) return false;
-    this._linkManager.router.currentURL; // eslint-disable-line no-unused-expressions
+    this._linkManager.router.currentURL; // eslint-disable-line @typescript-eslint/no-unused-expressions
     return this._linkManager.router.isActive(this.routeName);
   }
 
