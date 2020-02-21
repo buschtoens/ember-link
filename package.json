@@ -1,6 +1,6 @@
 {
   "name": "ember-link",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Link primitive to pass around self-contained route references",
   "keywords": [
     "ember-addon",
