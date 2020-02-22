@@ -6,6 +6,8 @@
 /bower_components/
 
 # misc
+/.dependabot/
+/.github/
 /.bowerrc
 /.editorconfig
 /.ember-cli
@@ -14,7 +16,6 @@
 /.eslintrc.js
 /.gitignore
 /.template-lintrc.js
-/.travis.yml
 /.watchmanconfig
 /bower.json
 /config/ember-try.js
