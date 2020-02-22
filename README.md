@@ -1,6 +1,6 @@
 # ember-link
 
-[![Build Status](https://travis-ci.org/buschtoens/ember-link.svg)](https://travis-ci.org/buschtoens/ember-link)
+[![CI](https://github.com/buschtoens/ember-link/workflows/CI/badge.svg)](https://github.com/buschtoens/ember-link/actions)
 [![npm version](https://badge.fury.io/js/ember-link.svg)](http://badge.fury.io/js/ember-link)
 [![Download Total](https://img.shields.io/npm/dt/ember-link.svg)](http://badge.fury.io/js/ember-link)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-link.svg)](https://emberobserver.com/addons/ember-link)
