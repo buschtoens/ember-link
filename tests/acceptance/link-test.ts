@@ -30,16 +30,16 @@ module('Acceptance | link', function(hooks) {
   setupApplicationTest(hooks);
 
   hooks.beforeEach(function(this: TestContext) {
-    this.Router = DummyRouter.extend();
+    this.Router = class TestRouter extends DummyRouter {};
     this.owner.register('router:main', this.Router);
 
     this.owner.register(
       'route:basic',
-      Route.extend({
+      class BasicRoute extends Route {
         findModel(_name: string, id: string) {
           return id;
         }
-      })
+      }
     );
   });
 
@@ -243,9 +243,9 @@ module('Acceptance | link', function(hooks) {
 
     this.owner.register(
       'route:foo',
-      Route.extend({
-        queryParams: { qp: {} }
-      })
+      class FooRoute extends Route {
+        queryParams = { qp: {} };
+      }
     );
 
     this.owner.register(
