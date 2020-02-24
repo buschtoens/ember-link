@@ -21,7 +21,7 @@ usage in templates.
 ## Installation
 
 ```
-ember install ember-link@next
+ember install ember-link
 ```
 
 > 👉 This is an [Ember Octane][octane] addon. For a version that is compatible
