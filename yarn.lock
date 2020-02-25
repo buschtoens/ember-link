@@ -959,12 +959,12 @@
   dependencies:
     eslint-plugin-import-helpers "^1.0.2"
 
-"@clark/eslint-config-node@^1.21.0":
-  version "1.21.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.21.0.tgz#699f14f5b17ab2f60a0a642c30a26c835e41d64f"
-  integrity sha512-Za010HR0iR4A3BebHJpSnsoUVC4SW5Jua/ldO361FFYa6N9f6cgdEMKRiXQwPLvojKxYlXoC9SdHkkYr3a2jow==
+"@clark/eslint-config-node@^1.23.0":
+  version "1.23.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.23.0.tgz#8bf650d60f241b9911e32ba6da835168f5b045e9"
+  integrity sha512-GsHuG4Vbz6rJ6qd52ezr5XeLBFrrn5y3+9QsoNC5FiknKdwDZAh+E6AVLpm/e/x/K3xv8ggKHHYinqZF0OecTA==
   dependencies:
-    "@clark/eslint-config" "^1.21.0"
+    "@clark/eslint-config" "^1.23.0"
     "@clark/eslint-config-node-order-imports" "^1.19.0"
     eslint-plugin-node "^11.0.0"
     lodash.merge "^4.6.2"
