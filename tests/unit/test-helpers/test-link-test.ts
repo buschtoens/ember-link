@@ -59,7 +59,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
     ) as LinkManagerService;
     const link = new TestLink(linkManager, { route: 'foo' });
 
-    properties.forEach(propertyName => {
+    for (const propertyName of properties) {
       const propertyKey = propertyName;
 
       assert.notOk(link[propertyKey]);
@@ -70,7 +70,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
       link[propertyKey] = true;
 
       assert.ok(link[propertyKey]);
-    });
+    }
 
     link.url = 'my-url';
 
