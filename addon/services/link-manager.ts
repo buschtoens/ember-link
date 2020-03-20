@@ -5,6 +5,7 @@ import Transition from '@ember/routing/-private/transition';
 import RouterService from '@ember/routing/router-service';
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
+import { DEBUG } from '@glimmer/env';
 import { tracked } from '@glimmer/tracking';
 
 import { TestLink } from 'ember-link/test-support';
@@ -65,27 +66,27 @@ export default class LinkManagerService extends Service {
     linkParams: LinkParams,
     uiParams?: UILinkParams
   ): TestLink | UILink {
-    return this._useTestLink
-      ? this._createOrGetCachedTestLink(linkParams)
-      : new UILink(this, { ...linkParams, ...uiParams });
-  }
+    if (DEBUG && this._useTestLink) {
+      // FIXME:: Extract this into a separate test instrumented service and make
+      // `setupLink` test helper replace this service with that
+      if (!this._testLinkCache) {
+        this._testLinkCache = new Map();
+      }
 
-  private _createOrGetCachedTestLink(linkParams: LinkParams): TestLink {
-    if (!this._testLinkCache) {
-      this._testLinkCache = new Map();
+      const cacheKey = stringify(linkParams);
+
+      if (this._testLinkCache.has(cacheKey)) {
+        return this._testLinkCache.get(cacheKey) as TestLink;
+      }
+
+      const link = new TestLink(this, linkParams);
+
+      this._testLinkCache.set(cacheKey, link);
+
+      return link;
     }
 
-    const cacheKey = stringify(linkParams);
-
-    if (this._testLinkCache.has(cacheKey)) {
-      return this._testLinkCache.get(cacheKey) as TestLink;
-    }
-
-    const link = new TestLink(this, linkParams);
-
-    this._testLinkCache.set(cacheKey, link);
-
-    return link;
+    return new UILink(this, { ...linkParams, ...uiParams });
   }
 
   /**
