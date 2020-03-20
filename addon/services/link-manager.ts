@@ -9,6 +9,8 @@ import { tracked } from '@glimmer/tracking';
 
 import { TestLink } from 'ember-link/test-support';
 
+import stringify from 'fast-json-stable-stringify';
+
 import Link, { LinkParams, UILinkParams, UILink } from '../link';
 
 interface RouterServiceWithRecognize extends RouterService {
@@ -73,7 +75,7 @@ export default class LinkManagerService extends Service {
       this._testLinkCache = new Map();
     }
 
-    const cacheKey = JSON.stringify(linkParams);
+    const cacheKey = stringify(linkParams);
 
     if (this._testLinkCache.has(cacheKey)) {
       return this._testLinkCache.get(cacheKey) as TestLink;
