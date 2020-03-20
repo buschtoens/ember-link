@@ -1,8 +1,7 @@
 import { assert } from '@ember/debug';
 
+import LinkManagerService from 'ember-link/services/link-manager';
 import { TestContext } from 'ember-test-helpers';
-
-import LinkManagerService from 'dummy/services/link-manager';
 
 export default function setupLink(hooks: NestedHooks) {
   hooks.beforeEach(function(this: TestContext) {

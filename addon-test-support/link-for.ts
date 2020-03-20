@@ -4,8 +4,7 @@ import { assert } from '@ember/debug';
 import Ember from 'ember';
 
 import { RouteModel, QueryParams } from 'ember-link/link';
-
-import LinkManagerService from 'dummy/services/link-manager';
+import LinkManagerService from 'ember-link/services/link-manager';
 
 import TestLink from './test-link';
 

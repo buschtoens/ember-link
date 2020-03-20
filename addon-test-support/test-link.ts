@@ -4,8 +4,7 @@ import { guidFor } from '@ember/object/internals';
 import { tracked } from '@glimmer/tracking';
 
 import { LinkParams } from 'ember-link/link';
-
-import LinkManagerService from 'dummy/services/link-manager';
+import LinkManagerService from 'ember-link/services/link-manager';
 
 export default class TestLink {
   private _params: LinkParams;
