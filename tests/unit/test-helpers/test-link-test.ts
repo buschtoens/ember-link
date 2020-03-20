@@ -40,7 +40,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
     ) as LinkManagerService;
     const link = new TestLink(linkManager, { route: 'foo' });
 
-    assert.ok(link.url.match(/ember\d+/g));
+    assert.ok(link.url.match(/ember\d+/g), 'generates a GUID using `guidFor`');
   });
 
   test('it can overwrite properties', async function(assert) {
