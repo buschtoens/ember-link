@@ -44,13 +44,13 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
   });
 
   test('it can overwrite properties', async function(assert) {
-    const properties: (keyof TestLink)[] = [
+    const properties = [
       'isActive',
       'isActiveWithoutQueryParams',
       'isActiveWithoutModels',
       'isEntering',
       'isExiting'
-    ];
+    ] as const;
 
     assert.expect(properties.length * 2 + 1);
 
@@ -64,9 +64,6 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
 
       assert.notOk(link[propertyKey]);
 
-      // Ignore `Cannot assign to '[property]' because it is a read-only property.`
-      /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
-      // @ts-ignore
       link[propertyKey] = true;
 
       assert.ok(link[propertyKey]);
