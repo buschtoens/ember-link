@@ -2,6 +2,8 @@ import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
 import { inject as service } from '@ember/service';
 
+import { TestLink } from 'ember-link/test-support';
+
 import {
   LinkParams,
   UILinkParams,
@@ -137,7 +139,7 @@ export default class LinkHelper extends Helper {
   compute(
     positional: LinkHelperPositionalParams,
     named: LinkHelperNamedParams
-  ): UILink {
+  ): UILink | TestLink {
     const linkParams = this.normalizeLinkParams(positional, named);
     const uiParams = this.normalizeUIParams(named);
 
