@@ -44,7 +44,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
   });
 
   test('it can overwrite properties', async function(assert) {
-    const properties = [
+    const properties: (keyof TestLink)[] = [
       'isActive',
       'isActiveWithoutQueryParams',
       'isActiveWithoutModels',
@@ -60,7 +60,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
     const link = new TestLink(linkManager, { route: 'foo' });
 
     properties.forEach(propertyName => {
-      const propertyKey = propertyName as keyof TestLink;
+      const propertyKey = propertyName;
 
       assert.notOk(link[propertyKey]);
 
