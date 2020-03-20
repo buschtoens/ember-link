@@ -1,7 +1,7 @@
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-import { setupLink } from 'ember-link/test-support';
+import { setupLink, TestLink } from 'ember-link/test-support';
 
 import LinkManagerService from 'dummy/services/link-manager';
 
@@ -14,6 +14,10 @@ module('Integration | Test Helpers | setupLink', function(hooks) {
       'service:linkManager'
     ) as LinkManagerService;
 
-    assert.strictEqual(linkManager._useTestLink, true);
+    assert.ok(
+      linkManager.createUILink({
+        route: 'dummy'
+      }) instanceof TestLink
+    );
   });
 });
