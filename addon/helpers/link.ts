@@ -117,10 +117,12 @@ export default class LinkHelper extends Helper {
         ? named.models
         : named.model
         ? [named.model]
-        : (positional.slice(
+        : positional.length > 1
+        ? (positional.slice(
             1,
             positionalQueryParameters ? -1 : undefined
-          ) as RouteModel[]),
+          ) as RouteModel[])
+        : undefined,
       query: named.query ?? positionalQueryParameters
     };
   }
