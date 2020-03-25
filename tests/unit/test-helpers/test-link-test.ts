@@ -3,16 +3,17 @@ import { module, test } from 'qunit';
 
 import { getOwner } from '@ember/application';
 
-import LinkManagerService from 'ember-link/services/link-manager';
-import { TestLink } from 'ember-link/test-support';
+import { TestLink, setupLink } from 'ember-link/test-support';
+import TestInstrumentedLinkManagerService from 'ember-link/test-support/-private/services/test-instrumented-link-manager';
 
 module('Unit | Test Helpers | TestLink', function(hooks) {
   setupTest(hooks);
+  setupLink(hooks);
 
   test('it sets owner to match LinkManager service owner', async function(assert) {
     const linkManager = this.owner.lookup(
       'service:link-manager'
-    ) as LinkManagerService;
+    ) as TestInstrumentedLinkManagerService;
     const link = new TestLink(linkManager, { route: 'foo' });
 
     assert.strictEqual(getOwner(link), getOwner(linkManager));
@@ -21,7 +22,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
   test('it uses passed-in LinkParams for basic properties', async function(assert) {
     const linkManager = this.owner.lookup(
       'service:link-manager'
-    ) as LinkManagerService;
+    ) as TestInstrumentedLinkManagerService;
     const route = 'foo';
     const models = [{}];
     const query = {};
@@ -36,7 +37,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
   test('it generates a url', async function(assert) {
     const linkManager = this.owner.lookup(
       'service:link-manager'
-    ) as LinkManagerService;
+    ) as TestInstrumentedLinkManagerService;
     const link = new TestLink(linkManager, { route: 'foo' });
 
     assert.ok(link.url.match(/ember\d+/g), 'generates a GUID using `guidFor`');
@@ -55,7 +56,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
 
     const linkManager = this.owner.lookup(
       'service:link-manager'
-    ) as LinkManagerService;
+    ) as TestInstrumentedLinkManagerService;
     const link = new TestLink(linkManager, { route: 'foo' });
 
     for (const propertyName of properties) {
@@ -78,7 +79,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
 
     const linkManager = this.owner.lookup(
       'service:link-manager'
-    ) as LinkManagerService;
+    ) as TestInstrumentedLinkManagerService;
     const link = new TestLink(linkManager, { route: 'foo' });
 
     link.onTransitionTo = () => {
@@ -97,7 +98,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
 
     const linkManager = this.owner.lookup(
       'service:link-manager'
-    ) as LinkManagerService;
+    ) as TestInstrumentedLinkManagerService;
     const link = new TestLink(linkManager, { route: 'foo' });
 
     link.onReplaceWith = () => {

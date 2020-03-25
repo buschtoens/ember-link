@@ -1,7 +1,8 @@
 import { assert } from '@ember/debug';
 
-import LinkManagerService from 'ember-link/services/link-manager';
 import { TestContext } from 'ember-test-helpers';
+
+import TestInstrumentedLinkManagerService from './-private/services/test-instrumented-link-manager';
 
 export default function setupLink(hooks: NestedHooks) {
   hooks.beforeEach(function(this: TestContext) {
@@ -12,10 +13,18 @@ export default function setupLink(hooks: NestedHooks) {
       router._router._routerMicrolib == null
     );
 
-    const linkManager = this.owner.lookup(
-      'service:link-manager'
-    ) as LinkManagerService;
+    assert(
+      'ember-link.setupLink: You have already called `setupLink` once',
+      !(
+        this.owner.lookup('service:link-manager') instanceof
+        TestInstrumentedLinkManagerService
+      )
+    );
 
-    linkManager._useTestLink = true;
+    this.owner.unregister('service:link-manager');
+    this.owner.register(
+      'service:link-manager',
+      TestInstrumentedLinkManagerService
+    );
   });
 }

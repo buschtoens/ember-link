@@ -1,10 +1,9 @@
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-import Service from '@ember/service';
-
 import { LinkParams } from 'ember-link';
 import { linkFor } from 'ember-link/test-support';
+import TestInstrumentedLinkManagerService from 'ember-link/test-support/-private/services/test-instrumented-link-manager';
 
 module('Unit | Test Helpers | linkFor', function(hooks) {
   setupTest(hooks);
@@ -18,9 +17,9 @@ module('Unit | Test Helpers | linkFor', function(hooks) {
 
     this.owner.register(
       'service:link-manager',
-      class MockLinkManagerService extends Service {
-        _useTestLink = true;
-
+      class MockTestInstrumentedLinkManagerService extends TestInstrumentedLinkManagerService {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         createUILink(params: LinkParams) {
           assert.strictEqual(params.route, route);
           assert.strictEqual(params.models, models);
@@ -41,9 +40,9 @@ module('Unit | Test Helpers | linkFor', function(hooks) {
 
     this.owner.register(
       'service:link-manager',
-      class MockLinkManagerService extends Service {
-        _useTestLink = true;
-
+      class MockTestInstrumentedLinkManagerService extends TestInstrumentedLinkManagerService {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
         createUILink(params: LinkParams) {
           assert.strictEqual(params.route, route);
           assert.strictEqual(params.models, models);
