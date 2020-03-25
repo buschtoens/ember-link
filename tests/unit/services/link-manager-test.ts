@@ -6,7 +6,6 @@ import Transition from '@ember/routing/-private/transition';
 import Service from '@ember/service';
 
 import LinkManagerService from 'ember-link/services/link-manager';
-import { TestLink } from 'ember-link/test-support';
 
 function makeDummyTransition(): Transition {
   return {
@@ -86,46 +85,5 @@ module('Unit | Service | link-manager', function(hooks) {
       undefined,
       'transition stack is reset on routeDidChange'
     );
-  });
-
-  test('it creates a test link when calling createUILink and useTestLink is set to true', async function(assert) {
-    const linkManager = this.owner.lookup(
-      'service:link-manager'
-    ) as LinkManagerService;
-
-    linkManager._useTestLink = true;
-
-    const link = linkManager.createUILink({ route: 'dummy' });
-
-    assert.ok(link instanceof TestLink);
-  });
-
-  test('it returns a cached test link when one exists', async function(assert) {
-    const linkManager = this.owner.lookup(
-      'service:link-manager'
-    ) as LinkManagerService;
-
-    linkManager._useTestLink = true;
-
-    const firstLink = linkManager.createUILink({
-      route: 'dummy',
-      models: [1, 2, { name: 'horse' }],
-      query: { page: 'yes' }
-    });
-    const secondLink = linkManager.createUILink({
-      route: 'dummy',
-      models: [1, 2, { name: 'horse' }],
-      query: { page: 'yes' }
-    });
-
-    assert.strictEqual(firstLink, secondLink);
-
-    const thirdLink = linkManager.createUILink({
-      route: 'dummy',
-      models: [1, 2, 3],
-      query: { page: 'yes' }
-    });
-
-    assert.notStrictEqual(firstLink, thirdLink);
   });
 });

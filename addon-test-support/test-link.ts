@@ -4,7 +4,8 @@ import { guidFor } from '@ember/object/internals';
 import { tracked } from '@glimmer/tracking';
 
 import { LinkParams } from 'ember-link/link';
-import LinkManagerService from 'ember-link/services/link-manager';
+
+import TestInstrumentedLinkManagerService from './-private/services/test-instrumented-link-manager';
 
 export default class TestLink {
   private _params: LinkParams;
@@ -21,7 +22,10 @@ export default class TestLink {
   onTransitionTo?(): void;
   onReplaceWith?(): void;
 
-  constructor(linkManager: LinkManagerService, params: LinkParams) {
+  constructor(
+    linkManager: TestInstrumentedLinkManagerService,
+    params: LinkParams
+  ) {
     setOwner(this, getOwner(linkManager));
     this._params = params;
   }
@@ -62,6 +66,6 @@ export default class TestLink {
 
   private _preventTransitionOut(event: Event) {
     // Make sure we don't transition out of the testing page
-    event && event.preventDefault();
+    event?.preventDefault();
   }
 }

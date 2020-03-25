@@ -4,19 +4,20 @@ import { assert } from '@ember/debug';
 import Ember from 'ember';
 
 import { RouteModel, QueryParams } from 'ember-link/link';
-import LinkManagerService from 'ember-link/services/link-manager';
 
+import TestInstrumentedLinkManagerService from './-private/services/test-instrumented-link-manager';
 import TestLink from './test-link';
 
 function getLinkManager() {
   const { owner } = getContext() as { owner: Ember.ApplicationInstance };
   const linkManager = owner.lookup(
     'service:link-manager'
-  ) as LinkManagerService;
+  ) as TestInstrumentedLinkManagerService;
 
   assert(
     'ember-link.linkFor: `setupLink` must be called before using `linkFor`',
-    linkManager._useTestLink
+    owner.lookup('service:link-manager') instanceof
+      TestInstrumentedLinkManagerService
   );
 
   return linkManager;
