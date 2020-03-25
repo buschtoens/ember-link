@@ -8,7 +8,7 @@ module('Unit | Service | test-instrumented-link-manager', function(hooks) {
   setupTest(hooks);
   setupLink(hooks);
 
-  test('it creates a test link when calling createUILink is set to true', async function(assert) {
+  test('it creates a test link when calling createUILink', async function(assert) {
     const linkManager = this.owner.lookup(
       'service:link-manager'
     ) as TestInstrumentedLinkManagerService;

@@ -15,10 +15,11 @@ export default function setupLink(hooks: NestedHooks) {
 
     assert(
       'ember-link.setupLink: You have already called `setupLink` once',
-      !(
-        this.owner.lookup('service:link-manager') instanceof
-        TestInstrumentedLinkManagerService
-      )
+      !this.owner.hasRegistration('service:link-manager') ||
+        !(
+          this.owner.lookup('service:link-manager') instanceof
+          TestInstrumentedLinkManagerService
+        )
     );
 
     this.owner.unregister('service:link-manager');
