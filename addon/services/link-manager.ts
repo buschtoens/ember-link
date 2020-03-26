@@ -51,7 +51,7 @@ export default class LinkManagerService extends Service {
   /**
    * Creates a `UILink` instance.
    */
-  createUILink(linkParams: LinkParams, uiParams?: UILinkParams): Link | UILink {
+  createUILink(linkParams: LinkParams, uiParams?: UILinkParams): Link {
     return new UILink(this, { ...linkParams, ...uiParams });
   }
 
