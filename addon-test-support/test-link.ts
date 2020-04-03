@@ -1,15 +1,11 @@
-import { getOwner, setOwner } from '@ember/application';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
+import Transition from '@ember/routing/-private/transition';
 import { tracked } from '@glimmer/tracking';
 
-import { LinkParams } from 'ember-link/link';
+import { Link } from 'ember-link';
 
-import TestInstrumentedLinkManagerService from './-private/services/test-instrumented-link-manager';
-
-export default class TestLink {
-  private _params: LinkParams;
-
+export default class TestLink extends Link {
   // Overwritable properties
   @tracked isActive = false;
   @tracked isActiveWithoutQueryParams = false;
@@ -22,50 +18,58 @@ export default class TestLink {
   onTransitionTo?(): void;
   onReplaceWith?(): void;
 
-  constructor(
-    linkManager: TestInstrumentedLinkManagerService,
-    params: LinkParams
-  ) {
-    setOwner(this, getOwner(linkManager));
-    this._params = params;
-  }
-
-  get routeName() {
-    return this._params.route;
-  }
-
   get qualifiedRouteName() {
     return this.routeName;
   }
 
-  get models() {
-    return this._params.models;
-  }
-
-  get queryParams() {
-    return this._params.query;
-  }
-
   @action
-  transitionTo(event: Event) {
+  transitionTo(event?: Event): Transition {
     this._preventTransitionOut(event);
 
     if (this.onTransitionTo) {
       this.onTransitionTo();
     }
+
+    return this._createDummyTransition();
   }
 
   @action
-  replaceWith(event: Event) {
+  replaceWith(event?: Event): Transition {
     this._preventTransitionOut(event);
 
     if (this.onReplaceWith) {
       this.onReplaceWith();
     }
+
+    return this._createDummyTransition();
   }
 
-  private _preventTransitionOut(event: Event) {
+  private _preventTransitionOut(event?: Event) {
     // Make sure we don't transition out of the testing page
     event?.preventDefault();
+  }
+
+  private _createDummyTransition(): Transition {
+    return {
+      from: null,
+      to: {
+        child: null,
+        localName: 'dummy',
+        name: 'dummy',
+        paramNames: [],
+        params: {},
+        parent: null,
+        queryParams: {},
+        find() {
+          return undefined;
+        }
+      },
+      abort() {
+        return this;
+      },
+      retry() {
+        return this;
+      }
+    };
   }
 }

@@ -12,8 +12,6 @@ export default class TestInstrumentedLinkManagerService extends LinkManagerServi
    * Creates a `UILink` instance, or a `TestLink` instance when `setupLink`
    * has been called.
    */
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
   createUILink(linkParams: LinkParams): TestLink {
     if (!this._linkCache) {
       this._linkCache = new Map();
