@@ -609,7 +609,7 @@ interface UILinkParams {
 }
 ```
 
-#### `getLinkPramsFromURL(url: string): LinkParams`
+#### `getLinkParamsFromURL(url: string): LinkParams`
 
 Returns: [`LinkParams`](#createlinklinkparams-linkparams-link)
 
