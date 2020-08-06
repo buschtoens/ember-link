@@ -10,7 +10,10 @@
     "helper",
     "component"
   ],
-  "repository": "buschtoens/ember-link",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:buschtoens/ember-link.git"
+  },
   "license": "MIT",
   "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
   "directories": {
