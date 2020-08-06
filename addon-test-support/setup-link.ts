@@ -10,7 +10,7 @@ export default function setupLink(hooks: NestedHooks) {
 
     assert(
       'ember-link.setupLink: Test helpers can only be used in integration tests',
-      router._router._routerMicrolib === undefined
+      !router._router._routerMicrolib
     );
 
     assert(
