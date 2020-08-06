@@ -43,6 +43,7 @@ ember install ember-link
 - [`Link` class](#link)
 - [`UILink` class](#uilink)
 - [`LinkManager` service](#linkmanager)
+- [Testing](#testing)
 
 ### `{{link}}` Helper
 
@@ -615,6 +616,56 @@ Returns: [`LinkParams`](#createlinklinkparams-linkparams-link)
 
 Use this method to derive `LinkParams` from a serialized, recognizable URL, that
 you can then pass into `createLink` / `createUILink`.
+
+### Testing
+
+In [acceptance / application tests (`setupApplicationTest(hooks)`)][tests-application]
+your app boots with a fully-fledged router, so `ember-link` just works normally.
+
+In [integration / render tests (`setupRenderingTest(hooks)`)][tests-render] the
+router is not initialized, so `ember-link` can't work operate normally. To still
+support using `{{link}}` & friends in render tests, you can use the
+[`setupLink(hooks)` test helper][setup-link].
+
+[tests-application]: https://guides.emberjs.com/release/testing/testing-application/
+[tests-render]: https://guides.emberjs.com/release/testing/testing-components/
+[setup-link]: https://github.com/buschtoens/ember-link/blob/master/addon-test-support/setup-link.ts
+
+```ts
+import { click, render } from '@ember/test-helpers';
+import { setupRenderingTest } from 'ember-qunit';
+import { module, test } from 'qunit';
+
+import { setupLink, linkFor, TestLink } from 'ember-link/test-support';
+
+import hbs from 'htmlbars-inline-precompile';
+
+module('`setupLink` example', function (hooks) {
+  setupRenderingTest(hooks);
+  setupLink(hooks);
+
+  test('`{{link}}` helper works in render tests', async function (assert) {
+    await render(hbs`
+      <Link @route="some.route" as |l|>
+        <a
+          href={{l.url}}
+          class={{if l.isActive "is-active"}}
+          {{on "click" l.transitionTo}}
+        >
+          Click me
+        </a>
+      </Link>
+    `);
+
+    const link = linkFor('some.route');
+    link.onTransitionTo = assert.step('link clicked');
+
+    await click('a');
+
+    assert.verifySteps(['link clicked']);
+  });
+});
+```
 
 ## Related RFCs / Projects
 
