@@ -623,7 +623,7 @@ In [acceptance / application tests (`setupApplicationTest(hooks)`)][tests-applic
 your app boots with a fully-fledged router, so `ember-link` just works normally.
 
 In [integration / render tests (`setupRenderingTest(hooks)`)][tests-render] the
-router is not initialized, so `ember-link` can't work operate normally. To still
+router is not initialized, so `ember-link` can't operate normally. To still
 support using `{{link}}` & friends in render tests, you can use the
 [`setupLink(hooks)` test helper][setup-link].
 
