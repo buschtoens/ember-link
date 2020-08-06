@@ -6,11 +6,11 @@ import { getOwner } from '@ember/application';
 import { TestLink, setupLink } from 'ember-link/test-support';
 import TestInstrumentedLinkManagerService from 'ember-link/test-support/-private/services/test-instrumented-link-manager';
 
-module('Unit | Test Helpers | TestLink', function(hooks) {
+module('Unit | Test Helpers | TestLink', function (hooks) {
   setupTest(hooks);
   setupLink(hooks);
 
-  test('it sets owner to match LinkManager service owner', async function(assert) {
+  test('it sets owner to match LinkManager service owner', async function (assert) {
     const linkManager = this.owner.lookup(
       'service:link-manager'
     ) as TestInstrumentedLinkManagerService;
@@ -19,7 +19,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
     assert.strictEqual(getOwner(link), getOwner(linkManager));
   });
 
-  test('it uses passed-in LinkParams for basic properties', async function(assert) {
+  test('it uses passed-in LinkParams for basic properties', async function (assert) {
     const linkManager = this.owner.lookup(
       'service:link-manager'
     ) as TestInstrumentedLinkManagerService;
@@ -34,7 +34,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
     assert.strictEqual(link.queryParams, query);
   });
 
-  test('it generates a url', async function(assert) {
+  test('it generates a url', async function (assert) {
     const linkManager = this.owner.lookup(
       'service:link-manager'
     ) as TestInstrumentedLinkManagerService;
@@ -43,7 +43,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
     assert.ok(link.url.match(/ember\d+/g), 'generates a GUID using `guidFor`');
   });
 
-  test('it can overwrite properties', async function(assert) {
+  test('it can overwrite properties', async function (assert) {
     const properties = [
       'isActive',
       'isActiveWithoutQueryParams',
@@ -74,7 +74,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
     assert.strictEqual(link.url, 'my-url');
   });
 
-  test('it fires onTransitionTo when transitionTo is called', async function(assert) {
+  test('it fires onTransitionTo when transitionTo is called', async function (assert) {
     assert.expect(2);
 
     const linkManager = this.owner.lookup(
@@ -93,7 +93,7 @@ module('Unit | Test Helpers | TestLink', function(hooks) {
     } as Event);
   });
 
-  test('it fires onReplaceWith when replaceWith is called', async function(assert) {
+  test('it fires onReplaceWith when replaceWith is called', async function (assert) {
     assert.expect(2);
 
     const linkManager = this.owner.lookup(

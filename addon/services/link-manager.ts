@@ -78,16 +78,17 @@ export default class LinkManagerService extends Service {
     };
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   constructor(properties?: object) {
     super(properties);
 
     // Ignore `Argument of type '"routeWillChange"' is not assignable to parameter of type ...`
 
-    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     addListener(this.router, 'routeWillChange', this.handleRouteWillChange);
 
-    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     addListener(this.router, 'routeDidChange', this.handleRouteDidChange);
   }
@@ -95,11 +96,11 @@ export default class LinkManagerService extends Service {
   willDestroy() {
     super.willDestroy();
 
-    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     removeListener(this.router, 'routeWillChange', this.handleRouteWillChange);
 
-    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     removeListener(this.router, 'routeDidChange', this.handleRouteDidChange);
   }

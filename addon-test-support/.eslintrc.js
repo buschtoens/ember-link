@@ -3,6 +3,7 @@ module.exports = {
   extends: '@clark/ember-typescript',
 
   rules: {
-    'unicorn/prevent-abbreviations': 'off'
+    'unicorn/prevent-abbreviations': 'off',
+    '@typescript-eslint/no-invalid-this': 'off'
   }
 };

@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
 
 import { getOwner, setOwner } from '@ember/application';
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { assert, deprecate } from '@ember/debug';
 import { action } from '@ember/object';
@@ -19,12 +19,11 @@ export function isQueryParams(
   maybeQueryParam: any
 ): maybeQueryParam is { values: QueryParams } {
   return (
-    maybeQueryParam &&
-    maybeQueryParam.isQueryParams &&
-    typeof maybeQueryParam.values === 'object'
+    maybeQueryParam?.isQueryParams && typeof maybeQueryParam.values === 'object'
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 export type RouteModel = object | string | number;
 
 export type RouteArgs = Parameters<RouterService['urlFor']>;
@@ -57,8 +56,10 @@ function freezeParams(params: LinkParams) {
 
 export default class Link {
   @tracked
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   protected _params: LinkParams;
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   protected _linkManager: LinkManagerService;
 
   constructor(linkManager: LinkManagerService, params: LinkParams) {
@@ -102,7 +103,7 @@ export default class Link {
       this.routeName,
       // Unfortunately TypeScript is not clever enough to support "rest"
       // parameters in the middle.
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       ...this.models
     );
@@ -184,7 +185,7 @@ export default class Link {
    */
   get qualifiedRouteName(): string {
     // Ignore `Property 'recognize' does not exist on type 'RouterService'.`
-    /* eslint-disable-next-line @typescript-eslint/ban-ts-ignore */
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const routeInfo = this._linkManager.router.recognize(this.url);
 
@@ -255,6 +256,7 @@ export interface UILinkParams {
 
 export class UILink extends Link {
   @tracked
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   protected _params!: LinkParams & UILinkParams;
 
   private preventDefault(event?: Event | unknown) {

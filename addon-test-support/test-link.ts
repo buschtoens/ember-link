@@ -61,6 +61,7 @@ export default class TestLink extends Link {
         parent: null,
         queryParams: {},
         find() {
+          // eslint-disable-next-line unicorn/no-useless-undefined
           return undefined;
         }
       },

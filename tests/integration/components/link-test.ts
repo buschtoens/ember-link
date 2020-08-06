@@ -6,11 +6,11 @@ import { hbs } from 'ember-cli-htmlbars';
 
 import waitForError from 'dummy/tests/helpers/wait-for-error';
 
-module('Integration | Component | link', function(hooks) {
+module('Integration | Component | link', function (hooks) {
   setupRenderingTest(hooks);
 
   // Regression for: https://github.com/buschtoens/ember-link/issues/126
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     await render(hbs`
       <Link @route="foo" as |l|>
         <a
@@ -28,7 +28,7 @@ module('Integration | Component | link', function(hooks) {
     assert.dom('[data-test-link]').hasNoClass('is-active');
   });
 
-  test('triggering a transition has no effect', async function(assert) {
+  test('triggering a transition has no effect', async function (assert) {
     await render(hbs`
       <Link @route="foo" as |l|>
         <a
