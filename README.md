@@ -644,7 +644,7 @@ module('`setupLink` example', function (hooks) {
   setupRenderingTest(hooks);
   setupLink(hooks);
 
-  test('`{{link}}` helper works in render tests', async function (assert) {
+  test('`<Link>` component works in render tests', async function (assert) {
     await render(hbs`
       <Link @route="some.route" as |l|>
         <a
