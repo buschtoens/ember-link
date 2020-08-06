@@ -19,6 +19,7 @@ function makeDummyTransition(): Transition {
       parent: null,
       queryParams: {},
       find() {
+        // eslint-disable-next-line unicorn/no-useless-undefined
         return undefined;
       }
     },
@@ -31,10 +32,10 @@ function makeDummyTransition(): Transition {
   };
 }
 
-module('Unit | Service | link-manager', function(hooks) {
+module('Unit | Service | link-manager', function (hooks) {
   setupTest(hooks);
 
-  test('it manages currentTransitionStack correctly', function(assert) {
+  test('it manages currentTransitionStack correctly', function (assert) {
     this.owner.register(
       'service:router',
       class MockRouterService extends Service {}

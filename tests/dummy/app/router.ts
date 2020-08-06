@@ -7,4 +7,4 @@ export default class DummyRouter extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-DummyRouter.map(function() {});
+DummyRouter.map(function () {});

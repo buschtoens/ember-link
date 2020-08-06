@@ -5,12 +5,12 @@ import { TestContext } from 'ember-test-helpers';
 import TestInstrumentedLinkManagerService from './-private/services/test-instrumented-link-manager';
 
 export default function setupLink(hooks: NestedHooks) {
-  hooks.beforeEach(function(this: TestContext) {
+  hooks.beforeEach(function (this: TestContext) {
     const router = this.owner.lookup('service:router');
 
     assert(
       'ember-link.setupLink: Test helpers can only be used in integration tests',
-      router._router._routerMicrolib == null
+      router._router._routerMicrolib === undefined
     );
 
     assert(

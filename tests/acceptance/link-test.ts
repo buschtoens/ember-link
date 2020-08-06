@@ -16,20 +16,21 @@ import pDefer from 'p-defer';
 import DummyRouter from 'dummy/router';
 import { settledExceptTimers } from 'dummy/tests/helpers/settled-except-timers';
 
-export interface Constructor<T = unknown> {
+interface Constructor<T = unknown> {
   new (...args: unknown[]): T;
 }
 
 interface TestContext extends OriginalTestContext {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   Router: Constructor<Router> & {
     map(callback: (this: RouterDSL) => void): void;
   };
 }
 
-module('Acceptance | link', function(hooks) {
+module('Acceptance | link', function (hooks) {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach(function(this: TestContext) {
+  hooks.beforeEach(function (this: TestContext) {
     this.Router = class TestRouter extends DummyRouter {};
     this.owner.register('router:main', this.Router);
 
@@ -43,8 +44,8 @@ module('Acceptance | link', function(hooks) {
     );
   });
 
-  test('basic test', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('basic test', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('foo');
     });
 
@@ -75,8 +76,8 @@ module('Acceptance | link', function(hooks) {
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
-  test('with model', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('with model', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('with-model', { path: 'with-model/:id' });
     });
 
@@ -107,8 +108,8 @@ module('Acceptance | link', function(hooks) {
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
-  test('@model shorthand', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('@model shorthand', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('with-model', { path: 'with-model/:id' });
     });
 
@@ -139,9 +140,9 @@ module('Acceptance | link', function(hooks) {
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
-  test('with nested model', async function(this: TestContext, assert) {
-    this.Router.map(function() {
-      this.route('with-model', { path: 'with-model/:outer_id' }, function() {
+  test('with nested model', async function (this: TestContext, assert) {
+    this.Router.map(function () {
+      this.route('with-model', { path: 'with-model/:outer_id' }, function () {
         this.route('nested-model', { path: 'nested-model/:inner_id' });
       });
     });
@@ -175,8 +176,8 @@ module('Acceptance | link', function(hooks) {
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
-  test('model transition', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('model transition', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('with-model', { path: 'with-model/:id' });
     });
 
@@ -236,8 +237,8 @@ module('Acceptance | link', function(hooks) {
     assert.dom('[data-test-456]').hasClass('is-active-wm');
   });
 
-  test('query params transition', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('query params transition', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('foo');
     });
 
@@ -304,8 +305,8 @@ module('Acceptance | link', function(hooks) {
     assert.dom('[data-test-456]').hasClass('is-active-wqp');
   });
 
-  test('it updates isEntering correctly', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('it updates isEntering correctly', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('foo');
     });
 
@@ -362,8 +363,8 @@ module('Acceptance | link', function(hooks) {
       );
   });
 
-  test('it updates isExiting correctly', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('it updates isExiting correctly', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('foo');
       this.route('bar');
     });
@@ -421,8 +422,8 @@ module('Acceptance | link', function(hooks) {
       );
   });
 
-  test('fromURL', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('fromURL', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('foo', { path: 'foo/:id' });
     });
 
@@ -437,8 +438,8 @@ module('Acceptance | link', function(hooks) {
     assert.dom().hasText('/foo/123?bar=qux');
   });
 
-  test('positional parameters', async function(this: TestContext, assert) {
-    this.Router.map(function() {
+  test('positional parameters', async function (this: TestContext, assert) {
+    this.Router.map(function () {
       this.route('foo', { path: 'foo/:id' });
     });
 
