@@ -22,11 +22,11 @@
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint --ext js,ts .",
     "lint:types": "tsc --noEmit",
+    "prepack": "ember ts:precompile",
+    "postpack": "ember ts:clean",
     "start": "ember serve",
     "test": "ember test",
-    "test:all": "ember try:each",
-    "prepack": "ember ts:precompile",
-    "postpack": "ember ts:clean"
+    "test:all": "ember try:each"
   },
   "dependencies": {
     "@glimmer/tracking": "~1.0.1",
@@ -73,12 +73,32 @@
     "loader.js": "^4.7.0",
     "p-defer": "^3.0.0",
     "qunit-dom": "^1.4.0",
+    "release-it": "^13.6.5",
+    "release-it-lerna-changelog": "^2.3.0",
     "typescript": "^3.9.7"
   },
   "engines": {
     "node": ">= 10.*"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": false
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    }
   }
 }
