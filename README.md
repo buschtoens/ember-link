@@ -178,7 +178,7 @@ button component concept.
   {{on "click" @link.transitionTo}}
   ...attributes
 >
-  Become a Premium member
+  {{yield}}
 </a>
 ```
 
