@@ -1290,20 +1290,20 @@
     eslint-plugin-qunit "^4.3.0"
     lodash.merge "^4.6.2"
 
-"@clark/eslint-config-node-order-imports@^1.27.0":
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node-order-imports/-/eslint-config-node-order-imports-1.27.0.tgz#64190ef9fa076b7138605982bc71048fbb554767"
-  integrity sha512-fZV5znJEEXeiHIry3zacKqsxPSe+BcO5GHgCmXnB1KFdA96Ln+dBIArxBIClnQurAOa5j0CN6AXpRkRAKiHhtw==
+"@clark/eslint-config-node-order-imports@^1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node-order-imports/-/eslint-config-node-order-imports-1.28.0.tgz#dbc09119956b97829800a69e7139e27e27448161"
+  integrity sha512-/6jx3F5PdKMcJmVafjgMuY4SU0NAjGYTNcvb8u0T7ho9uIM2uSzl2C3gSsZ8JhUI9B4256hza0EXLL04w/9bvA==
   dependencies:
     eslint-plugin-import-helpers "^1.1.0"
 
-"@clark/eslint-config-node@^1.27.0":
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.27.0.tgz#5c8e821f75abfa1dc4a02cf478a20f3a349511bf"
-  integrity sha512-4xQIJPlYK/zSyvtTH5pUjMu1U6zxQsdWHYzWrERATpOHK8TT6koiDH5nqnFhpN6XMXulcWTYLGrd4dBrl1tRBQ==
+"@clark/eslint-config-node@^1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config-node/-/eslint-config-node-1.28.0.tgz#57328a3661f1e864638c2e60759a2fca1a045072"
+  integrity sha512-eDsHN4dr6ikQA5t5W65cJ8GlKTXnNs0LSuR2SV20I16PfZszuEEPIqUP9TyFRFPfEEAStJagpRH1ufVB0QiF/w==
   dependencies:
-    "@clark/eslint-config" "^1.27.0"
-    "@clark/eslint-config-node-order-imports" "^1.27.0"
+    "@clark/eslint-config" "^1.28.0"
+    "@clark/eslint-config-node-order-imports" "^1.28.0"
     eslint-plugin-node "^11.1.0"
     lodash.merge "^4.6.2"
 
@@ -1316,12 +1316,12 @@
     "@typescript-eslint/eslint-plugin" "^3.9.0"
     "@typescript-eslint/parser" "^3.9.0"
 
-"@clark/eslint-config@^1.27.0":
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.27.0.tgz#e36912c987dab17bf69a228e17e9f35ea8a11bf1"
-  integrity sha512-Ej9H8afwX0FX1PLPaR2eFertJn2q1IgY0Zl5UsfcBg1pGekJO2xRMvqrrYV00Bv7cQVGrzQ56Q2BW4X6T5owYg==
+"@clark/eslint-config@^1.27.0", "@clark/eslint-config@^1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@clark/eslint-config/-/eslint-config-1.28.0.tgz#015d4f3d73b297e87799117905537341af8df9d2"
+  integrity sha512-15LnVLVOQQF4A5oAI61GYT60ykn6ToL4z+cnLmL/lkFvp2Bz2ytkh2ve8WYufdHJBoAGOmpF+POQ7800yc9Yog==
   dependencies:
-    "@clark/prettier-config" "^1.27.0"
+    "@clark/prettier-config" "^1.28.0"
     eslint-config-airbnb-base "^14.2.0"
     eslint-config-prettier "^6.11.0"
     eslint-config-xo-space "^0.25.0"
@@ -1347,10 +1347,10 @@
     find-up "^5.0.0"
     type-fest "^0.16.0"
 
-"@clark/prettier-config@^1.27.0":
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/@clark/prettier-config/-/prettier-config-1.27.0.tgz#84df3a6720377b5e75419a53d6c96d9316c26b63"
-  integrity sha512-FOLLA9ibJIaLYxknLi+BCswJsyXw7N7NBSNwUWxs1BWdV5b3EOq4YV8htHbXyBpKXUUnW9g4D9ykJNxcZzJ+fQ==
+"@clark/prettier-config@^1.28.0":
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/@clark/prettier-config/-/prettier-config-1.28.0.tgz#81b22641ecbc17bb3f8e47550196b895816e7b2c"
+  integrity sha512-SbL4r8HAskbw1z5jjW/GFf75rnLnKGd/9IOeGYq0cnbnbYdl88jp5Anvlp7aUMlJN5aqtkztcxpJeQ6a8DB7Lw==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
