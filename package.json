@@ -43,7 +43,7 @@
     "@clark/ember-template-lint-config": "^0.2.1",
     "@clark/eslint-config-ember": "^1.27.0",
     "@clark/eslint-config-ember-typescript": "^1.27.0",
-    "@clark/eslint-config-node": "^1.26.5",
+    "@clark/eslint-config-node": "^1.27.0",
     "@ember/optional-features": "^1.3.0",
     "@glimmer/component": "~1.0.1",
     "@types/ember": "^3.16.0",
