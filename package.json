@@ -76,7 +76,7 @@
     "loader.js": "^4.7.0",
     "p-defer": "^3.0.0",
     "qunit-dom": "^1.4.0",
-    "release-it": "^13.6.7",
+    "release-it": "^13.6.8",
     "release-it-lerna-changelog": "^2.3.0",
     "typescript": "^3.9.7"
   },
