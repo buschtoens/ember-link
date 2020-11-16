@@ -77,11 +77,10 @@ export default class LinkHelper extends Helper {
       Boolean(positional[0] || named.route)
     );
 
-    const positionalQueryParameters = isQueryParams(
-      positional[positional.length - 1]
-    )
-      ? (positional[positional.length - 1] as QueryParams)
-      : undefined;
+    const positionalQueryParameters =
+      positional.length > 0 && isQueryParams(positional[positional.length - 1])
+        ? (positional[positional.length - 1] as QueryParams)
+        : undefined;
 
     assert(
       `Query parameters either need to be specified as the last positional parameter or as the named 'query' parameter.`,
