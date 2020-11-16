@@ -13,6 +13,8 @@ import { tracked } from '@glimmer/tracking';
 
 import LinkManagerService from './services/link-manager';
 
+const MAIN_BUTTON = 0;
+
 export type QueryParams = Record<string, unknown>;
 
 export function isQueryParams(
@@ -52,6 +54,14 @@ function freezeParams(params: LinkParams) {
     return Object.freeze(params);
   }
   return params;
+}
+
+function isUnmodifiedLeftClick(event: MouseEvent): boolean {
+  return event.button === MAIN_BUTTON && !event.ctrlKey && !event.metaKey;
+}
+
+function isMouseEvent(event: unknown): event is MouseEvent {
+  return typeof event === 'object' && event !== null && 'button' in event;
 }
 
 export default class Link {
@@ -262,7 +272,8 @@ export class UILink extends Link {
   private preventDefault(event?: Event | unknown) {
     if (
       (this._params.preventDefault ?? true) &&
-      typeof (event as Event)?.preventDefault === 'function'
+      typeof (event as Event)?.preventDefault === 'function' &&
+      (!isMouseEvent(event) || isUnmodifiedLeftClick(event))
     ) {
       (event as Event).preventDefault();
     }
