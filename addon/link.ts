@@ -228,7 +228,7 @@ export default class Link {
    * Transition into the target route.
    */
   @action
-  transitionTo(): Transition {
+  transitionTo(): Transition | undefined {
     assert(
       'You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.',
       this._linkManager.isRouterInitialized
@@ -242,7 +242,7 @@ export default class Link {
    * possible.
    */
   @action
-  replaceWith(): Transition {
+  replaceWith(): Transition | undefined {
     assert(
       'You can only call `replaceWith`, when the router is initialized, e.g. when using `setupApplicationTest`.',
       this._linkManager.isRouterInitialized
@@ -272,8 +272,7 @@ export class UILink extends Link {
   private preventDefault(event?: Event | unknown) {
     if (
       (this._params.preventDefault ?? true) &&
-      typeof (event as Event)?.preventDefault === 'function' &&
-      (!isMouseEvent(event) || isUnmodifiedLeftClick(event))
+      typeof (event as Event)?.preventDefault === 'function'
     ) {
       (event as Event).preventDefault();
     }
@@ -285,7 +284,9 @@ export class UILink extends Link {
    * Optionally call `preventDefault()`, if an `Event` is passed in.
    */
   @action
-  transitionTo(event?: Event | unknown): Transition {
+  transitionTo(event?: Event | unknown): Transition | undefined {
+    if (isMouseEvent(event) && !isUnmodifiedLeftClick(event)) return;
+
     // Intentionally putting this *before* the assertion to prevent navigating
     // away in case of a failed assertion.
     this.preventDefault(event);
@@ -300,7 +301,9 @@ export class UILink extends Link {
    * Optionally call `preventDefault()`, if an `Event` is passed in.
    */
   @action
-  replaceWith(event?: Event | unknown): Transition {
+  replaceWith(event?: Event | unknown): Transition | undefined {
+    if (isMouseEvent(event) && !isUnmodifiedLeftClick(event)) return;
+
     // Intentionally putting this *before* the assertion to prevent navigating
     // away in case of a failed assertion.
     this.preventDefault(event);
