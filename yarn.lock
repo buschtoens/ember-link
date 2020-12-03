@@ -2704,10 +2704,10 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/qunit@*", "@types/qunit@^2.9.5":
-  version "2.9.5"
-  resolved "https://registry.yarnpkg.com/@types/qunit/-/qunit-2.9.5.tgz#2f938870dac68e9464463ee36cdfb29538f4a2da"
-  integrity sha512-CdIcVLscYdlw1eLdHMF1Mw5uf/RbZ13JfM2nA0LNoJvonE91XFNu7njh1GcC1IFDKV1VTnyStQ1H8yCwk63hbw==
+"@types/qunit@*", "@types/qunit@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@types/qunit/-/qunit-2.11.0.tgz#e0fb93240fa0ad3fb2842848496061eaac5738f3"
+  integrity sha512-ljSVL9D+/EHcduZe3KTNm+Fmoy/DcB+BtBFe0FGt2KrWWIyTQZIV8NTLdYdMjheY9L/+mWKM6Rph2m8pSdhHBA==
 
 "@types/range-parser@*":
   version "1.2.3"
