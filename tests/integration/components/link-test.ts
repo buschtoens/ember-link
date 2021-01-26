@@ -55,8 +55,6 @@ module('Integration | Component | link', function (hooks) {
   });
 
   module('with `setupLink(hooks)`', function (hooks) {
-    setupLink(hooks);
-
     hooks.beforeEach(function () {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       const Router = class TestRouter extends DummyRouter {};
@@ -65,6 +63,8 @@ module('Integration | Component | link', function (hooks) {
       });
       this.owner.register('router:main', Router);
     });
+
+    setupLink(hooks);
 
     // Regression for: https://github.com/buschtoens/ember-link/issues/126
     test('it renders', async function (assert) {
@@ -82,7 +82,6 @@ module('Integration | Component | link', function (hooks) {
         </Link>
       `);
 
-      debugger;
       assert.dom('[data-test-link]').hasAttribute('href', '/foo');
       assert.dom('[data-test-link]').hasNoClass('is-active');
     });
