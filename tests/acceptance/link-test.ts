@@ -1,39 +1,20 @@
-/* eslint-disable array-callback-return */
-
 import { visit, currentURL, click } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-import RouterDSL from '@ember/routing/-private/router-dsl';
 import Route from '@ember/routing/route';
-import Router from '@ember/routing/router';
 
 import { hbs } from 'ember-cli-htmlbars';
-import { TestContext as OriginalTestContext } from 'ember-test-helpers';
+import { TestContext } from 'ember-test-helpers';
 
 import pDefer from 'p-defer';
 
-import DummyRouter from 'dummy/router';
 import { settledExceptTimers } from 'dummy/tests/helpers/settled-except-timers';
-
-interface Constructor<T = unknown> {
-  new (...args: unknown[]): T;
-}
-
-interface TestContext extends OriginalTestContext {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  Router: Constructor<Router> & {
-    map(callback: (this: RouterDSL) => void): void;
-  };
-}
 
 module('Acceptance | link', function (hooks) {
   setupApplicationTest(hooks);
 
   hooks.beforeEach(function (this: TestContext) {
-    this.Router = class TestRouter extends DummyRouter {};
-    this.owner.register('router:main', this.Router);
-
     this.owner.register(
       'route:basic',
       class BasicRoute extends Route {
@@ -45,10 +26,6 @@ module('Acceptance | link', function (hooks) {
   });
 
   test('basic test', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('foo');
-    });
-
     this.owner.register(
       'template:application',
       hbs`
@@ -77,10 +54,6 @@ module('Acceptance | link', function (hooks) {
   });
 
   test('with model', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('with-model', { path: 'with-model/:id' });
-    });
-
     this.owner.register(
       'template:application',
       hbs`
@@ -109,10 +82,6 @@ module('Acceptance | link', function (hooks) {
   });
 
   test('@model shorthand', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('with-model', { path: 'with-model/:id' });
-    });
-
     this.owner.register(
       'template:application',
       hbs`
@@ -141,16 +110,10 @@ module('Acceptance | link', function (hooks) {
   });
 
   test('with nested model', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('with-model', { path: 'with-model/:outer_id' }, function () {
-        this.route('nested-model', { path: 'nested-model/:inner_id' });
-      });
-    });
-
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="with-model.nested-model" @models={{array 123 456}} as |l|>
+        <Link @route="parent.child" @models={{array 123 456}} as |l|>
           <a
             data-test-link
             href={{l.href}}
@@ -168,19 +131,15 @@ module('Acceptance | link', function (hooks) {
 
     assert
       .dom('[data-test-link]')
-      .hasAttribute('href', '/with-model/123/nested-model/456');
+      .hasAttribute('href', '/parent/123/child/456');
     assert.dom('[data-test-link]').hasNoClass('is-active');
 
     await click('[data-test-link]');
-    assert.equal(currentURL(), '/with-model/123/nested-model/456');
+    assert.equal(currentURL(), '/parent/123/child/456');
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
   test('model transition', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('with-model', { path: 'with-model/:id' });
-    });
-
     this.owner.register(
       'template:application',
       hbs`
@@ -238,10 +197,6 @@ module('Acceptance | link', function (hooks) {
   });
 
   test('query params transition', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('foo');
-    });
-
     this.owner.register(
       'route:foo',
       class FooRoute extends Route {
@@ -306,10 +261,6 @@ module('Acceptance | link', function (hooks) {
   });
 
   test('it updates isEntering correctly', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('foo');
-    });
-
     const deferred = pDefer();
 
     this.owner.register(
@@ -364,11 +315,6 @@ module('Acceptance | link', function (hooks) {
   });
 
   test('it updates isExiting correctly', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('foo');
-      this.route('bar');
-    });
-
     const deferred = pDefer();
 
     this.owner.register(
@@ -423,34 +369,26 @@ module('Acceptance | link', function (hooks) {
   });
 
   test('fromURL', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('foo', { path: 'foo/:id' });
-    });
-
     this.owner.register(
       'template:application',
-      hbs`{{get (link fromURL="/foo/123?bar=qux") "url"}}`
+      hbs`{{get (link fromURL="/with-model/123?bar=qux") "url"}}`
     );
 
     await visit('/');
     assert.equal(currentURL(), '/');
 
-    assert.dom().hasText('/foo/123?bar=qux');
+    assert.dom().hasText('/with-model/123?bar=qux');
   });
 
   test('positional parameters', async function (this: TestContext, assert) {
-    this.Router.map(function () {
-      this.route('foo', { path: 'foo/:id' });
-    });
-
     this.owner.register(
       'template:application',
-      hbs`{{get (link "foo" 123) "url"}}`
+      hbs`{{get (link "with-model" 123) "url"}}`
     );
 
     await visit('/');
     assert.equal(currentURL(), '/');
 
-    assert.dom().hasText('/foo/123');
+    assert.dom().hasText('/with-model/123');
   });
 });

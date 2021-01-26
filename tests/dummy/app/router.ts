@@ -7,4 +7,13 @@ export default class DummyRouter extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-DummyRouter.map(function () {});
+DummyRouter.map(function () {
+  this.route('foo');
+  this.route('bar');
+
+  this.route('with-model', { path: 'with-model/:id' });
+
+  this.route('parent', { path: 'parent/:parent_id' }, function () {
+    this.route('child', { path: 'child/:child_id' });
+  });
+});
