@@ -12,7 +12,7 @@ export default class TestLink extends Link {
   @tracked isActiveWithoutModels = false;
   @tracked isEntering = false;
   @tracked isExiting = false;
-  @tracked url = guidFor(this);
+  @tracked url = this._linkManager.router.urlFor(...this._routeArgs);
 
   // Event handlers
   onTransitionTo?(): void;

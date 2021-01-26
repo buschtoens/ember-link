@@ -24,10 +24,7 @@ export default class LinkManagerService extends Service {
   readonly router!: RouterServiceWithRecognize;
 
   /**
-   * Whether the router has been initialized.
-   * This will be `false` in render tests.
-   *
-   * @see https://github.com/buschtoens/ember-link/issues/126
+   * Whether the router has been initialized already.
    */
   get isRouterInitialized() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

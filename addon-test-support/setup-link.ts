@@ -8,10 +8,10 @@ export default function setupLink(hooks: NestedHooks) {
   hooks.beforeEach(function (this: TestContext) {
     const router = this.owner.lookup('service:router');
 
-    assert(
-      'ember-link.setupLink: Test helpers can only be used in integration tests',
-      !router._router._routerMicrolib
-    );
+    if (!router._router._routerMicrolib) {
+      router._router = this.owner.lookup('router:main');
+      router._router.setupRouter();
+    }
 
     assert(
       'ember-link.setupLink: You have already called `setupLink` once',
