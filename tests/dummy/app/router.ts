@@ -15,5 +15,6 @@ DummyRouter.map(function () {
 
   this.route('parent', { path: 'parent/:parent_id' }, function () {
     this.route('child', { path: 'child/:child_id' });
+    this.route('second-child');
   });
 });

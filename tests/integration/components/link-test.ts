@@ -49,4 +49,46 @@ module('Integration | Component | link', function (hooks) {
       'Assertion Failed: You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.'
     );
   });
+
+  module('with incomplete models', function () {
+    test('it renders', async function (assert) {
+      await render(hbs`
+        <Link @route="parent.second-child" as |l|>
+          <a
+            data-test-link
+            href={{l.href}}
+            class={{if l.isActive "is-active"}}
+            {{on "click" l.transitionTo}}
+          >
+            Link
+          </a>
+        </Link>
+      `);
+
+      assert.dom('[data-test-link]').hasAttribute('href', '');
+      assert.dom('[data-test-link]').hasNoClass('is-active');
+    });
+
+    test('triggering a transition has no effect', async function (assert) {
+      await render(hbs`
+        <Link @route="parent.second-child" as |l|>
+          <a
+            data-test-link
+            href={{l.href}}
+            class={{if l.isActive "is-active"}}
+            {{on "click" l.transitionTo}}
+          >
+            Link
+          </a>
+        </Link>
+      `);
+
+      const error = await waitForError(() => click('[data-test-link]'));
+      assert.ok(error instanceof Error);
+      assert.strictEqual(
+        error.message,
+        'Assertion Failed: You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.'
+      );
+    });
+  });
 });
