@@ -2470,10 +2470,10 @@
     "@types/jquery" "*"
     "@types/rsvp" "*"
 
-"@types/ember@*", "@types/ember@^3.16.1":
-  version "3.16.1"
-  resolved "https://registry.yarnpkg.com/@types/ember/-/ember-3.16.1.tgz#8423ad68a74e8c8f9c694631ea25a72d2678b95c"
-  integrity sha512-lp+dbTu43c8E5E5lOMSmFxZ47yAvQpjY7JtUVg+CcAjnTBFv65qeTJ2lRrppQLyYnyV/igZ6jeDaC04l/S3kiw==
+"@types/ember@*", "@types/ember@^3.16.3":
+  version "3.16.3"
+  resolved "https://registry.yarnpkg.com/@types/ember/-/ember-3.16.3.tgz#e2e9c24e56d8161ffcdbfa16d6a1e7e032bb557b"
+  integrity sha512-KkRs2F2dv6CuNfj9GFpJULL+8g+foJNEkOwSIqf5+RxaHjsg9NSVg9phTK4RItbndMyECCtOGOwWQAJ4cQgiiA==
   dependencies:
     "@types/ember__application" "*"
     "@types/ember__array" "*"
