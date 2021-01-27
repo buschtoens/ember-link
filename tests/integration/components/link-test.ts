@@ -1,4 +1,4 @@
-import { render, click } from '@ember/test-helpers';
+import { render, click, currentURL } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
@@ -41,6 +41,7 @@ module('Integration | Component | link', function (hooks) {
         </a>
       </Link>
     `);
+    assert.strictEqual(currentURL(), null);
 
     const error = await waitForError(() => click('[data-test-link]'));
     assert.ok(error instanceof Error);
@@ -48,6 +49,7 @@ module('Integration | Component | link', function (hooks) {
       error.message,
       'Assertion Failed: You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.'
     );
+    assert.strictEqual(currentURL(), null);
   });
 
   module('with incomplete models', function () {
@@ -82,6 +84,7 @@ module('Integration | Component | link', function (hooks) {
           </a>
         </Link>
       `);
+      assert.strictEqual(currentURL(), null);
 
       const error = await waitForError(() => click('[data-test-link]'));
       assert.ok(error instanceof Error);
@@ -89,6 +92,7 @@ module('Integration | Component | link', function (hooks) {
         error.message,
         'Assertion Failed: You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.'
       );
+      assert.strictEqual(currentURL(), null);
     });
   });
 });
