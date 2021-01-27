@@ -51,7 +51,7 @@
     "@types/ember-test-helpers": "^1.0.9",
     "@types/ember-testing-helpers": "^0.0.4",
     "@types/ember__test-helpers": "^1.7.3",
-    "@types/qunit": "^2.9.5",
+    "@types/qunit": "^2.11.1",
     "@types/rsvp": "^4.0.3",
     "broccoli-asset-rev": "^3.0.0",
     "ember-array-helper": "^5.1.0",
