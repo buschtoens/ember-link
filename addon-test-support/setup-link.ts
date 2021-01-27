@@ -6,13 +6,6 @@ import TestInstrumentedLinkManagerService from './-private/services/test-instrum
 
 export default function setupLink(hooks: NestedHooks) {
   hooks.beforeEach(function (this: TestContext) {
-    const router = this.owner.lookup('service:router');
-
-    assert(
-      'ember-link.setupLink: Test helpers can only be used in integration tests',
-      !router._router._routerMicrolib
-    );
-
     assert(
       'ember-link.setupLink: You have already called `setupLink` once',
       !this.owner.hasRegistration('service:link-manager') ||
