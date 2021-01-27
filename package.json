@@ -46,7 +46,7 @@
     "@clark/eslint-config-node": "^1.28.2",
     "@ember/optional-features": "^2.0.0",
     "@glimmer/component": "~1.0.2",
-    "@types/ember": "^3.16.1",
+    "@types/ember": "^3.16.3",
     "@types/ember-qunit": "^3.4.12",
     "@types/ember-test-helpers": "^1.0.9",
     "@types/ember-testing-helpers": "^0.0.4",
