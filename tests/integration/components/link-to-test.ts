@@ -1,4 +1,4 @@
-import { render, click } from '@ember/test-helpers';
+import { render, click, currentURL } from '@ember/test-helpers';
 import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
@@ -27,11 +27,13 @@ module('Component | LinkTo', function (hooks) {
         Link
       </LinkTo>
     `);
+    assert.strictEqual(currentURL(), null);
 
     const error = await waitForError(() => click('[data-test-link]'));
     assert.ok(error instanceof Error);
     // Ember 3.23 and below are throwing "Cannot read property 'hasRoute' of
     // undefined" here, but we don't care what the exact error is.
+    assert.strictEqual(currentURL(), null);
   });
 
   module('with incomplete models', function () {
@@ -52,11 +54,13 @@ module('Component | LinkTo', function (hooks) {
           Link
         </LinkTo>
       `);
+      assert.strictEqual(currentURL(), null);
 
       const error = await waitForError(() => click('[data-test-link]'));
       assert.ok(error instanceof Error);
       // Ember 3.23 and below are throwing "Cannot read property 'hasRoute' of
       // undefined" here, but we don't care what the exact error is.
+      assert.strictEqual(currentURL(), null);
     });
   });
 });
