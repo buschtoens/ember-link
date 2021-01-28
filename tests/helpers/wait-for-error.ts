@@ -38,7 +38,10 @@ export default async function waitForError(
       window.onerror = originalWindowListener;
       off('error', Ember.onerror);
     }),
-    callback()
+    // eslint-disable-next-line unicorn/catch-error-name
+    callback().catch(reason => {
+      error = reason;
+    })
   ]);
 
   if (!error) throw new Error('No Error was thrown.');

@@ -101,6 +101,7 @@ module('Integration | Component | link', function (hooks) {
       `);
 
       const error = await waitForError(() => click('[data-test-link]'));
+      debugger;
       assert.ok(error instanceof Error);
       assert.strictEqual(
         error.message,
