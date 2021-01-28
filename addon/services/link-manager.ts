@@ -60,7 +60,7 @@ export default class LinkManagerService extends Service {
    *
    * If the URL cannot be recognized by the router, an error is thrown.
    */
-  getLinkPramsFromURL(url: string): LinkParams {
+  getLinkParamsFromURL(url: string): LinkParams {
     const routeInfo = this.router.recognize(url);
     return LinkManagerService.getLinkParamsFromRouteInfo(routeInfo);
   }

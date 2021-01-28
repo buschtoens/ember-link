@@ -65,7 +65,7 @@ export default class LinkHelper extends Helper {
         ] as (keyof LinkHelperNamedParams)[]).some(name => named[name])
       );
 
-      return this.linkManager.getLinkPramsFromURL(named.fromURL);
+      return this.linkManager.getLinkParamsFromURL(named.fromURL);
     }
 
     assert(
