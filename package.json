@@ -42,7 +42,7 @@
   "devDependencies": {
     "@clark/ember-template-lint-config": "^0.2.2",
     "@clark/eslint-config-ember": "^1.28.2",
-    "@clark/eslint-config-ember-typescript": "^1.28.2",
+    "@clark/eslint-config-ember-typescript": "^2.0.0",
     "@clark/eslint-config-node": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
     "@glimmer/component": "~1.0.3",
