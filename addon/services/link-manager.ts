@@ -30,8 +30,7 @@ export default class LinkManagerService extends Service {
    * @see https://github.com/buschtoens/ember-link/issues/126
    */
   get isRouterInitialized() {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return Boolean((this.router as any)._router._routerMicrolib);
+    return this.router.currentURL !== null;
   }
 
   /**
