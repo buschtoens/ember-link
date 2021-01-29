@@ -1,3 +1,11 @@
+## v1.3.1 (2021-01-29)
+
+#### :rocket: Enhancement
+* [#518](https://github.com/buschtoens/ember-link/pull/518) fix(link-manager): Use private router API to query `currentURL` in a side-effect-free way ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v1.3.0 (2021-01-28)
 
 #### :rocket: Enhancement
