@@ -1,3 +1,4 @@
+import { getOwner } from '@ember/application';
 import { action } from '@ember/object';
 import { addListener, removeListener } from '@ember/object/events';
 import RouteInfo from '@ember/routing/-private/route-info';
@@ -30,7 +31,15 @@ export default class LinkManagerService extends Service {
    * @see https://github.com/buschtoens/ember-link/issues/126
    */
   get isRouterInitialized() {
-    return this.router.currentURL !== null;
+    // Ideally we would use the public `router` service here, but accessing
+    // the `currentURL` on that service automatically starts the routing layer
+    // as a side-effect, which is not our intention here. Once or if Ember.js
+    // provides a flag on the `router` service to figure out if routing was
+    // already initialized we should switch back to the public service instead.
+    //
+    // Inspiration for this workaround was taken from the `currentURL()` test
+    // helper (see https://github.com/emberjs/ember-test-helpers/blob/v2.1.4/addon-test-support/@ember/test-helpers/setup-application-context.ts#L180)
+    return Boolean(getOwner(this).lookup('router:main').currentURL);
   }
 
   /**

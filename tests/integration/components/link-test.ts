@@ -117,6 +117,33 @@ module('Integration | Component | link', function (hooks) {
           }
           assert.strictEqual(currentURL(), null);
         });
+
+        test('it does not break any following LinkTo components', async function (assert) {
+          await render(hbs`
+            <Link @route="parent.second-child" as |l|>
+              <a
+                data-test-link
+                href={{l.href}}
+                class={{if l.isActive "is-active"}}
+                {{on "click" l.transitionTo}}
+              >
+                Link
+              </a>
+            </Link>
+
+            <LinkTo @route="parent.second-child" data-test-link-to>
+              Link
+            </LinkTo>
+          `);
+
+          assert
+            .dom('[data-test-link]')
+            .hasAttribute('href', withSetupLink ? /ember\d+/ : '');
+          assert.dom('[data-test-link]').hasNoClass('is-active');
+
+          assert.dom('[data-test-link-to]').hasNoAttribute('href');
+          assert.dom('[data-test-link-to]').hasNoClass('is-active');
+        });
       });
     });
   }
