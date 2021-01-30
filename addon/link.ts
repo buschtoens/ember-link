@@ -291,7 +291,9 @@ export class UILink extends Link {
     // away in case of a failed assertion.
     this.preventDefault(event);
 
-    return super.transitionTo();
+    // This is explicitly not using `super.transitionTo()` due to a bug in
+    // older Edge browsers (see https://github.com/emberjs/ember.js/issues/18955)
+    return Link.prototype.transitionTo.call(this);
   }
 
   /**
@@ -308,6 +310,8 @@ export class UILink extends Link {
     // away in case of a failed assertion.
     this.preventDefault(event);
 
-    return super.replaceWith();
+    // This is explicitly not using `super.replaceWith()` due to a bug in
+    // older Edge browsers (see https://github.com/emberjs/ember.js/issues/18955)
+    return Link.prototype.replaceWith.call(this);
   }
 }
