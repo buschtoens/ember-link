@@ -555,8 +555,7 @@ It wraps `transitionTo()` and `replaceWith()` to optionally accept an `event`
 argument. It will intelligently
 
 - call `event.preventDefault()` to prevent hard page reloads
-- TODO [#6](https://github.com/buschtoens/ember-link/issues/6):
-  open the page in a new tab, when `Cmd` / `Ctrl` clicking
+- open the page in a new tab, when `Cmd` / `Ctrl` clicking
 
 It can be created via the [`LinkManager` service](#linkmanager), but also via
 the [`{{link}}` helper](#link-helper) and [`<Link>` component](#link-component).
