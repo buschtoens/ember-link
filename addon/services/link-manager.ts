@@ -39,7 +39,8 @@ export default class LinkManagerService extends Service {
     //
     // Inspiration for this workaround was taken from the `currentURL()` test
     // helper (see https://github.com/emberjs/ember-test-helpers/blob/v2.1.4/addon-test-support/@ember/test-helpers/setup-application-context.ts#L180)
-    return Boolean(getOwner(this).lookup('router:main').currentURL);
+    const router = getOwner(this).lookup('router:main');
+    return Boolean(router.location) && router.location !== 'none';
   }
 
   /**
