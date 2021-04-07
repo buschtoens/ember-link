@@ -26,9 +26,10 @@ export default class TestLink extends Link {
   transitionTo(event?: Event): Transition {
     this._preventTransitionOut(event);
 
-    if (this.onTransitionTo) {
-      this.onTransitionTo();
-    }
+    // Fire both the `onTransitionTo` event used for testing, as well as the
+    // optional `onTransitionTo` event used by the code being tested
+    this._params.onTransitionTo?.();
+    this.onTransitionTo?.();
 
     return this._createDummyTransition();
   }
@@ -37,9 +38,10 @@ export default class TestLink extends Link {
   replaceWith(event?: Event): Transition {
     this._preventTransitionOut(event);
 
-    if (this.onReplaceWith) {
-      this.onReplaceWith();
-    }
+    // Fire both the `onReplaceWith` event used for testing, as well as the
+    // optional `onReplaceWith` event used by the code being tested
+    this._params.onReplaceWith?.();
+    this.onReplaceWith?.();
 
     return this._createDummyTransition();
   }

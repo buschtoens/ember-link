@@ -6,10 +6,13 @@ import Route from '@ember/routing/route';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { TestContext } from 'ember-test-helpers';
+import Controller from '@ember/controller';
 
 import pDefer from 'p-defer';
 
 import { settledExceptTimers } from 'dummy/tests/helpers/settled-except-timers';
+
+import sinon from 'sinon';
 
 module('Acceptance | link', function (hooks) {
   setupApplicationTest(hooks);
@@ -390,5 +393,69 @@ module('Acceptance | link', function (hooks) {
     assert.equal(currentURL(), '/');
 
     assert.dom().hasText('/with-model/123');
+  });
+
+  test('it fires onTransitionTo correctly', async function (this: TestContext, assert) {
+    const spy = sinon.spy();
+
+    this.owner.register(
+      'controller:application',
+      class ApplicationController extends Controller {
+        spy = spy;
+      }
+    )
+    this.owner.register(
+      'template:application',
+      hbs`
+        <Link @route="foo" @query={{hash qp=123}} @onTransitionTo={{this.spy}} as |l|>
+          <a
+            data-test-123
+            href={{l.href}}
+            {{on "click" l.transitionTo}}
+          >
+            Link
+          </a>
+        </Link>
+      `
+    );
+
+    await visit('/');
+    assert.strictEqual(currentURL(), '/');
+
+    await click('[data-test-123');
+
+    assert.ok(spy.calledOnce);
+  });
+
+  test('it fires onReplaceWith correctly', async function (this: TestContext, assert) {
+    const spy = sinon.spy();
+
+    this.owner.register(
+      'controller:application',
+      class ApplicationController extends Controller {
+        spy = spy;
+      }
+    )
+    this.owner.register(
+      'template:application',
+      hbs`
+        <Link @route="foo" @query={{hash qp=123}} @onReplaceWith={{this.spy}} as |l|>
+          <a
+            data-test-123
+            href={{l.href}}
+            {{on "click" l.replaceWith}}
+          >
+            Link
+          </a>
+        </Link>
+      `
+    );
+
+    await visit('/');
+    assert.strictEqual(currentURL(), '/');
+
+    await click('[data-test-123');
+
+    assert.ok(spy.calledOnce);
   });
 });
