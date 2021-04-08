@@ -1,5 +1,6 @@
 import { setApplication } from '@ember/test-helpers';
 import { start } from 'ember-qunit';
+
 import setupSinon from 'ember-sinon-qunit';
 
 import Application from 'dummy/app';

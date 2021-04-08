@@ -2,17 +2,16 @@ import { visit, currentURL, click } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
+import Controller from '@ember/controller';
 import Route from '@ember/routing/route';
 
 import { hbs } from 'ember-cli-htmlbars';
 import { TestContext } from 'ember-test-helpers';
-import Controller from '@ember/controller';
 
 import pDefer from 'p-defer';
+import sinon from 'sinon';
 
 import { settledExceptTimers } from 'dummy/tests/helpers/settled-except-timers';
-
-import sinon from 'sinon';
 
 module('Acceptance | link', function (hooks) {
   setupApplicationTest(hooks);
@@ -403,7 +402,7 @@ module('Acceptance | link', function (hooks) {
       class ApplicationController extends Controller {
         spy = spy;
       }
-    )
+    );
     this.owner.register(
       'template:application',
       hbs`
@@ -435,7 +434,7 @@ module('Acceptance | link', function (hooks) {
       class ApplicationController extends Controller {
         spy = spy;
       }
-    )
+    );
     this.owner.register(
       'template:application',
       hbs`
