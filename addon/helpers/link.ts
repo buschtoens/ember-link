@@ -29,6 +29,23 @@ export interface LinkHelperNamedParams
    * This is mutually exclusive with any other `LinkParams`.
    */
   fromURL?: string;
+
+  /**
+   * An optional callback that will be fired when the Link is transitioned to.
+   *
+   * The callback is only fired if the Link is explicitly invoked, not if the
+   * app transitions to the Link through other means.
+   */
+  onTransitionTo?: () => void;
+
+  /**
+   * An optional callback that will be fired when the current route is replaced
+   * with the Link.
+   *
+   * The callback is only fired if the Link is explicitly invoked, not if the
+   * app transitions to the Link through other means.
+   */
+  onReplaceWith?: () => void;
 }
 
 export default class LinkHelper extends Helper {
@@ -119,7 +136,9 @@ export default class LinkHelper extends Helper {
             positionalQueryParameters ? -1 : undefined
           ) as RouteModel[])
         : undefined,
-      query: named.query ?? positionalQueryParameters
+      query: named.query ?? positionalQueryParameters,
+      onTransitionTo: named.onTransitionTo,
+      onReplaceWith: named.onReplaceWith
     };
   }
 
