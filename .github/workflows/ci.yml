@@ -72,7 +72,9 @@ jobs:
           - ember-3.24
           - ember-release
           - ember-beta
-#          - ember-canary
+          # - ember-canary
+          - embroider-safe
+          - embroider-optimized
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
