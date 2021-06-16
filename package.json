@@ -80,7 +80,7 @@
     "qunit-dom": "^1.6.0",
     "release-it": "^14.3.0",
     "release-it-lerna-changelog": "^3.1.0",
-    "typescript": "^3.9.8"
+    "typescript": "^3.9.10"
   },
   "engines": {
     "node": ">= 10.*"
