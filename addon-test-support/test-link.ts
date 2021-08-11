@@ -3,9 +3,9 @@ import { guidFor } from '@ember/object/internals';
 import Transition from '@ember/routing/-private/transition';
 import { tracked } from '@glimmer/tracking';
 
-import { Link } from 'ember-link';
+import { LinkBase } from 'ember-link/-private/link-base';
 
-export default class TestLink extends Link {
+export default class TestLink extends LinkBase {
   // Overwritable properties
   @tracked isActive = false;
   @tracked isActiveWithoutQueryParams = false;
