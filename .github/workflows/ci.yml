@@ -17,7 +17,7 @@ on:
 
   # early issue detection: run CI weekly on Sundays
   schedule:
-    - cron: "0 6 * * 0"
+    - cron: "0 3 * * 0" # every Sunday at 3am
 
 env:
   CI: true
@@ -70,9 +70,10 @@ jobs:
           - ember-3.16
           - ember-3.20
           - ember-3.24
+          - ember-3.28
           - ember-release
           - ember-beta
-#          - ember-canary
+    #          - ember-canary
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
