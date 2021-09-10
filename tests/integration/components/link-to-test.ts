@@ -9,7 +9,6 @@ import waitForError from 'dummy/tests/helpers/wait-for-error';
 module('Component | LinkTo', function (hooks) {
   setupRenderingTest(hooks);
 
-  // Regression for: https://github.com/buschtoens/ember-link/issues/126
   test('it renders', async function (assert) {
     await render(hbs`
       <LinkTo @route="foo" data-test-link>
@@ -17,11 +16,11 @@ module('Component | LinkTo', function (hooks) {
       </LinkTo>
     `);
 
-    assert.dom('[data-test-link]').hasNoAttribute('href');
+    assert.dom('[data-test-link]').hasAttribute('href', '/foo');
     assert.dom('[data-test-link]').hasNoClass('is-active');
   });
 
-  test('triggering a transition has no effect', async function (assert) {
+  test('triggering a transition changes current url', async function (assert) {
     await render(hbs`
       <LinkTo @route="foo" data-test-link>
         Link
@@ -29,11 +28,8 @@ module('Component | LinkTo', function (hooks) {
     `);
     assert.strictEqual(currentURL(), null);
 
-    const error = await waitForError(() => click('[data-test-link]'));
-    assert.ok(error instanceof Error);
-    // Ember 3.23 and below are throwing "Cannot read property 'hasRoute' of
-    // undefined" here, but we don't care what the exact error is.
-    assert.strictEqual(currentURL(), null);
+    await click('[data-test-link]');
+    assert.strictEqual(currentURL(), '/foo');
   });
 
   module('with incomplete models', function () {
