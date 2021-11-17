@@ -64,6 +64,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [test-locked-deps]
     strategy:
+      fail-fast: false
       matrix:
         scenario:
           - ember-3.15
