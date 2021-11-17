@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "config:base",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":dependencyDashboard",
+    ":maintainLockFilesWeekly",
+    ":pinOnlyDevDependencies",
+  ],
+}
