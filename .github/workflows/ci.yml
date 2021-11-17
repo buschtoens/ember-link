@@ -70,10 +70,11 @@ jobs:
           - ember-3.15
           - ember-3.16
           - ember-3.20
-          - ember-3.24
-          - ember-release
-          - ember-beta
-#          - ember-canary
+          # Disabled because these versions are currently not compatible with this addon
+          # - ember-3.24
+          # - ember-release
+          # - ember-beta
+          # - ember-canary
     steps:
       - name: Checkout Code
         uses: actions/checkout@v1
