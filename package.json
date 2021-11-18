@@ -76,7 +76,7 @@
     "ember-try": "2.0.0",
     "eslint": "7.32.0",
     "loader.js": "4.7.0",
-    "p-defer": "3.0.0",
+    "p-defer": "4.0.0",
     "qunit-dom": "2.0.0",
     "release-it": "14.11.7",
     "release-it-lerna-changelog": "3.1.0",
