@@ -83,7 +83,7 @@
     "typescript": "3.9.10"
   },
   "engines": {
-    "node": ">= 10.*"
+    "node": ">= 12.*"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
