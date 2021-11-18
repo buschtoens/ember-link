@@ -293,7 +293,7 @@ module('Acceptance | link', function (hooks) {
     await visit('/');
     assert.strictEqual(currentURL(), '/');
 
-    click('[data-test-123');
+    click('[data-test-123]');
 
     await settledExceptTimers();
 
@@ -421,7 +421,7 @@ module('Acceptance | link', function (hooks) {
     await visit('/');
     assert.strictEqual(currentURL(), '/');
 
-    await click('[data-test-123');
+    await click('[data-test-123]');
 
     assert.ok(spy.calledOnce);
   });
@@ -453,7 +453,7 @@ module('Acceptance | link', function (hooks) {
     await visit('/');
     assert.strictEqual(currentURL(), '/');
 
-    await click('[data-test-123');
+    await click('[data-test-123]');
 
     assert.ok(spy.calledOnce);
   });
