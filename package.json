@@ -32,7 +32,7 @@
     "test:all": "ember try:each"
   },
   "resolutions": {
-    "prettier": "2.2.1"
+    "prettier": "2.4.1"
   },
   "dependencies": {
     "@glimmer/tracking": "~1.0.3",
