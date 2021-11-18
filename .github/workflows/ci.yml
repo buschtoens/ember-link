@@ -33,6 +33,7 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: 12
+          cache: yarn
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Lint JS
@@ -54,6 +55,7 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: 12
+          cache: yarn
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Browser Tests
@@ -82,6 +84,7 @@ jobs:
         uses: actions/setup-node@v2.4.1
         with:
           node-version: 12
+          cache: yarn
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Try Scenario
