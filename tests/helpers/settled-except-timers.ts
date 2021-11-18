@@ -3,11 +3,8 @@ import { waitUntil, getSettledState } from '@ember/test-helpers';
 
 export function settledExceptTimers() {
   return waitUntil(() => {
-    const {
-      hasRunLoop,
-      hasPendingRequests,
-      hasPendingWaiters
-    } = getSettledState();
+    const { hasRunLoop, hasPendingRequests, hasPendingWaiters } =
+      getSettledState();
 
     return !(hasRunLoop || hasPendingRequests || hasPendingWaiters);
   });

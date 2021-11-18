@@ -74,12 +74,14 @@ export default class LinkHelper extends Helper {
     if (named.fromURL) {
       assert(
         `When specifying a serialized 'fromURL' ('${named.fromURL}'), you can't provide any further 'LinkParams'.`,
-        !([
-          'route',
-          'models',
-          'model',
-          'query'
-        ] as (keyof LinkHelperNamedParams)[]).some(name => named[name])
+        !(
+          [
+            'route',
+            'models',
+            'model',
+            'query'
+          ] as (keyof LinkHelperNamedParams)[]
+        ).some(name => named[name])
       );
 
       return this.linkManager.getLinkParamsFromURL(named.fromURL);
