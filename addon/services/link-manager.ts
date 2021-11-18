@@ -4,8 +4,7 @@ import { addListener, removeListener } from '@ember/object/events';
 import RouteInfo from '@ember/routing/-private/route-info';
 import Transition from '@ember/routing/-private/transition';
 import RouterService from '@ember/routing/router-service';
-import Service from '@ember/service';
-import { inject as service } from '@ember/service';
+import Service, { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
 import Link, { LinkParams, UILinkParams, UILink } from '../link';
