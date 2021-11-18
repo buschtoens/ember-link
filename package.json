@@ -82,7 +82,8 @@
     "qunit-dom": "2.0.0",
     "release-it": "14.11.7",
     "release-it-lerna-changelog": "4.0.1",
-    "typescript": "3.9.10"
+    "typescript": "3.9.10",
+    "webpack": "5.64.1"
   },
   "engines": {
     "node": ">= 12.*"
