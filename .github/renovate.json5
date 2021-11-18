@@ -7,7 +7,13 @@
     ":maintainLockFilesWeekly",
     ":pinOnlyDevDependencies",
   ],
-  
+
   // run `yarn-deduplicate --strategy fewer` after `yarn.lock` updates
   "postUpdateOptions": ["yarnDedupeFewer"],
+
+  "packageRules": [{
+    // group all CLARK eslint package updates together
+    "matchPackagePatterns": ["^@clark/eslint-"],
+    "groupName": "CLARK ESLint packages",
+  }]
 }
