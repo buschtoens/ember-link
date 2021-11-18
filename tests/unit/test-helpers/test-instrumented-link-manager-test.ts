@@ -17,31 +17,4 @@ module('Unit | Service | test-instrumented-link-manager', function (hooks) {
 
     assert.ok(link instanceof TestLink);
   });
-
-  test('it returns a cached test link when one exists', async function (assert) {
-    const linkManager = this.owner.lookup(
-      'service:link-manager'
-    ) as TestInstrumentedLinkManagerService;
-
-    const firstLink = linkManager.createUILink({
-      route: 'dummy',
-      models: [1, 2, { name: 'horse' }],
-      query: { page: 'yes' }
-    });
-    const secondLink = linkManager.createUILink({
-      route: 'dummy',
-      models: [1, 2, { name: 'horse' }],
-      query: { page: 'yes' }
-    });
-
-    assert.strictEqual(firstLink, secondLink);
-
-    const thirdLink = linkManager.createUILink({
-      route: 'dummy',
-      models: [1, 2, 3],
-      query: { page: 'yes' }
-    });
-
-    assert.notStrictEqual(firstLink, thirdLink);
-  });
 });
