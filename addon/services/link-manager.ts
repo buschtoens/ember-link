@@ -38,6 +38,8 @@ export default class LinkManagerService extends Service {
     //
     // Inspiration for this workaround was taken from the `currentURL()` test
     // helper (see https://github.com/emberjs/ember-test-helpers/blob/v2.1.4/addon-test-support/@ember/test-helpers/setup-application-context.ts#L180)
+
+    // eslint-disable-next-line ember/no-private-routing-service
     return Boolean(getOwner(this).lookup('router:main').currentURL);
   }
 
