@@ -175,7 +175,12 @@ export default class Link {
   get href(): string {
     deprecate('`href` is deprecated. Use `url` instead.', false, {
       id: 'ember-link.link.href',
-      until: '2.0.0'
+      until: '2.0.0',
+      for: 'ember-link',
+      since: {
+        available: '1.1.0',
+        enabled: '1.1.0'
+      }
     });
     return this.url;
   }
