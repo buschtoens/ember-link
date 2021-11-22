@@ -29,7 +29,7 @@ function makeDummyTransition(): Transition {
     retry() {
       return this;
     }
-  };
+  } as any as Transition;
 }
 
 module('Unit | Service | link-manager', function (hooks) {

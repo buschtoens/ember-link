@@ -73,6 +73,6 @@ export default class TestLink extends Link {
       retry() {
         return this;
       }
-    };
+    } as any as Transition;
   }
 }
