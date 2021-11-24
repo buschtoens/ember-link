@@ -8,6 +8,16 @@
     ":pinOnlyDevDependencies",
   ],
 
+  // keep the `PNPM_VERSION` in the CI config updated
+  "regexManagers": [
+    {
+      "fileMatch": ["^.github/workflows/[^\\.]+\\.ya?ml$"],
+      "matchStrings": ["PNPM_VERSION:\\s*(?<currentValue>.*?)\n"],
+      "depNameTemplate": "pnpm",
+      "datasourceTemplate": "npm"
+    }
+  ],
+
   "packageRules": [{
     // group all CLARK eslint package updates together
     "matchPackagePatterns": ["^@clark/eslint-"],
