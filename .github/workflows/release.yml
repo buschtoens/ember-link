@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+env:
+  PNPM_VERSION: 6.19.0
+
 jobs:
   release:
     name: release
@@ -12,12 +15,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2.4.0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: ${{ env.PNPM_VERSION }}
       - uses: actions/setup-node@v2.4.1
         with:
           node-version: 12
           registry-url: 'https://registry.npmjs.org'
 
-      - run: yarn install --frozen-lockfile
+      - run: pnpm install --frozen-lockfile
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
