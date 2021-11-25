@@ -21,6 +21,7 @@ on:
 
 env:
   CI: true
+  PNPM_VERSION: 6.19.0
 
 jobs:
   test-locked-deps:
@@ -29,21 +30,24 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2.4.0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: ${{ env.PNPM_VERSION }}
       - name: Install Node
         uses: actions/setup-node@v2.4.1
         with:
           node-version: 12
-          cache: yarn
+          cache: pnpm
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Lint JS
-        run: yarn lint:js
+        run: pnpm lint:js
       - name: Lint Types
-        run: yarn lint:types
+        run: pnpm lint:types
       - name: Lint Handlebars
-        run: yarn lint:hbs
+        run: pnpm lint:hbs
       - name: Browser Tests
-        run: yarn test
+        run: pnpm test
 
   test-old-dependencies:
     name: Oldest Supported Env
@@ -51,15 +55,18 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2.4.0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: ${{ env.PNPM_VERSION }}
       - name: Install Node
         uses: actions/setup-node@v2.4.1
         with:
           node-version: 12
-          cache: yarn
+          cache: pnpm
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Browser Tests
-        run: yarn test
+        run: pnpm test
 
   test-try:
     name: Ember Try
@@ -80,12 +87,15 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2.4.0
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: ${{ env.PNPM_VERSION }}
       - name: Install Node
         uses: actions/setup-node@v2.4.1
         with:
           node-version: 12
-          cache: yarn
+          cache: pnpm
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Try Scenario
-        run: yarn ember try:one ${{ matrix.scenario }}
+        run: pnpm ember try:one ${{ matrix.scenario }}
