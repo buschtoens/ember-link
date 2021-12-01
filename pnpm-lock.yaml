@@ -18,7 +18,7 @@ specifiers:
   '@types/ember-qunit': 3.4.15
   '@types/ember-test-helpers': 1.0.10
   '@types/ember-testing-helpers': 0.0.4
-  '@types/ember__test-helpers': 2.0.2
+  '@types/ember__test-helpers': 2.6.0
   '@types/qunit': 2.11.2
   '@types/rsvp': 4.0.4
   '@types/sinon': 10.0.6
@@ -76,7 +76,7 @@ devDependencies:
   '@types/ember-qunit': 3.4.15
   '@types/ember-test-helpers': 1.0.10
   '@types/ember-testing-helpers': 0.0.4
-  '@types/ember__test-helpers': 2.0.2
+  '@types/ember__test-helpers': 2.6.0
   '@types/qunit': 2.11.2
   '@types/rsvp': 4.0.4
   '@types/sinon': 10.0.6
@@ -2171,8 +2171,8 @@ packages:
     resolution: {integrity: sha512-APQINizzizl2LHWGMFBCanRjKZQsdzqn7b+us17zbNhnx/R0IZAJq901x/i7eozCRwxsDKmGzNABSCIu6uc1Tg==}
     dev: true
 
-  /@types/ember__test-helpers/2.0.2:
-    resolution: {integrity: sha512-r+XHOpCUijrOjbkP0uzqx59wmookjJXT3HE4Mg9SGHUV/W8qfD0GSMZSueGjDGcLX2R/vhGuf6bBxJ1eTlpZ8A==}
+  /@types/ember__test-helpers/2.6.0:
+    resolution: {integrity: sha512-iLb4npBAi2nWdAgnL/lClJkZUXuS4pCpGq3a5yzWoNjzRZCJzLI+zbmNgfY3nQjsV8lXclgfEY0ZzGkRpHU+Xw==}
     dependencies:
       '@types/ember': 3.16.5
       '@types/ember__application': 3.16.3
