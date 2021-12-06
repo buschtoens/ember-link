@@ -21,7 +21,7 @@ on:
 
 env:
   CI: true
-  PNPM_VERSION: 6.23.2
+  PNPM_VERSION: 6.23.6
 
 jobs:
   test-locked-deps:
