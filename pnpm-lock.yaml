@@ -25,7 +25,7 @@ specifiers:
   broccoli-asset-rev: 3.0.0
   ember-array-helper: 5.1.0
   ember-auto-import: 2.2.4
-  ember-cli: 3.28.4
+  ember-cli: 3.28.5
   ember-cli-babel: ^7.23.0
   ember-cli-dependency-checker: 3.2.0
   ember-cli-htmlbars: ^6.0.0
@@ -83,7 +83,7 @@ devDependencies:
   broccoli-asset-rev: 3.0.0
   ember-array-helper: 5.1.0
   ember-auto-import: 2.2.4_webpack@5.65.0
-  ember-cli: 3.28.4
+  ember-cli: 3.28.5
   ember-cli-dependency-checker: 3.2.0
   ember-cli-inject-live-reload: 2.1.0
   ember-cli-sri: 2.1.1
@@ -5601,8 +5601,8 @@ packages:
       semver: 7.3.5
       silent-error: 1.1.1
 
-  /ember-cli/3.28.4:
-    resolution: {integrity: sha512-bRQpZqx1YctDNR7gb5CXfXYkZtieMh4F6v6bZtu+Da8jWTKoGizG1LXsG/Bhs96USPjlZZsErkSBo6qiGjJlcA==}
+  /ember-cli/3.28.5:
+    resolution: {integrity: sha512-Y/UdbUOTeKHGMCP3XtE5g14JUTYyeQTdjPvHuv11FFx5HQBtHqqWLY6U1ivMDukDkQ4i2v6TyaUcKVo4e8PtyQ==}
     engines: {node: '>= 12'}
     hasBin: true
     dependencies:
