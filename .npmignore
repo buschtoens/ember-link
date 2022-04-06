@@ -13,7 +13,7 @@
 /.ember-cli.js
 /.env*
 /.eslintignore
-/.eslintrc.js
+.eslintrc.js
 /.gitignore
 /.template-lintrc.js
 /.watchmanconfig
@@ -28,6 +28,7 @@
 /yarn-error.log
 /yarn.lock
 .gitkeep
+pnpm-lock.yaml
 
 # ember-try
 /.node_modules.ember-try/
