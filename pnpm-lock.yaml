@@ -21,7 +21,7 @@ specifiers:
   '@types/ember__test-helpers': 2.6.0
   '@types/qunit': 2.11.3
   '@types/rsvp': 4.0.4
-  '@types/sinon': 10.0.6
+  '@types/sinon': 10.0.11
   broccoli-asset-rev: 3.0.0
   ember-array-helper: 5.1.0
   ember-auto-import: 2.2.4
@@ -79,7 +79,7 @@ devDependencies:
   '@types/ember__test-helpers': 2.6.0
   '@types/qunit': 2.11.3
   '@types/rsvp': 4.0.4
-  '@types/sinon': 10.0.6
+  '@types/sinon': 10.0.11
   broccoli-asset-rev: 3.0.0
   ember-array-helper: 5.1.0
   ember-auto-import: 2.2.4_webpack@5.71.0
@@ -2916,12 +2916,6 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@sinonjs/fake-timers/7.1.2:
-    resolution: {integrity: sha512-iQADsW4LBMISqZ6Ci1dupJL9pprqwcVFTcOsEmQOEhW+KLCVn/Y4Jrvg2k19fIHCp+iFprriYPTdRcQR8NbUPg==}
-    dependencies:
-      '@sinonjs/commons': 1.8.3
-    dev: true
-
   /@sinonjs/samsam/5.3.1:
     resolution: {integrity: sha512-1Hc0b1TtyfBu8ixF/tpfSHTVWKwCBLY4QJbkgnE7HcwyvT2xArDxb4K7dMgqRm3szI+LJbzmW/s4xxEhv6hwDg==}
     dependencies:
@@ -3295,10 +3289,14 @@ packages:
       '@types/node': 16.11.9
     dev: true
 
-  /@types/sinon/10.0.6:
-    resolution: {integrity: sha512-6EF+wzMWvBNeGrfP3Nx60hhx+FfwSg1JJBLAAP/IdIUq0EYkqCYf70VT3PhuhPX9eLD+Dp+lNdpb/ZeHG8Yezg==}
+  /@types/sinon/10.0.11:
+    resolution: {integrity: sha512-dmZsHlBsKUtBpHriNjlK0ndlvEh8dcb9uV9Afsbt89QIyydpC7NcR+nWlAhASfy3GHnxTl4FX/aKE7XZUt/B4g==}
     dependencies:
-      '@sinonjs/fake-timers': 7.1.2
+      '@types/sinonjs__fake-timers': 8.1.2
+    dev: true
+
+  /@types/sinonjs__fake-timers/8.1.2:
+    resolution: {integrity: sha512-9GcLXF0/v3t80caGs5p2rRfkB+a8VBGLJZVih6CNFkx8IZ994wiKKLSRs9nuFwk1HevWs/1mnUmkApGrSGsShA==}
     dev: true
 
   /@types/sizzle/2.3.3:
