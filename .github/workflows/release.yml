@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3.0.0
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v2.2.1
         with:
           version: ${{ env.PNPM_VERSION }}
       - uses: actions/setup-node@v3.1.0
