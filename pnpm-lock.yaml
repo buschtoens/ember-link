@@ -4,7 +4,7 @@ overrides:
   prettier: 2.6.2
 
 specifiers:
-  '@babel/eslint-parser': 7.16.3
+  '@babel/eslint-parser': 7.17.0
   '@clark/ember-template-lint-config': 0.2.2
   '@clark/eslint-config-ember': 2.2.0
   '@clark/eslint-config-ember-typescript': 2.2.0
@@ -63,7 +63,7 @@ dependencies:
   ember-cli-typescript: 4.2.1
 
 devDependencies:
-  '@babel/eslint-parser': 7.16.3_eslint@7.32.0
+  '@babel/eslint-parser': 7.17.0_eslint@7.32.0
   '@clark/ember-template-lint-config': 0.2.2_ember-template-lint@3.15.0
   '@clark/eslint-config-ember': 2.2.0_eslint@7.32.0
   '@clark/eslint-config-ember-typescript': 2.2.0_eslint@7.32.0+typescript@3.9.10
@@ -179,8 +179,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@babel/eslint-parser/7.16.3_@babel+core@7.17.5+eslint@7.32.0:
-    resolution: {integrity: sha512-iB4ElZT0jAt7PKVaeVulOECdGe6UnmA/O0P9jlF5g5GBOwDVbna8AXhHRu4s27xQf6OkveyA8iTDv1jHdDejgQ==}
+  /@babel/eslint-parser/7.17.0_@babel+core@7.17.5+eslint@7.32.0:
+    resolution: {integrity: sha512-PUEJ7ZBXbRkbq3qqM/jZ2nIuakUBqCYc7Qf52Lj7dlZ6zERnqisdHioL0l4wwQZnmskMeasqUNzLBFKs3nylXA==}
     engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
     peerDependencies:
       '@babel/core': '>=7.11.0'
@@ -193,8 +193,8 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /@babel/eslint-parser/7.16.3_eslint@7.32.0:
-    resolution: {integrity: sha512-iB4ElZT0jAt7PKVaeVulOECdGe6UnmA/O0P9jlF5g5GBOwDVbna8AXhHRu4s27xQf6OkveyA8iTDv1jHdDejgQ==}
+  /@babel/eslint-parser/7.17.0_eslint@7.32.0:
+    resolution: {integrity: sha512-PUEJ7ZBXbRkbq3qqM/jZ2nIuakUBqCYc7Qf52Lj7dlZ6zERnqisdHioL0l4wwQZnmskMeasqUNzLBFKs3nylXA==}
     engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
     peerDependencies:
       '@babel/core': '>=7.11.0'
@@ -7374,7 +7374,7 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       '@babel/core': 7.17.5
-      '@babel/eslint-parser': 7.16.3_@babel+core@7.17.5+eslint@7.32.0
+      '@babel/eslint-parser': 7.17.0_@babel+core@7.17.5+eslint@7.32.0
       eslint: 7.32.0
       eslint-visitor-keys: 2.1.0
       esquery: 1.4.0
