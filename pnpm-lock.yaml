@@ -14,7 +14,7 @@ specifiers:
   '@glimmer/component': 1.0.4
   '@glimmer/env': 0.1.7
   '@glimmer/tracking': ^1.0.3
-  '@types/ember': 3.16.5
+  '@types/ember': 3.16.6
   '@types/ember-qunit': 3.4.15
   '@types/ember-test-helpers': 1.0.10
   '@types/ember-testing-helpers': 0.0.4
@@ -72,7 +72,7 @@ devDependencies:
   '@ember/test-helpers': 2.6.0
   '@glimmer/component': 1.0.4
   '@glimmer/env': 0.1.7
-  '@types/ember': 3.16.5
+  '@types/ember': 3.16.6
   '@types/ember-qunit': 3.4.15
   '@types/ember-test-helpers': 1.0.10
   '@types/ember-testing-helpers': 0.0.4
@@ -3006,7 +3006,7 @@ packages:
   /@types/ember-qunit/3.4.15:
     resolution: {integrity: sha512-ZWQcnLCsQfNq0MK9o0dt+reFn9Sk6rcMP2f/bkRRM/HCnNSD1XjMgnRhbKcDmCk0CmxTt5WtfSmlO0TYubcxcA==}
     dependencies:
-      '@types/ember': 3.16.5
+      '@types/ember': 3.16.6
       '@types/ember-test-helpers': 1.0.10
       '@types/qunit': 2.11.3
     dev: true
@@ -3014,7 +3014,7 @@ packages:
   /@types/ember-test-helpers/1.0.10:
     resolution: {integrity: sha512-sa0bIRIFPJanqA+6gzjLPUtBifJmVh7PKWwR1C0tmt+R2/CKSFMxn1j38nafNDNKS1so2KVCU/WmHvQ/WlF+gA==}
     dependencies:
-      '@types/ember': 3.16.5
+      '@types/ember': 3.16.6
       '@types/htmlbars-inline-precompile': 1.0.1
       '@types/jquery': 3.5.8
       '@types/rsvp': 4.0.4
@@ -3027,15 +3027,14 @@ packages:
       '@types/rsvp': 4.0.4
     dev: true
 
-  /@types/ember/3.16.5:
-    resolution: {integrity: sha512-8BzT1g8r7xQsN2p7qIUZ0AXWEVpJ5LmaRWP3iT79PLyIQfTAYvHSueUl14lrB8renETjwr4+ZvVPKurn9TKxNA==}
+  /@types/ember/3.16.6:
+    resolution: {integrity: sha512-S8sw98UUK/sqZS73+D5ESuqV4h6AxSy7Ffe6WFH0Np31BQrMflJv+52Wfj43SS0AfQW4DUuhMaMz6F12ge6VBA==}
     dependencies:
       '@types/ember__application': 3.16.3
       '@types/ember__array': 3.16.4
       '@types/ember__component': 3.16.6
       '@types/ember__controller': 3.16.6
       '@types/ember__debug': 3.16.5
-      '@types/ember__destroyable': 3.22.0
       '@types/ember__engine': 3.16.3
       '@types/ember__error': 3.16.1
       '@types/ember__object': 3.12.6
@@ -3043,12 +3042,11 @@ packages:
       '@types/ember__routing': 3.16.15
       '@types/ember__runloop': 3.16.3
       '@types/ember__service': 3.16.1
-      '@types/ember__string': 3.16.3
+      '@types/ember__string': 2.0.0
       '@types/ember__template': 3.16.1
       '@types/ember__test': 3.16.1
       '@types/ember__utils': 3.16.2
       '@types/htmlbars-inline-precompile': 1.0.1
-      '@types/jquery': 3.5.8
       '@types/rsvp': 4.0.4
     dev: true
 
@@ -3084,10 +3082,6 @@ packages:
     dependencies:
       '@types/ember__engine': 3.16.3
       '@types/ember__object': 3.12.6
-    dev: true
-
-  /@types/ember__destroyable/3.22.0:
-    resolution: {integrity: sha512-T5wZGK1MwEelNIv1bbAvRQZPo9zvfjpGyyFPwjz+sakjImKVcQzb/yq1SgGyT0QTAQAT7l0L+kFru9+fSVVo5A==}
     dev: true
 
   /@types/ember__engine/3.16.3:
@@ -3129,8 +3123,8 @@ packages:
       '@types/ember__object': 3.12.6
     dev: true
 
-  /@types/ember__string/3.16.3:
-    resolution: {integrity: sha512-0T9ofzm9LL/bSG5u1SxKx/j2h/bHKkl5NKjGCNbFQxEKBw4f2cs6+AMDgWke9z+qrRRIz9vGEtMXnA3yJrO2xA==}
+  /@types/ember__string/2.0.0:
+    resolution: {integrity: sha512-1DGUv9w6/X4UJgYXs1VFQPRCQJ3t/c5Rod4eaYeoj3W9hx2DecXlFFUn/CGxu5x1snn2r4cj/6RsDDWkaqGXuw==}
     dependencies:
       '@types/ember__template': 3.16.1
     dev: true
@@ -3142,7 +3136,7 @@ packages:
   /@types/ember__test-helpers/2.6.0:
     resolution: {integrity: sha512-iLb4npBAi2nWdAgnL/lClJkZUXuS4pCpGq3a5yzWoNjzRZCJzLI+zbmNgfY3nQjsV8lXclgfEY0ZzGkRpHU+Xw==}
     dependencies:
-      '@types/ember': 3.16.5
+      '@types/ember': 3.16.6
       '@types/ember__application': 3.16.3
       '@types/ember__error': 3.16.1
       '@types/htmlbars-inline-precompile': 1.0.1
