@@ -15,6 +15,12 @@ export default function setupLink(hooks: NestedHooks) {
         )
     );
 
+    // This is a hotfix, necessary to make ember link work as expected in an engine.
+    // https://github.com/buschtoens/ember-link/issues/714
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    this.owner.__container__.reset('service:link-manager');
+
     this.owner.unregister('service:link-manager');
     this.owner.register(
       'service:link-manager',
