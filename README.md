@@ -24,18 +24,6 @@ usage in templates.
 ember install ember-link
 ```
 
-> 👉 This is an [Ember Octane][octane] addon. For a version that is compatible
-> with older versions of Ember check out the [`0.x` series][pre-octane].
-
-[octane]: https://emberjs.com/editions/octane/
-[pre-octane]: https://github.com/buschtoens/ember-link/tree/pre-octane
-
-> 👉 You are viewing the docs for an improved & refactored release (`^1.1.0`),
-> that is 100 % backwards compatible to the [`1.0.0` version][v1] you're used
-> to. There's no reason not to upgrade. ✨
-
-[v1]: https://github.com/buschtoens/ember-link/tree/v1.0.0
-
 ## Usage
 
 - [`{{link}}` helper](#link-helper)
