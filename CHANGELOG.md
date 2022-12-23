@@ -1,5 +1,18 @@
 # Changelog
 
+
+## v2.0.1 (2022-12-23)
+
+#### :bug: Bug Fix
+* [#718](https://github.com/buschtoens/ember-link/pull/718) Fix exporting `LinkParams` and `UILinkParams` types ([@bertdeblock](https://github.com/bertdeblock))
+
+#### :house: Internal
+* [#711](https://github.com/buschtoens/ember-link/pull/711) Update `.npmignore` file ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 2
+- Bert De Block ([@bertdeblock](https://github.com/bertdeblock))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v2.0.0 (2022-04-06)
 
 #### :boom: Breaking Change
