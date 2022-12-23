@@ -14,7 +14,7 @@ specifiers:
   '@glimmer/component': 1.1.2
   '@glimmer/env': 0.1.7
   '@glimmer/tracking': ^1.0.3
-  '@types/ember': 3.16.6
+  '@types/ember': 3.16.7
   '@types/ember-qunit': 5.0.0
   '@types/ember-test-helpers': 1.0.11
   '@types/ember-testing-helpers': 0.0.4
@@ -72,7 +72,7 @@ devDependencies:
   '@ember/test-helpers': 2.6.0
   '@glimmer/component': 1.1.2
   '@glimmer/env': 0.1.7
-  '@types/ember': 3.16.6
+  '@types/ember': 3.16.7
   '@types/ember-qunit': 5.0.0
   '@types/ember-test-helpers': 1.0.11
   '@types/ember-testing-helpers': 0.0.4
@@ -3166,7 +3166,7 @@ packages:
   /@types/ember-test-helpers/1.0.11:
     resolution: {integrity: sha512-OYddjJqgDhUBc8BWKpMy/afwtUsk63iZey/iAV4RwZtvSVtMStjTZUCYiQpIjQSpgNF3JNRteVqbtmFnQO66hw==}
     dependencies:
-      '@types/ember': 3.16.6
+      '@types/ember': 3.16.7
       '@types/htmlbars-inline-precompile': 1.0.1
       '@types/jquery': 3.5.8
       '@types/rsvp': 4.0.4
@@ -3179,8 +3179,8 @@ packages:
       '@types/rsvp': 4.0.4
     dev: true
 
-  /@types/ember/3.16.6:
-    resolution: {integrity: sha512-S8sw98UUK/sqZS73+D5ESuqV4h6AxSy7Ffe6WFH0Np31BQrMflJv+52Wfj43SS0AfQW4DUuhMaMz6F12ge6VBA==}
+  /@types/ember/3.16.7:
+    resolution: {integrity: sha512-8/L9qJSgMLlV6yMCahVsErikwOU35aZbP1k37iHmlfp6srGaaTQNskKXTkZ4rjOGEEH+BaVh7+0SWrR5wDWHKA==}
     dependencies:
       '@types/ember__application': 3.16.3
       '@types/ember__array': 3.16.4
