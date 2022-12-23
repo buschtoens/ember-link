@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: ${{ env.PNPM_VERSION }}
       - name: Install Node
@@ -55,7 +55,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: ${{ env.PNPM_VERSION }}
       - name: Install Node
@@ -87,7 +87,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: ${{ env.PNPM_VERSION }}
       - name: Install Node
