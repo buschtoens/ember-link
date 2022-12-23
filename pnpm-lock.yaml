@@ -21,7 +21,7 @@ specifiers:
   '@types/ember__test-helpers': 2.6.1
   '@types/qunit': 2.19.3
   '@types/rsvp': 4.0.4
-  '@types/sinon': 10.0.11
+  '@types/sinon': 10.0.13
   broccoli-asset-rev: 3.0.0
   ember-array-helper: 5.1.0
   ember-auto-import: 2.5.0
@@ -79,7 +79,7 @@ devDependencies:
   '@types/ember__test-helpers': 2.6.1
   '@types/qunit': 2.19.3
   '@types/rsvp': 4.0.4
-  '@types/sinon': 10.0.11
+  '@types/sinon': 10.0.13
   broccoli-asset-rev: 3.0.0
   ember-array-helper: 5.1.0
   ember-auto-import: 2.5.0_webpack@5.71.0
@@ -3405,8 +3405,8 @@ packages:
       '@types/node': 16.11.9
     dev: true
 
-  /@types/sinon/10.0.11:
-    resolution: {integrity: sha512-dmZsHlBsKUtBpHriNjlK0ndlvEh8dcb9uV9Afsbt89QIyydpC7NcR+nWlAhASfy3GHnxTl4FX/aKE7XZUt/B4g==}
+  /@types/sinon/10.0.13:
+    resolution: {integrity: sha512-UVjDqJblVNQYvVNUsj0PuYYw0ELRmgt1Nt5Vk0pT5f16ROGfcKJY8o1HVuMOJOpD727RrGB9EGvoaTQE5tgxZQ==}
     dependencies:
       '@types/sinonjs__fake-timers': 8.1.2
     dev: true
