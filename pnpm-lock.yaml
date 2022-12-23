@@ -15,7 +15,7 @@ specifiers:
   '@glimmer/env': 0.1.7
   '@glimmer/tracking': ^1.0.3
   '@types/ember': 3.16.7
-  '@types/ember-qunit': 5.0.0
+  '@types/ember-qunit': 5.0.2
   '@types/ember-test-helpers': 1.0.11
   '@types/ember-testing-helpers': 0.0.4
   '@types/ember__test-helpers': 2.6.1
@@ -73,7 +73,7 @@ devDependencies:
   '@glimmer/component': 1.1.2
   '@glimmer/env': 0.1.7
   '@types/ember': 3.16.7
-  '@types/ember-qunit': 5.0.0
+  '@types/ember-qunit': 5.0.2
   '@types/ember-test-helpers': 1.0.11
   '@types/ember-testing-helpers': 0.0.4
   '@types/ember__test-helpers': 2.6.1
@@ -3107,8 +3107,8 @@ packages:
       '@types/ms': 0.7.31
     dev: true
 
-  /@types/ember-qunit/5.0.0:
-    resolution: {integrity: sha512-p7ZZUbohO5E57JsUC6fxD8gveV9LcSnPIx2J86WF7FNLno/2oKvWnI+j5AtobSoy86hfZZaYjiIuW0dNe1eblQ==}
+  /@types/ember-qunit/5.0.2:
+    resolution: {integrity: sha512-LXp0Ew4wPhaCMuw49cNDHWs/bROn+Msb4ypMG1t60EMBx0UaEoX0tZlkf5bQJfdD249WZTu5cCtKvl47xbQzxA==}
     dependencies:
       '@types/ember__test': 3.16.1
       '@types/ember__test-helpers': 2.6.1
