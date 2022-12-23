@@ -41,7 +41,7 @@
     "ember-cli-typescript": "^4.1.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.17.0",
+    "@babel/eslint-parser": "7.19.1",
     "@clark/ember-template-lint-config": "0.2.2",
     "@clark/eslint-config-ember": "2.2.0",
     "@clark/eslint-config-ember-typescript": "2.2.0",

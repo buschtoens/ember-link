@@ -4,7 +4,7 @@ overrides:
   prettier: 2.6.2
 
 specifiers:
-  '@babel/eslint-parser': 7.17.0
+  '@babel/eslint-parser': 7.19.1
   '@clark/ember-template-lint-config': 0.2.2
   '@clark/eslint-config-ember': 2.2.0
   '@clark/eslint-config-ember-typescript': 2.2.0
@@ -63,7 +63,7 @@ dependencies:
   ember-cli-typescript: 4.2.1
 
 devDependencies:
-  '@babel/eslint-parser': 7.17.0_eslint@7.32.0
+  '@babel/eslint-parser': 7.19.1_eslint@7.32.0
   '@clark/ember-template-lint-config': 0.2.2_ember-template-lint@4.4.0
   '@clark/eslint-config-ember': 2.2.0_eslint@7.32.0
   '@clark/eslint-config-ember-typescript': 2.2.0_eslint@7.32.0+typescript@3.9.10
@@ -179,29 +179,29 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@babel/eslint-parser/7.17.0_@babel+core@7.17.5+eslint@7.32.0:
-    resolution: {integrity: sha512-PUEJ7ZBXbRkbq3qqM/jZ2nIuakUBqCYc7Qf52Lj7dlZ6zERnqisdHioL0l4wwQZnmskMeasqUNzLBFKs3nylXA==}
+  /@babel/eslint-parser/7.19.1_@babel+core@7.17.5+eslint@7.32.0:
+    resolution: {integrity: sha512-AqNf2QWt1rtu2/1rLswy6CDP7H9Oh3mMhk177Y67Rg8d7RD9WfOLLv8CGn6tisFvS2htm86yIe1yLF6I1UDaGQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
     peerDependencies:
       '@babel/core': '>=7.11.0'
       eslint: ^7.5.0 || ^8.0.0
     dependencies:
       '@babel/core': 7.17.5
+      '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
       eslint: 7.32.0
-      eslint-scope: 5.1.1
       eslint-visitor-keys: 2.1.0
       semver: 6.3.0
     dev: true
 
-  /@babel/eslint-parser/7.17.0_eslint@7.32.0:
-    resolution: {integrity: sha512-PUEJ7ZBXbRkbq3qqM/jZ2nIuakUBqCYc7Qf52Lj7dlZ6zERnqisdHioL0l4wwQZnmskMeasqUNzLBFKs3nylXA==}
+  /@babel/eslint-parser/7.19.1_eslint@7.32.0:
+    resolution: {integrity: sha512-AqNf2QWt1rtu2/1rLswy6CDP7H9Oh3mMhk177Y67Rg8d7RD9WfOLLv8CGn6tisFvS2htm86yIe1yLF6I1UDaGQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || >=14.0.0}
     peerDependencies:
       '@babel/core': '>=7.11.0'
       eslint: ^7.5.0 || ^8.0.0
     dependencies:
+      '@nicolo-ribaudo/eslint-scope-5-internals': 5.1.1-v1
       eslint: 7.32.0
-      eslint-scope: 5.1.1
       eslint-visitor-keys: 2.1.0
       semver: 6.3.0
     dev: true
@@ -2898,6 +2898,12 @@ packages:
       slash: 3.0.0
       tslib: 2.3.1
       upath: 2.0.1
+    dev: true
+
+  /@nicolo-ribaudo/eslint-scope-5-internals/5.1.1-v1:
+    resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
+    dependencies:
+      eslint-scope: 5.1.1
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -7970,7 +7976,7 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       '@babel/core': 7.17.5
-      '@babel/eslint-parser': 7.17.0_@babel+core@7.17.5+eslint@7.32.0
+      '@babel/eslint-parser': 7.19.1_@babel+core@7.17.5+eslint@7.32.0
       eslint: 7.32.0
       eslint-visitor-keys: 2.1.0
       esquery: 1.4.0
