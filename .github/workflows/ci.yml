@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v3.2.0
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: ${{ env.PNPM_VERSION }}
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v3.2.0
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: ${{ env.PNPM_VERSION }}
@@ -86,7 +86,7 @@ jobs:
           # - ember-canary
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3.0.0
+        uses: actions/checkout@v3.2.0
       - uses: pnpm/action-setup@v2.2.1
         with:
           version: ${{ env.PNPM_VERSION }}
