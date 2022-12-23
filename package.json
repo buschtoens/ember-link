@@ -57,7 +57,7 @@
     "@types/ember__test-helpers": "2.6.1",
     "@types/qunit": "2.11.3",
     "@types/rsvp": "4.0.4",
-    "@types/sinon": "10.0.11",
+    "@types/sinon": "10.0.13",
     "broccoli-asset-rev": "3.0.0",
     "ember-array-helper": "5.1.0",
     "ember-auto-import": "2.4.1",
