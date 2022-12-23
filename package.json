@@ -87,7 +87,7 @@
     "release-it": "15.5.1",
     "release-it-lerna-changelog": "4.0.1",
     "typescript": "3.9.10",
-    "webpack": "5.71.0"
+    "webpack": "5.75.0"
   },
   "engines": {
     "node": ">= 12.*"
