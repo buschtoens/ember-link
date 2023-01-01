@@ -34,7 +34,7 @@ jobs:
         with:
           version: ${{ env.PNPM_VERSION }}
       - name: Install Node
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.5.1
         with:
           node-version: 12
           cache: pnpm
@@ -59,7 +59,7 @@ jobs:
         with:
           version: ${{ env.PNPM_VERSION }}
       - name: Install Node
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.5.1
         with:
           node-version: 12
           cache: pnpm
@@ -91,7 +91,7 @@ jobs:
         with:
           version: ${{ env.PNPM_VERSION }}
       - name: Install Node
-        uses: actions/setup-node@v3.1.0
+        uses: actions/setup-node@v3.5.1
         with:
           node-version: 12
           cache: pnpm
