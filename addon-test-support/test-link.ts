@@ -7,11 +7,17 @@ import { Link } from 'ember-link';
 
 export default class TestLink extends Link {
   // Overwritable properties
+  // @ts-expect-error
   @tracked isActive = false;
+  // @ts-expect-error
   @tracked isActiveWithoutQueryParams = false;
+  // @ts-expect-error
   @tracked isActiveWithoutModels = false;
+  // @ts-expect-error
   @tracked isEntering = false;
+  // @ts-expect-error
   @tracked isExiting = false;
+  // @ts-expect-error
   @tracked url = guidFor(this);
 
   // Event handlers
