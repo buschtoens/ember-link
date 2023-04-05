@@ -104,7 +104,7 @@ export default class Link {
         // Cloning `queryParams` is necessary, since we freeze it, but Ember
         // wants to mutate it.
         { queryParams: { ...queryParams } }
-      ] as RouteArgs;
+      ] as unknown as RouteArgs;
     }
     return [routeName, ...models] as RouteArgs;
   }
@@ -290,6 +290,10 @@ export interface UILinkParams {
   preventDefault?: boolean;
 }
 
+/**
+ * @deprecated This class will be removed in version 3 of `ember-link` in favor
+ * of only having one `Link` class
+ */
 export class UILink extends Link {
   @tracked
   // eslint-disable-next-line @typescript-eslint/naming-convention
