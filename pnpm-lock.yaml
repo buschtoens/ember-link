@@ -5,7 +5,6 @@ overrides:
 
 specifiers:
   '@babel/eslint-parser': 7.19.1
-  '@clark/ember-template-lint-config': 0.2.2
   '@clark/eslint-config-ember': 2.2.0
   '@clark/eslint-config-ember-typescript': 2.2.0
   '@clark/eslint-config-node': 2.2.0
@@ -64,7 +63,6 @@ dependencies:
 
 devDependencies:
   '@babel/eslint-parser': 7.19.1_eslint@7.32.0
-  '@clark/ember-template-lint-config': 0.2.2_ember-template-lint@4.18.2
   '@clark/eslint-config-ember': 2.2.0_eslint@7.32.0
   '@clark/eslint-config-ember-typescript': 2.2.0_eslint@7.32.0+typescript@3.9.10
   '@clark/eslint-config-node': 2.2.0_eslint@7.32.0
@@ -2439,14 +2437,6 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
-
-  /@clark/ember-template-lint-config/0.2.2_ember-template-lint@4.18.2:
-    resolution: {integrity: sha512-nEMSfpAwj620ePKEdOXVT6OTcS5sEDb26mdtUuUX9Y2DEh71Kur7Ges37N7cUzJ6+qy3KbWuFyxtUMRpBVzb6Q==}
-    peerDependencies:
-      ember-template-lint: ^2.10.0
-    dependencies:
-      ember-template-lint: 4.18.2_ember-cli-htmlbars@6.0.0
-    dev: true
 
   /@clark/eslint-config-browser/2.2.0_eslint@7.32.0:
     resolution: {integrity: sha512-voAQE302W/k0snOehj3cQS7oGyM5yzAJEKlZINwgQH/Elv87Ldy7HNshFQo5ukdiJwNZktVQot5cP0/sRGQ9jA==}
