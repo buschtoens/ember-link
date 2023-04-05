@@ -8,22 +8,22 @@ import { Link } from 'ember-link';
 export default class TestLink extends Link {
   // Overwritable properties
   // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  // @ts-expect-error this fails consumer packages
   @tracked isActive = false;
   // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  // @ts-expect-error this fails consumer packages
   @tracked isActiveWithoutQueryParams = false;
   // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  // @ts-expect-error this fails consumer packages
   @tracked isActiveWithoutModels = false;
   // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  // @ts-expect-error this fails consumer packages
   @tracked isEntering = false;
   // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  // @ts-expect-error this fails consumer packages
   @tracked isExiting = false;
   // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  // @ts-expect-error this fails consumer packages
   @tracked url = guidFor(this);
 
   // Event handlers
