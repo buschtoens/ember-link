@@ -17,6 +17,7 @@ specifiers:
   '@types/ember-qunit': 5.0.2
   '@types/ember-test-helpers': 1.0.11
   '@types/ember-testing-helpers': 0.0.4
+  '@types/ember__debug': ^4.0.3
   '@types/ember__test-helpers': 2.6.1
   '@types/qunit': 2.19.3
   '@types/rsvp': 4.0.4
@@ -74,6 +75,7 @@ devDependencies:
   '@types/ember-qunit': 5.0.2
   '@types/ember-test-helpers': 1.0.11
   '@types/ember-testing-helpers': 0.0.4
+  '@types/ember__debug': 4.0.3
   '@types/ember__test-helpers': 2.6.1
   '@types/qunit': 2.19.3
   '@types/rsvp': 4.0.4
@@ -3382,8 +3384,16 @@ packages:
   /@types/ember__debug/3.16.5:
     resolution: {integrity: sha512-Sj0idBMOd33PubBbxtXty+tzyVIAbxK4cf8q0AKZ0z5wOL0wsFOLCvMgRMxSME3DB2uvJd4u9tGr15XFM+Z03A==}
     dependencies:
+      '@types/ember__debug': 4.0.3
       '@types/ember__engine': 3.16.3
       '@types/ember__object': 3.12.6
+    dev: true
+
+  /@types/ember__debug/4.0.3:
+    resolution: {integrity: sha512-LvSLFgNlzpbsdb479ohS2szCFwkAsaqPnTjyPML7xFF3r3VGFMQjVNTXQpFYQCKTMAC1FYRX1N6hw/8lpXWHKA==}
+    dependencies:
+      '@types/ember__object': 3.12.6
+      '@types/ember__owner': 4.0.3
     dev: true
 
   /@types/ember__engine/3.16.3:
@@ -3400,6 +3410,10 @@ packages:
     resolution: {integrity: sha512-LAGldyJmFpErWLCm1HOAGd3G4E7Sem+AzQycKH+zSiYSwKVxNSpzUIU1yewlScHn5WvKwLEVE2H6mPvwvkQ+yA==}
     dependencies:
       '@types/rsvp': 4.0.4
+    dev: true
+
+  /@types/ember__owner/4.0.3:
+    resolution: {integrity: sha512-vwVKdLNYKXMOxJXwMnFQh7TkWfkp6berH6Kc/VK8is1bPgaBB7X/c50rjNmM2o7zI5LJSPm1khxcDidfyXnimg==}
     dev: true
 
   /@types/ember__polyfills/3.12.1:
