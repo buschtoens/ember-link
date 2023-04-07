@@ -292,7 +292,7 @@ export interface UILinkParams {
 
 /**
  * @deprecated This class will be removed in version 3 of `ember-link` in favor
- * of only having one `Link` class
+ * of only having one {@link Link} class
  */
 export class UILink extends Link {
   @tracked

@@ -13,7 +13,7 @@ export default class LinkComponent extends Component<LinkArgs> {
       '`<Link>` component is deprecated. Use `(link)` helper instead.',
       false,
       {
-        id: 'ember-link.test-support',
+        id: 'ember-link.link-component',
         until: '3.0.0',
         for: 'ember-link',
         since: {
