@@ -219,7 +219,7 @@ export default class Link {
     // Ignore `Property 'recognize' does not exist on type 'RouterService'.`
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const routeInfo = this._linkManager.router.recognize(this.#url);
+    const routeInfo = this._linkManager.router.recognize(this.url);
 
     return routeInfo.name;
   }
