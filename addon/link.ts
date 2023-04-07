@@ -113,7 +113,7 @@ export default class Link {
    * Whether this route is currently active, including potentially supplied
    * models and query params.
    */
-  get isActive(): boolean {
+  get #isActive(): boolean {
     if (!this._linkManager.isRouterInitialized) return false;
     this._linkManager.currentTransitionStack; // eslint-disable-line @typescript-eslint/no-unused-expressions
     return this._linkManager.router.isActive(...this._routeArgs);
@@ -123,7 +123,7 @@ export default class Link {
    * Whether this route is currently active, including potentially supplied
    * models, but ignoring query params.
    */
-  get isActiveWithoutQueryParams(): boolean {
+  get #isActiveWithoutQueryParams(): boolean {
     if (!this._linkManager.isRouterInitialized) return false;
     this._linkManager.currentTransitionStack; // eslint-disable-line @typescript-eslint/no-unused-expressions
     return this._linkManager.router.isActive(
@@ -140,7 +140,7 @@ export default class Link {
    * Whether this route is currently active, but ignoring models and query
    * params.
    */
-  get isActiveWithoutModels(): boolean {
+  get #isActiveWithoutModels(): boolean {
     if (!this._linkManager.isRouterInitialized) return false;
     this._linkManager.currentTransitionStack; // eslint-disable-line @typescript-eslint/no-unused-expressions
     return this._linkManager.router.isActive(this.routeName);
@@ -149,14 +149,14 @@ export default class Link {
   /**
    * Whether this route is currently being transitioned into / entered.
    */
-  get isEntering(): boolean {
+  get #isEntering(): boolean {
     return this._isTransitioning('to');
   }
 
   /**
    * Whether this route is currently being transitioned out of / exited.
    */
-  get isExiting(): boolean {
+  get #isExiting(): boolean {
     return this._isTransitioning('from');
   }
 
@@ -164,7 +164,7 @@ export default class Link {
    * The URL for this link that you can pass to an `<a>` tag as the `href`
    * attribute.
    */
-  get url(): string {
+  get #url(): string {
     if (!this._linkManager.isRouterInitialized) return '';
     return this._linkManager.router.urlFor(...this._routeArgs);
   }
@@ -182,7 +182,7 @@ export default class Link {
         enabled: '1.1.0'
       }
     });
-    return this.url;
+    return this.#url;
   }
 
   /**
@@ -195,7 +195,7 @@ export default class Link {
    * ```
    */
   toString() {
-    return this.url;
+    return this.#url;
   }
 
   /**
@@ -219,7 +219,7 @@ export default class Link {
     // Ignore `Property 'recognize' does not exist on type 'RouterService'.`
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const routeInfo = this._linkManager.router.recognize(this.url);
+    const routeInfo = this._linkManager.router.recognize(this.#url);
 
     return routeInfo.name;
   }

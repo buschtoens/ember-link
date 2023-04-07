@@ -7,24 +7,65 @@ import { Link } from 'ember-link';
 
 export default class TestLink extends Link {
   // Overwritable properties
-  // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error this fails consumer packages
-  @tracked isActive = false;
-  // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error this fails consumer packages
-  @tracked isActiveWithoutQueryParams = false;
-  // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error this fails consumer packages
-  @tracked isActiveWithoutModels = false;
-  // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error this fails consumer packages
-  @tracked isEntering = false;
-  // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error this fails consumer packages
-  @tracked isExiting = false;
-  // @typescript-eslint/ban-ts-comment
-  // @ts-expect-error this fails consumer packages
-  @tracked url = guidFor(this);
+  @tracked active = false;
+
+  get isActive(): boolean {
+    return this.active;
+  }
+
+  set isActive(active: boolean) {
+    this.active = active;
+  }
+
+  @tracked activeWithoutQueryParams = false;
+
+  get isActiveWithoutQueryParams(): boolean {
+    return this.activeWithoutQueryParams;
+  }
+
+  set isActiveWithoutQueryParams(active: boolean) {
+    this.activeWithoutQueryParams = active;
+  }
+
+  @tracked activeWithoutModels = false;
+
+  get isActiveWithoutModels(): boolean {
+    return this.activeWithoutModels;
+  }
+
+  set isActiveWithoutModels(active: boolean) {
+    this.activeWithoutModels = active;
+  }
+
+  @tracked entering = false;
+
+  get isEntering(): boolean {
+    return this.entering;
+  }
+
+  set isEntering(entering: boolean) {
+    this.entering = entering;
+  }
+
+  @tracked exiting = false;
+
+  get isExiting(): boolean {
+    return this.exiting;
+  }
+
+  set isExiting(exiting: boolean) {
+    this.exiting = exiting;
+  }
+
+  @tracked internalUrl = guidFor(this);
+
+  get url(): string {
+    return this.internalUrl;
+  }
+
+  set url(url: string) {
+    this.internalUrl = url;
+  }
 
   // Event handlers
   onTransitionTo?(): void;

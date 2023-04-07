@@ -40,7 +40,7 @@ module('Unit | Test Helpers | TestLink', function (hooks) {
     ) as TestInstrumentedLinkManagerService;
     const link = new TestLink(linkManager, { route: 'foo' });
 
-    assert.ok(link.url.match(/ember\d+/g), 'generates a GUID using `guidFor`');
+    assert.ok(link.#url.match(/ember\d+/g), 'generates a GUID using `guidFor`');
   });
 
   test('it can overwrite properties', async function (assert) {
@@ -69,9 +69,9 @@ module('Unit | Test Helpers | TestLink', function (hooks) {
       assert.ok(link[propertyKey]);
     }
 
-    link.url = 'my-url';
+    link.#url = 'my-url';
 
-    assert.strictEqual(link.url, 'my-url');
+    assert.strictEqual(link.#url, 'my-url');
   });
 
   test('it fires onTransitionTo when transitionTo is called', async function (assert) {
