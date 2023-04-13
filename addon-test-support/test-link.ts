@@ -7,7 +7,7 @@ import { Link } from 'ember-link';
 
 export default class TestLink extends Link {
   // Overwritable properties
-  @tracked active = false;
+  @tracked private active = false;
 
   get isActive(): boolean {
     return this.active;
@@ -17,7 +17,7 @@ export default class TestLink extends Link {
     this.active = active;
   }
 
-  @tracked activeWithoutQueryParams = false;
+  @tracked private activeWithoutQueryParams = false;
 
   get isActiveWithoutQueryParams(): boolean {
     return this.activeWithoutQueryParams;
@@ -27,7 +27,7 @@ export default class TestLink extends Link {
     this.activeWithoutQueryParams = active;
   }
 
-  @tracked activeWithoutModels = false;
+  @tracked private activeWithoutModels = false;
 
   get isActiveWithoutModels(): boolean {
     return this.activeWithoutModels;
@@ -37,7 +37,7 @@ export default class TestLink extends Link {
     this.activeWithoutModels = active;
   }
 
-  @tracked entering = false;
+  @tracked private entering = false;
 
   get isEntering(): boolean {
     return this.entering;
@@ -47,7 +47,7 @@ export default class TestLink extends Link {
     this.entering = entering;
   }
 
-  @tracked exiting = false;
+  @tracked private exiting = false;
 
   get isExiting(): boolean {
     return this.exiting;
@@ -57,7 +57,7 @@ export default class TestLink extends Link {
     this.exiting = exiting;
   }
 
-  @tracked internalUrl = guidFor(this);
+  @tracked private internalUrl = guidFor(this);
 
   get url(): string {
     return this.internalUrl;
