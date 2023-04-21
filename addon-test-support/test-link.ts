@@ -7,12 +7,65 @@ import { Link } from 'ember-link';
 
 export default class TestLink extends Link {
   // Overwritable properties
-  @tracked isActive = false;
-  @tracked isActiveWithoutQueryParams = false;
-  @tracked isActiveWithoutModels = false;
-  @tracked isEntering = false;
-  @tracked isExiting = false;
-  @tracked url = guidFor(this);
+  @tracked private active = false;
+
+  get isActive(): boolean {
+    return this.active;
+  }
+
+  set isActive(active: boolean) {
+    this.active = active;
+  }
+
+  @tracked private activeWithoutQueryParams = false;
+
+  get isActiveWithoutQueryParams(): boolean {
+    return this.activeWithoutQueryParams;
+  }
+
+  set isActiveWithoutQueryParams(active: boolean) {
+    this.activeWithoutQueryParams = active;
+  }
+
+  @tracked private activeWithoutModels = false;
+
+  get isActiveWithoutModels(): boolean {
+    return this.activeWithoutModels;
+  }
+
+  set isActiveWithoutModels(active: boolean) {
+    this.activeWithoutModels = active;
+  }
+
+  @tracked private entering = false;
+
+  get isEntering(): boolean {
+    return this.entering;
+  }
+
+  set isEntering(entering: boolean) {
+    this.entering = entering;
+  }
+
+  @tracked private exiting = false;
+
+  get isExiting(): boolean {
+    return this.exiting;
+  }
+
+  set isExiting(exiting: boolean) {
+    this.exiting = exiting;
+  }
+
+  @tracked private internalUrl = guidFor(this);
+
+  get url(): string {
+    return this.internalUrl;
+  }
+
+  set url(url: string) {
+    this.internalUrl = url;
+  }
 
   // Event handlers
   onTransitionTo?(): void;
