@@ -616,7 +616,7 @@ support using `{{link}}` & friends in render tests, you can use the
 
 [tests-application]: https://guides.emberjs.com/release/testing/testing-application/
 [tests-render]: https://guides.emberjs.com/release/testing/testing-components/
-[setup-link]: https://github.com/buschtoens/ember-link/blob/master/addon-test-support/setup-link.ts
+[setup-link]: https://github.com/buschtoens/ember-link/blob/main/addon-test-support/setup-link.ts
 
 ```ts
 import { click, render } from '@ember/test-helpers';
