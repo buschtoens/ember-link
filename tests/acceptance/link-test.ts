@@ -31,7 +31,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="foo" as |l|>
+        {{#let (link route="foo") as |l|}}
           <a
             data-test-link
             href={{l.href}}
@@ -40,7 +40,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -59,7 +59,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="with-model" @models={{array 123}} as |l|>
+        {{#let (link route="with-model" models=(array 123)) as |l|}}
           <a
             data-test-link
             href={{l.href}}
@@ -68,7 +68,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -87,7 +87,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="with-model" @model="123" as |l|>
+        {{#let (link route="with-model" model="123") as |l|}}
           <a
             data-test-link
             href={{l.href}}
@@ -96,7 +96,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -115,7 +115,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="parent.child" @models={{array 123 456}} as |l|>
+        {{#let (link route="parent.child" models=(array 123 456)) as |l|}}
           <a
             data-test-link
             href={{l.href}}
@@ -124,7 +124,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -145,7 +145,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="with-model" @models={{array 123}} as |l|>
+        {{#let (link route="with-model" models=(array 123)) as |l|}}
           <a
             data-test-123
             href={{l.href}}
@@ -154,8 +154,8 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
-        <Link @route="with-model" @models={{array 456}} as |l|>
+        {{/let}}
+        {{#let (link route="with-model" models=(array 456)) as |l|}}
           <a
             data-test-456
             href={{l.href}}
@@ -164,7 +164,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -209,7 +209,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="foo" @query={{hash qp=123}} as |l|>
+        {{#let (link route="foo" query=(hash qp=123)) as |l|}}
           <a
             data-test-123
             href={{l.href}}
@@ -218,8 +218,8 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
-        <Link @route="foo" @query={{hash qp=456}} as |l|>
+        {{/let}}
+        {{#let (link route="foo" query=(hash qp=456)) as |l|}}
           <a
             data-test-456
             href={{l.href}}
@@ -228,7 +228,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -277,7 +277,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="foo" @query={{hash qp=123}} as |l|>
+        {{#let (link route="foo" query=(hash qp=123)) as |l|}}
           <a
             data-test-123
             href={{l.href}}
@@ -286,7 +286,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -331,7 +331,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="foo" @query={{hash qp=123}} as |l|>
+        {{#let (link route="foo" query=(hash qp=123)) as |l|}}
           <a
             data-test-123
             href={{l.href}}
@@ -340,7 +340,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -406,7 +406,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="foo" @query={{hash qp=123}} @onTransitionTo={{this.spy}} as |l|>
+        {{#let (link route="foo" query=(hash qp=123) onTransitionTo=this.spy) as |l|}}
           <a
             data-test-123
             href={{l.href}}
@@ -414,7 +414,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
@@ -438,7 +438,7 @@ module('Acceptance | link', function (hooks) {
     this.owner.register(
       'template:application',
       hbs`
-        <Link @route="foo" @query={{hash qp=123}} @onReplaceWith={{this.spy}} as |l|>
+        {{#let (link route="foo" query=(hash qp=123) onReplaceWith=this.spy) as |l|}}
           <a
             data-test-123
             href={{l.href}}
@@ -446,7 +446,7 @@ module('Acceptance | link', function (hooks) {
           >
             Link
           </a>
-        </Link>
+        {{/let}}
       `
     );
 
