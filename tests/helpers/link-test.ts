@@ -8,7 +8,7 @@ import { setupLink } from 'ember-link/test-support';
 
 import waitForError from 'dummy/tests/helpers/wait-for-error';
 
-module('Integration | Component | link', function (hooks) {
+module('Integration | Helper | link', function (hooks) {
   setupRenderingTest(hooks);
 
   for (const withSetupLink of [false, true]) {
@@ -23,7 +23,7 @@ module('Integration | Component | link', function (hooks) {
       // Regression for: https://github.com/buschtoens/ember-link/issues/126
       test('it renders', async function (assert) {
         await render(hbs`
-          <Link @route="foo" as |l|>
+          {{#let (link @route="foo") as |l|}}
             <a
               data-test-link
               href={{l.href}}
@@ -32,7 +32,7 @@ module('Integration | Component | link', function (hooks) {
             >
               Link
             </a>
-          </Link>
+          {{/let}}
         `);
 
         assert
@@ -43,7 +43,7 @@ module('Integration | Component | link', function (hooks) {
 
       test('triggering a transition has no effect', async function (assert) {
         await render(hbs`
-          <Link @route="foo" as |l|>
+          {{#let (link @route="foo") as |l|}}
             <a
               data-test-link
               href={{l.href}}
@@ -52,7 +52,7 @@ module('Integration | Component | link', function (hooks) {
             >
               Link
             </a>
-          </Link>
+            {{/let}}
         `);
         assert.strictEqual(currentURL(), null);
 
@@ -72,7 +72,7 @@ module('Integration | Component | link', function (hooks) {
       module('with incomplete models', function () {
         test('it renders', async function (assert) {
           await render(hbs`
-            <Link @route="parent.second-child" as |l|>
+            {{#let (link @route="parent.second-child") as |l|}}
               <a
                 data-test-link
                 href={{l.href}}
@@ -81,7 +81,7 @@ module('Integration | Component | link', function (hooks) {
               >
                 Link
               </a>
-            </Link>
+            {{/let}}
           `);
 
           assert
@@ -92,7 +92,7 @@ module('Integration | Component | link', function (hooks) {
 
         test('triggering a transition has no effect', async function (assert) {
           await render(hbs`
-            <Link @route="parent.second-child" as |l|>
+            {{#let (link @route="parent.second-child") as |l|}}
               <a
                 data-test-link
                 href={{l.href}}
@@ -101,7 +101,7 @@ module('Integration | Component | link', function (hooks) {
               >
                 Link
               </a>
-            </Link>
+            {{/let}}
           `);
           assert.strictEqual(currentURL(), null);
 
@@ -120,7 +120,7 @@ module('Integration | Component | link', function (hooks) {
 
         test('it does not break any following LinkTo components', async function (assert) {
           await render(hbs`
-            <Link @route="parent.second-child" as |l|>
+            {{#let (link @route="parent.second-child") as |l|}}
               <a
                 data-test-link
                 href={{l.href}}
@@ -129,7 +129,7 @@ module('Integration | Component | link', function (hooks) {
               >
                 Link
               </a>
-            </Link>
+            {{/let}}
 
             <LinkTo @route="parent.second-child" data-test-link-to>
               Link
