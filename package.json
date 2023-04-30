@@ -49,7 +49,7 @@
     "@ember/test-helpers": "2.6.0",
     "@glimmer/component": "1.1.2",
     "@glimmer/env": "0.1.7",
-    "@types/ember": "3.16.7",
+    "@types/ember": "4.0.3",
     "@types/ember-qunit": "5.0.2",
     "@types/ember-test-helpers": "1.0.11",
     "@types/ember-testing-helpers": "0.0.4",
