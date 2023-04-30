@@ -40,7 +40,7 @@ specifiers:
   ember-maybe-import-regenerator: 1.0.0
   ember-on-modifier: 1.0.1
   ember-qunit: 5.1.5
-  ember-resolver: 8.0.3
+  ember-resolver: 8.1.0
   ember-sinon-qunit: 6.0.0
   ember-source: 3.25.0
   ember-source-channel-url: 3.0.0
@@ -95,7 +95,7 @@ devDependencies:
   ember-maybe-import-regenerator: 1.0.0
   ember-on-modifier: 1.0.1
   ember-qunit: 5.1.5_6f61484818bb2e1db259ea5c706fdaa5
-  ember-resolver: 8.0.3
+  ember-resolver: 8.1.0
   ember-sinon-qunit: 6.0.0
   ember-source: 3.25.0
   ember-source-channel-url: 3.0.0
@@ -7697,8 +7697,8 @@ packages:
       - webpack-command
     dev: true
 
-  /ember-resolver/8.0.3:
-    resolution: {integrity: sha512-fA53fxfG821BRqNiB9mQDuzZpzSRcSAYZTYBlRQOHsJwoYdjyE7idz4YcytbSsa409G5J2kP6B+PiKOBh0odlw==}
+  /ember-resolver/8.1.0:
+    resolution: {integrity: sha512-MGD7X2ztZVswGqs1mLgzhZJRhG7XiF6Mg4DgC7xJFWRYQQUHyGJpGdNWY9nXyrYnRIsCrQoL1do41zpxbrB/cg==}
     engines: {node: '>= 10.*'}
     dependencies:
       babel-plugin-debug-macros: 0.3.4
@@ -7706,7 +7706,7 @@ packages:
       broccoli-merge-trees: 4.2.0
       ember-cli-babel: 7.26.6
       ember-cli-version-checker: 5.1.2
-      resolve: 1.20.0
+      resolve: 1.22.1
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
@@ -9343,7 +9343,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
