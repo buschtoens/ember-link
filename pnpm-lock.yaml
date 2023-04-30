@@ -18,7 +18,7 @@ specifiers:
   '@types/ember-test-helpers': 1.0.11
   '@types/ember-testing-helpers': 0.0.4
   '@types/ember__debug': 3.16.5
-  '@types/ember__test-helpers': 2.6.1
+  '@types/ember__test-helpers': 2.8.3
   '@types/qunit': 2.19.3
   '@types/rsvp': 4.0.4
   '@types/sinon': 10.0.13
@@ -76,7 +76,7 @@ devDependencies:
   '@types/ember-test-helpers': 1.0.11
   '@types/ember-testing-helpers': 0.0.4
   '@types/ember__debug': 3.16.5
-  '@types/ember__test-helpers': 2.6.1
+  '@types/ember__test-helpers': 2.8.3
   '@types/qunit': 2.19.3
   '@types/rsvp': 4.0.4
   '@types/sinon': 10.0.13
@@ -3304,7 +3304,7 @@ packages:
     resolution: {integrity: sha512-LXp0Ew4wPhaCMuw49cNDHWs/bROn+Msb4ypMG1t60EMBx0UaEoX0tZlkf5bQJfdD249WZTu5cCtKvl47xbQzxA==}
     dependencies:
       '@types/ember__test': 3.16.1
-      '@types/ember__test-helpers': 2.6.1
+      '@types/ember__test-helpers': 2.8.3
       '@types/ember-resolver': 5.0.11
       '@types/qunit': 2.19.3
     dev: true
@@ -3449,11 +3449,12 @@ packages:
     resolution: {integrity: sha512-APQINizzizl2LHWGMFBCanRjKZQsdzqn7b+us17zbNhnx/R0IZAJq901x/i7eozCRwxsDKmGzNABSCIu6uc1Tg==}
     dev: true
 
-  /@types/ember__test-helpers/2.6.1:
-    resolution: {integrity: sha512-d2RShuBSaBzp04nt8ad+mNE1F6rbIcIIud8WFUVQqGSUGHuZQUq1051Jza12ksCUnXduyE/J9UDjyZvNKOHeBQ==}
+  /@types/ember__test-helpers/2.8.3:
+    resolution: {integrity: sha512-1GVCW8ok5IaYXM0GBswT5lFSeHu3NCBas6Sz4Tsvkc0Myc6lzSSRDG3sj6pacgJr71n4eBqaVaYu/ZHw7DjYfQ==}
     dependencies:
       '@types/ember__application': 3.16.3
       '@types/ember__error': 3.16.1
+      '@types/ember__owner': 4.0.3
       '@types/ember-resolver': 5.0.11
       '@types/htmlbars-inline-precompile': 1.0.1
     dev: true
@@ -9343,7 +9344,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
