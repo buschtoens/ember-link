@@ -40,6 +40,8 @@ jobs:
           cache: pnpm
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+      - name: Build package
+        run: pnpm --filter ember-link build
       - name: Lint JS
         run: pnpm run -r --parallel --aggregate-output lint:js
       - name: Lint Types
@@ -65,6 +67,8 @@ jobs:
           cache: pnpm
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+      - name: Build package
+        run: pnpm --filter ember-link build
       - name: Browser Tests
         run: pnpm run -r --parallel --aggregate-output test
 
@@ -98,7 +102,7 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Build package
-        run: pnpm --filter ember-ability build
+        run: pnpm --filter ember-link build
       - name: Try Scenario
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup
         working-directory: test-app
