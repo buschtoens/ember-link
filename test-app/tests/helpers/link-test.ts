@@ -25,7 +25,7 @@ module('Integration | Helper | link', function (hooks) {
           {{#let (link route="foo") as |l|}}
             <a
               data-test-link
-              href={{l.href}}
+              href={{l.url}}
               class={{if l.isActive "is-active"}}
               {{on "click" l.transitionTo}}
             >
@@ -43,7 +43,7 @@ module('Integration | Helper | link', function (hooks) {
           {{#let (link route="foo") as |l|}}
             <a
               data-test-link
-              href={{l.href}}
+              href={{l.url}}
               class={{if l.isActive "is-active"}}
               {{on "click" l.transitionTo}}
             >
@@ -74,7 +74,7 @@ module('Integration | Helper | link', function (hooks) {
             {{#let (link route="parent.second-child") as |l|}}
               <a
                 data-test-link
-                href={{l.href}}
+                href={{l.url}}
                 class={{if l.isActive "is-active"}}
                 {{on "click" l.transitionTo}}
               >
@@ -92,7 +92,7 @@ module('Integration | Helper | link', function (hooks) {
             {{#let (link route="parent.second-child") as |l|}}
               <a
                 data-test-link
-                href={{l.href}}
+                href={{l.url}}
                 class={{if l.isActive "is-active"}}
                 {{on "click" l.transitionTo}}
               >
@@ -122,7 +122,7 @@ module('Integration | Helper | link', function (hooks) {
             {{#let (link route="parent.second-child") as |l|}}
               <a
                 data-test-link
-                href={{l.href}}
+                href={{l.url}}
                 class={{if l.isActive "is-active"}}
                 {{on "click" l.transitionTo}}
               >
