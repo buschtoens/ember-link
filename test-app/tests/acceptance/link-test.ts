@@ -6,12 +6,12 @@ import Controller from '@ember/controller';
 import Route from '@ember/routing/route';
 
 import { hbs } from 'ember-cli-htmlbars';
-import { TestContext } from 'ember-test-helpers';
+import { TestContext } from '@ember/test-helpers';
 
 import pDefer from 'p-defer';
 import sinon from 'sinon';
 
-import { settledExceptTimers } from 'test-app/tests/helpers/settled-except-timers';
+import { settledExceptTimers } from '../helpers/settled-except-timers';
 
 module('Acceptance | link', function (hooks) {
   setupApplicationTest(hooks);
@@ -234,6 +234,8 @@ module('Acceptance | link', function (hooks) {
 
     await visit('/');
     assert.equal(currentURL(), '/');
+
+    // await this.pauseTest();
 
     assert.dom('[data-test-123]').hasAttribute('href', '/foo?qp=123');
     assert.dom('[data-test-123]').hasNoClass('is-active');

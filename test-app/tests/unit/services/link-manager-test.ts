@@ -2,10 +2,11 @@ import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
 import { sendEvent } from '@ember/object/events';
-import Transition from '@ember/routing/-private/transition';
+
 import Service from '@ember/service';
 
 import LinkManagerService from 'ember-link/services/link-manager';
+import Transition from '@ember/routing/transition';
 
 function makeDummyTransition(): Transition {
   return {

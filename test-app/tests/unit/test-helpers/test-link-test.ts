@@ -3,8 +3,7 @@ import { module, test } from 'qunit';
 
 import { getOwner } from '@ember/application';
 
-import { TestLink, setupLink } from 'ember-link/test-support';
-import TestInstrumentedLinkManagerService from 'ember-link/test-support/-private/services/test-instrumented-link-manager';
+import { TestLink, setupLink, TestInstrumentedLinkManagerService } from 'ember-link/test-support';
 
 module('Unit | Test Helpers | TestLink', function (hooks) {
   setupTest(hooks);

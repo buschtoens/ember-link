@@ -2,8 +2,7 @@ import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
 import { LinkParams } from 'ember-link';
-import { linkFor } from 'ember-link/test-support';
-import TestInstrumentedLinkManagerService from 'ember-link/test-support/-private/services/test-instrumented-link-manager';
+import { linkFor, TestInstrumentedLinkManagerService } from 'ember-link/test-support';
 
 module('Unit | Test Helpers | linkFor', function (hooks) {
   setupTest(hooks);

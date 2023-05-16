@@ -93,10 +93,9 @@ export default class LinkHelper extends Helper {
       `Query parameters either need to be specified as the last positional parameter or as the named 'query' parameter.`,
       !positional.slice(0, -1).some((argument) => isQueryParams(argument))
     );
+
     assert(
-      `Either specify query parameters as the last positional parameter ('${
-        positional[positional.length - 1]
-      }') or as the named 'query' parameter ('${named.query}').`,
+      `Either specify query parameters as the last positional parameter ('${positionalQueryParameters}') or as the named 'query' parameter ('${named.query}').`,
       !(named.query && positionalQueryParameters)
     );
 

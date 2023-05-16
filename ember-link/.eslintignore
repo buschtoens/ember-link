@@ -2,7 +2,7 @@
 /blueprints/*/files/
 
 # compiled output
-/dist/
+dist/
 
 # misc
 /coverage/

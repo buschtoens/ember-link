@@ -1,8 +1,7 @@
 import { setupTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 
-import { TestLink, setupLink } from 'ember-link/test-support';
-import TestInstrumentedLinkManagerService from 'ember-link/test-support/-private/services/test-instrumented-link-manager';
+import { TestLink, setupLink, TestInstrumentedLinkManagerService } from 'ember-link/test-support';
 
 module('Unit | Service | test-instrumented-link-manager', function (hooks) {
   setupTest(hooks);

@@ -1,5 +1,3 @@
-'use strict';
+"use strict";
 
-module.exports = {
-  extends: 'recommended'
-};
+module.exports = require("@gossi/config-template-lint");
