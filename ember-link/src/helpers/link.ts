@@ -4,8 +4,8 @@ import { inject as service } from '@ember/service';
 
 import { isQueryParams } from '../link';
 
-import type { LinkParams, QueryParams, RouteArgs, RouteModel, UILinkParams } from '../link';
 import type Link from '../link';
+import type { LinkParams, QueryParams, RouteArgs, RouteModel, UILinkParams } from '../link';
 import type LinkManagerService from '../services/link-manager';
 
 export type LinkHelperPositionalParams = [] | RouteArgs;

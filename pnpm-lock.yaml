@@ -47,9 +47,12 @@ importers:
       '@gossi/config-prettier':
         specifier: ^0.3.1
         version: 0.3.1(prettier@2.8.7)
+      '@tsconfig/ember':
+        specifier: ^2.0.0
+        version: 2.0.0
       '@types/qunit':
-        specifier: ^2.19.4
-        version: 2.19.4
+        specifier: ^2.19.5
+        version: 2.19.5
       concurrently:
         specifier: ^8.0.1
         version: 8.0.1
@@ -108,9 +111,12 @@ importers:
       '@gossi/config-template-lint':
         specifier: ^0.3.1
         version: 0.3.1(ember-template-lint@5.7.2)(prettier@2.8.7)
+      '@tsconfig/ember':
+        specifier: ^2.0.0
+        version: 2.0.0
       '@types/qunit':
-        specifier: ^2.19.4
-        version: 2.19.4
+        specifier: ^2.19.5
+        version: 2.19.5
       '@types/rsvp':
         specifier: ^4.0.4
         version: 4.0.4
@@ -184,8 +190,8 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0
       p-defer:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ~3.0.0
+        version: 3.0.0
       qunit:
         specifier: ^2.19.4
         version: 2.19.4
@@ -2188,6 +2194,10 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
+  /@tsconfig/ember@2.0.0:
+    resolution: {integrity: sha512-RzbDYYcjxVdG8Ki0xe99HN3+nHTZe6EBgw6N7B3yup7QogVFQQxA9nY7X80j1XzF15xqetwWiYfAjv5lkkp0/A==}
+    dev: true
+
   /@types/body-parser@1.19.2:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
@@ -2314,8 +2324,8 @@ packages:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: true
 
-  /@types/qunit@2.19.4:
-    resolution: {integrity: sha512-EocRiD2JRWrOaA0dnyyLX083DIo1p3OSBBiGODcHaMzOFhteXtvRRp0kKsiYYqynnBSMqnqRI92iE32axdoXZw==}
+  /@types/qunit@2.19.5:
+    resolution: {integrity: sha512-NvyN1m6nKlRpAXETsTdqzEfW6C+5xbIqrXxQbnm8PmfxM7Ixi73KPoHgXCLJZHw8fd9pvCm3gVeX3nBYRuZLYQ==}
     dev: true
 
   /@types/range-parser@1.2.4:
@@ -9550,11 +9560,6 @@ packages:
   /p-defer@3.0.0:
     resolution: {integrity: sha512-ugZxsxmtTln604yeYd29EGrNhazN2lywetzpKhfmQjW/VJmhpDmWbiX+h0zL8V91R0UXkhb3KtPmyq9PZw3aYw==}
     engines: {node: '>=8'}
-    dev: true
-
-  /p-defer@4.0.0:
-    resolution: {integrity: sha512-Vb3QRvQ0Y5XnF40ZUWW7JfLogicVh/EnA5gBIvKDJoYpeI82+1E3AlB9yOcKFS0AhHrWVnAQO39fbR0G99IVEQ==}
-    engines: {node: '>=12'}
     dev: true
 
   /p-finally@1.0.0:

@@ -20,6 +20,22 @@
     "doc": "doc",
     "test": "tests"
   },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./test-support": {
+      "types": "./dist/test-support/index.d.ts",
+      "default": "./dist/test-support/index.js"
+    },
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "files": [
+    "addon-main.cjs",
+    "dist"
+  ],
   "scripts": {
     "build": "rollup --config",
     "lint": "concurrently 'npm:lint:*'",
@@ -47,7 +63,8 @@
     "@embroider/addon-dev": "^3.0.0",
     "@gossi/config-eslint": "^0.3.1",
     "@gossi/config-prettier": "^0.3.1",
-    "@types/qunit": "^2.19.4",
+    "@tsconfig/ember": "^2.0.0",
+    "@types/qunit": "^2.19.5",
     "concurrently": "^8.0.1",
     "ember-source": "^4.12.0",
     "eslint": "^8.38.0",
@@ -88,30 +105,6 @@
     },
     "npm": {
       "publish": false
-    }
-  },
-  "exports": {
-    ".": "./dist/index.js",
-    "./*.js": {
-      "types": "./dist/*.d.ts",
-      "default": "./dist/*.js"
-    },
-    "./*": "./dist/*",
-    "./test-support": {
-      "types": "./dist/test-support/index.d.ts",
-      "default": "./dist/test-support/index.js"
-    },
-    "./addon-main.js": "./addon-main.cjs"
-  },
-  "files": [
-    "addon-main.cjs",
-    "dist"
-  ],
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/*"
-      ]
     }
   }
 }
