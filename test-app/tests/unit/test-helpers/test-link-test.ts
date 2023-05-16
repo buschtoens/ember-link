@@ -1,9 +1,11 @@
-import { setupTest } from 'ember-qunit';
-import { module, test } from 'qunit';
-
+/* eslint-disable @typescript-eslint/no-invalid-this */
 import { getOwner } from '@ember/application';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-import { TestLink, setupLink, TestInstrumentedLinkManagerService } from 'ember-link/test-support';
+import { setupLink, TestLink } from 'ember-link/test-support';
+
+import type { TestInstrumentedLinkManagerService } from 'ember-link/test-support';
 
 module('Unit | Test Helpers | TestLink', function (hooks) {
   setupTest(hooks);

@@ -1,12 +1,11 @@
-import { setupTest } from 'ember-qunit';
-import { module, test } from 'qunit';
-
+/* eslint-disable @typescript-eslint/no-invalid-this */
 import { sendEvent } from '@ember/object/events';
-
 import Service from '@ember/service';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-import LinkManagerService from 'ember-link/services/link-manager';
-import Transition from '@ember/routing/transition';
+import type Transition from '@ember/routing/transition';
+import type LinkManagerService from 'ember-link/services/link-manager';
 
 function makeDummyTransition(): Transition {
   return {
@@ -20,7 +19,6 @@ function makeDummyTransition(): Transition {
       parent: null,
       queryParams: {},
       find() {
-        // eslint-disable-next-line unicorn/no-useless-undefined
         return undefined;
       }
     },
@@ -30,21 +28,16 @@ function makeDummyTransition(): Transition {
     retry() {
       return this;
     }
-  } as any as Transition;
+  } as unknown as Transition;
 }
 
 module('Unit | Service | link-manager', function (hooks) {
   setupTest(hooks);
 
   test('it manages currentTransitionStack correctly', function (assert) {
-    this.owner.register(
-      'service:router',
-      class MockRouterService extends Service {}
-    );
+    this.owner.register('service:router', class MockRouterService extends Service {});
 
-    const linkManager = this.owner.lookup(
-      'service:link-manager'
-    ) as LinkManagerService;
+    const linkManager = this.owner.lookup('service:link-manager') as LinkManagerService;
     const router = this.owner.lookup('service:router');
 
     const firstTransition = makeDummyTransition();
@@ -54,11 +47,7 @@ module('Unit | Service | link-manager', function (hooks) {
 
     sendEvent(router, 'routeWillChange', [firstTransition]);
 
-    assert.strictEqual(
-      linkManager.currentTransitionStack?.length,
-      1,
-      updateAssertionMessage
-    );
+    assert.strictEqual(linkManager.currentTransitionStack?.length, 1, updateAssertionMessage);
 
     assert.strictEqual(
       (linkManager.currentTransitionStack as Transition[])[0],
@@ -68,11 +57,7 @@ module('Unit | Service | link-manager', function (hooks) {
 
     sendEvent(router, 'routeWillChange', [secondTransition]);
 
-    assert.strictEqual(
-      linkManager.currentTransitionStack?.length,
-      2,
-      updateAssertionMessage
-    );
+    assert.strictEqual(linkManager.currentTransitionStack?.length, 2, updateAssertionMessage);
 
     assert.strictEqual(
       (linkManager.currentTransitionStack as Transition[])[1],

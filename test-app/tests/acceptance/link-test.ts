@@ -1,17 +1,16 @@
-import { visit, currentURL, click } from '@ember/test-helpers';
-import { setupApplicationTest } from 'ember-qunit';
-import { module, test } from 'qunit';
-
 import Controller from '@ember/controller';
 import Route from '@ember/routing/route';
-
+import { click, currentURL, visit } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { TestContext } from '@ember/test-helpers';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 
 import pDefer from 'p-defer';
 import sinon from 'sinon';
 
 import { settledExceptTimers } from '../helpers/settled-except-timers';
+
+import type { TestContext } from '@ember/test-helpers';
 
 module('Acceptance | link', function (hooks) {
   setupApplicationTest(hooks);
@@ -45,13 +44,13 @@ module('Acceptance | link', function (hooks) {
     );
 
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
 
     assert.dom('[data-test-link]').hasAttribute('href', '/foo');
     assert.dom('[data-test-link]').hasNoClass('is-active');
 
     await click('[data-test-link]');
-    assert.equal(currentURL(), '/foo');
+    assert.strictEqual(currentURL(), '/foo');
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
@@ -73,13 +72,13 @@ module('Acceptance | link', function (hooks) {
     );
 
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
 
     assert.dom('[data-test-link]').hasAttribute('href', '/with-model/123');
     assert.dom('[data-test-link]').hasNoClass('is-active');
 
     await click('[data-test-link]');
-    assert.equal(currentURL(), '/with-model/123');
+    assert.strictEqual(currentURL(), '/with-model/123');
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
@@ -101,13 +100,13 @@ module('Acceptance | link', function (hooks) {
     );
 
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
 
     assert.dom('[data-test-link]').hasAttribute('href', '/with-model/123');
     assert.dom('[data-test-link]').hasNoClass('is-active');
 
     await click('[data-test-link]');
-    assert.equal(currentURL(), '/with-model/123');
+    assert.strictEqual(currentURL(), '/with-model/123');
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
@@ -129,15 +128,13 @@ module('Acceptance | link', function (hooks) {
     );
 
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
 
-    assert
-      .dom('[data-test-link]')
-      .hasAttribute('href', '/parent/123/child/456');
+    assert.dom('[data-test-link]').hasAttribute('href', '/parent/123/child/456');
     assert.dom('[data-test-link]').hasNoClass('is-active');
 
     await click('[data-test-link]');
-    assert.equal(currentURL(), '/parent/123/child/456');
+    assert.strictEqual(currentURL(), '/parent/123/child/456');
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
@@ -169,7 +166,7 @@ module('Acceptance | link', function (hooks) {
     );
 
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
 
     assert.dom('[data-test-123]').hasAttribute('href', '/with-model/123');
     assert.dom('[data-test-123]').hasNoClass('is-active');
@@ -180,7 +177,7 @@ module('Acceptance | link', function (hooks) {
     assert.dom('[data-test-456]').hasNoClass('is-active-wm');
 
     await click('[data-test-123]');
-    assert.equal(currentURL(), '/with-model/123');
+    assert.strictEqual(currentURL(), '/with-model/123');
 
     assert.dom('[data-test-123]').hasClass('is-active');
     assert.dom('[data-test-123]').hasClass('is-active-wm');
@@ -189,7 +186,7 @@ module('Acceptance | link', function (hooks) {
     assert.dom('[data-test-456]').hasClass('is-active-wm');
 
     await click('[data-test-456]');
-    assert.equal(currentURL(), '/with-model/456');
+    assert.strictEqual(currentURL(), '/with-model/456');
 
     assert.dom('[data-test-123]').hasNoClass('is-active');
     assert.dom('[data-test-123]').hasClass('is-active-wm');
@@ -233,7 +230,7 @@ module('Acceptance | link', function (hooks) {
     );
 
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
 
     // await this.pauseTest();
 
@@ -246,7 +243,7 @@ module('Acceptance | link', function (hooks) {
     assert.dom('[data-test-456]').hasNoClass('is-active-wqp');
 
     await click('[data-test-123]');
-    assert.equal(currentURL(), '/foo?qp=123');
+    assert.strictEqual(currentURL(), '/foo?qp=123');
 
     assert.dom('[data-test-123]').hasClass('is-active');
     assert.dom('[data-test-123]').hasClass('is-active-wqp');
@@ -255,7 +252,7 @@ module('Acceptance | link', function (hooks) {
     assert.dom('[data-test-456]').hasClass('is-active-wqp');
 
     await click('[data-test-456]');
-    assert.equal(currentURL(), '/foo?qp=456');
+    assert.strictEqual(currentURL(), '/foo?qp=456');
 
     assert.dom('[data-test-123]').hasNoClass('is-active');
     assert.dom('[data-test-123]').hasClass('is-active-wqp');
@@ -301,10 +298,7 @@ module('Acceptance | link', function (hooks) {
 
     assert
       .dom('[data-test-123]')
-      .hasClass(
-        'is-entering',
-        'entering class is added when transition has begun'
-      );
+      .hasClass('is-entering', 'entering class is added when transition has begun');
 
     deferred.resolve();
 
@@ -312,10 +306,7 @@ module('Acceptance | link', function (hooks) {
 
     assert
       .dom('[data-test-123]')
-      .doesNotHaveClass(
-        'is-entering',
-        'entering class is removed after transition has finished'
-      );
+      .doesNotHaveClass('is-entering', 'entering class is removed after transition has finished');
   });
 
   test('it updates isExiting correctly', async function (this: TestContext, assert) {
@@ -355,10 +346,7 @@ module('Acceptance | link', function (hooks) {
 
     assert
       .dom('[data-test-123]')
-      .hasClass(
-        'is-exiting',
-        'exiting class is added when transition has begun'
-      );
+      .hasClass('is-exiting', 'exiting class is added when transition has begun');
 
     deferred.resolve();
 
@@ -366,10 +354,7 @@ module('Acceptance | link', function (hooks) {
 
     assert
       .dom('[data-test-123')
-      .doesNotHaveClass(
-        'is-exiting',
-        'exiting class is removed when transition has finished'
-      );
+      .doesNotHaveClass('is-exiting', 'exiting class is removed when transition has finished');
   });
 
   test('fromURL', async function (this: TestContext, assert) {
@@ -379,19 +364,16 @@ module('Acceptance | link', function (hooks) {
     );
 
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
 
     assert.dom().hasText('/with-model/123?bar=qux');
   });
 
   test('positional parameters', async function (this: TestContext, assert) {
-    this.owner.register(
-      'template:application',
-      hbs`{{get (link "with-model" 123) "url"}}`
-    );
+    this.owner.register('template:application', hbs`{{get (link "with-model" 123) "url"}}`);
 
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
 
     assert.dom().hasText('/with-model/123');
   });

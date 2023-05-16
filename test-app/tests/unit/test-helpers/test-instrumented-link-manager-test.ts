@@ -1,7 +1,10 @@
-import { setupTest } from 'ember-qunit';
+/* eslint-disable @typescript-eslint/no-invalid-this */
 import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-import { TestLink, setupLink, TestInstrumentedLinkManagerService } from 'ember-link/test-support';
+import { setupLink, TestLink } from 'ember-link/test-support';
+
+import type { TestInstrumentedLinkManagerService } from 'ember-link/test-support';
 
 module('Unit | Service | test-instrumented-link-manager', function (hooks) {
   setupTest(hooks);

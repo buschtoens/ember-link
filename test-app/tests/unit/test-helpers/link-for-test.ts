@@ -1,8 +1,10 @@
-import { setupTest } from 'ember-qunit';
+/* eslint-disable @typescript-eslint/no-invalid-this */
 import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
 
-import { LinkParams } from 'ember-link';
 import { linkFor, TestInstrumentedLinkManagerService } from 'ember-link/test-support';
+
+import type { LinkParams } from 'ember-link';
 
 module('Unit | Test Helpers | linkFor', function (hooks) {
   setupTest(hooks);

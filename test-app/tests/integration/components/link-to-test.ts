@@ -1,8 +1,7 @@
-import { render, click, currentURL } from '@ember/test-helpers';
-import { setupRenderingTest } from 'ember-qunit';
-import { module, test } from 'qunit';
-
+import { click, currentURL, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
 import waitForError from 'test-app/tests/helpers/wait-for-error';
 
@@ -30,6 +29,7 @@ module('Component | LinkTo', function (hooks) {
     assert.strictEqual(currentURL(), null);
 
     const error = await waitForError(() => click('[data-test-link]'));
+
     assert.ok(error instanceof Error);
     // Ember 3.23 and below are throwing "Cannot read property 'hasRoute' of
     // undefined" here, but we don't care what the exact error is.
@@ -57,6 +57,7 @@ module('Component | LinkTo', function (hooks) {
       assert.strictEqual(currentURL(), null);
 
       const error = await waitForError(() => click('[data-test-link]'));
+
       assert.ok(error instanceof Error);
       // Ember 3.23 and below are throwing "Cannot read property 'hasRoute' of
       // undefined" here, but we don't care what the exact error is.

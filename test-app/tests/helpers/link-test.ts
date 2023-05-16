@@ -1,11 +1,10 @@
 /* eslint-disable qunit/no-conditional-assertions, qunit/require-expect */
-import { render, click, currentURL } from '@ember/test-helpers';
-import { setupRenderingTest } from 'ember-qunit';
-import { module, test } from 'qunit';
-
+import { click, currentURL, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { setupLink } from 'ember-link/test-support';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
+import { setupLink } from 'ember-link/test-support';
 import waitForError from 'test-app/tests/helpers/wait-for-error';
 
 module('Integration | Helper | link', function (hooks) {
@@ -35,9 +34,7 @@ module('Integration | Helper | link', function (hooks) {
           {{/let}}
         `);
 
-        assert
-          .dom('[data-test-link]')
-          .hasAttribute('href', withSetupLink ? /ember\d+/ : '');
+        assert.dom('[data-test-link]').hasAttribute('href', withSetupLink ? /ember\d+/ : '');
         assert.dom('[data-test-link]').hasNoClass('is-active');
       });
 
@@ -60,12 +57,14 @@ module('Integration | Helper | link', function (hooks) {
           await click('[data-test-link]');
         } else {
           const error = await waitForError(() => click('[data-test-link]'));
+
           assert.ok(error instanceof Error);
           assert.strictEqual(
             error.message,
             'Assertion Failed: You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.'
           );
         }
+
         assert.strictEqual(currentURL(), null);
       });
 
@@ -84,9 +83,7 @@ module('Integration | Helper | link', function (hooks) {
             {{/let}}
           `);
 
-          assert
-            .dom('[data-test-link]')
-            .hasAttribute('href', withSetupLink ? /ember\d+/ : '');
+          assert.dom('[data-test-link]').hasAttribute('href', withSetupLink ? /ember\d+/ : '');
           assert.dom('[data-test-link]').hasNoClass('is-active');
         });
 
@@ -109,12 +106,14 @@ module('Integration | Helper | link', function (hooks) {
             await click('[data-test-link]');
           } else {
             const error = await waitForError(() => click('[data-test-link]'));
+
             assert.ok(error instanceof Error);
             assert.strictEqual(
               error.message,
               'Assertion Failed: You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.'
             );
           }
+
           assert.strictEqual(currentURL(), null);
         });
 
@@ -136,9 +135,7 @@ module('Integration | Helper | link', function (hooks) {
             </LinkTo>
           `);
 
-          assert
-            .dom('[data-test-link]')
-            .hasAttribute('href', withSetupLink ? /ember\d+/ : '');
+          assert.dom('[data-test-link]').hasAttribute('href', withSetupLink ? /ember\d+/ : '');
           assert.dom('[data-test-link]').hasNoClass('is-active');
 
           assert.dom('[data-test-link-to]').hasNoAttribute('href');

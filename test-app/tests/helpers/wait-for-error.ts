@@ -1,8 +1,7 @@
+import Ember from 'ember';
 import { waitUntil } from '@ember/test-helpers';
 
-import Ember from 'ember';
-
-import { on, off } from 'rsvp';
+import { off, on } from 'rsvp';
 
 /**
  * I would be using `ember-qunit-assert-helpers` here, but it does not work with
@@ -18,18 +17,15 @@ export default async function waitForError(
   const originalWindowListener = window.onerror;
 
   let error: Error | undefined;
-  Ember.onerror = uncaughtError => {
+
+  Ember.onerror = (uncaughtError) => {
     error = uncaughtError;
   };
-  window.onerror = (
-    _message,
-    _source,
-    _lineNumber,
-    _columnNumber,
-    uncaughtError
-  ) => {
+
+  window.onerror = (_message, _source, _lineNumber, _columnNumber, uncaughtError) => {
     error = uncaughtError;
   };
+
   on('error', Ember.onerror);
 
   await Promise.all([

@@ -24,6 +24,7 @@
     "build": "ember build",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint --ext js,ts .",
+    "lint:js:fix": "eslint --ext js,ts . --fix",
     "lint:types": "tsc --noEmit",
     "start": "ember serve",
     "test": "ember test",
