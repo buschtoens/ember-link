@@ -84,6 +84,7 @@ export default class LinkHelper extends Helper {
       Boolean(positional[0] || named.route)
     );
 
+    const namedQueryParameters = named.query ?? {};
     const positionalQueryParameters =
       positional.length > 0 && isQueryParams(positional[positional.length - 1])
         ? (positional[positional.length - 1] as QueryParams)
@@ -95,8 +96,10 @@ export default class LinkHelper extends Helper {
     );
 
     assert(
-      `Either specify query parameters as the last positional parameter ('${positionalQueryParameters}') or as the named 'query' parameter ('${named.query}').`,
-      !(named.query && positionalQueryParameters)
+      `Either specify query parameters as the last positional parameter ('${positionalQueryParameters}') or as the named 'query' parameter ('${JSON.stringify(
+        namedQueryParameters
+      )}').`,
+      !(namedQueryParameters && positionalQueryParameters)
     );
 
     assert(
