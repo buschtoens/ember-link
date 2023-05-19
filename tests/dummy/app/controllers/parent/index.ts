@@ -14,7 +14,7 @@ export default class ApplicationController extends Controller {
   ];
 
   @tracked parent = 'all';
-  @tracked parentColor = 'red';
+  @tracked parentIndexColor = 'red';
 
   @tracked noneLink;
   @tracked knownLink;
