@@ -127,7 +127,6 @@ export default class LinkManagerService extends Service {
 
   @action
   handleRouteDidChange() {
-    console.log('did change');
     this._currentTransitionStack = undefined;
   }
 }
