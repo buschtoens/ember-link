@@ -1,0 +1,38 @@
+
+
+<div style="border: 1px solid black; margin-top: 20px">
+	<div style="margin: 20px;">
+
+	<h2 id="title">Parent Index Route</h2>
+<br />
+<pre>
+	Link configuration for all, remember passed in query params take precedence.
+{
+	route: 'parent.index',
+	models: [1],
+	query: {
+		applicationColor: 'blue',
+		parentColor: 'green',
+		parentIndexColor: 'purple',
+	},
+	mode: 'none',
+}
+</pre>
+<label for="parentIndexCategory"><b>parentIndexCategory qp:</b></label>
+<input type="text" id="parentIndexCategory" value={{this.parentIndexCategory}} {{on "input" (fn this.update "parentIndexCategory")}} />
+<br />
+
+<br />
+<label for="parentIndexColor"><b>parentIndexColor qp (wont change):</b></label>
+<input type="text" id="parentIndexColor" value={{this.parentIndexColor}} {{on "input" (fn this.update "parentIndexColor")}} />
+this one shouldt change tracked link because its passed in
+<br />
+	{{#each this.links as |link|}}
+  <h2>{{link.name}}</h2>
+
+  {{link.link.url}}
+
+  <br />
+{{/each}}
+</div>
+	</div>

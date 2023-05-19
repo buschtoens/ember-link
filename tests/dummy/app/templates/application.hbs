@@ -1,0 +1,23 @@
+<div style="border: 1px solid black;">
+	<div style="margin: 20px">
+
+	<h2 id="title">Application Route</h2>
+	<LinkTo @route="parent.index" @model="1">Go to parent index route</LinkTo>
+<h4>
+ We are always passing colors to the generated links, so setting any color wont change any mode.
+</h4>
+<br />
+<label for="applicationCategory"><b>applicationCategory qp:</b></label>
+<input type="text" id="applicationCategory" value={{this.applicationCategory}} {{on "input" (fn this.update "applicationCategory")}} />
+<br />
+
+<br />
+<label for="applicationColor"><b>applicationColor qp (wont change):</b></label>
+<input type="text" id="applicationColor" value={{this.applicationColor}} {{on "input" (fn this.update "applicationColor")}} />
+<br />
+	
+		{{outlet}}
+	
+	
+</div>
+	</div>

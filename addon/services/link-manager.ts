@@ -23,6 +23,9 @@ export default class LinkManagerService extends Service {
   @service('router')
   readonly router!: RouterServiceWithRecognize;
 
+  @service('-routing')
+  readonly routing!: any;
+
   /**
    * Whether the router has been initialized.
    * This will be `false` in render tests.
@@ -79,11 +82,11 @@ export default class LinkManagerService extends Service {
    * Converts a `RouteInfo` object into `LinkParams`.
    */
   static getLinkParamsFromRouteInfo(routeInfo: RouteInfo): LinkParams {
-    const models = routeInfo.paramNames.map(name => routeInfo.params[name]!);
+    const models = routeInfo.paramNames.map((name) => routeInfo.params[name]!);
     return {
       route: routeInfo.name,
       query: routeInfo.queryParams,
-      models
+      models,
     };
   }
 
@@ -91,7 +94,7 @@ export default class LinkManagerService extends Service {
   constructor(properties?: object) {
     super(properties);
 
-    // Ignore `Argument of type '"routeWillChange"' is not assignable to parameter of type ...`
+    // Ignore `Argument of type ''routeWillChange'' is not assignable to parameter of type ...`
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -118,7 +121,7 @@ export default class LinkManagerService extends Service {
   handleRouteWillChange(transition: Transition) {
     this._currentTransitionStack = [
       ...(this._currentTransitionStack || []),
-      transition
+      transition,
     ];
   }
 

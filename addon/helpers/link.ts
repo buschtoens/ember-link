@@ -139,6 +139,7 @@ export default class LinkHelper extends Helper {
           ) as RouteModel[])
         : undefined,
       query: named.query ?? positionalQueryParameters,
+      mode: named.mode,
       onTransitionTo: named.onTransitionTo,
       onReplaceWith: named.onReplaceWith
     };
