@@ -6,4 +6,9 @@ export default class ApplicationController extends Controller {
 
   @tracked applicationCategory = 'all';
   @tracked applicationColor = 'red';
+
+	update =(name: string , e: InputEvent) => {
+		//@ts-expect-error
+		this[name] = (e.target as HTMLInputElement).value;
+	}
 }

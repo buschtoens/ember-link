@@ -7,13 +7,11 @@ export default class ApplicationController extends Controller {
   @service declare linkManager: LinkManagerService;
 
   queryParams = [
-    {
-      parent: 'parentIndexCategory',
-    },
+    'parentIndexCategory',
     'parentIndexColor',
   ];
 
-  @tracked parent = 'all';
+  @tracked parentIndexCategory = 'all';
   @tracked parentIndexColor = 'red';
 
   @tracked noneLink;
@@ -105,4 +103,9 @@ export default class ApplicationController extends Controller {
       },
     ];
   }
+
+	update =(name: string , e: InputEvent) => {
+		//@ts-expect-error
+		this[name] = (e.target as HTMLInputElement).value;
+	}
 }

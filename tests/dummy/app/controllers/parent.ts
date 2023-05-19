@@ -3,12 +3,15 @@ import { tracked } from '@glimmer/tracking';
 
 export default class ApplicationController extends Controller {
   queryParams = [
-    {
-      category: 'parentCategory'
-    },
+    'parentCategory',
     'parentColor'
   ];
 
-  @tracked category = 'all';
+  @tracked parentCategory = 'all';
   @tracked parentColor = 'red';
+
+	update =(name: string , e: InputEvent) => {
+		//@ts-expect-error
+		this[name] = (e.target as HTMLInputElement).value;
+	}
 }

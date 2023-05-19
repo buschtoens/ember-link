@@ -10,6 +10,7 @@ import Transition from '@ember/routing/-private/transition';
 import RouterService from '@ember/routing/router-service';
 import { DEBUG } from '@glimmer/env';
 import { tracked } from '@glimmer/tracking';
+import { next } from '@ember/runloop';
 
 import LinkManagerService from './services/link-manager';
 
@@ -91,6 +92,13 @@ function isMouseEvent(event: unknown): event is MouseEvent {
   return typeof event === 'object' && event !== null && 'button' in event;
 }
 
+interface Qp {
+  urlKey: string;
+}
+interface Qps {
+  qps: Qp[];
+}
+
 export default class Link {
   @tracked
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -99,10 +107,33 @@ export default class Link {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   protected _linkManager: LinkManagerService;
 
+  @tracked
+  private _knownInvocationRouteQps?: Qps | (() => Qps);
+
   constructor(linkManager: LinkManagerService, params: LinkParams) {
     setOwner(this, getOwner(linkManager));
     this._linkManager = linkManager;
     this._params = freezeParams(params);
+
+    //In order to support `known` we can't read Route._qp inside the getter, because it will entangle autotracking
+    if (this.mode === 'known') {
+      //Is there a better way to do this?, router.currentRouteName is not always available
+      const routeName = this._linkManager.router.recognize(window?.location?.pathname)?.name;
+      const cb = () => {
+        this._knownInvocationRouteQps = getOwner(this).lookup(
+          `route:${routeName}`
+        )?._qp;
+      };
+      if (routeName) {
+        next(this, cb);
+      }
+    } else {
+      this._knownInvocationRouteQps = () => {
+        return getOwner(this).lookup(
+          `route:${this._linkManager.router.currentRouteName}`
+        )?._qp;
+      };
+    }
   }
 
   get mode() {
@@ -185,11 +216,11 @@ export default class Link {
 
   private createKnownUrl() {
     if (!this._linkManager.isRouterInitialized) return '';
-
     const { routeName, models, queryParams } = this;
 
     let mergedQps = {};
     const cloned = { ...queryParams };
+    let final = {};
 
     if (queryParams) {
       mergedQps = { ...queryParams };
@@ -200,11 +231,10 @@ export default class Link {
       );
     }
 
-    const qp = getOwner(this).lookup(
-      `route:${this._linkManager.router.currentRoute.name}`
-    )?._qp;
+    const qp = typeof this._knownInvocationRouteQps === 'function' ? 
+      this._knownInvocationRouteQps() : 
+      this._knownInvocationRouteQps;
 
-    let final = {};
     if (qp?.qps.length > 0) {
       let { qps } = qp;
       qps.forEach((q) => {

@@ -1,0 +1,16 @@
+<div style="border: 1px solid black; margin-top: 20px">
+	<div style="margin: 20px;">
+
+	<h2 id="title">Parent Route</h2>
+<br />
+<label for="parentCategory"><b>parentCategory qp:</b></label>
+<input type="text" id="parentCategory" value={{this.parentCategory}} {{on "input" (fn this.update "parentCategory")}} />
+<br />
+
+<br />
+<label for="parentColor"><b>parentColor qp (wont change):</b></label>
+<input type="text" id="parentColor" value={{this.parentColor}} {{on "input" (fn this.update "parentColor")}} />
+<br />
+	{{outlet}}
+</div>
+	</div>
