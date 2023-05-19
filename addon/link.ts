@@ -394,7 +394,7 @@ export default class Link {
 
     this._params.onTransitionTo?.();
 
-    return this._linkManager.router.transitionTo(...this._routeArgs);
+    return this._linkManager.router.transitionTo(this.url);
   }
 
   /**
@@ -410,7 +410,7 @@ export default class Link {
 
     this._params.onReplaceWith?.();
 
-    return this._linkManager.router.replaceWith(...this._routeArgs);
+    return this._linkManager.router.replaceWith(this.url);
   }
 }
 
