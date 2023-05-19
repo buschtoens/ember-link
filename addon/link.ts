@@ -108,7 +108,7 @@ export default class Link {
   protected _linkManager: LinkManagerService;
 
   @tracked
-  private _knownInvocationRouteQps?: Qps | (() => Qps);
+  private _knownRouteQps?: Qps | (() => Qps);
 
   constructor(linkManager: LinkManagerService, params: LinkParams) {
     setOwner(this, getOwner(linkManager));
@@ -116,24 +116,22 @@ export default class Link {
     this._params = freezeParams(params);
 
     //In order to support `known` we can't read Route._qp inside the getter, because it will entangle autotracking
-    if (this.mode === 'known') {
-      //Is there a better way to do this?, router.currentRouteName is not always available
-      //Maybe this._linkManager.router._router.url instead of window.location.pathname?
-      const routeName = this._linkManager.router.recognize(window?.location?.pathname)?.name;
+    //Is there a better way to do this?, router.currentRouteName is not always available
+    //Maybe this._linkManager.router._router.url instead of window.location.pathname?
+    if (this._linkManager.router.currentRouteName) {
+      this._knownRouteQps = getOwner(this).lookup(
+        `route:${this._linkManager.router.currentRouteName}`
+      )?._qp;
+    } else {
+      const routeName = this._linkManager.router.recognize(
+        window?.location?.pathname || this._linkManager.router._router.url
+      )?.name;
       const cb = () => {
-        this._knownInvocationRouteQps = getOwner(this).lookup(
-          `route:${routeName}`
-        )?._qp;
+        this._knownRouteQps = getOwner(this).lookup(`route:${routeName}`)?._qp;
       };
       if (routeName) {
         next(this, cb);
       }
-    } else {
-      this._knownInvocationRouteQps = () => {
-        return getOwner(this).lookup(
-          `route:${this._linkManager.router.currentRouteName}`
-        )?._qp;
-      };
     }
   }
 
@@ -215,32 +213,32 @@ export default class Link {
     return this._linkManager.router.urlFor(...this._routeArgs);
   }
 
-  private createKnownUrl() {
+  private createKnownUrl(routeQps?: Qps | (() => Qps)): string {
     if (!this._linkManager.isRouterInitialized) return '';
-    const { routeName, models, queryParams } = this;
+    const { routeName, models, queryParams = {} } = this;
 
-    let mergedQps = {};
+    let mergedQps: {
+      [key: string]: unknown;
+    } = {};
     const cloned = { ...queryParams };
-    let final = {};
+    let final: {
+      [key: string]: unknown;
+    } = {};
 
-    if (queryParams) {
-      mergedQps = { ...queryParams };
-      this._linkManager.routing.normalizeQueryParams(
-        routeName,
-        models,
-        mergedQps
-      );
-    }
+    mergedQps = { ...queryParams };
+    this._linkManager.routing.normalizeQueryParams(
+      routeName,
+      models,
+      mergedQps
+    );
 
-    const qp = typeof this._knownInvocationRouteQps === 'function' ? 
-      this._knownInvocationRouteQps() : 
-      this._knownInvocationRouteQps;
+    const qp = typeof routeQps === 'function' ? routeQps() : routeQps;
 
-    if (qp?.qps.length > 0) {
-      let { qps } = qp;
-      qps.forEach((q) => {
+    if (qp && qp.qps.length > 0) {
+      const { qps } = qp;
+      for (const q of qps) {
         final[q.urlKey] = mergedQps[q.urlKey];
-      });
+      }
       final = {
         ...final,
         ...cloned,
@@ -271,11 +269,15 @@ export default class Link {
 
   get trackedKnownUrl(): string {
     this._linkManager.currentTransitionStack;
-    return this.createKnownUrl();
+    return this.createKnownUrl(() => {
+      return getOwner(this).lookup(
+        `route:${this._linkManager.router.currentRouteName}`
+      )?._qp;
+    });
   }
 
   get knownUrl(): string {
-    return this.createKnownUrl();
+    return this.createKnownUrl(this._knownRouteQps);
   }
 
   get noneUrl(): string {
