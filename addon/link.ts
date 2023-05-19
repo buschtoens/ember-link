@@ -52,6 +52,7 @@ export interface LinkParams {
    * - `known`: only params that are known to the target route are included, respects the passed in params
    * - `tracked-all`: all params are included in the link, and the link will be updated when any of the params change
    * - `tracked-known`: only params that are known to the target route are included, and the link will be updated when any of these params change, it also respects the passed in params
+   * - `none`: no parent params are included in the link, just the ones passed in
    */
   mode?: 'known' | 'all' | 'tracked-all' | 'tracked-known' | 'none';
 
