@@ -1,13 +1,13 @@
-import { getOwner } from "@ember/application";
-import { action } from "@ember/object";
-import { addListener, removeListener } from "@ember/object/events";
-import RouteInfo from "@ember/routing/-private/route-info";
-import Transition from "@ember/routing/-private/transition";
-import RouterService from "@ember/routing/router-service";
-import Service, { inject as service } from "@ember/service";
-import { tracked } from "@glimmer/tracking";
+import { getOwner } from '@ember/application';
+import { action } from '@ember/object';
+import { addListener, removeListener } from '@ember/object/events';
+import RouteInfo from '@ember/routing/-private/route-info';
+import Transition from '@ember/routing/-private/transition';
+import RouterService from '@ember/routing/router-service';
+import Service, { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 
-import Link, { LinkParams, UILinkParams, UILink } from "../link";
+import Link, { LinkParams, UILinkParams, UILink } from '../link';
 
 interface RouterServiceWithRecognize extends RouterService {
   recognize(url: string): RouteInfo;
@@ -20,10 +20,10 @@ export default class LinkManagerService extends Service {
   /**
    * The `RouterService` instance to be used by the generated `Link` instances.
    */
-  @service("router")
+  @service('router')
   readonly router!: RouterServiceWithRecognize;
 
-  @service("-routing")
+  @service('-routing')
   readonly routing!: any;
 
   /**
@@ -43,7 +43,7 @@ export default class LinkManagerService extends Service {
     // helper (see https://github.com/emberjs/ember-test-helpers/blob/v2.1.4/addon-test-support/@ember/test-helpers/setup-application-context.ts#L180)
 
     // eslint-disable-next-line ember/no-private-routing-service
-    return Boolean(getOwner(this).lookup("router:main").currentURL);
+    return Boolean(getOwner(this).lookup('router:main').currentURL);
   }
 
   /**
@@ -94,15 +94,15 @@ export default class LinkManagerService extends Service {
   constructor(properties?: object) {
     super(properties);
 
-    // Ignore `Argument of type '"routeWillChange"' is not assignable to parameter of type ...`
+    // Ignore `Argument of type ''routeWillChange'' is not assignable to parameter of type ...`
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    addListener(this.router, "routeWillChange", this.handleRouteWillChange);
+    addListener(this.router, 'routeWillChange', this.handleRouteWillChange);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    addListener(this.router, "routeDidChange", this.handleRouteDidChange);
+    addListener(this.router, 'routeDidChange', this.handleRouteDidChange);
   }
 
   willDestroy() {
@@ -110,11 +110,11 @@ export default class LinkManagerService extends Service {
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    removeListener(this.router, "routeWillChange", this.handleRouteWillChange);
+    removeListener(this.router, 'routeWillChange', this.handleRouteWillChange);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    removeListener(this.router, "routeDidChange", this.handleRouteDidChange);
+    removeListener(this.router, 'routeDidChange', this.handleRouteDidChange);
   }
 
   @action
@@ -132,8 +132,8 @@ export default class LinkManagerService extends Service {
   }
 }
 
-declare module "@ember/service" {
+declare module '@ember/service' {
   interface Registry {
-    "link-manager": LinkManagerService;
+    'link-manager': LinkManagerService;
   }
 }
