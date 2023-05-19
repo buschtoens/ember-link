@@ -118,6 +118,7 @@ export default class Link {
     //In order to support `known` we can't read Route._qp inside the getter, because it will entangle autotracking
     if (this.mode === 'known') {
       //Is there a better way to do this?, router.currentRouteName is not always available
+      //Maybe this._linkManager.router._router.url instead of window.location.pathname?
       const routeName = this._linkManager.router.recognize(window?.location?.pathname)?.name;
       const cb = () => {
         this._knownInvocationRouteQps = getOwner(this).lookup(
