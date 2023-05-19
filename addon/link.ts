@@ -178,12 +178,12 @@ export default class Link {
    * The URL for this link that you can pass to an `<a>` tag as the `href`
    * attribute.
    */
-  private noneUrl(): string {
+  private createNoneUrl(): string {
     if (!this._linkManager.isRouterInitialized) return '';
     return this._linkManager.router.urlFor(...this._routeArgs);
   }
 
-  private knownUrl() {
+  private createKnownUrl() {
     if (!this._linkManager.isRouterInitialized) return '';
 
     const { routeName, models, queryParams } = this;
@@ -223,7 +223,7 @@ export default class Link {
     return this._linkManager.router.urlFor(routeName, ...models, final);
   }
 
-  private allUrl() {
+  private createAllUrl() {
     if (!this._linkManager.isRouterInitialized) return '';
     const { routeName, models, queryParams = {} } = this;
     return this._linkManager.routing.generateURL(
@@ -233,22 +233,42 @@ export default class Link {
     );
   }
 
-  get url() {
+  get trackedAllUrl(): string {
+    this._linkManager.currentTransitionStack;
+    return this.createAllUrl();
+  }
+
+  get trackedKnownUrl(): string {
+    this._linkManager.currentTransitionStack;
+    return this.createKnownUrl();
+  }
+
+  get knownUrl(): string {
+    return this.createKnownUrl();
+  }
+
+  get noneUrl(): string {
+    return this.createNoneUrl();
+  }
+
+  get allUrl(): string {
+    return this.createAllUrl();
+  }
+
+  get url(): string {
     switch (this.mode) {
       case 'known':
-        return this.knownUrl();
+        return this.knownUrl;
       case 'all':
-        return this.allUrl();
+        return this.allUrl;
       case 'tracked-known':
-        this._linkManager.currentTransitionStack;
-        return this.knownUrl();
+        return this.trackedKnownUrl;
       case 'tracked-all':
-        this._linkManager.currentTransitionStack;
-        return this.allUrl();
+        return this.trackedAllUrl;
       case 'none':
-        return this.noneUrl();
+        return this.noneUrl;
       default:
-        return this.noneUrl();
+        return this.noneUrl;
     }
   }
 
