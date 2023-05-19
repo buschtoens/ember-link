@@ -47,6 +47,15 @@ export interface LinkParams {
   query?: QueryParams;
 
   /**
+   * Sets the mode for the link
+   * - `all`: all params are included in the link
+   * - `known`: only params that are known to the target route are included, respects the passed in params
+   * - `tracked-all`: all params are included in the link, and the link will be updated when any of the params change
+   * - `tracked-known`: only params that are known to the target route are included, and the link will be updated when any of these params change, it also respects the passed in params
+   */
+  mode?: 'known' | 'all' | 'tracked-all' | 'tracked-known' | 'none';
+
+  /**
    * An optional callback that will be fired when the Link is transitioned to.
    *
    * The callback is only fired if the Link is explicitly invoked, not if the
@@ -95,6 +104,10 @@ export default class Link {
     this._params = freezeParams(params);
   }
 
+  get mode() {
+    return this._params.mode ?? 'none';
+  }
+
   private get _routeArgs(): RouteArgs {
     const { routeName, models, queryParams } = this;
     if (queryParams) {
@@ -103,7 +116,7 @@ export default class Link {
         ...models,
         // Cloning `queryParams` is necessary, since we freeze it, but Ember
         // wants to mutate it.
-        { queryParams: { ...queryParams } }
+        { queryParams: { ...queryParams } },
       ] as unknown as RouteArgs;
     }
     return [routeName, ...models] as RouteArgs;
@@ -128,7 +141,7 @@ export default class Link {
     this._linkManager.currentTransitionStack; // eslint-disable-line @typescript-eslint/no-unused-expressions
     return this._linkManager.router.isActive(
       this.routeName,
-      // Unfortunately TypeScript is not clever enough to support "rest"
+      // Unfortunately TypeScript is not clever enough to support 'rest'
       // parameters in the middle.
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -164,9 +177,78 @@ export default class Link {
    * The URL for this link that you can pass to an `<a>` tag as the `href`
    * attribute.
    */
-  get url(): string {
+  private noneUrl(): string {
     if (!this._linkManager.isRouterInitialized) return '';
     return this._linkManager.router.urlFor(...this._routeArgs);
+  }
+
+  private knownUrl() {
+    if (!this._linkManager.isRouterInitialized) return '';
+
+    const { routeName, models, queryParams } = this;
+
+    let mergedQps = {};
+    const cloned = { ...queryParams };
+
+    if (queryParams) {
+      mergedQps = { ...queryParams };
+      this._linkManager.routing.normalizeQueryParams(
+        routeName,
+        models,
+        mergedQps
+      );
+    }
+
+    const qp = getOwner(this).lookup(
+      `route:${this._linkManager.router.currentRoute.name}`
+    )?._qp;
+
+    let final = {};
+    if (qp?.qps.length > 0) {
+      let { qps } = qp;
+      qps.forEach((q) => {
+        final[q.urlKey] = mergedQps[q.urlKey];
+      });
+      final = {
+        ...final,
+        ...cloned,
+      };
+    } else {
+      final = { ...cloned };
+    }
+
+    final = { queryParams: { ...final } };
+
+    return this._linkManager.router.urlFor(routeName, ...models, final);
+  }
+
+  private allUrl() {
+    if (!this._linkManager.isRouterInitialized) return '';
+    const { routeName, models, queryParams = {} } = this;
+    return this._linkManager.routing.generateURL(
+      routeName,
+      models,
+      queryParams
+    );
+  }
+
+  get url() {
+    switch (this.mode) {
+      case 'known':
+        return this.knownUrl();
+      case 'all':
+        return this.allUrl();
+      case 'tracked-known':
+        this._linkManager.currentTransitionStack;
+        return this.knownUrl();
+      case 'tracked-all':
+        this._linkManager.currentTransitionStack;
+        return this.allUrl();
+      case 'none':
+        return this.noneUrl();
+      default:
+        return this.noneUrl();
+    }
   }
 
   /**
@@ -179,8 +261,8 @@ export default class Link {
       for: 'ember-link',
       since: {
         available: '1.1.0',
-        enabled: '1.1.0'
-      }
+        enabled: '1.1.0',
+      },
     });
     return this.url;
   }
@@ -191,7 +273,7 @@ export default class Link {
    * Allows for more ergonomic composition as query parameters.
    *
    * ```hbs
-   * {{link "foo" query=(hash bar=(link "bar"))}}
+   * {{link 'foo' query=(hash bar=(link 'bar'))}}
    * ```
    */
   toString() {
@@ -240,7 +322,7 @@ export default class Link {
 
   private _isTransitioning(direction: 'from' | 'to') {
     return (
-      this._linkManager.currentTransitionStack?.some(transition => {
+      this._linkManager.currentTransitionStack?.some((transition) => {
         return transition[direction]?.name === this.qualifiedRouteName;
       }) ?? false
     );
