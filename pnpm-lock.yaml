@@ -32,7 +32,7 @@ specifiers:
   ember-cli-inject-live-reload: 2.1.0
   ember-cli-sri: 2.1.1
   ember-cli-terser: 4.0.2
-  ember-cli-typescript: ^4.1.0
+  ember-cli-typescript: ^5.0.0
   ember-cli-typescript-blueprints: 3.0.0
   ember-disable-prototype-extensions: 1.1.3
   ember-export-application-global: 2.0.1
@@ -60,7 +60,7 @@ dependencies:
   '@glimmer/tracking': 1.0.4
   ember-cli-babel: 7.26.6
   ember-cli-htmlbars: 6.0.0
-  ember-cli-typescript: 4.2.1
+  ember-cli-typescript: 5.2.1
 
 devDependencies:
   '@babel/eslint-parser': 7.19.1_eslint@7.32.0
@@ -5214,7 +5214,7 @@ packages:
       broccoli-plugin: 1.3.1
       copy-dereference: 1.0.0
       debug: 2.6.9
-      mkdirp: 0.5.5
+      mkdirp: 0.5.6
       promise-map-series: 0.2.3
       rsvp: 3.2.1
       symlink-or-copy: 1.3.1
@@ -5239,7 +5239,7 @@ packages:
       fs-tree-diff: 0.5.9
       heimdalljs: 0.2.6
       minimatch: 3.0.4
-      mkdirp: 0.5.5
+      mkdirp: 0.5.6
       path-posix: 1.0.0
       rimraf: 2.6.3
       symlink-or-copy: 1.3.1
@@ -5266,7 +5266,7 @@ packages:
     resolution: {integrity: sha512-C+oEqivDofZv/h80rgN4WJkbZkbfwkrIeu8vFn4bb4m4jPd3ICNNplhkXGl3ps439pzc2yjZ1qIwz0yy8uHcQg==}
     dependencies:
       glob: 5.0.15
-      mkdirp: 0.5.5
+      mkdirp: 0.5.6
     dev: true
 
   /broccoli-kitchen-sink-helpers/0.3.1:
@@ -5336,7 +5336,7 @@ packages:
       hash-for-dep: 1.5.1
       heimdalljs: 0.2.6
       heimdalljs-logger: 0.1.10
-      mkdirp: 0.5.5
+      mkdirp: 0.5.6
       promise-map-series: 0.2.3
       rimraf: 2.6.3
       rsvp: 3.2.1
@@ -5446,7 +5446,7 @@ packages:
     resolution: {integrity: sha1-vGmQXtejga0yXMDQLe0HEyjr8/M=}
     dependencies:
       broccoli-caching-writer: 2.3.1
-      mkdirp: 0.5.5
+      mkdirp: 0.5.6
       rsvp: 3.2.1
       sri-toolbox: 0.2.0
       symlink-or-copy: 1.3.1
@@ -7066,7 +7066,7 @@ packages:
       handlebars: 4.7.7
       js-string-escape: 1.0.1
       lodash: 4.17.21
-      mkdirp: 0.5.5
+      mkdirp: 0.5.6
       resolve-package-path: 3.1.0
       rimraf: 2.6.3
       semver: 7.3.8
@@ -7367,18 +7367,18 @@ packages:
       - supports-color
     dev: true
 
-  /ember-cli-typescript/4.2.1:
-    resolution: {integrity: sha512-0iKTZ+/wH6UB/VTWKvGuXlmwiE8HSIGcxHamwNhEC5x1mN3z8RfvsFZdQWYUzIWFN2Tek0gmepGRPTwWdBYl/A==}
-    engines: {node: 10.* || >= 12.*}
+  /ember-cli-typescript/5.2.1:
+    resolution: {integrity: sha512-qqp5TAIuPHxHiGXJKL+78Euyhy0zSKQMovPh8sJpN/ZBYx0H90pONufHR3anaMcp1snVfx4B+mb9+7ijOik8ZA==}
+    engines: {node: '>= 12.*'}
     dependencies:
       ansi-to-html: 0.6.15
       broccoli-stew: 3.0.0
       debug: 4.3.2
       execa: 4.1.0
       fs-extra: 9.1.0
-      resolve: 1.20.0
+      resolve: 1.22.1
       rsvp: 4.8.5
-      semver: 7.3.5
+      semver: 7.3.8
       stagehand: 1.0.0
       walk-sync: 2.2.0
     transitivePeerDependencies:
@@ -9343,7 +9343,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
@@ -11797,10 +11797,6 @@ packages:
     resolution: {integrity: sha512-GY8fANSrTMfBVfInqJAY41QkOM+upUTytK1jZ0c8+3HdHrJxBJ3rF5i9moClXTE8uUSnUo8cAsCoxDXvSY4DHg==}
     dev: true
 
-  /minimist/1.2.5:
-    resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
-    dev: true
-
   /minimist/1.2.7:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
 
@@ -11888,12 +11884,6 @@ packages:
       for-in: 1.0.2
       is-extendable: 1.0.1
     dev: true
-
-  /mkdirp/0.5.5:
-    resolution: {integrity: sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==}
-    hasBin: true
-    dependencies:
-      minimist: 1.2.7
 
   /mkdirp/0.5.6:
     resolution: {integrity: sha512-FP+p8RB8OWpF3YZBCrP5gtADmtXApB5AMLn+vdyA+PyxCjrCs00mjyUozssO33cwDeT3wNGdLxJ5M//YqtHAJw==}
@@ -13642,6 +13632,7 @@ packages:
     dependencies:
       is-core-module: 2.11.0
       path-parse: 1.0.7
+    dev: true
 
   /resolve/1.22.0:
     resolution: {integrity: sha512-Hhtrw0nLeSrFQ7phPp4OOcVjLPIeMnRlr5mcnVuMe7M/7eBn98A3hmFRLoFo3DLZkivSYwhRUJTyPyWAk56WLw==}
@@ -13832,7 +13823,7 @@ packages:
       execa: 1.0.0
       fb-watchman: 2.0.1
       micromatch: 3.1.10
-      minimist: 1.2.5
+      minimist: 1.2.7
       walker: 1.0.8
     transitivePeerDependencies:
       - supports-color
@@ -13850,7 +13841,7 @@ packages:
       execa: 4.1.0
       fb-watchman: 2.0.1
       micromatch: 4.0.5
-      minimist: 1.2.5
+      minimist: 1.2.7
       walker: 1.0.8
     dev: true
 
