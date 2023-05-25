@@ -75,7 +75,7 @@
     "typescript": "^5.0.4"
   },
   "engines": {
-    "node": ">= 12.*"
+    "node": ">= 16.*"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -106,5 +106,8 @@
     "npm": {
       "publish": false
     }
+  },
+  "volta": {
+    "extends": "../package.json"
   }
 }

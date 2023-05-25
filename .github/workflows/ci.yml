@@ -28,16 +28,8 @@ jobs:
     name: Locked Deps
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 16
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Build package
@@ -48,28 +40,26 @@ jobs:
         run: pnpm run -r --parallel --aggregate-output lint:types
       - name: Lint Handlebars
         run: pnpm run -r --parallel --aggregate-output lint:hbs
-      - name: Browser Tests
+      - name: Tests
         run: pnpm run -r --parallel --aggregate-output test
 
-  test-old-dependencies:
+  test-floating-deps:
     name: Oldest Supported Env
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 16
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: Build package
         run: pnpm --filter ember-link build
-      - name: Browser Tests
+      - name: Lint JS
+        run: pnpm run -r --parallel --aggregate-output lint:js
+      - name: Lint Types
+        run: pnpm run -r --parallel --aggregate-output lint:types
+      - name: Lint Handlebars
+        run: pnpm run -r --parallel --aggregate-output lint:hbs
+      - name: Tests
         run: pnpm run -r --parallel --aggregate-output test
 
   test-try:
@@ -89,16 +79,8 @@ jobs:
           # - ember-beta
           # - ember-canary
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 16
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Build package
