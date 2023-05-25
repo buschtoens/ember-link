@@ -39,7 +39,7 @@
     "@ember/string": "^3.1.0",
     "@ember/test-helpers": "^2.9.3",
     "@embroider/test-setup": "^2.1.1",
-    "@glimmer/component": "^1.1.2",
+    "@glimmer/component": "1.1.2",
     "@glimmer/env": "^0.1.7",
     "@gossi/config-eslint": "^0.3.1",
     "@gossi/config-prettier": "^0.3.1",
