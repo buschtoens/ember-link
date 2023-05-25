@@ -3,10 +3,10 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 env:
-  PNPM_VERSION: 6.32.3
+  PNPM_VERSION: 8.5.1
 
 jobs:
   release:
@@ -20,8 +20,8 @@ jobs:
           version: ${{ env.PNPM_VERSION }}
       - uses: actions/setup-node@v3.5.1
         with:
-          node-version: 12
-          registry-url: 'https://registry.npmjs.org'
+          node-version: 16
+          registry-url: "https://registry.npmjs.org"
 
       - run: pnpm install --frozen-lockfile
       - run: npm publish
