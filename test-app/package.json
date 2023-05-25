@@ -77,9 +77,12 @@
     "webpack": "^5.80.0"
   },
   "engines": {
-    "node": ">= 12.*"
+    "node": ">= 16.*"
   },
   "ember": {
     "edition": "octane"
+  },
+  "volta": {
+    "extends": "../package.json"
   }
 }

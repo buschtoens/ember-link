@@ -28,16 +28,8 @@ jobs:
     name: Locked Deps
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 16
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Build package
@@ -55,16 +47,8 @@ jobs:
     name: Oldest Supported Env
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 16
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Build package
@@ -89,16 +73,8 @@ jobs:
           # - ember-beta
           # - ember-canary
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 16
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Build package
