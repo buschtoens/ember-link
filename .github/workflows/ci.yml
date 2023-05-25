@@ -40,20 +40,26 @@ jobs:
         run: pnpm run -r --parallel --aggregate-output lint:types
       - name: Lint Handlebars
         run: pnpm run -r --parallel --aggregate-output lint:hbs
-      - name: Browser Tests
+      - name: Tests
         run: pnpm run -r --parallel --aggregate-output test
 
-  test-old-dependencies:
+  test-floating-deps:
     name: Oldest Supported Env
     runs-on: ubuntu-20.04
     steps:
       - name: Setup
         uses: wyvox/action@v1
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
       - name: Build package
         run: pnpm --filter ember-link build
-      - name: Browser Tests
+      - name: Lint JS
+        run: pnpm run -r --parallel --aggregate-output lint:js
+      - name: Lint Types
+        run: pnpm run -r --parallel --aggregate-output lint:types
+      - name: Lint Handlebars
+        run: pnpm run -r --parallel --aggregate-output lint:hbs
+      - name: Tests
         run: pnpm run -r --parallel --aggregate-output test
 
   test-try:
