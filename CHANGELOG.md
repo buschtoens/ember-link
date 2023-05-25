@@ -1,6 +1,15 @@
 # Changelog
 
 
+
+## v2.1.0 (2023-05-25)
+
+#### :house: Internal
+* [#746](https://github.com/buschtoens/ember-link/pull/746) Deprecations and TS Fixes ([@gossi](https://github.com/gossi))
+
+#### Committers: 1
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## v2.0.1 (2022-12-23)
 
 #### :bug: Bug Fix
