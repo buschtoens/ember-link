@@ -39,7 +39,8 @@ jobs:
         run: pnpm run -r --parallel --aggregate-output lint:hbs
       - name: Tests
         #run: pnpm run -r --parallel --aggregate-output test
-        run: pnpm --filter test-app test
+        run: pnpm test
+        working-directory: test-app
 
   test-floating-deps:
     name: Floating Deps
