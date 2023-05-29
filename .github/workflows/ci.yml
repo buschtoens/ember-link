@@ -21,7 +21,6 @@ on:
 
 env:
   CI: true
-  PNPM_VERSION: 8.5.1
 
 jobs:
   test-locked-deps:
@@ -30,8 +29,6 @@ jobs:
     steps:
       - name: Setup
         uses: wyvox/action@v1
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
       - name: Build package
         run: pnpm --filter ember-link build
       - name: Lint JS
@@ -44,13 +41,13 @@ jobs:
         run: pnpm run -r --parallel --aggregate-output test
 
   test-floating-deps:
-    name: Oldest Supported Env
+    name: Floating Deps
     runs-on: ubuntu-20.04
     steps:
       - name: Setup
         uses: wyvox/action@v1
-      - name: Install Dependencies
-        run: pnpm install --no-frozen-lockfile
+        with:
+          pnpm-args: --no-frozen-lockfile
       - name: Build package
         run: pnpm --filter ember-link build
       - name: Lint JS
@@ -81,8 +78,6 @@ jobs:
     steps:
       - name: Setup
         uses: wyvox/action@v1
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
       - name: Build package
         run: pnpm --filter ember-link build
       - name: Try Scenario

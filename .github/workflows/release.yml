@@ -5,25 +5,16 @@ on:
     tags:
       - "v*"
 
-env:
-  PNPM_VERSION: 8.5.1
-
 jobs:
   release:
     name: release
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
+      - name: Setup
+        uses: wyvox/action@v1
         with:
-          version: ${{ env.PNPM_VERSION }}
-      - uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 16
-          registry-url: "https://registry.npmjs.org"
-
-      - run: pnpm install --frozen-lockfile
+          pnpm-args: --frozen-lockfile
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
