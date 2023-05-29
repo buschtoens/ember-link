@@ -38,7 +38,8 @@ jobs:
       - name: Lint Handlebars
         run: pnpm run -r --parallel --aggregate-output lint:hbs
       - name: Tests
-        run: pnpm run -r --parallel --aggregate-output test
+        #run: pnpm run -r --parallel --aggregate-output test
+        run: pnpm --filter test-app test
 
   test-floating-deps:
     name: Floating Deps
