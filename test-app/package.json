@@ -34,12 +34,11 @@
     "ember-link": "workspace:*"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.21.3",
+    "@babel/eslint-parser": "^7.21.8",
     "@ember/optional-features": "^2.0.0",
-    "@ember/string": "^3.1.0",
+    "@ember/string": "^3.1.1",
     "@ember/test-helpers": "^2.9.3",
-    "@embroider/test-setup": "^2.1.1",
-    "@glimmer/component": "^1.1.2",
+    "@embroider/test-setup": "^3.0.1",
     "@glimmer/env": "^0.1.7",
     "@gossi/config-eslint": "^0.3.1",
     "@gossi/config-prettier": "^0.3.1",
@@ -47,7 +46,7 @@
     "@tsconfig/ember": "^2.0.0",
     "@types/qunit": "^2.19.5",
     "@types/rsvp": "^4.0.4",
-    "@types/sinon": "^10.0.14",
+    "@types/sinon": "^10.0.15",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.6.3",
     "ember-cli": "^4.12.1",
@@ -62,19 +61,19 @@
     "ember-export-application-global": "^2.0.1",
     "ember-load-initializers": "^2.1.2",
     "ember-qunit": "^6.2.0",
-    "ember-resolver": "^10.0.0",
+    "ember-resolver": "^10.1.0",
     "ember-sinon-qunit": "^7.1.4",
     "ember-source": "^4.12.0",
     "ember-source-channel-url": "^3.0.0",
-    "ember-template-lint": "^5.7.2",
+    "ember-template-lint": "^5.10.0",
     "ember-try": "^2.0.0",
-    "eslint": "^8.39.0",
+    "eslint": "^8.41.0",
     "loader.js": "^4.7.0",
     "p-defer": "~3.0.0",
     "qunit": "^2.19.4",
     "qunit-dom": "^2.0.0",
     "typescript": "^5.0.4",
-    "webpack": "^5.80.0"
+    "webpack": "^5.84.1"
   },
   "engines": {
     "node": ">= 16.*"

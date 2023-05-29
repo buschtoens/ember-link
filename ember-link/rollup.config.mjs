@@ -1,13 +1,14 @@
 import typescript from 'rollup-plugin-ts';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
+import { defineConfig } from 'rollup';
 
 const addon = new Addon({
   srcDir: 'src',
   destDir: 'dist'
 });
 
-export default {
+export default defineConfig({
   // This provides defaults that work well alongside `publicEntrypoints` below.
   // You can augment this if you need to.
   output: addon.output(),
@@ -59,4 +60,4 @@ export default {
       ]
     })
   ]
-};
+});
