@@ -22,7 +22,6 @@ const classicTypePackages = {
   '@types/ember__routing': '^4.0.12',
   '@types/ember__runloop': '^4.0.2',
   '@types/ember__service': '^4.0.2',
-  '@types/ember__string': '^3.16.3',
   '@types/ember__template': '^4.0.1',
   '@types/ember__test': '^4.0.1',
   '@types/ember__test-helpers': '^2.9.1',
