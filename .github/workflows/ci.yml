@@ -63,10 +63,11 @@ jobs:
     name: Ember Try
     runs-on: ubuntu-20.04
     needs: [test-locked-deps]
+
     strategy:
       fail-fast: false
       matrix:
-        scenario:
+        try-scenario:
           - ember-3.28
           - ember-4.4
           - ember-4.8
@@ -82,5 +83,5 @@ jobs:
       - name: Build package
         run: pnpm --filter ember-link build
       - name: Try Scenario
-        run: pnpm exec ember try:one ${{ matrix.scenario }} --skip-cleanup
+        run: pnpm exec ember try:one ${{ matrix.try-scenario }} --skip-cleanup
         working-directory: test-app
