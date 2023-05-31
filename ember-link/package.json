@@ -1,0 +1,113 @@
+{
+  "name": "ember-link",
+  "version": "2.0.1",
+  "description": "Link primitive to pass around self-contained route references",
+  "keywords": [
+    "ember-addon",
+    "routing",
+    "router",
+    "template",
+    "helper",
+    "component"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:buschtoens/ember-link.git"
+  },
+  "license": "MIT",
+  "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./test-support": {
+      "types": "./dist/test-support/index.d.ts",
+      "default": "./dist/test-support/index.js"
+    },
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "files": [
+    "addon-main.cjs",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup --config",
+    "lint": "concurrently 'npm:lint:*'",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
+    "prepack": "rollup --config",
+    "start": "rollup --config --watch"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.8.5",
+    "@glimmer/env": "^0.1.7"
+  },
+  "peerDependencies": {
+    "@ember/test-helpers": "^2.9.3",
+    "@glimmer/tracking": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.22.3",
+    "@babel/preset-typescript": "^7.21.5",
+    "@babel/runtime": "^7.22.3",
+    "@ember/test-helpers": "^2.9.3",
+    "@embroider/addon-dev": "^3.1.0",
+    "@gossi/config-eslint": "^0.3.1",
+    "@gossi/config-prettier": "^0.3.1",
+    "@tsconfig/ember": "^2.0.0",
+    "@types/qunit": "^2.19.5",
+    "concurrently": "^8.0.1",
+    "ember-source": "^4.12.0",
+    "eslint": "^8.41.0",
+    "prettier": "^2.8.8",
+    "rollup": "3.21.8",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-ts": "^3.2.0",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">= 16.*"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember-addon": {
+    "app-js": {
+      "./helpers/link.js": "./dist/_app_/helpers/link.js",
+      "./services/link-manager.js": "./dist/_app_/services/link-manager.js"
+    },
+    "main": "addon-main.cjs",
+    "type": "addon",
+    "version": 2
+  },
+  "release-it": {
+    "plugins": {
+      "release-it-lerna-changelog": {
+        "infile": "CHANGELOG.md",
+        "launchEditor": false
+      }
+    },
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "tokenRef": "GITHUB_AUTH"
+    },
+    "npm": {
+      "publish": false
+    }
+  },
+  "volta": {
+    "extends": "../package.json"
+  }
+}

@@ -21,52 +21,46 @@ on:
 
 env:
   CI: true
-  PNPM_VERSION: 6.32.3
+  PNPM_VERSION: 8.5.1
 
 jobs:
   test-locked-deps:
     name: Locked Deps
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 12
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+      - name: Build package
+        run: pnpm --filter ember-link build
       - name: Lint JS
-        run: pnpm lint:js
+        run: pnpm run -r --parallel --aggregate-output lint:js
       - name: Lint Types
-        run: pnpm lint:types
+        run: pnpm run -r --parallel --aggregate-output lint:types
       - name: Lint Handlebars
-        run: pnpm lint:hbs
-      - name: Browser Tests
-        run: pnpm test
+        run: pnpm run -r --parallel --aggregate-output lint:hbs
+      - name: Tests
+        run: pnpm run -r --parallel --aggregate-output test
 
-  test-old-dependencies:
+  test-floating-deps:
     name: Oldest Supported Env
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 12
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-      - name: Browser Tests
-        run: pnpm test
+        run: pnpm install --no-frozen-lockfile
+      - name: Build package
+        run: pnpm --filter ember-link build
+      - name: Lint JS
+        run: pnpm run -r --parallel --aggregate-output lint:js
+      - name: Lint Types
+        run: pnpm run -r --parallel --aggregate-output lint:types
+      - name: Lint Handlebars
+        run: pnpm run -r --parallel --aggregate-output lint:hbs
+      - name: Tests
+        run: pnpm run -r --parallel --aggregate-output test
 
   test-try:
     name: Ember Try
@@ -85,17 +79,12 @@ jobs:
           # - ember-beta
           # - ember-canary
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3.2.0
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-      - name: Install Node
-        uses: actions/setup-node@v3.5.1
-        with:
-          node-version: 12
-          cache: pnpm
+      - name: Setup
+        uses: wyvox/action@v1
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+      - name: Build package
+        run: pnpm --filter ember-link build
       - name: Try Scenario
-        run: pnpm ember try:one ${{ matrix.scenario }}
+        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup
+        working-directory: test-app
