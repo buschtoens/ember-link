@@ -22,10 +22,10 @@
     "baseUrl": ".",
     "moduleResolution": "nodenext",
     "paths": {
-      "test-app/tests/*": [
+      "polaris-test-app/tests/*": [
         "tests/*"
       ],
-      "test-app/*": [
+      "polaris-test-app/*": [
         "app/*"
       ],
       "*": [

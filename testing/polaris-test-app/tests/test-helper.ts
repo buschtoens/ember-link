@@ -7,8 +7,8 @@ import { start } from 'ember-qunit';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import setupSinon from 'ember-sinon-qunit';
-import Application from 'test-app/app';
-import config from 'test-app/config/environment';
+import Application from 'polaris-test-app/app';
+import config from 'polaris-test-app/config/environment';
 
 setApplication(Application.create(config.APP));
 

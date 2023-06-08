@@ -5,7 +5,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 
 import { setupLink } from 'ember-link/test-support';
-import waitForError from 'test-app/tests/helpers/wait-for-error';
+import waitForError from 'polaris-test-app/tests/helpers/wait-for-error';
 
 module('Integration | Helper | link', function (hooks) {
   setupRenderingTest(hooks);
