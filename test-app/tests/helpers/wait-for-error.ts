@@ -12,11 +12,11 @@ import { off, on } from 'rsvp';
 export default async function waitForError(
   callback: () => Promise<unknown>,
   options?: Parameters<typeof waitUntil>[1]
-) {
+): Promise<Error> {
   const originalEmberListener = Ember.onerror;
   const originalWindowListener = window.onerror;
 
-  let error: Error | undefined;
+  let error: Error | undefined = undefined;
 
   Ember.onerror = (uncaughtError) => {
     error = uncaughtError;

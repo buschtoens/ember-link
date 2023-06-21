@@ -22,6 +22,8 @@
   },
   "scripts": {
     "build": "ember build",
+    "lint": "concurrently 'npm:lint:*(!fix)'",
+    "lint:fix": "concurrently -g 'npm:lint:*:fix'",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint --ext js,ts .",
     "lint:js:fix": "eslint --ext js,ts . --fix",
