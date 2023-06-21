@@ -24,14 +24,14 @@
   //   "strictPropertyInitialization": true,
   //   "target": "es2017"
   // },
-  "compilerOptions": {
-    // "types": [
-    //   "qunit"
-    // ],
-    "typeRoots": [
-      "./node_modules/@types"
-    ]
-  },
+  // "compilerOptions": {
+  //   // "types": [
+  //   //   "qunit"
+  //   // ],
+  //   // "typeRoots": [
+  //   //   "./node_modules/@types"
+  //   // ]
+  // },
   "include": [
     "src/**/*",
     "unpublished-development-types/**/*"
