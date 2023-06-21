@@ -4,7 +4,11 @@ import TestInstrumentedLinkManagerService from './-private/services/test-instrum
 
 import type { TestContext } from '@ember/test-helpers';
 
-export default function setupLink(hooks: NestedHooks) {
+interface Hooks {
+  beforeEach(callback: () => void): void;
+}
+
+export default function setupLink(hooks: Hooks /* NestedHooks */) {
   hooks.beforeEach(function (this: TestContext) {
     assert(
       'ember-link.setupLink: You have already called `setupLink` once',

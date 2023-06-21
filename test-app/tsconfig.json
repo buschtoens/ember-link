@@ -1,0 +1,33 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "compilerOptions": {
+    "noEmitOnError": false,
+    "baseUrl": ".",
+    "moduleResolution": "nodenext",
+    "paths": {
+      "polaris-test-app/tests/*": [
+        "tests/*"
+      ],
+      "polaris-test-app/*": [
+        "app/*"
+      ],
+      "*": [
+        "types/*"
+      ]
+    },
+    "types": [],
+    // "typeRoots": [
+    //   "./node_modules/@types"
+    // ]
+    // "types": [
+    //   "qunit",
+    //   "rsvp",
+    //   "sinon"
+    // ]
+  },
+  "include": [
+    "app/**/*",
+    "tests/**/*",
+    "types/**/*"
+  ]
+}

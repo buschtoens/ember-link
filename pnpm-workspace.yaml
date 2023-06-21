@@ -1,3 +1,3 @@
 packages:
   - "ember-link"
-  - "testing/*"
+  - "test-app"

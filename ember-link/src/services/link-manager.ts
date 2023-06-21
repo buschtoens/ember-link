@@ -1,10 +1,11 @@
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { addListener, removeListener } from '@ember/object/events';
-import { getOwner } from '@ember/owner';
 import Service, { inject as service } from '@ember/service';
 
 import Link, { UILink } from '../link';
+// import { getOwner } from '@ember/owner';
+import { getOwner } from '../owner';
 
 import type { LinkParams, UILinkParams } from '../link';
 import type RouteInfo from '@ember/routing/route-info';
