@@ -5,10 +5,10 @@
     "baseUrl": ".",
     "moduleResolution": "nodenext",
     "paths": {
-      "polaris-test-app/tests/*": [
+      "test-app/tests/*": [
         "tests/*"
       ],
-      "polaris-test-app/*": [
+      "test-app/*": [
         "app/*"
       ],
       "*": [

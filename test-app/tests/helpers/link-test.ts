@@ -4,7 +4,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 
-import waitForError from 'polaris-test-app/tests/helpers/wait-for-error';
+import waitForError from 'test-app/tests/helpers/wait-for-error';
 
 import { setupLink } from 'ember-link/test-support';
 
