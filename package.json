@@ -11,8 +11,7 @@
     "lint:fix": "pnpm --filter '*' lint:fix",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:addon": "pnpm --filter ember-link start",
-    "start:test-app": "pnpm --filter test-app start",
-    "test": "pnpm --filter '*' test"
+    "start:test-app": "pnpm --filter test-app start"
   },
   "devDependencies": {
     "concurrently": "^7.6.0"

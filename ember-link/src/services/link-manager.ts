@@ -1,10 +1,11 @@
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { addListener, removeListener } from '@ember/object/events';
-import { getOwner } from '@ember/owner';
 import Service, { inject as service } from '@ember/service';
 
 import Link, { UILink } from '../link';
+// import { getOwner } from '@ember/owner';
+import { getOwner } from '../owner';
 
 import type { LinkParams, UILinkParams } from '../link';
 import type RouteInfo from '@ember/routing/route-info';
@@ -16,7 +17,7 @@ interface RouterServiceWithRecognize extends RouterService {
 }
 
 export default class LinkManagerService extends Service {
-  @tracked private _currentTransitionStack?: Transition[];
+  @tracked private internalCurrentTransitionStack?: Transition[];
 
   /**
    * The `RouterService` instance to be used by the generated `Link` instances.
@@ -49,7 +50,7 @@ export default class LinkManagerService extends Service {
    * The currently active `Transition` objects.
    */
   get currentTransitionStack() {
-    return this._currentTransitionStack;
+    return this.internalCurrentTransitionStack;
   }
 
   /**
@@ -121,12 +122,15 @@ export default class LinkManagerService extends Service {
 
   @action
   handleRouteWillChange(transition: Transition) {
-    this._currentTransitionStack = [...(this._currentTransitionStack || []), transition];
+    this.internalCurrentTransitionStack = [
+      ...(this.internalCurrentTransitionStack || []),
+      transition
+    ];
   }
 
   @action
   handleRouteDidChange() {
-    this._currentTransitionStack = undefined;
+    this.internalCurrentTransitionStack = undefined;
   }
 }
 

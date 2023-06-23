@@ -1,0 +1,7 @@
+{
+  "eslint.packageManager": "pnpm",
+  "eslint.workingDirectories": [
+    "ember-link",
+    "test-app"
+  ]
+}

@@ -1,7 +1,8 @@
-import typescript from 'rollup-plugin-ts';
-import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
+
 import { defineConfig } from 'rollup';
+import copy from 'rollup-plugin-copy';
+import typescript from 'rollup-plugin-ts';
 
 const addon = new Addon({
   srcDir: 'src',

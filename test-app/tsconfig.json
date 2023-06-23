@@ -1,23 +1,7 @@
 {
   "extends": "@tsconfig/ember/tsconfig.json",
   "compilerOptions": {
-    // "allowJs": true,
-    // "allowSyntheticDefaultImports": true,
-    // "alwaysStrict": true,
-    // "baseUrl": ".",
-    // "experimentalDecorators": true,
-    // "inlineSourceMap": true,
-    // "inlineSources": true,
-    // "module": "es6",
-    // "moduleResolution": "nodenext",
-    // "noEmit": true,
-    // "noEmitOnError": false,
-    // "noFallthroughCasesInSwitch": true,
-    // "noImplicitAny": true,
-    // "noImplicitReturns": true,
-    // "noImplicitThis": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
+    "noEmitOnError": false,
     "baseUrl": ".",
     "moduleResolution": "nodenext",
     "paths": {
@@ -31,9 +15,15 @@
         "types/*"
       ]
     },
-    // "strictNullChecks": true,
-    // "strictPropertyInitialization": true,
-    // "target": "es2017"
+    "types": [],
+    // "typeRoots": [
+    //   "./node_modules/@types"
+    // ]
+    // "types": [
+    //   "qunit",
+    //   "rsvp",
+    //   "sinon"
+    // ]
   },
   "include": [
     "app/**/*",

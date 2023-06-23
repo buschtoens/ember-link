@@ -21,7 +21,6 @@ on:
 
 env:
   CI: true
-  PNPM_VERSION: 8.5.1
 
 jobs:
   test-locked-deps:
@@ -30,8 +29,6 @@ jobs:
     steps:
       - name: Setup
         uses: wyvox/action@v1
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
       - name: Build package
         run: pnpm --filter ember-link build
       - name: Lint JS
@@ -44,13 +41,13 @@ jobs:
         run: pnpm run -r --parallel --aggregate-output test
 
   test-floating-deps:
-    name: Oldest Supported Env
+    name: Floating Deps
     runs-on: ubuntu-20.04
     steps:
       - name: Setup
         uses: wyvox/action@v1
-      - name: Install Dependencies
-        run: pnpm install --no-frozen-lockfile
+        with:
+          pnpm-args: --no-frozen-lockfile
       - name: Build package
         run: pnpm --filter ember-link build
       - name: Lint JS
@@ -66,25 +63,25 @@ jobs:
     name: Ember Try
     runs-on: ubuntu-20.04
     needs: [test-locked-deps]
+
     strategy:
       fail-fast: false
       matrix:
-        scenario:
-          - ember-3.15
-          - ember-3.16
-          - ember-3.20
-          # Disabled because these versions are currently not compatible with this addon
-          # - ember-3.24
-          # - ember-release
-          # - ember-beta
-          # - ember-canary
+        try-scenario:
+          - ember-3.28
+          - ember-4.4
+          - ember-4.8
+          - ember-4.12
+          - ember-release
+          - ember-beta
+          - ember-canary
+          - embroider-safe
+          - embroider-optimized
     steps:
       - name: Setup
         uses: wyvox/action@v1
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
       - name: Build package
         run: pnpm --filter ember-link build
       - name: Try Scenario
-        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup
+        run: pnpm exec ember try:one ${{ matrix.try-scenario }} --skip-cleanup
         working-directory: test-app

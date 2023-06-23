@@ -4,7 +4,9 @@ import { DEBUG } from '@glimmer/env';
 import { tracked } from '@glimmer/tracking';
 import { assert, deprecate } from '@ember/debug';
 import { action } from '@ember/object';
-import { getOwner, setOwner } from '@ember/owner';
+
+// import { getOwner, setOwner } from '@ember/owner';
+import { getOwner, setOwner } from './owner';
 
 import type LinkManagerService from './services/link-manager';
 import type Owner from '@ember/owner';

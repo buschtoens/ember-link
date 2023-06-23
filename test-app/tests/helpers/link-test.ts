@@ -4,8 +4,9 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 
-import { setupLink } from 'ember-link/test-support';
 import waitForError from 'test-app/tests/helpers/wait-for-error';
+
+import { setupLink } from 'ember-link/test-support';
 
 module('Integration | Helper | link', function (hooks) {
   setupRenderingTest(hooks);
