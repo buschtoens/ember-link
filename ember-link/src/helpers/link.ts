@@ -9,9 +9,9 @@ import type { QueryParams } from '../-params';
 import type Link from '../link';
 import type LinkManagerService from '../services/link-manager';
 
-export type LinkHelperPositionalParams = [] | RouteArgs;
+type PositionalParams = [] | RouteArgs;
 
-export interface LinkHelperNamedParams extends Partial<LinkParams>, Partial<LinkParams> {
+interface NamedParams extends Partial<LinkParams> {
   /**
    * Optional shortcut for `models={{array model}}`.
    */
@@ -43,7 +43,15 @@ export interface LinkHelperNamedParams extends Partial<LinkParams>, Partial<Link
   onReplaceWith?: () => void;
 }
 
-export default class LinkHelper extends Helper {
+export interface LinkSignature {
+  Args: {
+    Positional: PositionalParams;
+    Named: NamedParams;
+  };
+  Return: Link;
+}
+
+export default class LinkHelper extends Helper<LinkSignature> {
   @service('link-manager') private linkManager!: LinkManagerService;
 
   /**
@@ -52,10 +60,7 @@ export default class LinkHelper extends Helper {
    * @param positional [route?, ...models?, query?]
    * @param named { route?, models?, model?, query? }
    */
-  private normalizeLinkParams(
-    positional: LinkHelperPositionalParams,
-    named: LinkHelperNamedParams
-  ): LinkParams {
+  private normalizeLinkParams(positional: PositionalParams, named: NamedParams): LinkParams {
     assert(
       `You provided 'queryParams', but the parameter you mean is just 'query'.`,
       !('queryParams' in named)
@@ -68,7 +73,7 @@ export default class LinkHelper extends Helper {
     if (named.fromURL) {
       assert(
         `When specifying a serialized 'fromURL' ('${named.fromURL}'), you can't provide any further 'LinkParams'.`,
-        !(['route', 'models', 'model', 'query'] as (keyof LinkHelperNamedParams)[]).some(
+        !(['route', 'models', 'model', 'query'] as (keyof NamedParams)[]).some(
           (name) => named[name]
         )
       );
@@ -133,7 +138,7 @@ export default class LinkHelper extends Helper {
     };
   }
 
-  compute(positional: LinkHelperPositionalParams, named: LinkHelperNamedParams): Link {
+  compute(positional: PositionalParams, named: NamedParams): Link {
     const linkParams = this.normalizeLinkParams(positional, named);
 
     return this.linkManager.createLink(linkParams);

@@ -21,6 +21,7 @@ export default defineConfig({
     // addon. Anything not listed here may get optimized away.
     addon.publicEntrypoints([
       'index.js',
+      'template-registry.js',
       'helpers/link.js',
       'services/link-manager.js',
       'test-support/index.js'
