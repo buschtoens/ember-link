@@ -8,7 +8,7 @@ export default class TestInstrumentedLinkManagerService extends LinkManagerServi
    * Creates a `UILink` instance, or a `TestLink` instance when `setupLink`
    * has been called.
    */
-  createUILink(linkParams: LinkParams): TestLink {
+  createLink(linkParams: LinkParams): TestLink {
     return new TestLink(this, linkParams);
   }
 }

@@ -6,11 +6,10 @@ import Service, { inject as service } from '@ember/service';
 import { BEHAVIOR, prevent } from '../-behavior';
 // import { getOwner } from '@ember/owner';
 import { getOwner } from '../-owner';
-import Link, { UILink } from '../link';
+import Link from '../link';
 
 import type { Behavior } from '../-behavior';
 import type { LinkParams } from '../-params';
-import type { UILinkParams } from '../link';
 import type RouteInfo from '@ember/routing/route-info';
 import type RouterService from '@ember/routing/router-service';
 import type Transition from '@ember/routing/transition';
@@ -78,13 +77,6 @@ export default class LinkManagerService extends Service {
    */
   createLink(linkParams: LinkParams): Link {
     return new Link(this, linkParams);
-  }
-
-  /**
-   * Creates a `UILink` instance.
-   */
-  createUILink(linkParams: LinkParams, uiParams?: UILinkParams): Link {
-    return new UILink(this, { ...linkParams, ...uiParams });
   }
 
   /**

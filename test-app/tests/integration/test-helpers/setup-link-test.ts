@@ -14,7 +14,7 @@ module('Integration | Test Helpers | setupLink', function (hooks) {
     const linkManager = this.owner.lookup('service:linkManager') as LinkManagerService;
 
     assert.ok(
-      linkManager.createUILink({
+      linkManager.createLink({
         route: 'test-app'
       }) instanceof TestLink
     );

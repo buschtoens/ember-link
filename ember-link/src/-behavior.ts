@@ -20,7 +20,7 @@ export interface Behavior {
    * @param link
    * @returns
    */
-  prevent: (event: Event | unknown, link: Link) => boolean;
+  prevent: (event: Event | unknown, link?: Link) => boolean;
 }
 
 const MAIN_BUTTON = 0;
@@ -43,7 +43,7 @@ export function preventDefault(event?: Event | unknown) {
   }
 }
 
-export function prevent(event: Event | unknown, _link: Link): boolean {
+export function prevent(event: Event | unknown): boolean {
   if (isRegularOpening(event)) {
     return true;
   }

@@ -21,7 +21,7 @@ module('Unit | Test Helpers | linkFor', function (hooks) {
       class MockTestInstrumentedLinkManagerService extends TestInstrumentedLinkManagerService {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        createUILink(params: LinkParams) {
+        createLink(params: LinkParams) {
           assert.strictEqual(params.route, route);
           assert.strictEqual(params.models, models);
           assert.strictEqual(params.query, query);
@@ -44,7 +44,7 @@ module('Unit | Test Helpers | linkFor', function (hooks) {
       class MockTestInstrumentedLinkManagerService extends TestInstrumentedLinkManagerService {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        createUILink(params: LinkParams) {
+        createLink(params: LinkParams) {
           assert.strictEqual(params.route, route);
           assert.strictEqual(params.models, models);
           assert.strictEqual(params.query, query);
