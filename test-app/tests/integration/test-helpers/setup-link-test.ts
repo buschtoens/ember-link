@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 
 import { setupLink, TestLink } from 'ember-link/test-support';
 
-import type LinkManagerService from 'ember-link/services/link-manager';
+import type { LinkManagerService } from 'ember-link';
 
 module('Integration | Test Helpers | setupLink', function (hooks) {
   setupRenderingTest(hooks);

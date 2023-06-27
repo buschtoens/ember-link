@@ -14,16 +14,7 @@
       "*": [
         "types/*"
       ]
-    },
-    "types": [],
-    // "typeRoots": [
-    //   "./node_modules/@types"
-    // ]
-    // "types": [
-    //   "qunit",
-    //   "rsvp",
-    //   "sinon"
-    // ]
+    }
   },
   "include": [
     "app/**/*",

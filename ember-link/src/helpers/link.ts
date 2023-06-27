@@ -2,10 +2,12 @@ import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
 import { inject as service } from '@ember/service';
 
-import { isQueryParams } from '../link';
+import { isQueryParams, type LinkParams } from '../-params';
 
+import type { RouteArgs, RouteModel } from '../-models';
+import type { QueryParams } from '../-params';
 import type Link from '../link';
-import type { LinkParams, QueryParams, RouteArgs, RouteModel, UILinkParams } from '../link';
+import type { UILinkParams } from '../link';
 import type LinkManagerService from '../services/link-manager';
 
 export type LinkHelperPositionalParams = [] | RouteArgs;
@@ -127,7 +129,8 @@ export default class LinkHelper extends Helper {
         : undefined,
       query: named.query ?? positionalQueryParameters,
       onTransitionTo: named.onTransitionTo,
-      onReplaceWith: named.onReplaceWith
+      onReplaceWith: named.onReplaceWith,
+      behavior: named.behavior
     };
   }
 

@@ -1,95 +1,19 @@
 /* eslint-disable max-classes-per-file */
 
-import { DEBUG } from '@glimmer/env';
 import { tracked } from '@glimmer/tracking';
 import { assert, deprecate } from '@ember/debug';
 import { action } from '@ember/object';
 
+import { BEHAVIOR, type Behavior } from './-behavior';
 // import { getOwner, setOwner } from '@ember/owner';
-import { getOwner, setOwner } from './owner';
+import { getOwner, setOwner } from './-owner';
+import { freezeParams } from './-params';
 
+import type { RouteArgs, RouteModel } from './-models';
+import type { LinkParams, QueryParams } from './-params';
 import type LinkManagerService from './services/link-manager';
 import type Owner from '@ember/owner';
-import type RouterService from '@ember/routing/router-service';
 import type Transition from '@ember/routing/transition';
-
-const MAIN_BUTTON = 0;
-
-export type QueryParams = Record<string, unknown>;
-
-type MaybeQueryParams =
-  | RouteModel
-  | { queryParams: object }
-  | {
-      isQueryParams: unknown;
-      values: QueryParams;
-    };
-
-export function isQueryParams(
-  maybeQueryParam?: MaybeQueryParams
-): maybeQueryParam is { values: QueryParams } {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  return maybeQueryParam?.isQueryParams !== undefined && typeof maybeQueryParam.values === 'object';
-}
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-export type RouteModel = object | string | number;
-
-export type RouteArgs = Parameters<RouterService['urlFor']>;
-
-export interface LinkParams {
-  /**
-   * The target route name.
-   */
-  route: string;
-
-  /**
-   * Optional array of models / dynamic segments.
-   */
-  models?: RouteModel[];
-
-  /**
-   * Optional query params object.
-   */
-  query?: QueryParams;
-
-  /**
-   * An optional callback that will be fired when the Link is transitioned to.
-   *
-   * The callback is only fired if the Link is explicitly invoked, not if the
-   * app transitions to the Link through other means.
-   */
-  onTransitionTo?: () => void;
-
-  /**
-   * An optional callback that will be fired when the current route is replaced
-   * with the Link.
-   *
-   * The callback is only fired if the Link is explicitly invoked, not if the
-   * app transitions to the Link through other means.
-   */
-  onReplaceWith?: () => void;
-}
-
-function freezeParams(params: LinkParams) {
-  if (DEBUG) {
-    if (params.models) Object.freeze(params.models);
-    if (params.query) Object.freeze(params.query);
-
-    return Object.freeze(params);
-  }
-
-  return params;
-}
-
-function isUnmodifiedLeftClick(event: MouseEvent): boolean {
-  return event.button === MAIN_BUTTON && !event.ctrlKey && !event.metaKey;
-}
-
-function isMouseEvent(event: unknown): event is MouseEvent {
-  return typeof event === 'object' && event !== null && 'button' in event;
-}
 
 export default class Link {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -118,6 +42,13 @@ export default class Link {
     }
 
     return [routeName, ...models] as RouteArgs;
+  }
+
+  protected get behavior(): Behavior {
+    return {
+      ...this._linkManager[BEHAVIOR],
+      ...this._params.behavior
+    };
   }
 
   /**
@@ -266,15 +197,27 @@ export default class Link {
     );
   }
 
+  protected canOpen(event?: Event | unknown): boolean {
+    if (this.behavior.prevent?.(event, this)) {
+      return false;
+    }
+
+    assert(
+      'You can only call `open`, when the router is initialized, e.g. when using `setupApplicationTest`.',
+      this._linkManager.isRouterInitialized
+    );
+
+    return true;
+  }
+
   /**
    * Transition into the target route.
    */
   @action
-  transitionTo(): Transition | undefined {
-    assert(
-      'You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.',
-      this._linkManager.isRouterInitialized
-    );
+  transitionTo(event?: Event | unknown): Transition | undefined {
+    if (!this.canOpen(event)) {
+      return;
+    }
 
     this._params.onTransitionTo?.();
 
@@ -288,17 +231,27 @@ export default class Link {
    * possible.
    */
   @action
-  replaceWith(): Transition | undefined {
-    assert(
-      'You can only call `replaceWith`, when the router is initialized, e.g. when using `setupApplicationTest`.',
-      this._linkManager.isRouterInitialized
-    );
+  replaceWith(event?: Event | unknown): Transition | undefined {
+    if (!this.canOpen(event)) {
+      return;
+    }
 
     this._params.onReplaceWith?.();
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return this._linkManager.router.replaceWith(...this._routeArgs);
+  }
+
+  @action
+  open(event?: Event | unknown): Transition | undefined {
+    const method = this.behavior.open ?? 'transition';
+
+    if (method === 'replace') {
+      return this.replaceWith(event);
+    }
+
+    return this.transitionTo(event);
   }
 }
 
@@ -322,47 +275,40 @@ export class UILink extends Link {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  @tracked protected _params!: LinkParams & UILinkParams;
-
-  private preventDefault(event?: Event | unknown) {
-    if (
-      (this._params.preventDefault ?? true) &&
-      typeof (event as Event)?.preventDefault === 'function'
-    ) {
-      (event as Event).preventDefault();
-    }
-  }
-
+  // @tracked protected _params!: LinkParams & UILinkParams;
+  // protected preventDefault(event?: Event | unknown) {
+  //   if (
+  //     (this._params.preventDefault ?? true) &&
+  //     typeof (event as Event)?.preventDefault === 'function'
+  //   ) {
+  //     (event as Event).preventDefault();
+  //   }
+  // }
   /**
    * Transition into the target route.
    *
    * Optionally call `preventDefault()`, if an `Event` is passed in.
    */
-  @action
-  transitionTo(event?: Event | unknown): Transition | undefined {
-    if (isMouseEvent(event) && !isUnmodifiedLeftClick(event)) return;
-
-    // Intentionally putting this *before* the assertion to prevent navigating
-    // away in case of a failed assertion.
-    this.preventDefault(event);
-
-    return super.transitionTo();
-  }
-
+  // @action
+  // transitionTo(event?: Event | unknown): Transition | undefined {
+  //   if (!isExternalOpening(event)) return;
+  //   // Intentionally putting this *before* the assertion to prevent navigating
+  //   // away in case of a failed assertion.
+  //   this.preventDefault(event);
+  //   return super.transitionTo(event);
+  // }
   /**
    * Transition into the target route while replacing the current URL, if
    * possible.
    *
    * Optionally call `preventDefault()`, if an `Event` is passed in.
    */
-  @action
-  replaceWith(event?: Event | unknown): Transition | undefined {
-    if (isMouseEvent(event) && !isUnmodifiedLeftClick(event)) return;
-
-    // Intentionally putting this *before* the assertion to prevent navigating
-    // away in case of a failed assertion.
-    this.preventDefault(event);
-
-    return super.replaceWith();
-  }
+  // @action
+  // replaceWith(event?: Event | unknown): Transition | undefined {
+  //   if (!isExternalOpening(event)) return;
+  //   // Intentionally putting this *before* the assertion to prevent navigating
+  //   // away in case of a failed assertion.
+  //   this.preventDefault(event);
+  //   return super.replaceWith(event);
+  // }
 }

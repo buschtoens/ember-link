@@ -11,6 +11,7 @@ import sinon from 'sinon';
 import { settledExceptTimers } from '../helpers/settled-except-timers';
 
 import type { TestContext } from '@ember/test-helpers';
+import type { LinkManagerService } from 'ember-link';
 
 module('Acceptance | link', function (hooks) {
   setupApplicationTest(hooks);
@@ -440,5 +441,152 @@ module('Acceptance | link', function (hooks) {
     await click('[data-test-123]');
 
     assert.ok(spy.calledOnce);
+  });
+
+  module('Behavior', function () {
+    test('it opens with a transition', async function (this: TestContext, assert) {
+      const spy = sinon.spy();
+
+      this.owner.register(
+        'controller:application',
+        class ApplicationController extends Controller {
+          spy = spy;
+        }
+      );
+      this.owner.register(
+        'template:application',
+        hbs`
+        {{#let (link route="foo" onTransitionTo=this.spy) as |l|}}
+          <a
+            data-test-123
+            href={{l.url}}
+            {{on "click" l.open}}
+          >
+            Link
+          </a>
+        {{/let}}
+      `
+      );
+
+      await visit('/');
+      assert.strictEqual(currentURL(), '/');
+
+      await click('[data-test-123]');
+
+      assert.ok(spy.calledOnce);
+    });
+
+    test('it opens with a replaceWith', async function (this: TestContext, assert) {
+      const spy = sinon.spy();
+
+      this.owner.register(
+        'controller:application',
+        class ApplicationController extends Controller {
+          spy = spy;
+        }
+      );
+      this.owner.register(
+        'template:application',
+        hbs`
+        {{#let (link route="foo" onReplaceWith=this.spy behavior=(hash open='replace')) as |l|}}
+          <a
+            data-test-123
+            href={{l.url}}
+            {{on "click" l.open}}
+          >
+            Link
+          </a>
+        {{/let}}
+      `
+      );
+
+      await visit('/');
+      assert.strictEqual(currentURL(), '/');
+
+      await click('[data-test-123]');
+
+      assert.ok(spy.calledOnce);
+    });
+
+    test('it has a global prevent', async function (this: TestContext, assert) {
+      const spy = sinon.spy();
+      const prevent = (event: Event | unknown) => {
+        (event as Event).preventDefault();
+
+        return true;
+      };
+
+      const service = this.owner.lookup('service:link-manager') as LinkManagerService;
+
+      service.configureBehavior({
+        prevent
+      });
+
+      this.owner.register(
+        'controller:application',
+        class ApplicationController extends Controller {
+          spy = spy;
+        }
+      );
+      this.owner.register(
+        'template:application',
+        hbs`
+        {{#let (link route="foo" onTransitionTo=this.spy) as |l|}}
+          <a
+            data-test-123
+            href={{l.url}}
+            {{on "click" l.open}}
+          >
+            Link
+          </a>
+        {{/let}}
+      `
+      );
+
+      await visit('/');
+      assert.strictEqual(currentURL(), '/');
+
+      await click('[data-test-123]');
+
+      assert.notOk(spy.calledOnce);
+    });
+
+    test('it has a local prevent', async function (this: TestContext, assert) {
+      const spy = sinon.spy();
+      const prevent = (event: Event) => {
+        event.preventDefault();
+
+        return true;
+      };
+
+      this.owner.register(
+        'controller:application',
+        class ApplicationController extends Controller {
+          prevent = prevent;
+          spy = spy;
+        }
+      );
+      this.owner.register(
+        'template:application',
+        hbs`
+        {{#let (link route="foo" onTransitionTo=this.spy behavior=(hash prevent=this.prevent)) as |l|}}
+          <a
+            data-test-123
+            href={{l.url}}
+            {{on "click" l.open}}
+          >
+            Link
+          </a>
+        {{/let}}
+      `
+      );
+
+      await visit('/');
+      assert.strictEqual(currentURL(), '/');
+
+      await click('[data-test-123]');
+
+      assert.notOk(spy.calledOnce);
+    });
   });
 });

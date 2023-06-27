@@ -1,7 +1,7 @@
-import LinkManagerService from '../../../services/link-manager';
-import TestLink from '../../test-link';
+import LinkManagerService from '../../services/link-manager';
+import TestLink from '../test-link';
 
-import type { LinkParams } from '../../../link';
+import type { LinkParams } from '../../-params';
 
 export default class TestInstrumentedLinkManagerService extends LinkManagerService {
   /**

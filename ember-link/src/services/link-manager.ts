@@ -3,11 +3,14 @@ import { action } from '@ember/object';
 import { addListener, removeListener } from '@ember/object/events';
 import Service, { inject as service } from '@ember/service';
 
-import Link, { UILink } from '../link';
+import { BEHAVIOR, prevent } from '../-behavior';
 // import { getOwner } from '@ember/owner';
-import { getOwner } from '../owner';
+import { getOwner } from '../-owner';
+import Link, { UILink } from '../link';
 
-import type { LinkParams, UILinkParams } from '../link';
+import type { Behavior } from '../-behavior';
+import type { LinkParams } from '../-params';
+import type { UILinkParams } from '../link';
 import type RouteInfo from '@ember/routing/route-info';
 import type RouterService from '@ember/routing/router-service';
 import type Transition from '@ember/routing/transition';
@@ -23,6 +26,23 @@ export default class LinkManagerService extends Service {
    * The `RouterService` instance to be used by the generated `Link` instances.
    */
   @service('router') readonly router!: RouterServiceWithRecognize;
+
+  [BEHAVIOR]: Behavior = {
+    open: 'transition',
+    prevent
+  };
+
+  /**
+   * Configure the default behavior of _all_ links.
+   *
+   * This can be overwritten at a particular link instance
+   */
+  configureBehavior(behavior: Partial<Behavior>) {
+    this[BEHAVIOR] = {
+      ...this[BEHAVIOR],
+      ...behavior
+    };
+  }
 
   /**
    * Whether the router has been initialized.

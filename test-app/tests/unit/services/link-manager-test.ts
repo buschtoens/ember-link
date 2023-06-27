@@ -5,7 +5,7 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
 import type Transition from '@ember/routing/transition';
-import type LinkManagerService from 'ember-link/services/link-manager';
+import type { LinkManagerService } from 'ember-link';
 
 function makeDummyTransition(): Transition {
   return {
