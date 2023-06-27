@@ -15,7 +15,7 @@ module('Unit | Service | test-instrumented-link-manager', function (hooks) {
       'service:link-manager'
     ) as TestInstrumentedLinkManagerService;
 
-    const link = linkManager.createUILink({ route: 'test-app' });
+    const link = linkManager.createLink({ route: 'test-app' });
 
     assert.ok(link instanceof TestLink);
   });

@@ -44,7 +44,7 @@ export default function linkFor(
       !(routeOrParameters.models && routeOrParameters.model)
     );
 
-    return linkManager.createUILink({
+    return linkManager.createLink({
       route: routeOrParameters.route,
       models: (Array.isArray(routeOrParameters.models)
         ? routeOrParameters.models
@@ -53,7 +53,7 @@ export default function linkFor(
     }) as TestLink;
   }
 
-  return linkManager.createUILink({
+  return linkManager.createLink({
     route: routeOrParameters,
     models,
     query: queryParams

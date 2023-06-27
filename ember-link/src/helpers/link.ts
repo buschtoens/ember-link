@@ -7,12 +7,11 @@ import { isQueryParams, type LinkParams } from '../-params';
 import type { RouteArgs, RouteModel } from '../-models';
 import type { QueryParams } from '../-params';
 import type Link from '../link';
-import type { UILinkParams } from '../link';
 import type LinkManagerService from '../services/link-manager';
 
 export type LinkHelperPositionalParams = [] | RouteArgs;
 
-export interface LinkHelperNamedParams extends Partial<LinkParams>, Partial<UILinkParams> {
+export interface LinkHelperNamedParams extends Partial<LinkParams>, Partial<LinkParams> {
   /**
    * Optional shortcut for `models={{array model}}`.
    */
@@ -134,21 +133,9 @@ export default class LinkHelper extends Helper {
     };
   }
 
-  /**
-   * Normalizes and extracts the `UILinkParams` from the named params.
-   *
-   * @param named { preventDefault? }
-   */
-  private normalizeUIParams(named: LinkHelperNamedParams): UILinkParams {
-    return {
-      preventDefault: named.preventDefault ?? true
-    };
-  }
-
   compute(positional: LinkHelperPositionalParams, named: LinkHelperNamedParams): Link {
     const linkParams = this.normalizeLinkParams(positional, named);
-    const uiParams = this.normalizeUIParams(named);
 
-    return this.linkManager.createUILink(linkParams, uiParams);
+    return this.linkManager.createLink(linkParams);
   }
 }
