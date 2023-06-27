@@ -1,9 +1,10 @@
 import { assert } from '@ember/debug';
 import { getContext } from '@ember/test-helpers';
 
-import TestInstrumentedLinkManagerService from './-private/services/test-instrumented-link-manager';
+import TestInstrumentedLinkManagerService from './-services/test-instrumented-link-manager';
 
-import type { QueryParams, RouteModel } from '../link';
+import type { RouteModel } from '../-models';
+import type { QueryParams } from '../-params';
 import type TestLink from './test-link';
 import type Ember from 'ember';
 

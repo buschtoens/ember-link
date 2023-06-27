@@ -100,6 +100,17 @@ export default class TestLink extends Link {
     return this._createDummyTransition();
   }
 
+  @action
+  open(event?: Event): Transition | undefined {
+    const method = this.behavior.open ?? 'transition';
+
+    if (method === 'replace') {
+      return this.replaceWith(event);
+    }
+
+    return this.transitionTo(event);
+  }
+
   private _preventTransitionOut(event?: Event) {
     // Make sure we don't transition out of the testing page
     event?.preventDefault();

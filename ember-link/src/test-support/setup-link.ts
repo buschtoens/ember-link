@@ -1,6 +1,6 @@
 import { assert } from '@ember/debug';
 
-import TestInstrumentedLinkManagerService from './-private/services/test-instrumented-link-manager';
+import TestInstrumentedLinkManagerService from './-services/test-instrumented-link-manager';
 
 import type { TestContext } from '@ember/test-helpers';
 

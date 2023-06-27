@@ -62,7 +62,7 @@ module('Integration | Helper | link', function (hooks) {
           assert.ok(error instanceof Error);
           assert.strictEqual(
             error.message,
-            'Assertion Failed: You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.'
+            'Assertion Failed: You can only call `open`, when the router is initialized, e.g. when using `setupApplicationTest`.'
           );
         }
 
@@ -111,7 +111,7 @@ module('Integration | Helper | link', function (hooks) {
             assert.ok(error instanceof Error);
             assert.strictEqual(
               error.message,
-              'Assertion Failed: You can only call `transitionTo`, when the router is initialized, e.g. when using `setupApplicationTest`.'
+              'Assertion Failed: You can only call `open`, when the router is initialized, e.g. when using `setupApplicationTest`.'
             );
           }
 

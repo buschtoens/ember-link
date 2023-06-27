@@ -1,37 +1,5 @@
 {
   "extends": "@tsconfig/ember/tsconfig.json",
-  // "compilerOptions": {
-  //   "declaration": true,
-  //   "declarationMap": true,
-  //   "emitDeclarationOnly": false,
-  //   "allowJs": true,
-  //   "allowSyntheticDefaultImports": true,
-  //   "alwaysStrict": true,
-  //   "experimentalDecorators": true,
-  //   "inlineSourceMap": true,
-  //   "inlineSources": true,
-  //   "module": "es6",
-  //   "moduleResolution": "node",
-  //   "noEmit": true,
-  //   "noEmitOnError": false,
-  //   "noFallthroughCasesInSwitch": true,
-  //   "noImplicitAny": true,
-  //   "noImplicitReturns": true,
-  //   "noImplicitThis": true,
-  //   "noUnusedLocals": true,
-  //   "noUnusedParameters": true,
-  //   "strictNullChecks": true,
-  //   "strictPropertyInitialization": true,
-  //   "target": "es2017"
-  // },
-  // "compilerOptions": {
-  //   // "types": [
-  //   //   "qunit"
-  //   // ],
-  //   // "typeRoots": [
-  //   //   "./node_modules/@types"
-  //   // ]
-  // },
   "include": [
     "src/**/*",
     "unpublished-development-types/**/*"
