@@ -9,9 +9,9 @@ import type { QueryParams } from '../-params';
 import type Link from '../link';
 import type LinkManagerService from '../services/link-manager';
 
-type PositionalParams = [] | RouteArgs;
+export type PositionalParams = [] | RouteArgs;
 
-interface NamedParams extends Partial<LinkParams> {
+export interface NamedParams extends Partial<LinkParams> {
   /**
    * Optional shortcut for `models={{array model}}`.
    */

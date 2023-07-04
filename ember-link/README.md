@@ -18,12 +18,6 @@ usage in templates.
 
 — [/r/whatjawsdid](https://www.reddit.com/r/whatjawsdid/)
 
-## Installation
-
-```
-ember install ember-link
-```
-
 ## Usage
 
 - [`{{link}}` helper](#link-helper)

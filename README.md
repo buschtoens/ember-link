@@ -4,14 +4,10 @@
 [![npm version](https://badge.fury.io/js/ember-link.svg)](http://badge.fury.io/js/ember-link)
 [![Download Total](https://img.shields.io/npm/dt/ember-link.svg)](http://badge.fury.io/js/ember-link)
 [![Ember Observer Score](https://emberobserver.com/badges/ember-link.svg)](https://emberobserver.com/addons/ember-link)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)  
-[![Dependabot enabled](https://img.shields.io/badge/dependabot-enabled-blue.svg?logo=dependabot)](https://dependabot.com/)
-[![dependencies Status](https://david-dm.org/buschtoens/ember-link/status.svg)](https://david-dm.org/buschtoens/ember-link)
-[![devDependencies Status](https://david-dm.org/buschtoens/ember-link/dev-status.svg)](https://david-dm.org/buschtoens/ember-link?type=dev)
 
 Introduces a new `Link` primitive to pass around self-contained references to
-routes, like URLs, but with state (`isActive`, ...) and methods (`transitionTo`,
-...). Also brings along an accompanying template helper and component for easy
+routes, like URLs, but with state (`isActive`, ...) and methods (`open`,
+...). Also brings along an accompanying template helper for easy
 usage in templates.
 
 > `ember-link` does to routing what `ember-concurrency` did to asynchrony!
@@ -20,7 +16,7 @@ usage in templates.
 
 ## Installation
 
-```
+```sh
 ember install ember-link
 ```
 
