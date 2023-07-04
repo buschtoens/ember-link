@@ -8,18 +8,16 @@ hero:
   tagline: Links as Primitives
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Getting Started
+      link: /getting-started
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Using Primitives
+      link: /using-primitives
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Links as Primitives
+    details: Create links and pass them around as needed
+  - title: Separate of Concerns
+    details: Split defining and attaching links
 ---
 

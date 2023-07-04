@@ -16,632 +16,79 @@ usage in templates.
 
 ## Installation
 
+Install `ember-link` with:
+
 ```sh
 ember install ember-link
 ```
 
 ## Usage
 
-- [`{{link}}` helper](#link-helper)
-- [`<Link>` component](#link-component)
-- [`Link` class](#link)
-- [`UILink` class](#uilink)
-- [`LinkManager` service](#linkmanager)
-- [Testing](#testing)
+You can use `ember-link` in a declarative form with a [`(link)`
+helper](helper.md) or imperatively with the [`LinkManager`
+Service](./service.md).
 
-### `{{link}}` Helper
+### `(link)` Helper Example
 
-The `{{link}}` helper returns a [`UILink`](#uilink) instance.
-
-#### Invocation Styles
-
-##### Positional Parameters
+Use the `(link)` helper to create a link primitive and attach it to an element.
 
 ```hbs
-{{#let
-  (link
-    "blogs.posts.post"
-    @post.blog.id
-    @post.id
-    (query-params showFullPost=true)
-  )
-  as |l|
-}}
-  <a href={{l.url}} {{on "click" l.transitionTo}}>
-    Read the full "{{@post.title}}" story on our {{@post.blog.name}} blog!
+{{#let (link "about") as |l|}}
+  <a href={{l.url}} {{on "click" l.open}}>
+    About us
   </a>
 {{/let}}
 ```
 
-##### Named Parameters
+### `LinkManager` Service Example
 
-```hbs
-{{#let
-  (link
-    route="blogs.posts.post"
-    models=(array @post.blog.id @post.id)
-    query=(hash showFullPost=true)
-  )
-  as |l|
-}}
-  <a href={{l.url}} {{on "click" l.transitionTo}}>
-    Read the full "{{@post.title}}" story on our {{@post.blog.name}} blog!
-  </a>
-{{/let}}
-```
-
-When passing a single model, you can use `model` instead of `models`:
-
-```hbs
-{{#let
-  (link
-    route="blogs.posts"
-    model=@post.blog.id
-  )
-  as |l|
-}}
-  <a href={{l.url}} {{on "click" l.transitionTo}}>
-    Read more stories in the {{@post.blog.name}} blog!
-  </a>
-{{/let}}
-```
-
-##### Mix & Match
-
-You can also mix and match the parameter styles, however you like.
-
-```hbs
-{{#let
-  (link
-    "blogs.posts.post"
-    @post.blog.id
-    @post.id
-    query=(hash showFullPost=true)
-  )
-  as |l|
-}}
-  <a href={{l.url}} {{on "click" l.transitionTo}}>
-    Read the full "{{@post.title}}" story on our {{@post.blog.name}} blog!
-  </a>
-{{/let}}
-```
-
-##### `fromURL`
-
-Instead of the positional & named link parameters described above, you can also
-create a `Link` instance from a serialized URL.
-
-```hbs
-{{! someURL = "/blogs/tech/posts/dont-break-the-web" }}
-{{#let (link fromURL=this.someURL) as |l|}}
-  <a href={{l.url}} {{on "click" l.transitionTo}}>
-    Read the next great post.
-  </a>
-{{/let}}
-```
-
-`fromURL` is mutually exclusive with the other link parameters: `route`, `model`
-& `models`, `query`
-
-### Parameters
-
-In addition to the parameters shown above, the `{{link}}` helper also accepts a
-`preventDefault` default parameter. It defaults to `true` and intelligently
-prevents hard browser transitions when clicking `<a>` elements.
-
-See [`@preventDefault`](#preventdefault) and [`UILink`](#uilink).
-
-### 💡 Pro Tips
-
-Instead of using the `{{#let}}` helper, you can use the
-[`<Link>` component](#link-component) to achieve the same scoping effect, with
-subjectively nicer syntax.
-
-Even better yet, make [`Link`](#link) / [`UILink`](#uilink) a first-class
-primitive in your app architecture! Instead of manually wiring up
-[`Link#url`](#url) and [`Link#transitionTo()`](#transitionto) every time, rather
-create your own ready-to-use, style-guide-compliant link and button components
-that accept `@link` as an argument instead of `@href` and `@onClick`.
-
-This is akin to the
-[popular](https://github.com/rwjblue/ember-cli-async-button)
-[async](https://github.com/DockYard/ember-async-button)
-[task](https://github.com/quipuapp/ember-task-button)
-button component concept.
-
-```hbs
-<Ui::LinkButton @link={{link "subscribe"}}>
-  Become a Premium member
-</Ui::LinkButton>
-```
-
-```hbs
-<a
-  href={{@link.url}}
-  class="btn"
-  {{on "click" @link.transitionTo}}
-  ...attributes
->
-  {{yield}}
-</a>
-```
-
-### `<Link>` Component
-
-Similar to the the [`{{link}}` helper](#link-helper), the `<Link>` component
-yields a [`UILink`](#uilink) instance.
-
-```hbs
-<Link
-  @route="some.route"
-  @models={{array 123}}
-  @query={{hash foo="bar"}}
-as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-#### Arguments
-
-##### `@route`
-
-Required.
-
-The target route name.
-
-**Example**
-
-```hbs
-<Link @route="some.route" as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-**`{{link-to}}` equivalent**
-
-```hbs
-{{#link-to "some.route"}}
-  Click me
-{{/link-to}}
-```
-
-##### `@models`
-
-Optional. Mutually exclusive with [`@model`](#model).
-
-An array of models / dynamic segments.
-
-**Example**
-
-```hbs
-<Link @route="some.route" @models={{array someModel someNestedModel}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-**`{{link-to}}` equivalent**
-
-```hbs
-{{#link-to "some.route" someModel someNestedModel}}
-  Click me
-{{/link-to}}
-```
-
-##### `@model`
-
-Optional. Mutually exclusive with [`@models`](#models).
-
-Shorthand for providing a single model / dynamic segment. The following two
-invocations are equivalent:
-
-```hbs
-<Link @route="some.route" @model={{someModel}} />
-<Link @route="some.route" @models={{array someModel}} />
-```
-
-##### `@query`
-
-Optional.
-
-Query Params object.
-
-**Example**
-
-```hbs
-<Link @route="some.route" @query={{hash foo="bar"}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-**`{{link-to}}` equivalent**
-
-```hbs
-{{#link-to "some.route" (query-params foo="bar")}}
-  Click me
-{{/link-to}}
-```
-
-##### `@fromURL`
-
-Optional. Mutually exclusive with [`@route`](#route), [`@model`](#model) /
-[`@models`](#models), [`@query`](#query).
-
-**Example**
-
-```hbs
-<Link @fromURL="/blogs/tech/posts/dont-break-the-web" as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Click me
-  </a>
-</Link>
-```
-
-##### `@preventDefault`
-
-Optional. Default: `true`
-
-If enabled, the [`transitionTo`](#transitionto) and
-[`replaceWith`](#replacewith) actions will try to call
-[`event.preventDefault()`][prevent-default] on the first argument, if it is an
-event. This is an anti-foot-gun to make `<Link>` _just work™️_ with `<a>` and
-`<button>`, which would otherwise trigger a native browser navigation / form
-submission.
-
-[prevent-default]: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
-
-#### Yielded Parameters
-
-The `<Link>` component yields a [`UILink`](#uilink) instance.
-
-##### `url`
-
-`string`
-
-The URL for this link that you can pass to an `<a>` tag as the `href` attribute.
-
-```hbs
-<Link @route="some.route" as |l|>
-  <a href={{l.url}} {{on "click" l.transitionTo}}>
-    Click me
-  </a>
-</Link>
-```
-
-##### `isActive`
-
-`boolean`
-
-Whether this route is currently active, including potentially supplied models
-and query params.
-
-In the following example, only one link will be `is-active` at any time.
-
-```hbs
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    One
-  </a>
-</Link>
-
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActive "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Two
-  </a>
-</Link>
-```
-
-##### `isActiveWithoutQueryParams`
-
-`boolean`
-
-Whether this route is currently active, including potentially supplied models,
-but ignoring query params.
-
-In the following example, the first two links will be `is-active` simultaneously.
-
-```hbs
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActiveWithoutQueryParams "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    One
-  </a>
-</Link>
-
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="quux"}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActiveWithoutQueryParams "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Two
-  </a>
-</Link>
-
-<Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActiveWithoutQueryParams "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Three
-  </a>
-</Link>
-```
-
-##### `isActiveWithoutModels`
-
-`boolean`
-
-Whether this route is currently active, but ignoring models and query params.
-
-In the following example, both links will be `is-active` simultaneously.
-
-```hbs
-<Link @route="some.route" @models={{array 123}} @query={{hash foo="bar"}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActiveWithoutModels "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    One
-  </a>
-</Link>
-
-<Link @route="some.route" @models={{array 456}} @query={{hash foo="quux"}} as |l|>
-  <a
-    href={{l.url}}
-    class={{if l.isActiveWithoutModels "is-active"}}
-    {{on "click" l.transitionTo}}
-  >
-    Two
-  </a>
-</Link>
-```
-
-##### `transitionTo()`
-
-`(event?: Event) => Transition`
-
-Transition into the target route.
-
-If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDefault()`.
-
-##### `replaceWith()`
-
-`(event?: Event) => Transition`
-
-Transition into the target route while replacing the current URL, if possible.
-
-If [`@preventDefault`](#preventdefault) is enabled, also calls `event.preventDefault()`.
-
-### `Link`
-
-A `Link` is a self-contained reference to a concrete route, including models and
-query params. It's basically like a
-[`<LinkTo>` / `{{link-to}}` component][link-to-component] you can pass around.
-
-[link-to-component]: https://api.emberjs.com/ember/release/classes/Ember.Templates.components/methods/input?anchor=LinkTo
-
-You can create a `Link` via the [`LinkManager` service](#linkmanager).
-
-[`UILink`](#uilink) extends `Link` with some anti-foot-guns and conveniences. It
-can also be created via the [`LinkManager` service](#linkmanager), but also via
-the [`{{link}}` helper](#link-helper) and [`<Link>` component](#link-component).
-
-#### Properties
-
-##### `isActive`
-
-Type: `boolean`
-
-Whether this route is currently active, including potentially supplied models
-and query params.
-
-##### `isActiveWithoutQueryParams`
-
-Type: `boolean`
-
-Whether this route is currently active, including potentially supplied models,
-but ignoring query params.
-
-##### `isActiveWithoutModels`
-
-Type: `boolean`
-
-Whether this route is currently active, but ignoring models and query params.
-
-##### `url`
-
-Type: `string`
-
-The URL for this link that you can pass to an `<a>` tag as the `href` attribute.
-
-##### `routeName`
-
-Type: `string`
-
-The target route name of this link.
-
-##### `models`
-
-Type: `RouteModel[]`
-
-The route models passed in this link.
-
-##### `queryParams`
-
-Type: `Record<string, unknown> | undefined`
-
-The query params for this link, if specified.
-
-#### Methods
-
-##### `transitionTo()`
-
-Returns: [`Transition`][transition]
-
-Transition into the target route.
-
-##### `replaceWith()`
-
-Returns: [`Transition`][transition]
-
-Transition into the target route while replacing the current URL, if possible.
-
-[transition]: https://api.emberjs.com/ember/release/classes/Transition
-
-### `UILink`
-
-`UILink` extends [`Link`](#link) with anti-foot-guns and conveniences. This
-class is meant to be used in templates, primarily through `<a>` & `<button>`
-elements.
-
-It wraps `transitionTo()` and `replaceWith()` to optionally accept an `event`
-argument. It will intelligently
-
-- call `event.preventDefault()` to prevent hard page reloads
-- open the page in a new tab, when `Cmd` / `Ctrl` clicking
-
-It can be created via the [`LinkManager` service](#linkmanager), but also via
-the [`{{link}}` helper](#link-helper) and [`<Link>` component](#link-component).
-
-### `LinkManager`
-
-The `LinkManager` service is used by the [`{{link}} helper`](#link-helper) and
-[`<Link>` component](#link-component) to create [`UILink`](#uilink) instances.
-
-You can also use this service directly to programmatically create link
-references.
-
-#### `createLink(linkParams: LinkParams): Link`
-
-Returns: [`Link`](#link)
+Use the `LinkManager.createLink()` method to create a link programmatically.
 
 ```ts
-interface LinkParams {
-  /**
-   * The target route name.
-   */
-  route: string;
+import Contoller from '@ember/controller';
+import { service } from '@ember/service';
+import type { LinkManagerService } from 'ember-link';
 
-  /**
-   * Optional array of models / dynamic segments.
-   */
-  models?: RouteModel[];
+export default class PageHeader extends Controller {
+  @service declare linkManager: LinkManagerService;
 
-  /**
-   * Optional query params object.
-   */
-  query?: QueryParams;
+  aboutUsLink = this.linkManager.createLink('about');
 }
 ```
 
-#### `createUILink(linkParams: LinkParams, uiParams: UILinkParams): UILink`
+### Working with Primitives
 
-Returns: [`UILink`](#uilink)
+The idea of `ember-link` is to be able to create link primitives, that you can
+pass around. Create links at route level and then pass them into components.
 
-```ts
-interface UILinkParams {
-  /**
-   * Whether or not to call `event.preventDefault()`, if the first parameter to
-   * the `transitionTo` or `replaceWith` action is an `Event`. This is useful to
-   * prevent links from accidentally triggering real browser navigation or
-   * buttons from submitting a form.
-   *
-   * Defaults to `true`.
-   */
-  preventDefault?: boolean;
-}
-```
+A more in-depth guide is available at [using primitives](./using-primitives.md).
 
-#### `getLinkParamsFromURL(url: string): LinkParams`
+## Testing
 
-Returns: [`LinkParams`](#createlinklinkparams-linkparams-link)
-
-Use this method to derive `LinkParams` from a serialized, recognizable URL, that
-you can then pass into `createLink` / `createUILink`.
-
-### Testing
-
-In [acceptance / application tests (`setupApplicationTest(hooks)`)][tests-application]
-your app boots with a fully-fledged router, so `ember-link` just works normally.
-
-In [integration / render tests (`setupRenderingTest(hooks)`)][tests-render] the
-router is not initialized, so `ember-link` can't operate normally. To still
-support using `{{link}}` & friends in render tests, you can use the
-[`setupLink(hooks)` test helper][setup-link].
-
-[tests-application]: https://guides.emberjs.com/release/testing/testing-application/
-[tests-render]: https://guides.emberjs.com/release/testing/testing-components/
-[setup-link]: https://github.com/buschtoens/ember-link/blob/main/addon-test-support/setup-link.ts
+[ember-link has testing support](./testing.md) on board, preparing the environment with
+`setupLink()` and `linkFor()` to create a link to a route on the fly:
 
 ```ts
-import { click, render } from '@ember/test-helpers';
-import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { click, render } from '@ember/test-helpers';
+import { hbs } from 'ember-cli-htmlbars';
 
 import { setupLink, linkFor, TestLink } from 'ember-link/test-support';
-
-import hbs from 'htmlbars-inline-precompile';
 
 module('`setupLink` example', function (hooks) {
   setupRenderingTest(hooks);
   setupLink(hooks);
 
-  test('`<Link>` component works in render tests', async function (assert) {
-    await render(hbs`
-      <Link @route="some.route" as |l|>
-        <a
-          href={{l.url}}
-          class={{if l.isActive "is-active"}}
-          {{on "click" l.transitionTo}}
-        >
-          Click me
-        </a>
-      </Link>
-    `);
-
+  test('`(link)` works in render tests', async function (assert) {
     const link = linkFor('some.route');
     link.onTransitionTo = assert.step('link clicked');
+
+    await render(hbs`
+      {{#let (link @route="some.route") as |l|}}
+        <a href={{l.url}} {{on "click" l.open}}>Click me</a>
+      {{/let}}
+    `);
 
     await click('a');
 

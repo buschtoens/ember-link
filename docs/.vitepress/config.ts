@@ -32,6 +32,7 @@ export default defineConfig({
           text: 'Usage',
           items: [
             { text: 'Using Primitives', link: '/using-primitives' },
+            { text: 'Params', link: '/params' },
             { text: 'Behavior', link: '/behavior' },
             { text: 'Link Helper', link: '/helper' },
             { text: 'LinkManager Service', link: '/service' },
