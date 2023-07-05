@@ -25,8 +25,8 @@ ember install ember-link
 ## Usage
 
 You can use `ember-link` in a declarative form with a [`(link)`
-helper](helper.md) or imperatively with the [`LinkManager`
-Service](./service.md).
+helper](https://buschtoens.github.io/ember-link/helper.html) or imperatively with the [`LinkManager`
+Service](https://buschtoens.github.io/ember-link/service.html).
 
 ### `(link)` Helper Example
 
@@ -61,11 +61,11 @@ export default class PageHeader extends Controller {
 The idea of `ember-link` is to be able to create link primitives, that you can
 pass around. Create links at route level and then pass them into components.
 
-A more in-depth guide is available at [using primitives](./using-primitives.md).
+A more in-depth guide is available at [using primitives](https://buschtoens.github.io/ember-link/using-primitives.html).
 
 ## Testing
 
-[ember-link has testing support](./testing.md) on board, preparing the environment with
+[ember-link has testing support](https://buschtoens.github.io/ember-link/testing.html) on board, preparing the environment with
 `setupLink()` and `linkFor()` to create a link to a route on the fly:
 
 ```ts
