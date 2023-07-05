@@ -1,7 +1,7 @@
 /**
- * This is the doc comment for file1.ts
+ * Test support for `ember-link` containing:
  *
- * Specify this is a module comment and rename it to my-module:
+ * @see https://buschtoens.github.io/ember-link/testing
  * @module ember-link/test-support
  */
 
