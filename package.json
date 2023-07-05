@@ -11,12 +11,26 @@
     "lint:fix": "pnpm --filter '*' lint:fix",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:addon": "pnpm --filter ember-link start",
-    "start:test-app": "pnpm --filter test-app start"
+    "start:test-app": "pnpm --filter test-app start",
+    "build:docs": "pnpm docs:api && pnpm docs:build",
+    "docs:api": "pnpm --filter ember-link api",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "vitepress": "^1.0.0-beta.3"
   },
   "volta": {
     "node": "16.20.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "search-insights"
+      ]
+    }
   }
 }
