@@ -44,7 +44,8 @@
     "lint:js:fix": "eslint . --fix",
     "lint:types": "tsc --noEmit",
     "prepack": "rollup --config",
-    "start": "rollup --config --watch"
+    "start": "rollup --config --watch",
+    "api": "typedoc"
   },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.5",

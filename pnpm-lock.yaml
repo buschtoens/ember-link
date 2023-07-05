@@ -7,9 +7,6 @@ importers:
       concurrently:
         specifier: ^7.6.0
         version: 7.6.0
-      typedoc-json-parser:
-        specifier: ~8.2.0
-        version: 8.2.0(typescript@5.1.3)
       vitepress:
         specifier: ^1.0.0-beta.3
         version: 1.0.0-beta.3
@@ -101,9 +98,6 @@ importers:
       typedoc:
         specifier: ^0.24.8
         version: 0.24.8(typescript@5.1.3)
-      typedoc-json-parser:
-        specifier: ^8.2.0
-        version: 8.2.0(typescript@5.1.3)
       typedoc-plugin-markdown:
         specifier: ^3.15.3
         version: 3.15.3(typedoc@0.24.8)
@@ -2066,13 +2060,6 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@favware/colorette-spinner@1.0.1:
-    resolution: {integrity: sha512-PPYtcLzhSafdylp8NBOxMCYIcLqTUMNiQc7ciBoAIvxNG2egM+P7e2nNPui5+Svyk89Q+Tnbrp139ZRIIBw3IA==}
-    engines: {node: '>=v16'}
-    dependencies:
-      colorette: 2.0.20
-    dev: true
-
   /@glimmer/component@1.1.2(@babel/core@7.22.5):
     resolution: {integrity: sha512-XyAsEEa4kWOPy+gIdMjJ8XlzA3qrGH55ZDv6nA16ibalCR17k74BI0CztxuRds+Rm6CtbUVgheCVlcCULuqD7A==}
     engines: {node: 6.* || 8.* || >= 10.*}
@@ -2417,11 +2404,6 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.25.1
-    dev: true
-
-  /@sapphire/node-utilities@1.0.0:
-    resolution: {integrity: sha512-xFC4UyzSKs6juyFtsUV4VNybg0KIpwaThED2TH3TGtNT5b0VFpILTXQtqXpPf+Rfmj+O/mLCm319xy4ohsQqxQ==}
-    engines: {node: '>=v16.0.0', npm: '>=7.0.0'}
     dev: true
 
   /@simple-dom/interface@1.4.0:
@@ -4643,10 +4625,6 @@ packages:
     resolution: {integrity: sha512-Y2oEozpomLn7Q3HFP7dpww7AtMJplbM9lGZP6RDfHqmbeRjiwRg4n6VM6j4KLmRke85uWEI7JqF17f3pqdRA0g==}
     dev: true
 
-  /colorette@2.0.20:
-    resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
-    dev: true
-
   /colors@1.0.3:
     resolution: {integrity: sha512-pFGrxThWcWQ2MsAz6RtgeWe4NK2kUE1WfsrvvlctdII745EW9I0yflqhe7++M5LEc7bV2c/9/5zc8sFcpL0Drw==}
     engines: {node: '>=0.1.90'}
@@ -4662,11 +4640,6 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
-    dev: true
-
-  /commander@11.0.0:
-    resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
-    engines: {node: '>=16'}
     dev: true
 
   /commander@2.20.3:
@@ -11658,22 +11631,6 @@ packages:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
     dependencies:
       is-typedarray: 1.0.0
-    dev: true
-
-  /typedoc-json-parser@8.2.0(typescript@5.1.3):
-    resolution: {integrity: sha512-/aEvjQAEJOb5vPFXbM4w2cOZf3h6PuNTHpiK/ZKAZf5xHu3kM6LxlgGBGgt9JyR2VGeQEJBvxHZODqiBGrB8Sw==}
-    engines: {node: '>=16', npm: '>=6'}
-    hasBin: true
-    dependencies:
-      '@favware/colorette-spinner': 1.0.1
-      '@sapphire/node-utilities': 1.0.0
-      colorette: 2.0.20
-      commander: 11.0.0
-      js-yaml: 4.1.0
-      tslib: 2.6.0
-      typedoc: 0.24.8(typescript@5.1.3)
-    transitivePeerDependencies:
-      - typescript
     dev: true
 
   /typedoc-plugin-markdown@3.15.3(typedoc@0.24.8):

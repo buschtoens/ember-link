@@ -7,6 +7,7 @@ const apiSidebar = getSidebar('api');
 export default defineConfig({
   title: "ember-link",
   description: "Links as Primitives",
+  base: '/ember-link/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
