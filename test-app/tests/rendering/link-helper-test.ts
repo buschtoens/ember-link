@@ -1,20 +1,3 @@
-# Testing
-
-ember-link has testing support on board to give you great DX for writing tests.
-
-## Application Tests
-
-In [acceptance / application tests (`setupApplicationTest(hooks)`)](https://guides.emberjs.com/release/testing/testing-application/)
-your app boots with a fully-fledged router, so `ember-link` just works normally.
-
-## Rendering Tests
-
-In [integration / render tests (`setupRenderingTest(hooks)`)](https://guides.emberjs.com/release/testing/testing-components/) the
-router is not initialized, so `ember-link` can't operate normally. To still
-support using `(link)` & friends in render tests, you can use the
-[`setupLink(hooks)` test helper](./api/modules/ember_link_test_support.md#setuplink).
-
-```ts
 import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
@@ -29,12 +12,11 @@ interface TestContext extends BaseTestContext {
   link: TestLink;
 }
 
-module('`setupLink` example', function (hooks) {
+module('Rendering Tests Examples', function (hooks) {
   setupRenderingTest(hooks);
   setupLink(hooks);
 
   test('using link in render tests', async function (this: TestContext, assert) {
-    // arrange
     this.link = linkFor('some.route');
     this.link.onTransitionTo = () => assert.step('link clicked');
 
@@ -44,12 +26,23 @@ module('`setupLink` example', function (hooks) {
       {{/let}}
     `);
 
-    // act
     await click('a');
 
-    // assert
+    assert.verifySteps(['link clicked']);
+  });
+
+  test('passing link to sample component', async function (this: TestContext, assert) {
+    this.link = linkFor('some.route');
+    this.link.onTransitionTo = () => assert.step('link clicked');
+
+    await render(hbs`
+      <SampleLink @link={{this.link}}>
+        Click me
+      </SampleLink>
+    `);
+
+    await click('a');
+
     assert.verifySteps(['link clicked']);
   });
 });
-
-```
