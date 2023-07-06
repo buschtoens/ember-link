@@ -5,8 +5,7 @@ import type { LinkParams } from '../../-params';
 
 export default class TestInstrumentedLinkManagerService extends LinkManagerService {
   /**
-   * Creates a `UILink` instance, or a `TestLink` instance when `setupLink`
-   * has been called.
+   * Creates a `TestLink` instance when `setupLink` has been called.
    */
   createLink(linkParams: LinkParams): TestLink {
     return new TestLink(this, linkParams);
