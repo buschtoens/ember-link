@@ -1,5 +1,29 @@
 # Changelog
 
+
+## v3.0.0 (2023-07-07)
+
+#### :boom: Breaking Change
+* [#771](https://github.com/buschtoens/ember-link/pull/771) Remove `UILink` ([@gossi](https://github.com/gossi))
+* [#752](https://github.com/buschtoens/ember-link/pull/752) Upgrade Node Version to v16 ([@gossi](https://github.com/gossi))
+* [#747](https://github.com/buschtoens/ember-link/pull/747) Remove deprecated `<Link>` component ([@gossi](https://github.com/gossi))
+
+#### :rocket: Enhancement
+* [#772](https://github.com/buschtoens/ember-link/pull/772) Add glint support ([@gossi](https://github.com/gossi))
+* [#770](https://github.com/buschtoens/ember-link/pull/770) Add behavior parameter to links ([@gossi](https://github.com/gossi))
+
+#### :memo: Documentation
+* [#773](https://github.com/buschtoens/ember-link/pull/773) Documentation for ember-link ([@gossi](https://github.com/gossi))
+
+#### :house: Internal
+* [#761](https://github.com/buschtoens/ember-link/pull/761) CI fixes ([@gossi](https://github.com/gossi))
+* [#755](https://github.com/buschtoens/ember-link/pull/755) Upgrade Dependencies ([@gossi](https://github.com/gossi))
+* [#748](https://github.com/buschtoens/ember-link/pull/748) Migrate into v2 addon ([@gossi](https://github.com/gossi))
+* [#746](https://github.com/buschtoens/ember-link/pull/746) Deprecations and TS Fixes ([@gossi](https://github.com/gossi))
+
+#### Committers: 1
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## v2.1.0 (2023-05-25)
 
 #### :house: Internal
