@@ -18,4 +18,4 @@ jobs:
       - run: npm publish
         working-directory: ./ember-link
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

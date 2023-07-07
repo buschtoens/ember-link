@@ -2,9 +2,11 @@
   "name": "ember-link",
   "version": "2.0.1",
   "private": true,
-  "repository": "",
   "license": "MIT",
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:buschtoens/ember-link.git"
+  },
   "scripts": {
     "build": "pnpm --filter ember-link build",
     "lint": "pnpm --filter '*' lint",
