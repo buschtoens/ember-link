@@ -1,7 +1,6 @@
 import { Addon } from '@embroider/addon-dev/rollup';
 
 import { defineConfig } from 'rollup';
-import copy from 'rollup-plugin-copy';
 import typescript from 'rollup-plugin-ts';
 
 const addon = new Addon({
@@ -52,14 +51,6 @@ export default defineConfig({
     addon.keepAssets(['**/*.css']),
 
     // Remove leftover build artifacts when starting a new build.
-    addon.clean(),
-
-    // Copy Readme and License into published package
-    copy({
-      targets: [
-        { src: '../README.md', dest: '.' },
-        { src: '../LICENSE.md', dest: '.' }
-      ]
-    })
+    addon.clean()
   ]
 });

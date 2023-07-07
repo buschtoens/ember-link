@@ -16,5 +16,6 @@ jobs:
         with:
           pnpm-args: --frozen-lockfile
       - run: npm publish
+        working-directory: ./ember-link
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

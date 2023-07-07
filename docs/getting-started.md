@@ -55,29 +55,39 @@ A more in-depth guide is available at [using primitives](./using-primitives.md).
 `setupLink()` and `linkFor()` to create a link to a route on the fly:
 
 ```ts
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import { click, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
-import { setupLink, linkFor, TestLink } from 'ember-link/test-support';
+import { linkFor, setupLink } from 'ember-link/test-support';
+
+import type { TestContext as BaseTestContext } from '@ember/test-helpers';
+import type { TestLink } from 'ember-link/test-support';
+
+interface TestContext extends BaseTestContext {
+  link: TestLink;
+}
 
 module('`setupLink` example', function (hooks) {
   setupRenderingTest(hooks);
   setupLink(hooks);
 
-  test('`(link)` works in render tests', async function (assert) {
-    const link = linkFor('some.route');
-    link.onTransitionTo = assert.step('link clicked');
+  test('using link in render tests', async function (this: TestContext, assert) {
+    // arrange
+    this.link = linkFor('some.route');
+    this.link.onTransitionTo = () => assert.step('link clicked');
 
     await render(hbs`
-      {{#let (link @route="some.route") as |l|}}
+      {{#let this.link as |l|}}
         <a href={{l.url}} {{on "click" l.open}}>Click me</a>
       {{/let}}
     `);
 
+    // act
     await click('a');
 
+    // assert
     assert.verifySteps(['link clicked']);
   });
 });
