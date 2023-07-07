@@ -105,7 +105,6 @@ module('`setupLink` example', function (hooks) {
     assert.verifySteps(['link clicked']);
   });
 });
-
 ```
 
 ## Related RFCs / Projects
