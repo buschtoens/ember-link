@@ -1,5 +1,5 @@
 import { tracked } from '@glimmer/tracking';
-import { assert, deprecate } from '@ember/debug';
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
 import { BEHAVIOR, type Behavior } from './-behavior';
