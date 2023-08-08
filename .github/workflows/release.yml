@@ -24,7 +24,7 @@ jobs:
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"> ~/.npmrc
           npm whoami
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Setup
         uses: wyvox/action@v1
@@ -35,7 +35,7 @@ jobs:
 
       - name: release-it ${{ inputs.releaseItArgs }}
         run: $(pnpm bin)/release-it ${{ inputs.releaseItArgs }}
-        working-directory: test-app
+        working-directory: ember-link
         env:
           # Expose the auto-provided `secrets.GITHUB_TOKEN` as an environment
           # variable of the same name. This intentionally doesn't use
@@ -45,4 +45,4 @@ jobs:
           # setup correctly with `secrets.GH_TOKEN` by `actions/checkout`.
           #
           # https://github.com/release-it/release-it/blob/master/docs/ci.md#github-actions
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
