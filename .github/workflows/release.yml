@@ -36,7 +36,7 @@ jobs:
 
       - name: release-it ${{ inputs.releaseItArgs }}
         run: $(pnpm bin)/release-it ${{ inputs.releaseItArgs }}
-        working-directory: test-app
+        working-directory: ember-link
         env:
           # Expose the auto-provided `secrets.GITHUB_TOKEN` as an environment
           # variable of the same name. This intentionally doesn't use
