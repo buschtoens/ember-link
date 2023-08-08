@@ -10,7 +10,7 @@
   },
   "github": {
     "release": true,
-    "tokenRef": "GITHUB_AUTH"
+    "tokenRef": "GITHUB_TOKEN"
   },
   "npm": {
     "publish": true
