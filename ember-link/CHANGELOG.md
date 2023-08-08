@@ -1,6 +1,20 @@
 # Changelog
 
 
+
+## v3.1.0 (2023-08-08)
+
+#### :bug: Bug Fix
+* [#779](https://github.com/buschtoens/ember-link/pull/779) Allow v2 and v3 of `@ember/test-helpers` ([@gossi](https://github.com/gossi))
+* [#778](https://github.com/buschtoens/ember-link/pull/778) Remove `href` ([@gossi](https://github.com/gossi))
+
+#### :house: Internal
+* [#783](https://github.com/buschtoens/ember-link/pull/783) Prepare Releasing from Github ([@gossi](https://github.com/gossi))
+* [#781](https://github.com/buschtoens/ember-link/pull/781) Re-organize Releasing ([@gossi](https://github.com/gossi))
+
+#### Committers: 1
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## v3.0.0 (2023-07-07)
 
 #### :boom: Breaking Change
