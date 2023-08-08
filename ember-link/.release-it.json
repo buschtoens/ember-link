@@ -1,0 +1,18 @@
+{
+  "plugins": {
+    "@release-it-plugins/lerna-changelog": {
+      "infile": "CHANGELOG.md",
+      "launchEditor": false
+    }
+  },
+  "git": {
+    "tagName": "v${version}"
+  },
+  "github": {
+    "release": true,
+    "tokenRef": "GITHUB_AUTH"
+  },
+  "npm": {
+    "publish": true
+  }
+}
