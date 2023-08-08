@@ -1,21 +1,48 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
+    inputs:
+      # https://github.com/release-it/release-it#readme
+      releaseItArgs:
+        description: release-it arguments
+        type: string
+        required: true
 
 jobs:
   release:
-    name: release
-    runs-on: ubuntu-20.04
-
+    name: Create and publish new release
+    runs-on: ubuntu-latest
     steps:
+      - name: "Set git user: @${{ github.triggering_actor }}"
+        run: |
+          git config --global user.name '${{ github.triggering_actor }}'
+          git config --global user.email '${{ github.triggering_actor }}@users.noreply.github.com'
+
+      - name: Set up npm
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}"> ~/.npmrc
+          npm whoami
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Setup
         uses: wyvox/action@v1
         with:
+          persist-credentials: true
+          fetch-depth: 0
           pnpm-args: --frozen-lockfile
-      - run: npm publish
-        working-directory: ./ember-link
+
+      - name: release-it ${{ inputs.releaseItArgs }}
+        run: $(pnpm bin)/release-it ${{ inputs.releaseItArgs }}
+        working-directory: test-app
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # Expose the auto-provided `secrets.GITHUB_TOKEN` as an environment
+          # variable of the same name. This intentionally doesn't use
+          # `secrets.GH_TOKEN`, as the elevated permissions are not required.
+          # The `git push` issued by `release-it` still works on protected
+          # branches, as `release-it` completely defers to `git`, which was
+          # setup correctly with `secrets.GH_TOKEN` by `actions/checkout`.
+          #
+          # https://github.com/release-it/release-it/blob/master/docs/ci.md#github-actions
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
