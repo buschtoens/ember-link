@@ -68,7 +68,7 @@ export default class LinkManagerService extends Service {
   /**
    * The currently active `Transition` objects.
    */
-  get currentTransitionStack() {
+  get currentTransitionStack(): Transition[] | undefined {
     return this.internalCurrentTransitionStack;
   }
 
