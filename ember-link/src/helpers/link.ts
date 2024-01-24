@@ -111,10 +111,10 @@ export default class LinkHelper extends Helper<LinkSignature> {
       models: Array.isArray(named.models)
         ? named.models
         : named.model
-        ? [named.model]
-        : positional.length > 1
-        ? (positional.slice(1, positionalQueryParameters ? -1 : undefined) as RouteModel[])
-        : undefined,
+          ? [named.model]
+          : positional.length > 1
+            ? (positional.slice(1, positionalQueryParameters ? -1 : undefined) as RouteModel[])
+            : undefined,
       query: named.query ?? positionalQueryParameters,
       onTransitionTo: named.onTransitionTo,
       onReplaceWith: named.onReplaceWith,

@@ -12,11 +12,15 @@ export default function setupLink(hooks: Hooks /* NestedHooks */) {
   hooks.beforeEach(function (this: TestContext) {
     assert(
       'ember-link.setupLink: You have already called `setupLink` once',
-      // !this.owner.hasRegistration('service:link-manager') ||
-      !(this.owner.lookup('service:link-manager') instanceof TestInstrumentedLinkManagerService)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      !this.owner.hasRegistration('service:link-manager') ||
+        !(this.owner.lookup('service:link-manager') instanceof TestInstrumentedLinkManagerService)
     );
 
-    // this.owner.unregister('service:link-manager');
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    this.owner.unregister('service:link-manager');
     this.owner.register('service:link-manager', TestInstrumentedLinkManagerService);
   });
 }
