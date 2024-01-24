@@ -44,6 +44,7 @@ module('Unit | Test Helpers | TestLink', function (hooks) {
     assert.ok(link.url.match(/ember\d+/g), 'generates a GUID using `guidFor`');
   });
 
+  // eslint-disable-next-line qunit/require-expect
   test('it can overwrite properties', async function (assert) {
     const properties = [
       'isActive',
@@ -75,6 +76,7 @@ module('Unit | Test Helpers | TestLink', function (hooks) {
     assert.strictEqual(link.url, 'my-url');
   });
 
+  // eslint-disable-next-line qunit/require-expect
   test('it fires onTransitionTo when transitionTo is called', async function (assert) {
     assert.expect(2);
 
@@ -94,6 +96,7 @@ module('Unit | Test Helpers | TestLink', function (hooks) {
     } as Event);
   });
 
+  // eslint-disable-next-line qunit/require-expect
   test('it fires onReplaceWith when replaceWith is called', async function (assert) {
     assert.expect(2);
 
