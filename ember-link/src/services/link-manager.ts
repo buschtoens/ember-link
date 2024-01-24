@@ -8,13 +8,13 @@ import { BEHAVIOR, prevent } from '../-behavior';
 import { getOwner } from '../-owner';
 import Link from '../link';
 
-import type { RouteModel } from '../-models';
 import type { Behavior } from '../-behavior';
+import type { RouteModel } from '../-models';
 import type { LinkParams } from '../-params';
+import type Owner from '@ember/owner';
 import type RouteInfo from '@ember/routing/route-info';
 import type RouterService from '@ember/routing/router-service';
 import type Transition from '@ember/routing/transition';
-import Owner from '@ember/owner';
 
 interface RouterServiceWithRecognize extends RouterService {
   recognize(url: string): RouteInfo;
