@@ -3,7 +3,7 @@ import Application from '@ember/application';
 import loadInitializers from 'ember-load-initializers';
 
 import config from './config/environment';
-import Resolver from './resolver';
+import Resolver from 'ember-resolver';
 
 export default class DummyApp extends Application {
   modulePrefix = config.modulePrefix;
