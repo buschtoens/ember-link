@@ -75,13 +75,14 @@ export default class LinkHelper extends Helper<LinkSignature> {
 
     const namedQueryParameters = named.query ?? {};
     const positionalQueryParameters =
-      positional.length > 0 && isQueryParams(positional[positional.length - 1])
+      positional.length > 0 &&
+      isQueryParams(positional?.[positional.length - 1] as PositionalParams)
         ? (positional[positional.length - 1] as QueryParams)
         : undefined;
 
     assert(
       `Query parameters either need to be specified as the last positional parameter or as the named 'query' parameter.`,
-      !positional.slice(0, -1).some((argument) => isQueryParams(argument))
+      !positional.slice(0, -1).some((argument) => isQueryParams(argument as PositionalParams))
     );
 
     assert(
@@ -95,7 +96,7 @@ export default class LinkHelper extends Helper<LinkSignature> {
       `Either specify models as positional parameters, as the named 'models' parameter, or as the named 'model' parameter as a short hand for a single model.`,
       !(
         positional.length > 1 &&
-        !isQueryParams(positional[positional.length - 1]) &&
+        !isQueryParams(positional?.[positional.length - 1] as PositionalParams) &&
         (named.models || named.model)
       )
     );
