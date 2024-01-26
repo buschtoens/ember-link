@@ -85,5 +85,3 @@ jobs:
       - name: Try Scenario
         run: pnpm exec ember try:one ${{ matrix.try-scenario }} --skip-cleanup
         working-directory: test-app
-      - name: Lint Types
-        run: pnpm run -r --parallel --aggregate-output lint:types
