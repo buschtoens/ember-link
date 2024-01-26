@@ -1,21 +1,4 @@
-// {
-//   "entryPoints": [
-//     "src/index.ts",
-//     "src/test-support/index.ts"
-//   ],
-//   "out": "../docs/api",
-//   "json": "../docs/api/data.json",
-//   "plugin": [
-//     "typedoc-plugin-markdown"
-//   ],
-//   "excludePrivate": true,
-//   "excludeProtected": true,
-//   "excludeExternals": true,
-//   // typedoc-plugin-markdown
-//   "hideBreadcrumbs": true
-// }
 {
-  // "name": "Theemo",
   "entryPoints": [
     "./src/index.ts",
     "./src/test-support/index.ts"
