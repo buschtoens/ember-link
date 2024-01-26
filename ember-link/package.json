@@ -81,8 +81,9 @@
     "rollup": "4.9.6",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-ts": "^3.4.5",
+    "typedoc-plugin-markdown": "^4.0.0-next.43",
+    "typedoc-vitepress-theme": "^1.0.0-next.7",
     "typedoc": "^0.25.7",
-    "typedoc-plugin-markdown": "^3.17.1",
     "typescript": "^5.3.3"
   },
   "engines": {
