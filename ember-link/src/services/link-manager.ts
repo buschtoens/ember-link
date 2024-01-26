@@ -9,7 +9,9 @@ import { getOwner } from '../-owner';
 import Link from '../link';
 
 import type { Behavior } from '../-behavior';
+import type { RouteModel } from '../-models';
 import type { LinkParams } from '../-params';
+import type Owner from '@ember/owner';
 import type RouteInfo from '@ember/routing/route-info';
 import type RouterService from '@ember/routing/router-service';
 import type Transition from '@ember/routing/transition';
@@ -95,8 +97,7 @@ export default class LinkManagerService extends Service {
    * Converts a `RouteInfo` object into `LinkParams`.
    */
   static getLinkParamsFromRouteInfo(routeInfo: RouteInfo): LinkParams {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const models = routeInfo.paramNames.map((name) => routeInfo.params[name]!);
+    const models = routeInfo.paramNames.map((name) => routeInfo.params?.[name]) as RouteModel[];
 
     return {
       route: routeInfo.name,
@@ -105,9 +106,8 @@ export default class LinkManagerService extends Service {
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  constructor(properties?: object) {
-    super(properties);
+  constructor(owner?: Owner) {
+    super(owner);
 
     // Ignore `Argument of type '"routeWillChange"' is not assignable to parameter of type ...`
 

@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 
-import { setupLink, TestLink } from 'ember-link/test-support';
+import { setupLink, TestInstrumentedLinkManagerService, TestLink } from 'ember-link/test-support';
 
 import type { LinkManagerService } from 'ember-link';
 
@@ -13,10 +13,13 @@ module('Integration | Test Helpers | setupLink', function (hooks) {
     // eslint-disable-next-line @typescript-eslint/no-invalid-this
     const linkManager = this.owner.lookup('service:linkManager') as LinkManagerService;
 
+    assert.ok(linkManager instanceof TestInstrumentedLinkManagerService);
+
     assert.ok(
       linkManager.createLink({
         route: 'test-app'
-      }) instanceof TestLink
+      }) instanceof TestLink,
+      'created link is a TestLink'
     );
   });
 });

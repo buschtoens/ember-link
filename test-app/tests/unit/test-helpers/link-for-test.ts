@@ -9,6 +9,7 @@ import type { LinkParams } from 'ember-link';
 module('Unit | Test Helpers | linkFor', function (hooks) {
   setupTest(hooks);
 
+  // eslint-disable-next-line qunit/require-expect
   test('it calls linkManager.createUILink with correct arguments when passed parameters as an object', async function (assert) {
     assert.expect(3);
 
@@ -32,6 +33,7 @@ module('Unit | Test Helpers | linkFor', function (hooks) {
     linkFor({ route, models, query });
   });
 
+  // eslint-disable-next-line qunit/require-expect
   test('it calls linkManager.createUILink with correct arguments when passed parameters directly', async function (assert) {
     assert.expect(3);
 
