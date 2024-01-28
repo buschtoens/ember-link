@@ -25,7 +25,7 @@ env:
 jobs:
   test-locked-deps:
     name: Locked Deps
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Setup
         uses: wyvox/action@v1
@@ -42,7 +42,7 @@ jobs:
 
   test-floating-deps:
     name: Floating Deps
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Setup
         uses: wyvox/action@v1
@@ -61,7 +61,7 @@ jobs:
 
   test-try:
     name: Ember Try
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: [test-locked-deps]
 
     strategy:
