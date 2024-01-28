@@ -2,6 +2,18 @@
 
 
 
+
+## v3.2.0 (2024-01-28)
+
+#### :bug: Bug Fix
+* [#786](https://github.com/buschtoens/ember-link/pull/786) Fix types for ember v5.6 ([@gossi](https://github.com/gossi))
+
+#### :house: Internal
+* [#788](https://github.com/buschtoens/ember-link/pull/788) Add Ember 5.4 to the test matrix ([@gossi](https://github.com/gossi))
+
+#### Committers: 1
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## v3.1.0 (2023-08-08)
 
 #### :bug: Bug Fix
