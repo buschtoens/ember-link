@@ -109,7 +109,7 @@ module('`setupLink` example', function (hooks) {
 
 ## Related RFCs / Projects
 
-- [`ember-engine-router-service`](https://github.com/buschtoens/ember-engine-router-service):
+- [`ember-engines-router-service`](https://github.com/villander/ember-engines-router-service):
   Allows you to use `ember-link` inside engines
 - [`ember-router-helpers`](https://github.com/rwjblue/ember-router-helpers)
 - [RFC 391 "Router Helpers"](https://github.com/emberjs/rfcs/blob/master/text/0391-router-helpers.md)
