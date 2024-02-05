@@ -1,16 +1,23 @@
 {
   "entryPoints": [
-    "src/index.ts",
-    "src/test-support/index.ts"
+    "./src/index.ts",
+    "./src/test-support/index.ts"
   ],
   "out": "../docs/api",
-  "json": "../docs/api/data.json",
   "plugin": [
-    "typedoc-plugin-markdown"
+    "typedoc-plugin-markdown",
+    "typedoc-vitepress-theme"
   ],
+  "docsRoot": "../docs",
+  "excludeExternals": true,
   "excludePrivate": true,
   "excludeProtected": true,
-  "excludeExternals": true,
-  // typedoc-plugin-markdown
-  "hideBreadcrumbs": true
+  "useCodeBlocks": true,
+  "parametersFormat": "table",
+  "typeDeclarationFormat": "table",
+  "textContentMappings": {
+    "breadcrumbs.home": "API",
+    "kind.typeAlias.singular": "Type",
+    "kind.typeAlias.plural": "Types",
+  }
 }

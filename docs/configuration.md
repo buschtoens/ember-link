@@ -6,7 +6,7 @@ You can configure it globally or locally and there are reasons for both.
 ## Global Behavior
 
 Global configuration is happening through the
-[`LinkManagerService`](./api/classes/ember_link.LinkManagerService.md) to match
+[`LinkManagerService`](./api/ember-link/classes/LinkManagerService.md) to match
 the needs for your application:
 
 ```ts
@@ -28,7 +28,7 @@ export default class ApplicationRoute extends Route {
 
 Local behavior can be applied for each link instance and _may_ overwrite
 globally configured behavior. Pass the `behavior` parameter to a
-[`Link`](./api/classes/ember_link.Link.md) instance.
+[`Link`](./api/ember-link/classes/Link.md) instance.
 
 ## Global vs. Local Behavior
 

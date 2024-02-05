@@ -28,7 +28,7 @@ export default class LinkManagerService extends Service {
    */
   @service('router') readonly router!: RouterServiceWithRecognize;
 
-  [BEHAVIOR]: Behavior = {
+  protected [BEHAVIOR]: Behavior = {
     open: 'transition',
     prevent
   };

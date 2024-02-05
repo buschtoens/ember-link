@@ -12,7 +12,7 @@ your app boots with a fully-fledged router, so `ember-link` just works normally.
 In [integration / render tests (`setupRenderingTest(hooks)`)](https://guides.emberjs.com/release/testing/testing-components/) the
 router is not initialized, so `ember-link` can't operate normally. To still
 support using `(link)` & friends in render tests, you can use the
-[`setupLink(hooks)` test helper](./api/modules/ember_link_test_support.md#setuplink).
+[`setupLink(hooks)` test helper](./api/ember-link/test-support/functions/setupLink.md).
 
 ```ts
 import { click, render } from '@ember/test-helpers';

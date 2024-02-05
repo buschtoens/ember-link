@@ -45,10 +45,10 @@ That also prepares them to properly work with [testing](./testing.md).
 
 ## Low Level Components
 
-Make [`Link`](./api/classes/ember_link.Link.md) a first-class
+Make [`Link`](./api/ember-link/classes/Link.md) a first-class
 primitive in your app architecture! Instead of manually wiring up
-[`Link#url`](./api/classes/ember_link.Link.md#url) and
-[`Link#open()`](./api/classes/ember_link.Link.md#open) every time, rather
+[`Link#url`](./api/ember-link/classes/Link.md#url) and
+[`Link#open()`](./api/ember-link/classes/Link.md#open) every time, rather
 create your own ready-to-use, style-guide-compliant link and button components
 that accept `@link` as an argument.
 
