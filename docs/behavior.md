@@ -1,12 +1,12 @@
 # Behavior
 
-[`Behavior`](./api/interfaces/ember_link.Behavior.md) controls the way links are
+[`Behavior`](./api/ember-link/interfaces/Behavior.md) controls the way links are
 opened. This can be [configured globally](./configuration.md) or
 [locally with each link](./helper.md#parameters).
 
 ## `open`
 
-When links are opened with [`link.open`](./api/classes/ember_link.Link.md#open)
+When links are opened with [`link.open`](./api/ember-link/classes/Link.md#open)
 it will use
 [`Router.transitionTo()`](https://api.emberjs.com/ember/5.0/classes/RouterService/methods/transitionTo?anchor=transitionTo)
 by default, but you can set it to `replace` to use

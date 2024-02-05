@@ -9,6 +9,9 @@
     "typedoc-vitepress-theme"
   ],
   "docsRoot": "../docs",
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
   "useCodeBlocks": true,
   "parametersFormat": "table",
   "typeDeclarationFormat": "table",
