@@ -62,7 +62,7 @@
     "@babel/plugin-proposal-decorators": "^7.23.7",
     "@babel/preset-typescript": "^7.23.3",
     "@babel/runtime": "^7.23.8",
-    "@ember/test-helpers": "^3.2.1",
+    "@ember/test-helpers": "^3.3.0",
     "@embroider/addon-dev": "^4.1.3",
     "@glint/template": "^1.3.0",
     "@gossi/config-eslint": "^0.6.0",
