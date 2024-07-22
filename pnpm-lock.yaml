@@ -239,8 +239,8 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0
       p-defer:
-        specifier: ~3.0.0
-        version: 3.0.0
+        specifier: ~4.0.0
+        version: 4.0.0
       qunit:
         specifier: ^2.20.0
         version: 2.20.0
@@ -12493,6 +12493,11 @@ packages:
   /p-defer@3.0.0:
     resolution: {integrity: sha512-ugZxsxmtTln604yeYd29EGrNhazN2lywetzpKhfmQjW/VJmhpDmWbiX+h0zL8V91R0UXkhb3KtPmyq9PZw3aYw==}
     engines: {node: '>=8'}
+    dev: true
+
+  /p-defer@4.0.0:
+    resolution: {integrity: sha512-Vb3QRvQ0Y5XnF40ZUWW7JfLogicVh/EnA5gBIvKDJoYpeI82+1E3AlB9yOcKFS0AhHrWVnAQO39fbR0G99IVEQ==}
+    engines: {node: '>=12'}
     dev: true
 
   /p-finally@1.0.0:
