@@ -1,0 +1,22 @@
+name: "PR"
+
+on:
+  pull_request:
+    types: [opened, reopened, labeled, unlabeled, synchronize]
+
+jobs:
+  labels:
+    name: Labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checked for required labels
+        uses: mheap/github-action-required-labels@v5
+        with:
+          mode: minimum
+          count: 1
+          labels: |
+            breaking
+            enhancement
+            bug
+            documentation
+            internal

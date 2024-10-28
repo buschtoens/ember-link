@@ -2,26 +2,27 @@
   "name": "ember-link",
   "version": "3.0.0",
   "private": true,
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:buschtoens/ember-link.git"
   },
+  "license": "MIT",
   "scripts": {
     "build": "pnpm --filter ember-link build",
+    "build:docs": "pnpm docs:api && pnpm docs:build",
+    "docs:api": "pnpm --filter ember-link api",
+    "docs:build": "vitepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:preview": "vitepress preview docs",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:addon": "pnpm --filter ember-link start",
-    "start:test-app": "pnpm --filter test-app start",
-    "build:docs": "pnpm docs:api && pnpm docs:build",
-    "docs:api": "pnpm --filter ember-link api",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "start:test-app": "pnpm --filter test-app start"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
+    "release-plan": "^0.9.0",
     "vitepress": "^1.0.0-rc.41"
   },
   "packageManager": "pnpm@9.12.2",
