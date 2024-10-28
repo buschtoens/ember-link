@@ -1,5 +1,33 @@
 # Changelog
 
+## Release (2024-10-28)
+
+ember-link 3.3.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-link`
+  * [#811](https://github.com/buschtoens/ember-link/pull/811) Export `QueryParams` ([@gossi](https://github.com/gossi))
+
+#### :memo: Documentation
+* `ember-link`
+  * [#793](https://github.com/buschtoens/ember-link/pull/793) Typedoc integrated into vitepress ([@gossi](https://github.com/gossi))
+  * [#795](https://github.com/buschtoens/ember-link/pull/795) docs: Update readme with the latest engines router service ([@villander](https://github.com/villander))
+
+#### :house: Internal
+* `test-app`
+  * [#813](https://github.com/buschtoens/ember-link/pull/813) Increase Test Matrix ([@gossi](https://github.com/gossi))
+* `ember-link`, `test-app`
+  * [#812](https://github.com/buschtoens/ember-link/pull/812) Update to `ember@5.12` ([@gossi](https://github.com/gossi))
+  * [#806](https://github.com/buschtoens/ember-link/pull/806) Remove volta for corepack ([@gossi](https://github.com/gossi))
+* Other
+  * [#810](https://github.com/buschtoens/ember-link/pull/810) Use shared renovate config ([@gossi](https://github.com/gossi))
+* `ember-link`
+  * [#807](https://github.com/buschtoens/ember-link/pull/807) Switch to `release-plan` ([@gossi](https://github.com/gossi))
+
+#### Committers: 2
+- Michael Villander ([@villander](https://github.com/villander))
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 
 
 
