@@ -22,8 +22,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Setup
-        uses: wyvox/action@v1
+        uses: ./.github/actions/setup
       - name: Build Docs
         run: pnpm build:docs
       - name: Setup Pages
