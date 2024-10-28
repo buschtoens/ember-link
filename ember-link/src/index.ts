@@ -7,7 +7,7 @@
 
 export type { Behavior } from './-behavior';
 export { prevent } from './-behavior';
-export type { LinkParams } from './-params';
+export type { LinkParams, QueryParams } from './-params';
 // `NamedParams` breaks vitepress when parsing the markdown ... :(
 export type { LinkSignature, /*NamedParams,*/ PositionalParams } from './helpers/link';
 export { default as link } from './helpers/link';
