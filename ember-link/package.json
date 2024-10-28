@@ -87,7 +87,7 @@
     "typescript": "^5.3.3"
   },
   "engines": {
-    "node": ">= 16.*"
+    "node": ">= 20.*"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -100,8 +100,5 @@
     "main": "addon-main.cjs",
     "type": "addon",
     "version": 2
-  },
-  "volta": {
-    "extends": "../package.json"
   }
 }

@@ -1,0 +1,28 @@
+name: "Setup"
+# inputs:
+#   who-to-greet:  # id of input
+#     description: 'Who to greet'
+#     required: true
+#     default: 'World'
+runs:
+  using: "composite"
+  steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: ".node-version"
+        cache: "pnpm"
+        # This creates an .npmrc that reads the NODE_AUTH_TOKEN environment variable
+        # necessary for publish
+        registry-url: "https://registry.npmjs.org"
+
+    - name: Install dependencies
+      run: pnpm install
+      shell: bash
+
+    - name: Build package
+      run: pnpm build
+      shell: bash
