@@ -64,7 +64,7 @@
     "@babel/runtime": "^7.26.0",
     "@ember/test-helpers": "^3.2.1",
     "@embroider/addon-dev": "^4.1.3",
-    "@glint/template": "^1.3.0",
+    "@glint/template": "^1.5.0",
     "@gossi/config-eslint": "^0.6.0",
     "@gossi/config-prettier": "^0.6.0",
     "@release-it-plugins/lerna-changelog": "^6.1.0",
