@@ -39,7 +39,7 @@
     "@babel/core": "^7.26.0",
     "@babel/eslint-parser": "^7.25.9",
     "@ember/optional-features": "^2.2.0",
-    "@ember/string": "^3.1.1",
+    "@ember/string": "^4.0.0",
     "@ember/test-helpers": "^3.3.1",
     "@embroider/test-setup": "^3.0.3",
     "@glimmer/env": "^0.1.7",
