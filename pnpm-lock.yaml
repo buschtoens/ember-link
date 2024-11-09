@@ -176,8 +176,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       ember-auto-import:
-        specifier: ^2.9.0
-        version: 2.9.0(@glint/template@1.5.0)(webpack@5.96.1)
+        specifier: ^2.10.0
+        version: 2.10.0(@glint/template@1.5.0)(webpack@5.96.1)
       ember-cli:
         specifier: ^5.12.0
         version: 5.12.0(handlebars@4.7.7)(underscore@1.13.1)
@@ -3594,8 +3594,8 @@ packages:
   electron-to-chromium@1.5.47:
     resolution: {integrity: sha512-zS5Yer0MOYw4rtK2iq43cJagHZ8sXN0jDHDKzB+86gSBSAI4v07S97mcq+Gs2vclAxSh1j7vOAHxSVgduiiuVQ==}
 
-  ember-auto-import@2.9.0:
-    resolution: {integrity: sha512-iXPq2rJcJaqD+m5Lk1rYAVl7Db2MvT1MMjKJfJbNT3ps4xI2H+3njwwfT6pOKZIUVB/rfeyNPANqbnw3F68Qxg==}
+  ember-auto-import@2.10.0:
+    resolution: {integrity: sha512-bcBFDYVTFHyqyq8BNvsj6UO3pE6Uqou/cNmee0WaqBgZ+1nQqFz0UE26usrtnFAT+YaFZSkqF2H36QW84k0/cg==}
     engines: {node: 12.* || 14.* || >= 16}
 
   ember-cli-babel-plugin-helpers@1.1.1:
@@ -9095,7 +9095,7 @@ snapshots:
       broccoli-debug: 0.6.5
       broccoli-funnel: 3.0.8
       dom-element-descriptors: 0.5.1
-      ember-auto-import: 2.9.0(@glint/template@1.5.0)(webpack@5.96.1)
+      ember-auto-import: 2.10.0(@glint/template@1.5.0)(webpack@5.96.1)
       ember-cli-babel: 8.2.0(@babel/core@7.26.0)
       ember-cli-htmlbars: 6.3.0
       ember-source: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.26.0))(@glint/template@1.5.0)(rsvp@4.8.5)(webpack@5.96.1)
@@ -12063,7 +12063,7 @@ snapshots:
 
   electron-to-chromium@1.5.47: {}
 
-  ember-auto-import@2.9.0(@glint/template@1.5.0)(webpack@5.96.1):
+  ember-auto-import@2.10.0(@glint/template@1.5.0)(webpack@5.96.1):
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.26.0)
@@ -12569,7 +12569,7 @@ snapshots:
       broccoli-funnel: 3.0.8
       broccoli-merge-trees: 4.2.0
       chalk: 4.1.2
-      ember-auto-import: 2.9.0(@glint/template@1.5.0)(webpack@5.96.1)
+      ember-auto-import: 2.10.0(@glint/template@1.5.0)(webpack@5.96.1)
       ember-cli-babel: 8.2.0(@babel/core@7.26.0)
       ember-cli-get-component-path-option: 1.0.0
       ember-cli-is-package-missing: 1.0.0
