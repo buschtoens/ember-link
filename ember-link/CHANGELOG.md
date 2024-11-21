@@ -1,5 +1,15 @@
 # Changelog
 
+## Release (2024-11-21)
+
+
+
+#### :house: Internal
+* [#854](https://github.com/buschtoens/ember-link/pull/854) Repair docs ([@gossi](https://github.com/gossi))
+
+#### Committers: 1
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## Release (2024-10-28)
 
 ember-link 3.3.0 (minor)
