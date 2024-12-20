@@ -63,7 +63,7 @@
     "@babel/preset-typescript": "^7.26.0",
     "@babel/runtime": "^7.26.0",
     "@ember/test-helpers": "^4.0.4",
-    "@embroider/addon-dev": "^7.0.0",
+    "@embroider/addon-dev": "^7.1.1",
     "@glint/template": "^1.5.0",
     "@gossi/config-eslint": "^0.6.0",
     "@gossi/config-prettier": "^0.6.0",
