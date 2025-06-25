@@ -4,6 +4,7 @@ import Route from '@ember/routing/route';
 import { click, currentURL, visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
+import RouteTemplate from 'ember-route-template';
 import pDefer from 'p-defer';
 import sinon from 'sinon';
 
@@ -30,18 +31,20 @@ module('Acceptance | link', function (hooks) {
   test('basic test', async function (this: TestContext, assert) {
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="foo") as |l|}}
-          <a
-            data-test-link
-            href={{l.url}}
-            class={{if l.isActive "is-active"}}
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="foo") as |l|}}
+            <a
+              data-test-link
+              href={{l.url}}
+              class={{if l.isActive "is-active"}}
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -58,18 +61,20 @@ module('Acceptance | link', function (hooks) {
   test('with model', async function (this: TestContext, assert) {
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="with-model" models=(array 123)) as |l|}}
-          <a
-            data-test-link
-            href={{l.url}}
-            class={{if l.isActive "is-active"}}
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="with-model" models=(array 123)) as |l|}}
+            <a
+              data-test-link
+              href={{l.url}}
+              class={{if l.isActive "is-active"}}
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -86,18 +91,20 @@ module('Acceptance | link', function (hooks) {
   test('@model shorthand', async function (this: TestContext, assert) {
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="with-model" model="123") as |l|}}
-          <a
-            data-test-link
-            href={{l.url}}
-            class={{if l.isActive "is-active"}}
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="with-model" model="123") as |l|}}
+            <a
+              data-test-link
+              href={{l.url}}
+              class={{if l.isActive "is-active"}}
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -114,18 +121,20 @@ module('Acceptance | link', function (hooks) {
   test('with nested model', async function (this: TestContext, assert) {
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="parent.child" models=(array 123 456)) as |l|}}
-          <a
-            data-test-link
-            href={{l.url}}
-            class={{if l.isActive "is-active"}}
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="parent.child" models=(array 123 456)) as |l|}}
+            <a
+              data-test-link
+              href={{l.url}}
+              class={{if l.isActive "is-active"}}
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -516,13 +525,15 @@ module('Acceptance | link', function (hooks) {
 
       this.owner.register(
         'template:application',
-        <template>
-          {{#let (link route="foo" onTransitionTo=spy behavior=(hash prevent=prevent)) as |l|}}
-            <a data-test-123 href={{l.url}} {{on "click" l.open}}>
-              Link
-            </a>
-          {{/let}}
-        </template>
+        RouteTemplate(
+          <template>
+            {{#let (link route="foo" onTransitionTo=spy behavior=(hash prevent=prevent)) as |l|}}
+              <a data-test-123 href={{l.url}} {{on "click" l.open}}>
+                Link
+              </a>
+            {{/let}}
+          </template>
+        )
       );
 
       await visit('/');

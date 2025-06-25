@@ -98,6 +98,7 @@
     "ember-sinon-qunit": "^7.5.0",
     "ember-source": "~6.5.0",
     "ember-template-lint": "^7.9.1",
+    "ember-route-template": "^1.0.3",
     "eslint": "^9.29.0",
     "eslint-plugin-ember": "^12.5.0",
     "eslint-plugin-qunit": "^8.1.2",
