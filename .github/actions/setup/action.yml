@@ -1,9 +1,9 @@
 name: "Setup"
-# inputs:
-#   who-to-greet:  # id of input
-#     description: 'Who to greet'
-#     required: true
-#     default: 'World'
+inputs:
+  install-args:
+    description: "Args to pass to pnpm install"
+    required: false
+    default: "--frozen-lockfile"
 runs:
   using: "composite"
   steps:
@@ -20,7 +20,7 @@ runs:
         registry-url: "https://registry.npmjs.org"
 
     - name: Install dependencies
-      run: pnpm install
+      run: pnpm install ${{ inputs.install-args }}
       shell: bash
 
     - name: Build package

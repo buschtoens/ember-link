@@ -2,12 +2,14 @@
 
 # compiled output
 dist/
+dist-tests/
+declarations/
 
 # dependencies
 node_modules/
 
 # misc
-/.env*
+/.env*.local
 /.pnp*
 /.pnpm-debug.log
 /.sass-cache
