@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
 
+// eslint-disable-next-line n/no-missing-import
 import typedocSidebar from '../api/typedoc-sidebar.json';
 
 // https://vitepress.dev/reference/site-config
