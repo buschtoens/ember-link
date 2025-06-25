@@ -1,6 +1,6 @@
 import { tracked } from '@glimmer/tracking';
 import { addListener, removeListener } from '@ember/object/events';
-import Service, { service } from '@ember/service';
+import Service, * as services from '@ember/service';
 
 import { BEHAVIOR, prevent } from '../-behavior.ts';
 // import { getOwner } from '@ember/owner';
@@ -18,6 +18,10 @@ import type Transition from '@ember/routing/transition';
 interface RouterServiceWithRecognize extends RouterService {
   recognize(url: string): RouteInfo;
 }
+
+// ember 3.28 has no exported `service` but `inject`
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-deprecated
+const service = services.service ?? services.inject;
 
 export default class LinkManagerService extends Service {
   @tracked private internalCurrentTransitionStack?: Transition[];
