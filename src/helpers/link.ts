@@ -1,6 +1,6 @@
 import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
-import { service } from '@ember/service';
+import * as services from '@ember/service';
 
 import { isQueryParams } from '../-params.ts';
 
@@ -33,6 +33,10 @@ export interface LinkSignature {
   };
   Return: Link;
 }
+
+// ember 3.28 has no exported `service` but `inject`
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, @typescript-eslint/no-deprecated
+const service = services.service ?? services.inject;
 
 export default class LinkHelper extends Helper<LinkSignature> {
   @service('link-manager') private linkManager!: LinkManagerService;
