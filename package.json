@@ -103,7 +103,7 @@
     "eslint-plugin-ember": "^12.5.0",
     "eslint-plugin-qunit": "^8.1.2",
     "p-defer": "^4.0.1",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.1",
     "qunit": "^2.24.1",
     "qunit-dom": "^3.0.0",
     "sinon": "^19.0.2",
