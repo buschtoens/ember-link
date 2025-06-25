@@ -151,28 +151,30 @@ module('Acceptance | link', function (hooks) {
   test('model transition', async function (this: TestContext, assert) {
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="with-model" models=(array 123)) as |l|}}
-          <a
-            data-test-123
-            href={{l.url}}
-            class="{{if l.isActive 'is-active'}} {{if l.isActiveWithoutModels 'is-active-wm'}}"
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-        {{#let (link route="with-model" models=(array 456)) as |l|}}
-          <a
-            data-test-456
-            href={{l.url}}
-            class="{{if l.isActive 'is-active'}} {{if l.isActiveWithoutModels 'is-active-wm'}}"
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="with-model" models=(array 123)) as |l|}}
+            <a
+              data-test-123
+              href={{l.url}}
+              class="{{if l.isActive 'is-active'}} {{if l.isActiveWithoutModels 'is-active-wm'}}"
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+          {{#let (link route="with-model" models=(array 456)) as |l|}}
+            <a
+              data-test-456
+              href={{l.url}}
+              class="{{if l.isActive 'is-active'}} {{if l.isActiveWithoutModels 'is-active-wm'}}"
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -215,30 +217,32 @@ module('Acceptance | link', function (hooks) {
 
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="foo" query=(hash qp=123)) as |l|}}
-          <a
-            data-test-123
-            href={{l.url}}
-            class="{{if l.isActive 'is-active'}}
-              {{if l.isActiveWithoutQueryParams 'is-active-wqp'}}"
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-        {{#let (link route="foo" query=(hash qp=456)) as |l|}}
-          <a
-            data-test-456
-            href={{l.url}}
-            class="{{if l.isActive 'is-active'}}
-              {{if l.isActiveWithoutQueryParams 'is-active-wqp'}}"
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="foo" query=(hash qp=123)) as |l|}}
+            <a
+              data-test-123
+              href={{l.url}}
+              class="{{if l.isActive 'is-active'}}
+                {{if l.isActiveWithoutQueryParams 'is-active-wqp'}}"
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+          {{#let (link route="foo" query=(hash qp=456)) as |l|}}
+            <a
+              data-test-456
+              href={{l.url}}
+              class="{{if l.isActive 'is-active'}}
+                {{if l.isActiveWithoutQueryParams 'is-active-wqp'}}"
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -289,18 +293,20 @@ module('Acceptance | link', function (hooks) {
 
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="foo" query=(hash qp=123)) as |l|}}
-          <a
-            data-test-123
-            href={{l.url}}
-            class="{{if l.isEntering 'is-entering'}}"
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="foo" query=(hash qp=123)) as |l|}}
+            <a
+              data-test-123
+              href={{l.url}}
+              class="{{if l.isEntering 'is-entering'}}"
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -337,18 +343,20 @@ module('Acceptance | link', function (hooks) {
 
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="foo" query=(hash qp=123)) as |l|}}
-          <a
-            data-test-123
-            href={{l.url}}
-            class="{{if l.isExiting 'is-exiting'}}"
-            {{on "click" l.transitionTo}}
-          >
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="foo" query=(hash qp=123)) as |l|}}
+            <a
+              data-test-123
+              href={{l.url}}
+              class="{{if l.isExiting 'is-exiting'}}"
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/foo');
@@ -374,7 +382,7 @@ module('Acceptance | link', function (hooks) {
   test('fromURL', async function (this: TestContext, assert) {
     this.owner.register(
       'template:application',
-      <template>{{get (link fromURL="/with-model/123?bar=qux") "url"}}</template>
+      RouteTemplate(<template>{{get (link fromURL="/with-model/123?bar=qux") "url"}}</template>)
     );
 
     await visit('/');
@@ -386,7 +394,7 @@ module('Acceptance | link', function (hooks) {
   test('positional parameters', async function (this: TestContext, assert) {
     this.owner.register(
       'template:application',
-      <template>{{get (link "with-model" 123) "url"}}</template>
+      RouteTemplate(<template>{{get (link "with-model" 123) "url"}}</template>)
     );
 
     await visit('/');
@@ -400,13 +408,15 @@ module('Acceptance | link', function (hooks) {
 
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="foo" query=(hash qp=123) onTransitionTo=spy) as |l|}}
-          <a data-test-123 href={{l.url}} {{on "click" l.transitionTo}}>
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="foo" query=(hash qp=123) onTransitionTo=spy) as |l|}}
+            <a data-test-123 href={{l.url}} {{on "click" l.transitionTo}}>
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -421,13 +431,15 @@ module('Acceptance | link', function (hooks) {
 
     this.owner.register(
       'template:application',
-      <template>
-        {{#let (link route="foo" query=(hash qp=123) onReplaceWith=spy) as |l|}}
-          <a data-test-123 href={{l.url}} {{on "click" l.replaceWith}}>
-            Link
-          </a>
-        {{/let}}
-      </template>
+      RouteTemplate(
+        <template>
+          {{#let (link route="foo" query=(hash qp=123) onReplaceWith=spy) as |l|}}
+            <a data-test-123 href={{l.url}} {{on "click" l.replaceWith}}>
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
     );
 
     await visit('/');
@@ -443,13 +455,15 @@ module('Acceptance | link', function (hooks) {
 
       this.owner.register(
         'template:application',
-        <template>
-          {{#let (link route="foo" onTransitionTo=spy) as |l|}}
-            <a data-test-123 href={{l.url}} {{on "click" l.open}}>
-              Link
-            </a>
-          {{/let}}
-        </template>
+        RouteTemplate(
+          <template>
+            {{#let (link route="foo" onTransitionTo=spy) as |l|}}
+              <a data-test-123 href={{l.url}} {{on "click" l.open}}>
+                Link
+              </a>
+            {{/let}}
+          </template>
+        )
       );
 
       await visit('/');
@@ -464,13 +478,15 @@ module('Acceptance | link', function (hooks) {
 
       this.owner.register(
         'template:application',
-        <template>
-          {{#let (link route="foo" onReplaceWith=spy behavior=(hash open="replace")) as |l|}}
-            <a data-test-123 href={{l.url}} {{on "click" l.open}}>
-              Link
-            </a>
-          {{/let}}
-        </template>
+        RouteTemplate(
+          <template>
+            {{#let (link route="foo" onReplaceWith=spy behavior=(hash open="replace")) as |l|}}
+              <a data-test-123 href={{l.url}} {{on "click" l.open}}>
+                Link
+              </a>
+            {{/let}}
+          </template>
+        )
       );
 
       await visit('/');
@@ -497,13 +513,15 @@ module('Acceptance | link', function (hooks) {
 
       this.owner.register(
         'template:application',
-        <template>
-          {{#let (link route="foo" onTransitionTo=spy) as |l|}}
-            <a data-test-123 href={{l.url}} {{on "click" l.open}}>
-              Link
-            </a>
-          {{/let}}
-        </template>
+        RouteTemplate(
+          <template>
+            {{#let (link route="foo" onTransitionTo=spy) as |l|}}
+              <a data-test-123 href={{l.url}} {{on "click" l.open}}>
+                Link
+              </a>
+            {{/let}}
+          </template>
+        )
       );
 
       await visit('/');
