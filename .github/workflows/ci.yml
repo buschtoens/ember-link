@@ -20,16 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup
         uses: ./.github/actions/setup
-      - run: pnpm run -r --parallel --aggregate-output lint:js
-
-  lint-css:
-    name: lint:css
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup
-        uses: ./.github/actions/setup
-      - run: pnpm run -r --parallel --aggregate-output lint:css
+      - run: pnpm lint:js
 
   lint-hbs:
     name: lint:hbs
@@ -38,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup
         uses: ./.github/actions/setup
-      - run: pnpm run -r --parallel --aggregate-output lint:hbs
+      - run: pnpm lint:hbs
 
   lint-types:
     name: lint:types
@@ -47,7 +38,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup
         uses: ./.github/actions/setup
-      - run: pnpm run -r --parallel --aggregate-output lint:types
+      - run: pnpm lint:types
 
   test:
     name: Test

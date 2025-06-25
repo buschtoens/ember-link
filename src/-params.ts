@@ -1,4 +1,4 @@
-import { DEBUG } from '@glimmer/env';
+import { isDevelopingApp, macroCondition } from '@embroider/macros';
 
 import type { Behavior } from './-behavior.ts';
 import type { RouteModel } from './-models.ts';
@@ -58,7 +58,7 @@ export function isQueryParams(
 }
 
 export function freezeParams(params: LinkParams) {
-  if (DEBUG) {
+  if (macroCondition(isDevelopingApp())) {
     if (params.models) Object.freeze(params.models);
     if (params.query) Object.freeze(params.query);
 

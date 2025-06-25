@@ -102,7 +102,7 @@ export default class TestLink extends Link {
 
   @action
   open(event?: Event): Transition | undefined {
-    const method = this.behavior.open ?? 'transition';
+    const method = this.behavior.open;
 
     if (method === 'replace') {
       return this.replaceWith(event);
@@ -118,14 +118,14 @@ export default class TestLink extends Link {
 
   private _createDummyTransition(): Transition {
     return {
-      from: null,
+      from: undefined,
       to: {
-        child: null,
+        child: undefined,
         localName: 'dummy',
         name: 'dummy',
         paramNames: [],
         params: {},
-        parent: null,
+        parent: undefined,
         queryParams: {},
         find() {
           return;

@@ -14,12 +14,14 @@ export default function setupLink(hooks: Hooks /* NestedHooks */) {
       'ember-link.setupLink: You have already called `setupLink` once',
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       !this.owner.hasRegistration('service:link-manager') ||
         !(this.owner.lookup('service:link-manager') instanceof TestInstrumentedLinkManagerService)
     );
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     this.owner.unregister('service:link-manager');
     this.owner.register('service:link-manager', TestInstrumentedLinkManagerService);
   });

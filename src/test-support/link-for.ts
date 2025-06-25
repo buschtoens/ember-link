@@ -40,6 +40,7 @@ export default function linkFor(
 
   if (typeof routeOrParameters === 'object') {
     assert(
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
       `Either pass multiple 'models' ('${routeOrParameters.models}') or pass a single 'model' ('${routeOrParameters.model}'). `,
       !(routeOrParameters.models && routeOrParameters.model)
     );

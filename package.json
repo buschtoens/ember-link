@@ -56,6 +56,8 @@
     "lint:fix": "pnpm run '/^lint:[^:]*:fix/'",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
+    "lint:hbs": "ember-template-lint .",
+    "lint:hbs:fix": "ember-template-lint . --fix",
     "lint:types": "glint",
     "prepack": "rollup --config",
     "start": "rollup --config --watch",
@@ -64,7 +66,6 @@
   "dependencies": {
     "@embroider/addon-shim": "^1.8.7",
     "@embroider/macros": "^1.18.0",
-    "@glimmer/env": "^0.1.7",
     "decorator-transforms": "^2.2.2"
   },
   "devDependencies": {
@@ -85,7 +86,7 @@
     "@glint/environment-ember-loose": "^2.0.0-alpha.2",
     "@glint/environment-ember-template-imports": "^2.0.0-alpha.2",
     "@glint/template": "^1.6.0-alpha.1",
-    "@gossi/config-eslint": "^1.1.1",
+    "@gossi/config-eslint": "^1.1.2",
     "@gossi/config-prettier": "^1.0.1",
     "@gossi/config-template-lint": "^1.0.1",
     "@rollup/plugin-babel": "^6.0.4",
@@ -96,6 +97,7 @@
     "ember-resolver": "^13.1.1",
     "ember-sinon-qunit": "^7.5.0",
     "ember-source": "~6.5.0",
+    "ember-template-lint": "^7.9.1",
     "eslint": "^9.29.0",
     "eslint-plugin-ember": "^12.5.0",
     "eslint-plugin-qunit": "^8.1.2",

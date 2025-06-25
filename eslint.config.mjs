@@ -1,3 +1,8 @@
 import { configs } from '@gossi/config-eslint';
 
-export default configs.ember(import.meta.dirname);
+export default [
+  {
+    ignores: ['docs/.vitepress/cache/']
+  },
+  ...configs.ember(import.meta.dirname)
+];

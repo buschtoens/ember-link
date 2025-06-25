@@ -1,67 +1,65 @@
-import { defineConfig } from "vitepress";
+import { defineConfig } from 'vitepress';
 
-import typedocSidebar from "../api/typedoc-sidebar.json";
+import typedocSidebar from '../api/typedoc-sidebar.json';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "ember-link",
-  description: "Links as Primitives",
-  base: "/ember-link/",
+  title: 'ember-link',
+  description: 'Links as Primitives',
+  base: '/ember-link/',
   // api generator likely to generate dead links, so better set this to true to
   // be safe against renovate updates
   ignoreDeadLinks: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Guides", link: "/getting-started" },
-      { text: "API", link: "/api/modules", activeMatch: "/api" },
+      { text: 'Home', link: '/' },
+      { text: 'Guides', link: '/getting-started' },
+      { text: 'API', link: '/api/modules', activeMatch: '/api' }
     ],
 
     outline: [2, 3],
 
     sidebar: {
-      "/": [
+      '/': [
         {
-          text: "Guides",
+          text: 'Guides',
           items: [
-            { text: "Getting Started", link: "/getting-started" },
-            { text: "Installation", link: "/installation" },
-            { text: "Configuration", link: "/configuration" },
-            { text: "Migration", link: "/migration" },
-          ],
+            { text: 'Getting Started', link: '/getting-started' },
+            { text: 'Installation', link: '/installation' },
+            { text: 'Configuration', link: '/configuration' },
+            { text: 'Migration', link: '/migration' }
+          ]
         },
         {
-          text: "Usage",
+          text: 'Usage',
           items: [
-            { text: "Using Primitives", link: "/using-primitives" },
-            { text: "Params", link: "/params" },
-            { text: "Behavior", link: "/behavior" },
-            { text: "Link Helper", link: "/helper" },
-            { text: "LinkManager Service", link: "/service" },
-            { text: "Testing", link: "/testing" },
-          ],
+            { text: 'Using Primitives', link: '/using-primitives' },
+            { text: 'Params', link: '/params' },
+            { text: 'Behavior', link: '/behavior' },
+            { text: 'Link Helper', link: '/helper' },
+            { text: 'LinkManager Service', link: '/service' },
+            { text: 'Testing', link: '/testing' }
+          ]
         },
         {
-          text: "Advanced",
+          text: 'Advanced',
           items: [
-            { text: "Customization", link: "/customization" },
-            { text: "Using Locales", link: "/using-locales" },
-            { text: "Link Builder", link: "/link-builder" },
-            { text: "Commands", link: "/commands" },
-          ],
-        },
+            { text: 'Customization', link: '/customization' },
+            { text: 'Using Locales', link: '/using-locales' },
+            { text: 'Link Builder', link: '/link-builder' },
+            { text: 'Commands', link: '/commands' }
+          ]
+        }
       ],
-      "/api/": [
+      '/api/': [
         {
-          text: "API",
-          items: typedocSidebar,
-        },
-      ],
+          text: 'API',
+          items: typedocSidebar
+        }
+      ]
     },
 
-    socialLinks: [
-      { icon: "github", link: "https://github.com/buschtoens/ember-link" },
-    ],
-  },
+    socialLinks: [{ icon: 'github', link: 'https://github.com/buschtoens/ember-link' }]
+  }
 });

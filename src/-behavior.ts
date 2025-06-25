@@ -20,6 +20,7 @@ export interface Behavior {
    * @param link
    * @returns
    */
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   prevent: (event: Event | unknown, link?: Link) => boolean;
 }
 
@@ -37,12 +38,15 @@ export function isRegularOpening(event: unknown) {
   return isMouseEvent(event) && !isUnmodifiedLeftClick(event);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export function preventDefault(event?: Event | unknown) {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (typeof (event as Event)?.preventDefault === 'function') {
     (event as Event).preventDefault();
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 export function prevent(event: Event | unknown): boolean {
   if (isRegularOpening(event)) {
     return true;

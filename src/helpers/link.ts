@@ -70,13 +70,12 @@ export default class LinkHelper extends Helper<LinkSignature> {
     );
     assert(
       `Neither specified the target route name as a positional or named parameter ('route').`,
-      Boolean(positional[0] || named.route)
+      Boolean(positional[0] ?? named.route)
     );
 
     const namedQueryParameters = named.query ?? {};
     const positionalQueryParameters =
-      positional.length > 0 &&
-      isQueryParams(positional?.[positional.length - 1] as PositionalParams)
+      positional.length > 0 && isQueryParams(positional.at(-1) as PositionalParams)
         ? (positional.at(-1) as QueryParams)
         : undefined;
 
@@ -86,34 +85,38 @@ export default class LinkHelper extends Helper<LinkSignature> {
     );
 
     assert(
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
       `Either specify query parameters as the last positional parameter ('${positionalQueryParameters}') or as the named 'query' parameter ('${JSON.stringify(
         namedQueryParameters
       )}').`,
-      !(namedQueryParameters && positionalQueryParameters)
+      !positionalQueryParameters
     );
 
     assert(
       `Either specify models as positional parameters, as the named 'models' parameter, or as the named 'model' parameter as a short hand for a single model.`,
       !(
         positional.length > 1 &&
-        !isQueryParams(positional?.[positional.length - 1] as PositionalParams) &&
-        (named.models || named.model)
+        !isQueryParams(positional.at(-1) as PositionalParams) &&
+        (named.models ?? named.model)
       )
     );
 
     assert(
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
       `Either pass multiple 'models' ('${named.models}') or pass a single 'model' ('${named.model}'). `,
       !(named.models && named.model)
     );
 
     return {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       route: named.route ?? positional[0]!,
       models: Array.isArray(named.models)
         ? named.models
         : named.model
           ? [named.model]
           : positional.length > 1
-            ? (positional.slice(1, positionalQueryParameters ? -1 : undefined) as RouteModel[])
+            ? // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+              (positional.slice(1, positionalQueryParameters ? -1 : undefined) as RouteModel[])
             : undefined,
       query: named.query ?? positionalQueryParameters,
       onTransitionTo: named.onTransitionTo,
