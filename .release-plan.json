@@ -2,8 +2,9 @@
   "solution": {
     "ember-link": {
       "impact": "minor",
-      "oldVersion": "3.2.0",
-      "newVersion": "3.3.0",
+      "oldVersion": "3.3.0",
+      "newVersion": "3.4.0",
+      "tagName": "latest",
       "constraints": [
         {
           "impact": "minor",
@@ -11,15 +12,11 @@
         },
         {
           "impact": "patch",
-          "reason": "Appears in changelog section :memo: Documentation"
-        },
-        {
-          "impact": "patch",
           "reason": "Appears in changelog section :house: Internal"
         }
       ],
-      "pkgJSONPath": "./ember-link/package.json"
+      "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2024-10-28)\n\nember-link 3.3.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-link`\n  * [#811](https://github.com/buschtoens/ember-link/pull/811) Export `QueryParams` ([@gossi](https://github.com/gossi))\n\n#### :memo: Documentation\n* `ember-link`\n  * [#793](https://github.com/buschtoens/ember-link/pull/793) Typedoc integrated into vitepress ([@gossi](https://github.com/gossi))\n  * [#795](https://github.com/buschtoens/ember-link/pull/795) docs: Update readme with the latest engines router service ([@villander](https://github.com/villander))\n\n#### :house: Internal\n* `test-app`\n  * [#813](https://github.com/buschtoens/ember-link/pull/813) Increase Test Matrix ([@gossi](https://github.com/gossi))\n* `ember-link`, `test-app`\n  * [#812](https://github.com/buschtoens/ember-link/pull/812) Update to `ember@5.12` ([@gossi](https://github.com/gossi))\n  * [#806](https://github.com/buschtoens/ember-link/pull/806) Remove volta for corepack ([@gossi](https://github.com/gossi))\n* Other\n  * [#810](https://github.com/buschtoens/ember-link/pull/810) Use shared renovate config ([@gossi](https://github.com/gossi))\n* `ember-link`\n  * [#807](https://github.com/buschtoens/ember-link/pull/807) Switch to `release-plan` ([@gossi](https://github.com/gossi))\n\n#### Committers: 2\n- Michael Villander ([@villander](https://github.com/villander))\n- Thomas Gossmann ([@gossi](https://github.com/gossi))\n"
+  "description": "## Release (2025-06-26)\n\n* ember-link 3.4.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-link`\n  * [#865](https://github.com/buschtoens/ember-link/pull/865) Extend `@ember/test-helpers` in peer deps ([@gossi](https://github.com/gossi))\n\n#### :house: Internal\n* `ember-link`\n  * [#866](https://github.com/buschtoens/ember-link/pull/866) Update docs ([@gossi](https://github.com/gossi))\n  * [#864](https://github.com/buschtoens/ember-link/pull/864) Update configs for `release-plan` ([@gossi](https://github.com/gossi))\n  * [#863](https://github.com/buschtoens/ember-link/pull/863) Move to a vite based setup ([@gossi](https://github.com/gossi))\n  * [#861](https://github.com/buschtoens/ember-link/pull/861) Increase Support for Node Version to 20.11 ([@gossi](https://github.com/gossi))\n  * [#854](https://github.com/buschtoens/ember-link/pull/854) Repair docs ([@gossi](https://github.com/gossi))\n\n#### Committers: 1\n- Thomas Gossmann ([@gossi](https://github.com/gossi))\n"
 }
