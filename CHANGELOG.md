@@ -1,5 +1,24 @@
 # Changelog
 
+## Release (2025-06-26)
+
+* ember-link 3.4.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-link`
+  * [#865](https://github.com/buschtoens/ember-link/pull/865) Extend `@ember/test-helpers` in peer deps ([@gossi](https://github.com/gossi))
+
+#### :house: Internal
+* `ember-link`
+  * [#866](https://github.com/buschtoens/ember-link/pull/866) Update docs ([@gossi](https://github.com/gossi))
+  * [#864](https://github.com/buschtoens/ember-link/pull/864) Update configs for `release-plan` ([@gossi](https://github.com/gossi))
+  * [#863](https://github.com/buschtoens/ember-link/pull/863) Move to a vite based setup ([@gossi](https://github.com/gossi))
+  * [#861](https://github.com/buschtoens/ember-link/pull/861) Increase Support for Node Version to 20.11 ([@gossi](https://github.com/gossi))
+  * [#854](https://github.com/buschtoens/ember-link/pull/854) Repair docs ([@gossi](https://github.com/gossi))
+
+#### Committers: 1
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## Release (2024-10-28)
 
 ember-link 3.3.0 (minor)
