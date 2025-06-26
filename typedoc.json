@@ -3,21 +3,23 @@
     "./src/index.ts",
     "./src/test-support/index.ts"
   ],
-  "out": "../docs/api",
+  "out": "./docs/api",
   "plugin": [
     "typedoc-plugin-markdown",
     "typedoc-vitepress-theme"
   ],
-  "docsRoot": "../docs",
+  "docsRoot": "./docs",
   "excludeExternals": true,
   "excludePrivate": true,
   "excludeProtected": true,
   "useCodeBlocks": true,
   "parametersFormat": "table",
   "typeDeclarationFormat": "table",
-  "textContentMappings": {
-    "breadcrumbs.home": "API",
-    "kind.typeAlias.singular": "Type",
-    "kind.typeAlias.plural": "Types",
-  }
+  "navigation": {
+    "includeCategories": false,
+    "includeGroups": false,
+    "includeFolders": false,
+    "excludeReferences": true
+  },
+  "sort": ["alphabetical"]
 }
