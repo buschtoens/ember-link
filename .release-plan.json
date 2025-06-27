@@ -1,22 +1,18 @@
 {
   "solution": {
     "ember-link": {
-      "impact": "minor",
-      "oldVersion": "3.3.0",
-      "newVersion": "3.4.0",
+      "impact": "patch",
+      "oldVersion": "3.4.0",
+      "newVersion": "3.4.1",
       "tagName": "latest",
       "constraints": [
         {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        },
-        {
           "impact": "patch",
-          "reason": "Appears in changelog section :house: Internal"
+          "reason": "Appears in changelog section :bug: Bug Fix"
         }
       ],
       "pkgJSONPath": "./package.json"
     }
   },
-  "description": "## Release (2025-06-26)\n\n* ember-link 3.4.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-link`\n  * [#865](https://github.com/buschtoens/ember-link/pull/865) Extend `@ember/test-helpers` in peer deps ([@gossi](https://github.com/gossi))\n\n#### :house: Internal\n* `ember-link`\n  * [#866](https://github.com/buschtoens/ember-link/pull/866) Update docs ([@gossi](https://github.com/gossi))\n  * [#864](https://github.com/buschtoens/ember-link/pull/864) Update configs for `release-plan` ([@gossi](https://github.com/gossi))\n  * [#863](https://github.com/buschtoens/ember-link/pull/863) Move to a vite based setup ([@gossi](https://github.com/gossi))\n  * [#861](https://github.com/buschtoens/ember-link/pull/861) Increase Support for Node Version to 20.11 ([@gossi](https://github.com/gossi))\n  * [#854](https://github.com/buschtoens/ember-link/pull/854) Repair docs ([@gossi](https://github.com/gossi))\n\n#### Committers: 1\n- Thomas Gossmann ([@gossi](https://github.com/gossi))\n"
+  "description": "## Release (2025-06-27)\n\n* ember-link 3.4.1 (patch)\n\n#### :bug: Bug Fix\n* `ember-link`\n  * [#867](https://github.com/buschtoens/ember-link/pull/867) Fix test-support ([@gossi](https://github.com/gossi))\n\n#### Committers: 1\n- Thomas Gossmann ([@gossi](https://github.com/gossi))\n"
 }

@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-06-27)
+
+* ember-link 3.4.1 (patch)
+
+#### :bug: Bug Fix
+* `ember-link`
+  * [#867](https://github.com/buschtoens/ember-link/pull/867) Fix test-support ([@gossi](https://github.com/gossi))
+
+#### Committers: 1
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## Release (2025-06-26)
 
 * ember-link 3.4.0 (minor)
