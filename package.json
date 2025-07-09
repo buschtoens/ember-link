@@ -115,7 +115,7 @@
     "qunit-dom": "^3.4.0",
     "sinon": "^21.0.0",
     "release-plan": "^0.17.0",
-    "rollup": "^4.44.1",
+    "rollup": "^4.44.2",
     "testem": "^3.16.0",
     "typedoc-plugin-markdown": "^4.7.0",
     "typedoc-vitepress-theme": "^1.1.2",
