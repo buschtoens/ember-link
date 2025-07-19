@@ -145,11 +145,11 @@ importers:
         specifier: ^0.28.7
         version: 0.28.7(typescript@5.8.3)
       typedoc-plugin-markdown:
-        specifier: ^4.7.0
-        version: 4.7.0(typedoc@0.28.7(typescript@5.8.3))
+        specifier: ^4.7.1
+        version: 4.7.1(typedoc@0.28.7(typescript@5.8.3))
       typedoc-vitepress-theme:
         specifier: ^1.1.2
-        version: 1.1.2(typedoc-plugin-markdown@4.7.0(typedoc@0.28.7(typescript@5.8.3)))
+        version: 1.1.2(typedoc-plugin-markdown@4.7.1(typedoc@0.28.7(typescript@5.8.3)))
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -6443,8 +6443,8 @@ packages:
     resolution: {integrity: sha512-3KS2b+kL7fsuk/eJZ7EQdnEmQoaho/r6KUef7hxvltNA5DR8NAUM+8wJMbJyZ4G9/7i3v5zPBIMN5aybAh2/Jg==}
     engines: {node: '>= 0.4'}
 
-  typedoc-plugin-markdown@4.7.0:
-    resolution: {integrity: sha512-PitbnAps2vpcqK2gargKoiFXLWFttvwUbyns/E6zGIFG5Gz8ZQJGttHnYR9csOlcSjB/uyjd8tnoayrtsXG17w==}
+  typedoc-plugin-markdown@4.7.1:
+    resolution: {integrity: sha512-HN/fHLm2S6MD4HX8txfB4eWvVBzX/mEYy5U5s1KTAdh3E5uX5/lilswqTzZlPTT6fNZInAboAdFGpbAuBKnE4A==}
     engines: {node: '>= 18'}
     peerDependencies:
       typedoc: 0.28.x
@@ -6713,8 +6713,8 @@ packages:
       '@volar/language-service':
         optional: true
 
-  volar-service-typescript@0.0.64:
-    resolution: {integrity: sha512-FN2H97iqjR1id8AM4fH7lTXuTx2on9zD6QlUFllaiHKqgNrEITlQwm/9Ujrd9ST7MUzhgIKyUsa2WlanX9kkMg==}
+  volar-service-typescript@0.0.65:
+    resolution: {integrity: sha512-zPJuLIMs7lkQCvL+Rza8+3/EIoXEIkX8+DL7bNNfPgnbalbvRDhqWLVMJ6Zk3pINjLJafDqyhSbw8srfkUv97w==}
     peerDependencies:
       '@volar/language-service': ~2.4.0
     peerDependenciesMeta:
@@ -8619,7 +8619,7 @@ snapshots:
       typescript: 5.8.3
       uuid: 8.3.2
       volar-service-html: 0.0.64(@volar/language-service@2.4.12)
-      volar-service-typescript: 0.0.64(@volar/language-service@2.4.12)
+      volar-service-typescript: 0.0.65(@volar/language-service@2.4.12)
       vscode-languageserver-protocol: 3.17.5
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
@@ -14536,13 +14536,13 @@ snapshots:
       possible-typed-array-names: 1.1.0
       reflect.getprototypeof: 1.0.10
 
-  typedoc-plugin-markdown@4.7.0(typedoc@0.28.7(typescript@5.8.3)):
+  typedoc-plugin-markdown@4.7.1(typedoc@0.28.7(typescript@5.8.3)):
     dependencies:
       typedoc: 0.28.7(typescript@5.8.3)
 
-  typedoc-vitepress-theme@1.1.2(typedoc-plugin-markdown@4.7.0(typedoc@0.28.7(typescript@5.8.3))):
+  typedoc-vitepress-theme@1.1.2(typedoc-plugin-markdown@4.7.1(typedoc@0.28.7(typescript@5.8.3))):
     dependencies:
-      typedoc-plugin-markdown: 4.7.0(typedoc@0.28.7(typescript@5.8.3))
+      typedoc-plugin-markdown: 4.7.1(typedoc@0.28.7(typescript@5.8.3))
 
   typedoc@0.28.7(typescript@5.8.3):
     dependencies:
@@ -14807,7 +14807,7 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.12
 
-  volar-service-typescript@0.0.64(@volar/language-service@2.4.12):
+  volar-service-typescript@0.0.65(@volar/language-service@2.4.12):
     dependencies:
       path-browserify: 1.0.1
       semver: 7.7.2
