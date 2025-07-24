@@ -61,11 +61,11 @@ importers:
         specifier: ^2.0.0-alpha.3
         version: 2.0.0-alpha.3(typescript@5.8.3)
       '@glint/environment-ember-loose':
-        specifier: ^2.0.0-alpha.2
-        version: 2.0.0-alpha.2(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1)
+        specifier: ^2.0.0-alpha.3
+        version: 2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1)
       '@glint/environment-ember-template-imports':
         specifier: ^2.0.0-alpha.2
-        version: 2.0.0-alpha.2(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/environment-ember-loose@2.0.0-alpha.2(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1))(@glint/template@1.6.0-alpha.1)
+        version: 2.0.0-alpha.2(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/environment-ember-loose@2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1))(@glint/template@1.6.0-alpha.1)
       '@glint/template':
         specifier: ^1.6.0-alpha.1
         version: 1.6.0-alpha.1
@@ -1431,8 +1431,8 @@ packages:
     peerDependencies:
       typescript: '>=5.6.0'
 
-  '@glint/environment-ember-loose@2.0.0-alpha.2':
-    resolution: {integrity: sha512-cehHQpB1IZpwec+koTzmONdby2EMCNZH47zyCLHbK+wxAiUT7oPWVFTIoDBLmOkfK0oCfqyW6MxgzZg2ksO7ug==}
+  '@glint/environment-ember-loose@2.0.0-alpha.3':
+    resolution: {integrity: sha512-hLogEykHVUwC+aElg8W1XMp9edcxiKO+ZZufrWcgHUBFTtsoJCP8jWYb0H+1XgLTEnnSV+2OyO6yMPsegGUWkg==}
     peerDependencies:
       '@glimmer/component': '>=1.1.2'
       '@glint/core': '*'
@@ -8627,16 +8627,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@glint/environment-ember-loose@2.0.0-alpha.2(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1)':
+  '@glint/environment-ember-loose@2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1)':
     dependencies:
       '@glimmer/component': 2.0.0
       '@glint/core': 2.0.0-alpha.3(typescript@5.8.3)
       '@glint/template': 1.6.0-alpha.1
 
-  '@glint/environment-ember-template-imports@2.0.0-alpha.2(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/environment-ember-loose@2.0.0-alpha.2(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1))(@glint/template@1.6.0-alpha.1)':
+  '@glint/environment-ember-template-imports@2.0.0-alpha.2(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/environment-ember-loose@2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1))(@glint/template@1.6.0-alpha.1)':
     dependencies:
       '@glint/core': 2.0.0-alpha.3(typescript@5.8.3)
-      '@glint/environment-ember-loose': 2.0.0-alpha.2(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1)
+      '@glint/environment-ember-loose': 2.0.0-alpha.3(@glimmer/component@2.0.0)(@glint/core@2.0.0-alpha.3(typescript@5.8.3))(@glint/template@1.6.0-alpha.1)
       '@glint/template': 1.6.0-alpha.1
       content-tag: 3.1.3
 
