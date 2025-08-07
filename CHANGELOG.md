@@ -1,5 +1,16 @@
 # Changelog
 
+## Release (2025-08-07)
+
+* ember-link 3.5.0 (minor)
+
+#### :rocket: Enhancement
+* `ember-link`
+  * [#900](https://github.com/buschtoens/ember-link/pull/900) Allow link to take URL as first param ([@gossi](https://github.com/gossi))
+
+#### Committers: 1
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## Release (2025-06-27)
 
 * ember-link 3.4.1 (patch)
