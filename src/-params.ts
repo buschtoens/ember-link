@@ -11,6 +11,9 @@ export interface LinkParams {
    */
   route: string;
 
+  /**
+   * The link is external and will leave the ember application
+   */
   isExternal?: boolean;
 
   /**
@@ -23,6 +26,9 @@ export interface LinkParams {
    */
   query?: QueryParams;
 
+  /**
+   * The behavior for the link
+   */
   behavior?: Partial<Behavior>;
 
   /**
