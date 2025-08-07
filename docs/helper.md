@@ -4,6 +4,30 @@ The `(link)` helper returns a `Link` instance.
 
 ## Invocation Styles
 
+### URL
+
+```hbs
+{{#let (link "/blogs/123/posts/456?showFullPost=true") as |l|}}
+  <a href={{l.url}} {{on "click" l.open}}>
+    Read the full "{{@post.title}}" story on our {{@post.blog.name}} blog!
+  </a>
+{{/let}}
+```
+
+Works with external links, too:
+
+```hbs
+{{#let (link "https://emberjs.com") as |l|}}
+  <a href={{l.url}} target="_blank" rel="noreferrer noopener">
+    Ember
+
+    {{#if l.isExternal}}
+      ➚
+    {{/if}}
+  </a>
+{{/let}}
+```
+
 ### Positional Parameters
 
 ```hbs
