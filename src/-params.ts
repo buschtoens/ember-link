@@ -12,6 +12,11 @@ export interface LinkParams {
   route: string;
 
   /**
+   * The link is external and will leave the ember application
+   */
+  isExternal?: boolean;
+
+  /**
    * Optional array of models / dynamic segments.
    */
   models?: RouteModel[];
@@ -21,6 +26,9 @@ export interface LinkParams {
    */
   query?: QueryParams;
 
+  /**
+   * The behavior for the link
+   */
   behavior?: Partial<Behavior>;
 
   /**

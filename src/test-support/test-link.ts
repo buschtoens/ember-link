@@ -61,6 +61,10 @@ export default class TestLink extends Link {
   @tracked private internalUrl = guidFor(this);
 
   get url(): string {
+    if (this.isExternal) {
+      return this._params.route;
+    }
+
     return this.internalUrl;
   }
 

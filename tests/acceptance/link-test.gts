@@ -58,12 +58,72 @@ module('Acceptance | link', function (hooks) {
     assert.dom('[data-test-link]').hasClass('is-active');
   });
 
+  test('basic test with URL', async function (this: TestContext, assert) {
+    this.owner.register(
+      'template:application',
+      RouteTemplate(
+        <template>
+          {{#let (link "/foo") as |l|}}
+            <a
+              data-test-link
+              href={{l.url}}
+              class={{if l.isActive "is-active"}}
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
+    );
+
+    await visit('/');
+    assert.strictEqual(currentURL(), '/');
+
+    assert.dom('[data-test-link]').hasAttribute('href', '/foo');
+    assert.dom('[data-test-link]').hasNoClass('is-active');
+
+    await click('[data-test-link]');
+    assert.strictEqual(currentURL(), '/foo');
+    assert.dom('[data-test-link]').hasClass('is-active');
+  });
+
   test('with model', async function (this: TestContext, assert) {
     this.owner.register(
       'template:application',
       RouteTemplate(
         <template>
           {{#let (link route="with-model" models=(array 123)) as |l|}}
+            <a
+              data-test-link
+              href={{l.url}}
+              class={{if l.isActive "is-active"}}
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
+    );
+
+    await visit('/');
+    assert.strictEqual(currentURL(), '/');
+
+    assert.dom('[data-test-link]').hasAttribute('href', '/with-model/123');
+    assert.dom('[data-test-link]').hasNoClass('is-active');
+
+    await click('[data-test-link]');
+    assert.strictEqual(currentURL(), '/with-model/123');
+    assert.dom('[data-test-link]').hasClass('is-active');
+  });
+
+  test('with model as URL', async function (this: TestContext, assert) {
+    this.owner.register(
+      'template:application',
+      RouteTemplate(
+        <template>
+          {{#let (link "/with-model/123") as |l|}}
             <a
               data-test-link
               href={{l.url}}
@@ -124,6 +184,36 @@ module('Acceptance | link', function (hooks) {
       RouteTemplate(
         <template>
           {{#let (link route="parent.child" models=(array 123 456)) as |l|}}
+            <a
+              data-test-link
+              href={{l.url}}
+              class={{if l.isActive "is-active"}}
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
+    );
+
+    await visit('/');
+    assert.strictEqual(currentURL(), '/');
+
+    assert.dom('[data-test-link]').hasAttribute('href', '/parent/123/child/456');
+    assert.dom('[data-test-link]').hasNoClass('is-active');
+
+    await click('[data-test-link]');
+    assert.strictEqual(currentURL(), '/parent/123/child/456');
+    assert.dom('[data-test-link]').hasClass('is-active');
+  });
+
+  test('with nested model as URL', async function (this: TestContext, assert) {
+    this.owner.register(
+      'template:application',
+      RouteTemplate(
+        <template>
+          {{#let (link "/parent/123/child/456") as |l|}}
             <a
               data-test-link
               href={{l.url}}
@@ -231,6 +321,76 @@ module('Acceptance | link', function (hooks) {
             </a>
           {{/let}}
           {{#let (link route="foo" query=(hash qp=456)) as |l|}}
+            <a
+              data-test-456
+              href={{l.url}}
+              class="{{if l.isActive 'is-active'}}
+                {{if l.isActiveWithoutQueryParams 'is-active-wqp'}}"
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+        </template>
+      )
+    );
+
+    await visit('/');
+    assert.strictEqual(currentURL(), '/');
+
+    // await this.pauseTest();
+
+    assert.dom('[data-test-123]').hasAttribute('href', '/foo?qp=123');
+    assert.dom('[data-test-123]').hasNoClass('is-active');
+    assert.dom('[data-test-123]').hasNoClass('is-active-wqp');
+
+    assert.dom('[data-test-456]').hasAttribute('href', '/foo?qp=456');
+    assert.dom('[data-test-456]').hasNoClass('is-active');
+    assert.dom('[data-test-456]').hasNoClass('is-active-wqp');
+
+    await click('[data-test-123]');
+    assert.strictEqual(currentURL(), '/foo?qp=123');
+
+    assert.dom('[data-test-123]').hasClass('is-active');
+    assert.dom('[data-test-123]').hasClass('is-active-wqp');
+
+    assert.dom('[data-test-456]').hasNoClass('is-active');
+    assert.dom('[data-test-456]').hasClass('is-active-wqp');
+
+    await click('[data-test-456]');
+    assert.strictEqual(currentURL(), '/foo?qp=456');
+
+    assert.dom('[data-test-123]').hasNoClass('is-active');
+    assert.dom('[data-test-123]').hasClass('is-active-wqp');
+
+    assert.dom('[data-test-456]').hasClass('is-active');
+    assert.dom('[data-test-456]').hasClass('is-active-wqp');
+  });
+
+  test('query params transition with URL', async function (this: TestContext, assert) {
+    this.owner.register(
+      'route:foo',
+      class FooRoute extends Route {
+        queryParams = { qp: {} };
+      }
+    );
+
+    this.owner.register(
+      'template:application',
+      RouteTemplate(
+        <template>
+          {{#let (link "/foo?qp=123") as |l|}}
+            <a
+              data-test-123
+              href={{l.url}}
+              class="{{if l.isActive 'is-active'}}
+                {{if l.isActiveWithoutQueryParams 'is-active-wqp'}}"
+              {{on "click" l.transitionTo}}
+            >
+              Link
+            </a>
+          {{/let}}
+          {{#let (link "/foo?qp=456") as |l|}}
             <a
               data-test-456
               href={{l.url}}

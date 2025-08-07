@@ -77,6 +77,22 @@ module('Integration | Helper | link', function (hooks) {
         assert.strictEqual(currentURL(), null);
       });
 
+      test('External link', async (assert) => {
+        await render(
+          <template>
+            {{#let (link "https://emberjs.com") as |l|}}
+              <a href={{l.url}} data-external={{l.isExternal}}>
+                Ember
+              </a>
+            {{/let}}
+          </template>
+        );
+
+        // eslint-disable-next-line unicorn/prefer-dom-node-dataset
+        assert.dom('a').hasAttribute('data-external');
+        assert.dom('a').hasAttribute('href', 'https://emberjs.com');
+      });
+
       module('with incomplete models', function () {
         test('it renders', async function (assert) {
           await render(

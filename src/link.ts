@@ -3,7 +3,6 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
 import { BEHAVIOR, type Behavior } from './-behavior.ts';
-// import { getOwner, setOwner } from '@ember/owner';
 import { getOwner, setOwner } from './-owner.ts';
 import { freezeParams } from './-params.ts';
 
@@ -104,10 +103,21 @@ export default class Link {
   }
 
   /**
+   * Whether this link leaves Ember
+   */
+  get isExternal(): boolean {
+    return this._params.isExternal ?? false;
+  }
+
+  /**
    * The URL for this link that you can pass to an `<a>` tag as the `href`
    * attribute.
    */
   get url(): string {
+    if (this.isExternal) {
+      return this._params.route;
+    }
+
     if (!this._linkManager.isRouterInitialized) return '';
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -178,6 +188,10 @@ export default class Link {
 
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   protected canOpen(event?: Event | unknown): boolean {
+    if (this.isExternal) {
+      return false;
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (this.behavior.prevent?.(event, this)) {
       return false;
