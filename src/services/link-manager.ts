@@ -100,7 +100,14 @@ export default class LinkManagerService extends Service {
    * Converts a `RouteInfo` object into `LinkParams`.
    */
   static getLinkParamsFromRouteInfo(routeInfo: RouteInfo): LinkParams {
-    const models = routeInfo.paramNames.map((name) => routeInfo.params?.[name]) as RouteModel[];
+    const models = [];
+
+    let currentRoute: RouteInfo = routeInfo;
+
+    do {
+      models.unshift(...currentRoute.paramNames.map((name) => currentRoute?.params?.[name]) as RouteModel[])
+      currentRoute = currentRoute.parent as RouteInfo;
+    } while (currentRoute.name !== 'application');
 
     return {
       route: routeInfo.name,

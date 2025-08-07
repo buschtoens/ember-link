@@ -7,9 +7,10 @@ import { isQueryParams } from '../-params.ts';
 import type { RouteArgs, RouteModel } from '../-models.ts';
 import type { LinkParams, QueryParams } from '../-params.ts';
 import type Link from '../link.ts';
-import type LinkManagerService from '../services/link-manager.ts';
+import LinkManagerService from '../services/link-manager.ts';
+import type RouterService from '@ember/routing/router-service';
 
-export type PositionalParams = [] | RouteArgs;
+export type PositionalParams = [] | RouteArgs | [string];
 
 export interface NamedParams extends Partial<LinkParams> {
   /**
@@ -39,7 +40,8 @@ export interface LinkSignature {
 const service = services.service ?? services.inject;
 
 export default class LinkHelper extends Helper<LinkSignature> {
-  @service('link-manager') private linkManager!: LinkManagerService;
+  @service('link-manager') declare private linkManager: LinkManagerService;
+  @service declare router: RouterService;
 
   /**
    * Normalizes the positional and named parameters passed to this helper.
@@ -76,6 +78,32 @@ export default class LinkHelper extends Helper<LinkSignature> {
       `Neither specified the target route name as a positional or named parameter ('route').`,
       Boolean(positional[0] ?? named.route)
     );
+
+    // is a route or external URL?
+    if (positional.length === 1) {
+      if (positional[0].startsWith('/')) {
+        try {
+          const recognizedUrl = this.router.recognize(positional[0]);
+
+          if (recognizedUrl) {
+            return LinkManagerService.getLinkParamsFromRouteInfo(recognizedUrl);
+          }
+        } catch {
+          // url not recognized
+        }
+      }
+
+      try {
+        this.router.urlFor(positional[0]);
+      } catch (e) {
+        // cannot find url for given route name
+
+        return {
+          route: positional[0],
+          isExternal: true
+        }
+      }
+    }
 
     const namedQueryParameters = named.query ?? {};
     const positionalQueryParameters =

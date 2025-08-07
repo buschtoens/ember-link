@@ -11,6 +11,8 @@ export interface LinkParams {
    */
   route: string;
 
+  isExternal?: boolean;
+
   /**
    * Optional array of models / dynamic segments.
    */

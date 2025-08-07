@@ -2,12 +2,12 @@ import { on } from '@ember/modifier';
 import { click, render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 
+import { type Link } from '#src';
 import { linkFor, setupLink } from '#test-support';
 import { setupRenderingTest } from '#tests/helpers';
 
 import type { TOC } from '@ember/component/template-only';
 import type { TestContext as BaseTestContext } from '@ember/test-helpers';
-import type { Link } from '#src';
 import type { TestLink } from '#test-support';
 
 interface TestContext extends BaseTestContext {
