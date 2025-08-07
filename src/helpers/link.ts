@@ -3,11 +3,11 @@ import { assert } from '@ember/debug';
 import * as services from '@ember/service';
 
 import { isQueryParams } from '../-params.ts';
+import LinkManagerService from '../services/link-manager.ts';
 
 import type { RouteArgs, RouteModel } from '../-models.ts';
 import type { LinkParams, QueryParams } from '../-params.ts';
 import type Link from '../link.ts';
-import LinkManagerService from '../services/link-manager.ts';
 import type RouterService from '@ember/routing/router-service';
 
 export type PositionalParams = [] | RouteArgs | [string];
@@ -95,13 +95,13 @@ export default class LinkHelper extends Helper<LinkSignature> {
 
       try {
         this.router.urlFor(positional[0]);
-      } catch (e) {
+      } catch {
         // cannot find url for given route name
 
         return {
           route: positional[0],
           isExternal: true
-        }
+        };
       }
     }
 

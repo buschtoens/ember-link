@@ -105,7 +105,10 @@ export default class LinkManagerService extends Service {
     let currentRoute: RouteInfo = routeInfo;
 
     do {
-      models.unshift(...currentRoute.paramNames.map((name) => currentRoute?.params?.[name]) as RouteModel[])
+      models.unshift(
+        // eslint-disable-next-line @typescript-eslint/no-loop-func
+        ...(currentRoute.paramNames.map((name) => currentRoute.params?.[name]) as RouteModel[])
+      );
       currentRoute = currentRoute.parent as RouteInfo;
     } while (currentRoute.name !== 'application');
 
