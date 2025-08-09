@@ -142,10 +142,10 @@ importers:
         specifier: ^3.16.0
         version: 3.16.0(handlebars@4.7.8)(underscore@1.13.7)
       typedoc:
-        specifier: ^0.28.7
+        specifier: ^0.28.9
         version: 0.28.9(typescript@5.9.2)
       typedoc-plugin-markdown:
-        specifier: ^4.7.1
+        specifier: ^4.8.0
         version: 4.8.0(typedoc@0.28.9(typescript@5.9.2))
       typedoc-vitepress-theme:
         specifier: ^1.1.2
