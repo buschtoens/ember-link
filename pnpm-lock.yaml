@@ -130,7 +130,7 @@ importers:
         specifier: ^3.4.0
         version: 3.4.0
       release-plan:
-        specifier: ^0.17.0
+        specifier: ^0.17.2
         version: 0.17.2
       rollup:
         specifier: ^4.46.0
