@@ -97,7 +97,7 @@
     "@gossi/config-prettier": "^1.1.0",
     "@gossi/config-template-lint": "^1.1.0",
     "@rollup/plugin-babel": "^6.0.4",
-    "@types/qunit": "^2.19.12",
+    "@types/qunit": "^2.19.13",
     "@types/rsvp": "^4.0.9",
     "@types/sinon": "^17.0.4",
     "ember-qunit": "^9.0.3",
