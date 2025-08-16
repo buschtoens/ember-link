@@ -117,7 +117,7 @@
     "release-plan": "^0.17.2",
     "rollup": "^4.46.2",
     "testem": "^3.16.0",
-    "typedoc-plugin-markdown": "^4.8.0",
+    "typedoc-plugin-markdown": "^4.8.1",
     "typedoc-vitepress-theme": "^1.1.2",
     "typedoc": "^0.28.10",
     "typescript": "^5.9.2",
