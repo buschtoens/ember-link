@@ -127,7 +127,7 @@ importers:
         specifier: ^2.24.1
         version: 2.24.1
       qunit-dom:
-        specifier: ^3.4.0
+        specifier: ^3.5.0
         version: 3.5.0
       release-plan:
         specifier: ^0.17.2
