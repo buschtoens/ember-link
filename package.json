@@ -112,7 +112,7 @@
     "p-defer": "^4.0.1",
     "prettier": "^3.6.2",
     "qunit": "^2.24.1",
-    "qunit-dom": "^3.4.0",
+    "qunit-dom": "^3.5.0",
     "sinon": "^21.0.0",
     "release-plan": "^0.17.2",
     "rollup": "^4.48.0",
