@@ -106,13 +106,13 @@ importers:
         specifier: ~6.6.0
         version: 6.6.0(@glimmer/component@2.0.0)(rsvp@4.8.5)
       ember-template-lint:
-        specifier: ^7.9.2
+        specifier: ^7.9.3
         version: 7.9.3
       eslint:
-        specifier: ^9.29.0
+        specifier: ^9.34.0
         version: 9.34.0
       eslint-plugin-ember:
-        specifier: ^12.7.0
+        specifier: ^12.7.3
         version: 12.7.3(@babel/core@7.28.3)(@typescript-eslint/parser@8.40.0(eslint@9.34.0)(typescript@5.9.2))(eslint@9.34.0)(typescript@5.9.2)
       eslint-plugin-qunit:
         specifier: ^8.2.5
