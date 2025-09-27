@@ -132,7 +132,7 @@
       ]
     }
   },
-  "packageManager": "pnpm@10.17.0",
+  "packageManager": "pnpm@10.17.1",
   "engines": {
     "node": "^20.11.0 || >=22"
   },
