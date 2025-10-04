@@ -120,7 +120,7 @@
     "typedoc-plugin-markdown": "^4.9.0",
     "typedoc-vitepress-theme": "^1.1.2",
     "typedoc": "^0.28.13",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "vitepress": "^1.6.4",
     "vite": "^7.1.7"
   },

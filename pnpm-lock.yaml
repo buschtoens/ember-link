@@ -151,7 +151,7 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(typedoc-plugin-markdown@4.9.0(typedoc@0.28.13(typescript@5.9.3)))
       typescript:
-        specifier: ^5.9.2
+        specifier: ^5.9.3
         version: 5.9.3
       vite:
         specifier: ^7.1.7
