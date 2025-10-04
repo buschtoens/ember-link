@@ -122,7 +122,7 @@
     "typedoc": "^0.28.13",
     "typescript": "^5.9.3",
     "vitepress": "^1.6.4",
-    "vite": "^7.1.7"
+    "vite": "^7.1.9"
   },
   "pnpm": {
     "peerDependencyRules": {
