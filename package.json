@@ -111,7 +111,7 @@
     "eslint-plugin-qunit": "^8.2.5",
     "p-defer": "^4.0.1",
     "prettier": "^3.6.2",
-    "qunit": "^2.24.1",
+    "qunit": "^2.24.2",
     "qunit-dom": "^3.5.0",
     "sinon": "^21.0.0",
     "release-plan": "^0.17.2",
