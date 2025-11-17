@@ -99,7 +99,7 @@
     "@rollup/plugin-babel": "^6.1.0",
     "@types/qunit": "^2.19.13",
     "@types/rsvp": "^4.0.9",
-    "@types/sinon": "^17.0.4",
+    "@types/sinon": "^21.0.0",
     "ember-qunit": "^9.0.4",
     "ember-resolver": "^13.1.1",
     "ember-sinon-qunit": "^7.5.0",
