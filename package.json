@@ -106,7 +106,7 @@
     "ember-source": "~6.8.2",
     "ember-template-lint": "^7.9.3",
     "ember-route-template": "^1.0.3",
-    "eslint": "^9.38.0",
+    "eslint": "^9.39.1",
     "eslint-plugin-ember": "^12.7.4",
     "eslint-plugin-qunit": "^8.2.5",
     "p-defer": "^4.0.1",
