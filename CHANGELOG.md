@@ -1,5 +1,10 @@
 # Changelog
 
+
+
+
+
+
 ## Release (2025-08-07)
 
 * ember-link 3.5.0 (minor)
