@@ -86,7 +86,7 @@
     "@ember/test-helpers": "^5.4.1",
     "@embroider/addon-dev": "^8.1.2",
     "@embroider/compat": "^4.1.11",
-    "@embroider/core": "^4.4.0",
+    "@embroider/core": "^4.4.1",
     "@embroider/vite": "^1.4.4",
     "@glimmer/component": "^2.0.0",
     "@glint/core": "^2.0.0-alpha.10",
