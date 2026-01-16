@@ -103,7 +103,7 @@
     "ember-qunit": "^9.0.4",
     "ember-resolver": "^13.1.1",
     "ember-sinon-qunit": "^7.5.0",
-    "ember-source": "~6.9.0",
+    "ember-source": "~6.10.0",
     "ember-template-lint": "^7.9.3",
     "ember-route-template": "^1.0.3",
     "eslint": "^9.39.2",
