@@ -108,7 +108,7 @@
     "ember-route-template": "^1.0.3",
     "eslint": "^9.39.2",
     "eslint-plugin-ember": "^12.7.5",
-    "eslint-plugin-qunit": "^8.2.5",
+    "eslint-plugin-qunit": "^8.2.6",
     "p-defer": "^4.0.1",
     "prettier": "^3.8.1",
     "qunit": "^2.25.0",
