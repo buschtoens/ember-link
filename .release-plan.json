@@ -1,18 +1,8 @@
 {
   "solution": {
     "ember-link": {
-      "impact": "minor",
-      "oldVersion": "3.4.1",
-      "newVersion": "3.5.0",
-      "tagName": "latest",
-      "constraints": [
-        {
-          "impact": "minor",
-          "reason": "Appears in changelog section :rocket: Enhancement"
-        }
-      ],
-      "pkgJSONPath": "./package.json"
+      "oldVersion": "3.5.0"
     }
   },
-  "description": "## Release (2025-08-07)\n\n* ember-link 3.5.0 (minor)\n\n#### :rocket: Enhancement\n* `ember-link`\n  * [#900](https://github.com/buschtoens/ember-link/pull/900) Allow link to take URL as first param ([@gossi](https://github.com/gossi))\n\n#### Committers: 1\n- Thomas Gossmann ([@gossi](https://github.com/gossi))\n"
+  "description": "\n\n\n\n"
 }
