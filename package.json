@@ -113,7 +113,7 @@
     "prettier": "^3.8.1",
     "qunit": "^2.25.0",
     "qunit-dom": "^3.5.0",
-    "sinon": "^21.0.2",
+    "sinon": "^21.0.3",
     "release-plan": "^0.17.4",
     "rollup": "^4.59.1",
     "testem": "^3.18.0",
