@@ -47,13 +47,13 @@ importers:
         version: 8.3.0(@glint/template@1.7.3)(rollup@4.59.1)
       '@embroider/compat':
         specifier: ^4.1.15
-        version: 4.1.15(@embroider/core@4.4.5(@glint/template@1.7.3))(@glint/template@1.7.3)
+        version: 4.1.15(@embroider/core@4.4.6(@glint/template@1.7.3))(@glint/template@1.7.3)
       '@embroider/core':
-        specifier: ^4.4.5
-        version: 4.4.5(@glint/template@1.7.3)
+        specifier: ^4.4.6
+        version: 4.4.6(@glint/template@1.7.3)
       '@embroider/vite':
-        specifier: ^1.6.1
-        version: 1.6.1(@embroider/core@4.4.5(@glint/template@1.7.3))(@glint/template@1.7.3)(vite@8.0.1(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.1))
+        specifier: ^1.7.0
+        version: 1.7.0(@embroider/core@4.4.6(@glint/template@1.7.3))(@glint/template@1.7.3)(vite@8.0.1(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.1))
       '@glimmer/component':
         specifier: ^2.0.0
         version: 2.0.0
@@ -918,8 +918,8 @@ packages:
     peerDependencies:
       '@embroider/core': ^4.4.5
 
-  '@embroider/core@4.4.5':
-    resolution: {integrity: sha512-WNcKSO7AY2QS35uPksfYi/APCWqPyHduJYXJrs/MX39FDbrZCqxu+dHBAXtQw3ZaVcXzHUeOMrAdt37qlmu/mw==}
+  '@embroider/core@4.4.6':
+    resolution: {integrity: sha512-jWMPa2qrWktnUutj3HC8/b9F28fn9Lm/5USSmSKEXYYIT2lVbxG+A2OA5OlHTwA452lMucsKk2nT90AmsgY8wQ==}
     engines: {node: 12.* || 14.* || >= 16}
 
   '@embroider/macros@1.20.1':
@@ -939,10 +939,10 @@ packages:
     resolution: {integrity: sha512-/SusdG+zgosc3t+9sPFVKSFOYyiSgLfXOT6lYNWoG1YtnhWDxlK4S8leZ0jhcVjemdaHln5rTyxCnq8oFLxqpQ==}
     engines: {node: 12.* || 14.* || >= 16}
 
-  '@embroider/vite@1.6.1':
-    resolution: {integrity: sha512-82xk4ODS31yJTPk9LntJarkmEDvbbZIw3dM95O+k67qXt0NHrcF7AJR2Wg/yn4cgUw0PDQptFE40TeJl6igymQ==}
+  '@embroider/vite@1.7.0':
+    resolution: {integrity: sha512-efHuNrzUQblSqtVf9aMhB+B8zinuA7jI//uYXIxX1t5Cv8OIgTkMO4pMRci4TuYALL85iJkKvuQ9erf+9iOOMw==}
     peerDependencies:
-      '@embroider/core': ^4.4.5
+      '@embroider/core': ^4.4.6
       vite: '>= 5.2.0'
 
   '@emnapi/core@1.9.0':
@@ -7234,7 +7234,7 @@ snapshots:
 
   '@embroider/addon-dev@8.3.0(@glint/template@1.7.3)(rollup@4.59.1)':
     dependencies:
-      '@embroider/core': 4.4.5(@glint/template@1.7.3)
+      '@embroider/core': 4.4.6(@glint/template@1.7.3)
       '@rollup/pluginutils': 5.3.0(rollup@4.59.1)
       content-tag: 4.1.0
       execa: 5.1.1
@@ -7262,7 +7262,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/compat@4.1.15(@embroider/core@4.4.5(@glint/template@1.7.3))(@glint/template@1.7.3)':
+  '@embroider/compat@4.1.15(@embroider/core@4.4.6(@glint/template@1.7.3))(@glint/template@1.7.3)':
     dependencies:
       '@babel/code-frame': 7.29.0
       '@babel/core': 7.29.0
@@ -7273,7 +7273,7 @@ snapshots:
       '@babel/preset-env': 7.28.3(@babel/core@7.29.0)
       '@babel/runtime': 7.28.6
       '@babel/traverse': 7.29.0
-      '@embroider/core': 4.4.5(@glint/template@1.7.3)
+      '@embroider/core': 4.4.6(@glint/template@1.7.3)
       '@embroider/macros': 1.20.1(@glint/template@1.7.3)
       '@types/babel__code-frame': 7.0.6
       assert-never: 1.4.0
@@ -7315,7 +7315,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@embroider/core@4.4.5(@glint/template@1.7.3)':
+  '@embroider/core@4.4.6(@glint/template@1.7.3)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/parser': 7.29.0
@@ -7389,10 +7389,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@1.6.1(@embroider/core@4.4.5(@glint/template@1.7.3))(@glint/template@1.7.3)(vite@8.0.1(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.1))':
+  '@embroider/vite@1.7.0(@embroider/core@4.4.6(@glint/template@1.7.3))(@glint/template@1.7.3)(vite@8.0.1(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.1))':
     dependencies:
       '@babel/core': 7.29.0
-      '@embroider/core': 4.4.5(@glint/template@1.7.3)
+      '@embroider/core': 4.4.6(@glint/template@1.7.3)
       '@embroider/macros': 1.20.1(@glint/template@1.7.3)
       '@embroider/reverse-exports': 0.2.0
       assert-never: 1.4.0
