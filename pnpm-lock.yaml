@@ -53,7 +53,7 @@ importers:
         version: 4.4.7(@glint/template@1.7.3)
       '@embroider/vite':
         specifier: ^1.7.2
-        version: 1.7.2(@embroider/core@4.4.7(@glint/template@1.7.3))(@glint/template@1.7.3)(vite@8.0.3(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3))
+        version: 1.7.2(@embroider/core@4.4.7(@glint/template@1.7.3))(@glint/template@1.7.3)(vite@8.0.5(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3))
       '@glimmer/component':
         specifier: ^2.0.0
         version: 2.0.0
@@ -155,10 +155,10 @@ importers:
         version: 6.0.2
       vite:
         specifier: ^8.0.3
-        version: 8.0.3(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3)
+        version: 8.0.5(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3)
       vitepress:
         specifier: ^1.6.4
-        version: 1.6.4(@algolia/client-search@5.37.0)(@types/node@24.3.1)(change-case@5.4.4)(lightningcss@1.32.0)(postcss@8.5.8)(search-insights@2.17.3)(terser@5.44.0)(typescript@6.0.2)
+        version: 1.6.4(@algolia/client-search@5.37.0)(@types/node@24.3.1)(change-case@5.4.4)(lightningcss@1.32.0)(postcss@8.5.12)(search-insights@2.17.3)(terser@5.44.0)(typescript@6.0.2)
 
 packages:
 
@@ -1443,8 +1443,11 @@ packages:
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
 
-  '@napi-rs/wasm-runtime@1.1.1':
-    resolution: {integrity: sha512-p64ah1M1ld8xjWv3qbvFwHiFVWrq1yFvV4f7w+mzaqiR4IlSgkqhcRdHwsGgomwzBH51sRY4NEowLxnaBjcW/A==}
+  '@napi-rs/wasm-runtime@1.1.4':
+    resolution: {integrity: sha512-3NQNNgA1YSlJb/kMH1ildASP9HW7/7kYnRI2szWJaofaS1hWmbGI4H+d3+22aGzXXN9IJ+n+GiFVcGipJP18ow==}
+    peerDependencies:
+      '@emnapi/core': ^1.7.1
+      '@emnapi/runtime': ^1.7.1
 
   '@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1':
     resolution: {integrity: sha512-54/JRvkLIzzDWshCWfuhadfrfZVPiElY8Fcgmg1HroEly/EDSszzhBAsarCux+D/kOslTRquNzuyGSmUSTTHGg==}
@@ -4881,8 +4884,8 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
-  picomatch@2.3.1:
-    resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
+  picomatch@2.3.2:
+    resolution: {integrity: sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==}
     engines: {node: '>=8.6'}
 
   picomatch@4.0.4:
@@ -4904,8 +4907,8 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  postcss@8.5.8:
-    resolution: {integrity: sha512-OW/rX8O/jXnm82Ey1k44pObPtdblfiuWnrd8X7GJ7emImCOstunGbXUpp7HdBrFQX6rJzn3sPT397Wp5aCwCHg==}
+  postcss@8.5.12:
+    resolution: {integrity: sha512-W62t/Se6rA0Az3DfCL0AqJwXuKwBeYg6nOaIgzP+xZ7N5BFCI7DYi1qs6ygUYT6rvfi6t9k65UMLJC+PHZpDAA==}
     engines: {node: ^10 || ^12 || >=14}
 
   preact@10.27.1:
@@ -5263,8 +5266,8 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.7.3:
-    resolution: {integrity: sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==}
+  semver@7.7.4:
+    resolution: {integrity: sha512-vFKC2IEtQnVhpT78h1Yp8wzwrf8CM+MzKMHGJZfBtzhZNycRFnXsHk6E5TxIkkMsgNS7mdX3AGB7x2QM2di4lA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -5575,8 +5578,8 @@ packages:
   tiny-glob@0.2.9:
     resolution: {integrity: sha512-g/55ssRPUjShh+xkfx9UPDXqhckHEsHr4Vd9zX55oSdGZc/MD0m3sferOkwWtp98bv+kcVfEHtRJgBVJzelrzg==}
 
-  tinyglobby@0.2.15:
-    resolution: {integrity: sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==}
+  tinyglobby@0.2.16:
+    resolution: {integrity: sha512-pn99VhoACYR8nFHhxqix+uvsbXineAasWm5ojXoN8xEwK5Kd3/TrhNn1wByuD52UxWRLy8pu+kRMniEi6Eq9Zg==}
     engines: {node: '>=12.0.0'}
 
   tldts-core@6.1.86:
@@ -5827,8 +5830,8 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  vite@5.4.20:
-    resolution: {integrity: sha512-j3lYzGC3P+B5Yfy/pfKNgVEg4+UtcIJcVRt2cDjIOmhLourAqPqf8P7acgxeiSgUB7E3p2P8/3gNIgDLpwzs4g==}
+  vite@5.4.21:
+    resolution: {integrity: sha512-o5a9xKjbtuhY6Bi5S3+HvbRERmouabWbyUcpXXUA1u+GNUKoROi9byOJ8M0nHbHYHkYICiMlqxkg1KkYmm25Sw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -5858,14 +5861,14 @@ packages:
       terser:
         optional: true
 
-  vite@8.0.3:
-    resolution: {integrity: sha512-B9ifbFudT1TFhfltfaIPgjo9Z3mDynBTJSUYxTjOQruf/zHH+ezCQKcoqO+h7a9Pw9Nm/OtlXAiGT1axBgwqrQ==}
+  vite@8.0.5:
+    resolution: {integrity: sha512-nmu43Qvq9UopTRfMx2jOYW5l16pb3iDC1JH6yMuPkpVbzK0k+L7dfsEDH4jRgYFmsg0sTAqkojoZgzLMlwHsCQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
       '@types/node': ^20.19.0 || >=22.12.0
       '@vitejs/devtools': ^0.1.0
-      esbuild: ^0.27.0
+      esbuild: ^0.27.0 || ^0.28.0
       jiti: '>=1.21.0'
       less: ^4.0.0
       sass: ^1.70.0
@@ -5929,8 +5932,8 @@ packages:
       '@volar/language-service':
         optional: true
 
-  vscode-html-languageservice@5.5.1:
-    resolution: {integrity: sha512-/ZdEtsZ3OiFSyL00kmmu7crFV9KwWR+MgpzjsxO60DQH7sIfHZM892C/E4iDd11EKocr+NYuvOA4Y7uc3QzLEA==}
+  vscode-html-languageservice@5.6.2:
+    resolution: {integrity: sha512-ulCrSnFnfQ16YzvwnYUgEbUEl/ZG7u2eV27YhvLObSHKkb8fw1Z9cgsnUwjTEeDIdJDoTDTDpxuhQwoenoLNMg==}
 
   vscode-json-languageservice@4.2.1:
     resolution: {integrity: sha512-xGmv9QIWs2H8obGbWg+sIPI/3/pFgj/5OWBhNzs00BkYQ9UaB2F6JJaGB/2/YOZJ3BvLXQTC4Q7muqU25QgAhA==}
@@ -7113,7 +7116,7 @@ snapshots:
       '@embroider/shared-internals': 3.0.2
       broccoli-funnel: 3.0.8
       common-ancestor-path: 1.0.1
-      semver: 7.7.3
+      semver: 7.7.4
     transitivePeerDependencies:
       - supports-color
 
@@ -7158,7 +7161,7 @@ snapshots:
       resolve: 1.22.10
       resolve-package-path: 4.0.3
       resolve.exports: 2.0.3
-      semver: 7.7.3
+      semver: 7.7.4
       symlink-or-copy: 1.3.1
       tree-sync: 2.1.0
       typescript-memoize: 1.1.1
@@ -7196,7 +7199,7 @@ snapshots:
       resolve: 1.22.10
       resolve-package-path: 4.0.3
       resolve.exports: 2.0.3
-      semver: 7.7.3
+      semver: 7.7.4
       typescript-memoize: 1.1.1
       walk-sync: 3.0.0
     transitivePeerDependencies:
@@ -7215,7 +7218,7 @@ snapshots:
       find-up: 5.0.0
       lodash: 4.17.21
       resolve: 1.22.10
-      semver: 7.7.3
+      semver: 7.7.4
     optionalDependencies:
       '@glint/template': 1.7.3
     transitivePeerDependencies:
@@ -7239,12 +7242,12 @@ snapshots:
       pkg-entry-points: 1.1.1
       resolve-package-path: 4.0.3
       resolve.exports: 2.0.3
-      semver: 7.7.3
+      semver: 7.7.4
       typescript-memoize: 1.1.1
     transitivePeerDependencies:
       - supports-color
 
-  '@embroider/vite@1.7.2(@embroider/core@4.4.7(@glint/template@1.7.3))(@glint/template@1.7.3)(vite@8.0.3(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3))':
+  '@embroider/vite@1.7.2(@embroider/core@4.4.7(@glint/template@1.7.3))(@glint/template@1.7.3)(vite@8.0.5(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3))':
     dependencies:
       '@babel/core': 7.29.0
       '@embroider/core': 4.4.7(@glint/template@1.7.3)
@@ -7262,7 +7265,7 @@ snapshots:
       send: 0.18.0
       source-map-url: 0.4.1
       terser: 5.44.0
-      vite: 8.0.3(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3)
+      vite: 8.0.5(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3)
     transitivePeerDependencies:
       - '@glint/template'
       - bufferutil
@@ -7533,7 +7536,7 @@ snapshots:
       computeds: 0.0.1
       content-tag: 3.1.3
       escape-string-regexp: 4.0.0
-      semver: 7.7.3
+      semver: 7.7.4
       silent-error: 1.1.1
       typescript: 6.0.2
       uuid: 8.3.2
@@ -7691,7 +7694,7 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@napi-rs/wasm-runtime@1.1.1':
+  '@napi-rs/wasm-runtime@1.1.4(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)':
     dependencies:
       '@emnapi/core': 1.9.0
       '@emnapi/runtime': 1.9.0
@@ -7717,7 +7720,7 @@ snapshots:
   '@npmcli/fs@1.1.1':
     dependencies:
       '@gar/promisify': 1.1.3
-      semver: 7.7.3
+      semver: 7.7.4
 
   '@npmcli/git@6.0.3':
     dependencies:
@@ -7727,7 +7730,7 @@ snapshots:
       npm-pick-manifest: 10.0.0
       proc-log: 5.0.0
       promise-retry: 2.0.1
-      semver: 7.7.3
+      semver: 7.7.4
       which: 5.0.0
 
   '@npmcli/move-file@1.1.2':
@@ -7742,7 +7745,7 @@ snapshots:
       hosted-git-info: 8.1.0
       json-parse-even-better-errors: 4.0.0
       proc-log: 5.0.0
-      semver: 7.7.3
+      semver: 7.7.4
       validate-npm-package-license: 3.0.4
 
   '@npmcli/promise-spawn@8.0.3':
@@ -7876,9 +7879,12 @@ snapshots:
   '@rolldown/binding-openharmony-arm64@1.0.0-rc.12':
     optional: true
 
-  '@rolldown/binding-wasm32-wasi@1.0.0-rc.12':
+  '@rolldown/binding-wasm32-wasi@1.0.0-rc.12(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)':
     dependencies:
-      '@napi-rs/wasm-runtime': 1.1.1
+      '@napi-rs/wasm-runtime': 1.1.4(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
     optional: true
 
   '@rolldown/binding-win32-arm64-msvc@1.0.0-rc.12':
@@ -8226,7 +8232,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.7.3
+      semver: 7.7.4
       ts-api-utils: 2.1.0(typescript@6.0.2)
       typescript: 6.0.2
     transitivePeerDependencies:
@@ -8309,9 +8315,9 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vitejs/plugin-vue@5.2.4(vite@5.4.20(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0))(vue@3.5.21(typescript@6.0.2))':
+  '@vitejs/plugin-vue@5.2.4(vite@5.4.21(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0))(vue@3.5.21(typescript@6.0.2))':
     dependencies:
-      vite: 5.4.20(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0)
+      vite: 5.4.21(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0)
       vue: 3.5.21(typescript@6.0.2)
 
   '@volar/kit@2.4.23(typescript@6.0.2)':
@@ -8385,7 +8391,7 @@ snapshots:
       '@vue/shared': 3.5.21
       estree-walker: 2.0.2
       magic-string: 0.30.19
-      postcss: 8.5.8
+      postcss: 8.5.12
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.21':
@@ -8551,7 +8557,7 @@ snapshots:
   anymatch@3.1.3:
     dependencies:
       normalize-path: 3.0.0
-      picomatch: 2.3.1
+      picomatch: 2.3.2
 
   argparse@1.0.10:
     dependencies:
@@ -8621,7 +8627,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.29.0
       babel-import-util: 2.1.1
-      semver: 7.7.3
+      semver: 7.7.4
 
   babel-plugin-ember-data-packages-polyfill@0.1.2:
     dependencies:
@@ -9391,7 +9397,7 @@ snapshots:
       ember-cli-version-checker: 5.1.2
       ensure-posix-path: 1.1.1
       resolve-package-path: 4.0.3
-      semver: 7.7.3
+      semver: 7.7.4
     transitivePeerDependencies:
       - supports-color
 
@@ -9427,7 +9433,7 @@ snapshots:
   ember-cli-version-checker@5.1.2:
     dependencies:
       resolve-package-path: 3.1.0
-      semver: 7.7.3
+      semver: 7.7.4
       silent-error: 1.1.1
     transitivePeerDependencies:
       - supports-color
@@ -9514,7 +9520,7 @@ snapshots:
       inflection: 2.0.1
       route-recognizer: 0.3.4
       router_js: 8.0.6(route-recognizer@0.3.4)(rsvp@4.8.5)
-      semver: 7.7.3
+      semver: 7.7.4
       silent-error: 1.1.1
       simple-html-tokenizer: 0.5.11
     transitivePeerDependencies:
@@ -9667,7 +9673,7 @@ snapshots:
   eslint-compat-utils@0.5.1(eslint@9.39.4):
     dependencies:
       eslint: 9.39.4
-      semver: 7.7.3
+      semver: 7.7.4
 
   eslint-config-prettier@10.1.8(eslint@9.39.4):
     dependencies:
@@ -9688,7 +9694,7 @@ snapshots:
       get-tsconfig: 4.10.1
       is-bun-module: 2.0.0
       stable-hash-x: 0.2.0
-      tinyglobby: 0.2.15
+      tinyglobby: 0.2.16
       unrs-resolver: 1.11.1
     optionalDependencies:
       eslint-plugin-import-x: 4.16.1(@typescript-eslint/utils@8.43.0(eslint@9.39.4)(typescript@6.0.2))(eslint@9.39.4)
@@ -9743,7 +9749,7 @@ snapshots:
       eslint-import-context: 0.1.9(unrs-resolver@1.11.1)
       is-glob: 4.0.3
       minimatch: 10.2.4
-      semver: 7.7.3
+      semver: 7.7.4
       stable-hash-x: 0.2.0
       unrs-resolver: 1.11.1
     optionalDependencies:
@@ -9766,7 +9772,7 @@ snapshots:
       globals: 15.15.0
       globrex: 0.1.2
       ignore: 5.3.2
-      semver: 7.7.3
+      semver: 7.7.4
       ts-declaration-location: 1.0.7(typescript@6.0.2)
     transitivePeerDependencies:
       - typescript
@@ -9810,7 +9816,7 @@ snapshots:
       pluralize: 8.0.0
       regexp-tree: 0.1.27
       regjsparser: 0.13.0
-      semver: 7.7.3
+      semver: 7.7.4
       strip-indent: 4.1.1
 
   eslint-scope@5.1.1:
@@ -10610,7 +10616,7 @@ snapshots:
 
   is-bun-module@2.0.0:
     dependencies:
-      semver: 7.7.3
+      semver: 7.7.4
 
   is-core-module@2.16.1:
     dependencies:
@@ -11056,7 +11062,7 @@ snapshots:
   micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
-      picomatch: 2.3.1
+      picomatch: 2.3.2
 
   mime-db@1.52.0: {}
 
@@ -11191,7 +11197,7 @@ snapshots:
     dependencies:
       growly: 1.3.0
       is-wsl: 2.2.0
-      semver: 7.7.3
+      semver: 7.7.4
       shellwords: 0.1.1
       uuid: 8.3.2
       which: 2.0.2
@@ -11204,7 +11210,7 @@ snapshots:
 
   npm-install-checks@7.1.2:
     dependencies:
-      semver: 7.7.3
+      semver: 7.7.4
 
   npm-normalize-package-bin@4.0.0: {}
 
@@ -11212,7 +11218,7 @@ snapshots:
     dependencies:
       hosted-git-info: 8.1.0
       proc-log: 5.0.0
-      semver: 7.7.3
+      semver: 7.7.4
       validate-npm-package-name: 6.0.2
 
   npm-pick-manifest@10.0.0:
@@ -11220,7 +11226,7 @@ snapshots:
       npm-install-checks: 7.1.2
       npm-normalize-package-bin: 4.0.0
       npm-package-arg: 12.0.2
-      semver: 7.7.3
+      semver: 7.7.4
 
   npm-run-path@4.0.1:
     dependencies:
@@ -11336,7 +11342,7 @@ snapshots:
       ky: 1.10.0
       registry-auth-token: 5.1.0
       registry-url: 6.0.1
-      semver: 7.7.3
+      semver: 7.7.4
 
   package-up@5.0.0:
     dependencies:
@@ -11404,7 +11410,7 @@ snapshots:
 
   picocolors@1.1.1: {}
 
-  picomatch@2.3.1: {}
+  picomatch@2.3.2: {}
 
   picomatch@4.0.4: {}
 
@@ -11420,7 +11426,7 @@ snapshots:
 
   pluralize@8.0.0: {}
 
-  postcss@8.5.8:
+  postcss@8.5.12:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
@@ -11616,7 +11622,7 @@ snapshots:
       js-yaml: 4.1.1
       latest-version: 9.0.0
       parse-github-repo-url: 1.4.1
-      semver: 7.7.3
+      semver: 7.7.4
       yargs: 17.7.2
     transitivePeerDependencies:
       - bluebird
@@ -11708,7 +11714,7 @@ snapshots:
       glob: 13.0.6
       package-json-from-dist: 1.0.1
 
-  rolldown@1.0.0-rc.12:
+  rolldown@1.0.0-rc.12(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0):
     dependencies:
       '@oxc-project/types': 0.122.0
       '@rolldown/pluginutils': 1.0.0-rc.12
@@ -11725,9 +11731,12 @@ snapshots:
       '@rolldown/binding-linux-x64-gnu': 1.0.0-rc.12
       '@rolldown/binding-linux-x64-musl': 1.0.0-rc.12
       '@rolldown/binding-openharmony-arm64': 1.0.0-rc.12
-      '@rolldown/binding-wasm32-wasi': 1.0.0-rc.12
+      '@rolldown/binding-wasm32-wasi': 1.0.0-rc.12(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)
       '@rolldown/binding-win32-arm64-msvc': 1.0.0-rc.12
       '@rolldown/binding-win32-x64-msvc': 1.0.0-rc.12
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
 
   rollup-plugin-copy-assets@2.0.3(rollup@4.59.1):
     dependencies:
@@ -11819,7 +11828,7 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.7.3: {}
+  semver@7.7.4: {}
 
   send@0.18.0:
     dependencies:
@@ -12275,7 +12284,7 @@ snapshots:
       globalyzer: 0.1.0
       globrex: 0.1.2
 
-  tinyglobby@0.2.15:
+  tinyglobby@0.2.16:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
@@ -12387,7 +12396,7 @@ snapshots:
 
   typescript-auto-import-cache@0.3.6:
     dependencies:
-      semver: 7.7.3
+      semver: 7.7.4
 
   typescript-eslint@8.43.0(eslint@9.39.4)(typescript@6.0.2):
     dependencies:
@@ -12533,10 +12542,10 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@5.4.20(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0):
+  vite@5.4.21(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0):
     dependencies:
       esbuild: 0.21.5
-      postcss: 8.5.8
+      postcss: 8.5.12
       rollup: 4.59.1
     optionalDependencies:
       '@types/node': 24.3.1
@@ -12544,21 +12553,24 @@ snapshots:
       lightningcss: 1.32.0
       terser: 5.44.0
 
-  vite@8.0.3(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3):
+  vite@8.0.5(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)(@types/node@24.3.1)(esbuild@0.27.2)(terser@5.44.0)(yaml@2.8.3):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
-      postcss: 8.5.8
-      rolldown: 1.0.0-rc.12
-      tinyglobby: 0.2.15
+      postcss: 8.5.12
+      rolldown: 1.0.0-rc.12(@emnapi/core@1.9.0)(@emnapi/runtime@1.9.0)
+      tinyglobby: 0.2.16
     optionalDependencies:
       '@types/node': 24.3.1
       esbuild: 0.27.2
       fsevents: 2.3.3
       terser: 5.44.0
       yaml: 2.8.3
+    transitivePeerDependencies:
+      - '@emnapi/core'
+      - '@emnapi/runtime'
 
-  vitepress@1.6.4(@algolia/client-search@5.37.0)(@types/node@24.3.1)(change-case@5.4.4)(lightningcss@1.32.0)(postcss@8.5.8)(search-insights@2.17.3)(terser@5.44.0)(typescript@6.0.2):
+  vitepress@1.6.4(@algolia/client-search@5.37.0)(@types/node@24.3.1)(change-case@5.4.4)(lightningcss@1.32.0)(postcss@8.5.12)(search-insights@2.17.3)(terser@5.44.0)(typescript@6.0.2):
     dependencies:
       '@docsearch/css': 3.8.2
       '@docsearch/js': 3.8.2(@algolia/client-search@5.37.0)(search-insights@2.17.3)
@@ -12567,7 +12579,7 @@ snapshots:
       '@shikijs/transformers': 2.5.0
       '@shikijs/types': 2.5.0
       '@types/markdown-it': 14.1.2
-      '@vitejs/plugin-vue': 5.2.4(vite@5.4.20(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0))(vue@3.5.21(typescript@6.0.2))
+      '@vitejs/plugin-vue': 5.2.4(vite@5.4.21(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0))(vue@3.5.21(typescript@6.0.2))
       '@vue/devtools-api': 7.7.7
       '@vue/shared': 3.5.21
       '@vueuse/core': 12.8.2(typescript@6.0.2)
@@ -12576,10 +12588,10 @@ snapshots:
       mark.js: 8.11.1
       minisearch: 7.1.2
       shiki: 2.5.0
-      vite: 5.4.20(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0)
+      vite: 5.4.21(@types/node@24.3.1)(lightningcss@1.32.0)(terser@5.44.0)
       vue: 3.5.21(typescript@6.0.2)
     optionalDependencies:
-      postcss: 8.5.8
+      postcss: 8.5.12
     transitivePeerDependencies:
       - '@algolia/client-search'
       - '@types/node'
@@ -12609,7 +12621,7 @@ snapshots:
 
   volar-service-html@0.0.68(@volar/language-service@2.4.23):
     dependencies:
-      vscode-html-languageservice: 5.5.1
+      vscode-html-languageservice: 5.6.2
       vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.1.0
     optionalDependencies:
@@ -12618,7 +12630,7 @@ snapshots:
   volar-service-typescript@0.0.68(@volar/language-service@2.4.23):
     dependencies:
       path-browserify: 1.0.1
-      semver: 7.7.3
+      semver: 7.7.4
       typescript-auto-import-cache: 0.3.6
       vscode-languageserver-textdocument: 1.0.12
       vscode-nls: 5.2.0
@@ -12626,7 +12638,7 @@ snapshots:
     optionalDependencies:
       '@volar/language-service': 2.4.23
 
-  vscode-html-languageservice@5.5.1:
+  vscode-html-languageservice@5.6.2:
     dependencies:
       '@vscode/l10n': 0.0.18
       vscode-languageserver-textdocument: 1.0.12
