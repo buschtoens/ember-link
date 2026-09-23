@@ -1,6 +1,5 @@
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
-import { action } from '@ember/object';
 
 import { BEHAVIOR, type Behavior } from './-behavior.ts';
 import { getOwner, setOwner } from './-owner.ts';
@@ -208,9 +207,8 @@ export default class Link {
   /**
    * Transition into the target route.
    */
-  @action
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  transitionTo(event?: Event | unknown): Transition | undefined {
+  transitionTo = (event?: Event | unknown): Transition | undefined => {
     if (!this.canOpen(event)) {
       return;
     }
@@ -220,15 +218,14 @@ export default class Link {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return this._linkManager.router.transitionTo(...this._routeArgs);
-  }
+  };
 
   /**
    * Transition into the target route while replacing the current URL, if
    * possible.
    */
-  @action
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  replaceWith(event?: Event | unknown): Transition | undefined {
+  replaceWith = (event?: Event | unknown): Transition | undefined => {
     if (!this.canOpen(event)) {
       return;
     }
@@ -238,11 +235,10 @@ export default class Link {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return this._linkManager.router.replaceWith(...this._routeArgs);
-  }
+  };
 
-  @action
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  open(event?: Event | unknown): Transition | undefined {
+  open = (event?: Event | unknown): Transition | undefined => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     const method = this.behavior.open ?? 'transition';
 
@@ -251,5 +247,5 @@ export default class Link {
     }
 
     return this.transitionTo(event);
-  }
+  };
 }
