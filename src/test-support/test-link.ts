@@ -1,7 +1,7 @@
 import { tracked } from '@glimmer/tracking';
-import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 
+import { preventDefault } from '../-behavior.ts';
 import Link from '../link.ts';
 
 import type Transition from '@ember/routing/transition';
@@ -80,8 +80,7 @@ export default class TestLink extends Link {
     return this.routeName;
   }
 
-  @action
-  transitionTo(event?: Event): Transition {
+  transitionTo = (event?: unknown): Transition => {
     this._preventTransitionOut(event);
 
     // Fire both the `onTransitionTo` event used for testing, as well as the
@@ -90,10 +89,9 @@ export default class TestLink extends Link {
     this.onTransitionTo?.();
 
     return this._createDummyTransition();
-  }
+  };
 
-  @action
-  replaceWith(event?: Event): Transition {
+  replaceWith = (event?: unknown): Transition => {
     this._preventTransitionOut(event);
 
     // Fire both the `onReplaceWith` event used for testing, as well as the
@@ -102,10 +100,9 @@ export default class TestLink extends Link {
     this.onReplaceWith?.();
 
     return this._createDummyTransition();
-  }
+  };
 
-  @action
-  open(event?: Event): Transition | undefined {
+  open = (event?: unknown): Transition | undefined => {
     const method = this.behavior.open;
 
     if (method === 'replace') {
@@ -113,11 +110,11 @@ export default class TestLink extends Link {
     }
 
     return this.transitionTo(event);
-  }
+  };
 
-  private _preventTransitionOut(event?: Event) {
+  private _preventTransitionOut(event?: unknown) {
     // Make sure we don't transition out of the testing page
-    event?.preventDefault();
+    preventDefault(event);
   }
 
   private _createDummyTransition(): Transition {
