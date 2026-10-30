@@ -1,5 +1,4 @@
 import { tracked } from '@glimmer/tracking';
-import { addListener, removeListener } from '@ember/object/events';
 import Service, * as services from '@ember/service';
 
 import { BEHAVIOR, prevent } from '../-behavior.ts';
@@ -122,27 +121,15 @@ export default class LinkManagerService extends Service {
   constructor(owner?: Owner) {
     super(owner);
 
-    // Ignore `Argument of type '"routeWillChange"' is not assignable to parameter of type ...`
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    addListener(this.router, 'routeWillChange', this.handleRouteWillChange);
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    addListener(this.router, 'routeDidChange', this.handleRouteDidChange);
+    this.router.on('routeWillChange', this.handleRouteWillChange);
+    this.router.on('routeDidChange', this.handleRouteDidChange);
   }
 
   willDestroy() {
     super.willDestroy();
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    removeListener(this.router, 'routeWillChange', this.handleRouteWillChange);
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    removeListener(this.router, 'routeDidChange', this.handleRouteDidChange);
+    this.router.off('routeWillChange', this.handleRouteWillChange);
+    this.router.off('routeDidChange', this.handleRouteDidChange);
   }
 
   handleRouteWillChange = (transition: Transition) => {
