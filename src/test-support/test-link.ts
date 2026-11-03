@@ -9,6 +9,40 @@ import type Transition from '@ember/routing/transition';
 export default class TestLink extends Link {
   // Overwritable properties
   @tracked private active = false;
+  @tracked private activeWithoutQueryParams = false;
+  @tracked private activeWithoutModels = false;
+  @tracked private entering = false;
+  @tracked private exiting = false;
+  @tracked private internalUrl = guidFor(this);
+
+  private _preventTransitionOut(event?: Event) {
+    // Make sure we don't transition out of the testing page
+    event?.preventDefault();
+  }
+
+  private _createDummyTransition(): Transition {
+    return {
+      from: undefined,
+      to: {
+        child: undefined,
+        localName: 'dummy',
+        name: 'dummy',
+        paramNames: [],
+        params: {},
+        parent: undefined,
+        queryParams: {},
+        find() {
+          return;
+        }
+      },
+      abort() {
+        return this;
+      },
+      retry() {
+        return this;
+      }
+    } as unknown as Transition;
+  }
 
   get isActive(): boolean {
     return this.active;
@@ -18,8 +52,6 @@ export default class TestLink extends Link {
     this.active = active;
   }
 
-  @tracked private activeWithoutQueryParams = false;
-
   get isActiveWithoutQueryParams(): boolean {
     return this.activeWithoutQueryParams;
   }
@@ -27,8 +59,6 @@ export default class TestLink extends Link {
   set isActiveWithoutQueryParams(active: boolean) {
     this.activeWithoutQueryParams = active;
   }
-
-  @tracked private activeWithoutModels = false;
 
   get isActiveWithoutModels(): boolean {
     return this.activeWithoutModels;
@@ -38,8 +68,6 @@ export default class TestLink extends Link {
     this.activeWithoutModels = active;
   }
 
-  @tracked private entering = false;
-
   get isEntering(): boolean {
     return this.entering;
   }
@@ -48,8 +76,6 @@ export default class TestLink extends Link {
     this.entering = entering;
   }
 
-  @tracked private exiting = false;
-
   get isExiting(): boolean {
     return this.exiting;
   }
@@ -57,8 +83,6 @@ export default class TestLink extends Link {
   set isExiting(exiting: boolean) {
     this.exiting = exiting;
   }
-
-  @tracked private internalUrl = guidFor(this);
 
   get url(): string {
     if (this.isExternal) {
@@ -110,34 +134,5 @@ export default class TestLink extends Link {
     }
 
     return this.transitionTo(event);
-  };
-
-  private _preventTransitionOut(event?: unknown) {
-    // Make sure we don't transition out of the testing page
-    preventDefault(event);
-  }
-
-  private _createDummyTransition(): Transition {
-    return {
-      from: undefined,
-      to: {
-        child: undefined,
-        localName: 'dummy',
-        name: 'dummy',
-        paramNames: [],
-        params: {},
-        parent: undefined,
-        queryParams: {},
-        find() {
-          return;
-        }
-      },
-      abort() {
-        return this;
-      },
-      retry() {
-        return this;
-      }
-    } as unknown as Transition;
   }
 }

@@ -39,18 +39,18 @@ export default function linkFor(
   const linkManager = getLinkManager();
 
   if (typeof routeOrParameters === 'object') {
+    const { route, model, models: linkModels, query } = routeOrParameters;
+
     assert(
       // eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
-      `Either pass multiple 'models' ('${routeOrParameters.models}') or pass a single 'model' ('${routeOrParameters.model}'). `,
-      !(routeOrParameters.models && routeOrParameters.model)
+      `Either pass multiple 'models' ('${linkModels}') or pass a single 'model' ('${model}'). `,
+      !(linkModels && model)
     );
 
     return linkManager.createLink({
-      route: routeOrParameters.route,
-      models: (Array.isArray(routeOrParameters.models)
-        ? routeOrParameters.models
-        : routeOrParameters.model) as RouteModel[],
-      query: routeOrParameters.query
+      route,
+      models: (Array.isArray(linkModels) ? linkModels : model) as RouteModel[],
+      query
     });
   }
 

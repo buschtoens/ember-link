@@ -62,8 +62,9 @@ export default class LinkHelper extends Helper<LinkSignature> {
     if (named.fromURL) {
       assert(
         `When specifying a serialized 'fromURL' ('${named.fromURL}'), you can't provide any further 'LinkParams'.`,
-        !(['route', 'models', 'model', 'query'] as (keyof NamedParams)[]).some(
-          (name) => named[name]
+        (['route', 'models', 'model', 'query'] as (keyof NamedParams)[]).every(
+          // eslint-disable-next-line unicorn/no-computed-property-existence-check
+          (name) => !named[name]
         )
       );
 
@@ -89,14 +90,14 @@ export default class LinkHelper extends Helper<LinkSignature> {
             return LinkManagerService.getLinkParamsFromRouteInfo(recognizedUrl);
           }
         } catch {
-          // url not recognized
+          // URL not recognized
         }
       }
 
       try {
         this.router.urlFor(positional[0]);
       } catch {
-        // cannot find url for given route name
+        // cannot find URL for given route name
 
         return {
           route: positional[0],
@@ -113,7 +114,7 @@ export default class LinkHelper extends Helper<LinkSignature> {
 
     assert(
       `Query parameters either need to be specified as the last positional parameter or as the named 'query' parameter.`,
-      !positional.slice(0, -1).some((argument) => isQueryParams(argument as PositionalParams))
+      positional.slice(0, -1).every((argument) => !isQueryParams(argument as PositionalParams))
     );
 
     assert(

@@ -7,11 +7,15 @@ interface OwnerModule {
   getOwner: typeof getOwnerType;
 }
 
+// `importSync` requires a literal argument for static analysis, so the ternary
+// cannot be moved into the call.
+/* eslint-disable unicorn/prefer-minimal-ternary */
 const owner = (
   macroCondition(dependencySatisfies('ember-source', '>=4.10'))
     ? importSync('@ember/owner')
     : importSync('@ember/application')
 ) as OwnerModule;
+/* eslint-enable unicorn/prefer-minimal-ternary */
 
 const { getOwner, setOwner } = owner;
 

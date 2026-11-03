@@ -1,5 +1,5 @@
 import { Addon } from '@embroider/addon-dev/rollup';
-import { resolve } from 'node:path';
+import path from 'node:path';
 
 import { babel } from '@rollup/plugin-babel';
 import { defineConfig } from 'rollup';
@@ -10,8 +10,8 @@ const addon = new Addon({
 });
 
 const configs = {
-  babel: resolve(import.meta.dirname, './babel.publish.config.mjs'),
-  ts: resolve(import.meta.dirname, './tsconfig.publish.json')
+  babel: path.resolve(import.meta.dirname, './babel.publish.config.mjs'),
+  ts: path.resolve(import.meta.dirname, './tsconfig.publish.json')
 };
 
 export default defineConfig({
@@ -54,10 +54,10 @@ export default defineConfig({
       configFile: configs.babel
     }),
 
-    // Ensure that standalone .hbs files are properly integrated as Javascript.
+    // Ensure that standalone .hbs files are properly integrated as JavaScript.
     // addon.hbs(),
 
-    // Ensure that .gjs files are properly integrated as Javascript
+    // Ensure that .gjs files are properly integrated as JavaScript
     // addon.gjs(),
 
     // Emit .d.ts declaration files

@@ -8,9 +8,9 @@
 
 ## Linting
 
-* `pnpm lint:hbs`
 * `pnpm lint:js`
 * `pnpm lint:js --fix`
+* `pnpm lint:types`
 
 ## Running tests
 

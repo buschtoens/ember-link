@@ -88,7 +88,6 @@ module('Integration | Helper | link', function (hooks) {
           </template>
         );
 
-        // eslint-disable-next-line unicorn/prefer-dom-node-dataset
         assert.dom('a').hasAttribute('data-external');
         assert.dom('a').hasAttribute('href', 'https://emberjs.com');
       });

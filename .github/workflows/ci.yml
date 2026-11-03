@@ -22,15 +22,6 @@ jobs:
         uses: ./.github/actions/setup
       - run: pnpm lint:js
 
-  lint-hbs:
-    name: lint:hbs
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: Setup
-        uses: ./.github/actions/setup
-      - run: pnpm lint:hbs
-
   lint-types:
     name: lint:types
     runs-on: ubuntu-latest

@@ -38,8 +38,18 @@ export default class Link {
     return [routeName, ...models] as RouteArgs;
   }
 
+  private _isTransitioning(direction: 'from' | 'to') {
+    return (
+      this._linkManager.currentTransitionStack?.some((transition) => {
+        return transition[direction]?.name === this.qualifiedRouteName;
+      }) ?? false
+    );
+  }
+
   protected get behavior(): Behavior {
     return {
+      // `BEHAVIOR` is a symbol, which is a safe property key.
+      // eslint-disable-next-line unicorn/no-unsafe-property-key
       ...this._linkManager[BEHAVIOR],
       ...this._params.behavior
     };
@@ -175,14 +185,6 @@ export default class Link {
    */
   get queryParams(): QueryParams | undefined {
     return this._params.query;
-  }
-
-  private _isTransitioning(direction: 'from' | 'to') {
-    return (
-      this._linkManager.currentTransitionStack?.some((transition) => {
-        return transition[direction]?.name === this.qualifiedRouteName;
-      }) ?? false
-    );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
