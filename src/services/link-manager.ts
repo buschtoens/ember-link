@@ -30,10 +30,53 @@ export default class LinkManagerService extends Service {
    */
   @service('router') readonly router!: RouterServiceWithRecognize;
 
+  // `BEHAVIOR` is a symbol, which is a safe property key.
+  // eslint-disable-next-line unicorn/no-unsafe-property-key
   protected [BEHAVIOR]: Behavior = {
     open: 'transition',
     prevent
   };
+
+  handleRouteWillChange = (transition: Transition) => {
+    this.internalCurrentTransitionStack = [
+      ...(this.internalCurrentTransitionStack ?? []),
+      transition
+    ];
+  };
+
+  handleRouteDidChange = () => {
+    this.internalCurrentTransitionStack = undefined;
+  };
+
+  constructor(owner?: Owner) {
+    super(owner);
+
+    this.router.on('routeWillChange', this.handleRouteWillChange);
+    this.router.on('routeDidChange', this.handleRouteDidChange);
+  }
+
+  /**
+   * Converts a `RouteInfo` object into `LinkParams`.
+   */
+  static getLinkParamsFromRouteInfo(routeInfo: RouteInfo): LinkParams {
+    const models = [];
+
+    let currentRoute: RouteInfo = routeInfo;
+
+    do {
+      models.unshift(
+        // eslint-disable-next-line @typescript-eslint/no-loop-func
+        ...(currentRoute.paramNames.map((name) => currentRoute.params?.[name]) as RouteModel[])
+      );
+      currentRoute = currentRoute.parent as RouteInfo;
+    } while (currentRoute.name !== 'application');
+
+    return {
+      route: routeInfo.name,
+      query: routeInfo.queryParams,
+      models
+    };
+  }
 
   /**
    * Configure the default behavior of _all_ links.
@@ -41,7 +84,10 @@ export default class LinkManagerService extends Service {
    * This can be overwritten at a particular link instance
    */
   configureBehavior(behavior: Partial<Behavior>) {
+    // `BEHAVIOR` is a symbol, which is a safe property key.
+    // eslint-disable-next-line unicorn/no-unsafe-property-key
     this[BEHAVIOR] = {
+      // eslint-disable-next-line unicorn/no-unsafe-property-key
       ...this[BEHAVIOR],
       ...behavior
     };
@@ -95,53 +141,12 @@ export default class LinkManagerService extends Service {
     return LinkManagerService.getLinkParamsFromRouteInfo(routeInfo);
   }
 
-  /**
-   * Converts a `RouteInfo` object into `LinkParams`.
-   */
-  static getLinkParamsFromRouteInfo(routeInfo: RouteInfo): LinkParams {
-    const models = [];
-
-    let currentRoute: RouteInfo = routeInfo;
-
-    do {
-      models.unshift(
-        // eslint-disable-next-line @typescript-eslint/no-loop-func
-        ...(currentRoute.paramNames.map((name) => currentRoute.params?.[name]) as RouteModel[])
-      );
-      currentRoute = currentRoute.parent as RouteInfo;
-    } while (currentRoute.name !== 'application');
-
-    return {
-      route: routeInfo.name,
-      query: routeInfo.queryParams,
-      models
-    };
-  }
-
-  constructor(owner?: Owner) {
-    super(owner);
-
-    this.router.on('routeWillChange', this.handleRouteWillChange);
-    this.router.on('routeDidChange', this.handleRouteDidChange);
-  }
-
   willDestroy() {
     super.willDestroy();
 
     this.router.off('routeWillChange', this.handleRouteWillChange);
     this.router.off('routeDidChange', this.handleRouteDidChange);
   }
-
-  handleRouteWillChange = (transition: Transition) => {
-    this.internalCurrentTransitionStack = [
-      ...(this.internalCurrentTransitionStack ?? []),
-      transition
-    ];
-  };
-
-  handleRouteDidChange = () => {
-    this.internalCurrentTransitionStack = undefined;
-  };
 }
 
 declare module '@ember/service' {

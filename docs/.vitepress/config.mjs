@@ -8,7 +8,7 @@ export default defineConfig({
   title: 'ember-link',
   description: 'Links as Primitives',
   base: '/ember-link/',
-  // api generator likely to generate dead links, so better set this to true to
+  // API generator likely to generate dead links, so better set this to true to
   // be safe against renovate updates
   ignoreDeadLinks: true,
   themeConfig: {

@@ -38,11 +38,7 @@ module.exports = async function (defaults) {
 }
 
 function compatEmberScenario(name, emberVersion) {
-  let cliVersion = '^5.12.0';
-
-  if (emberVersion.includes('3.28')) {
-    cliVersion = '^4.12.0';
-  }
+  const cliVersion = emberVersion.includes('3.28') ? '^4.12.0' : '^5.12.0';
 
   return {
     name,

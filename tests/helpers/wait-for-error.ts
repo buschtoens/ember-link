@@ -48,21 +48,20 @@ export default async function waitForError(
     capture(reason);
   };
 
-  // eslint-disable-next-line unicorn/prefer-add-event-listener
+  // eslint-disable-next-line unicorn/prefer-add-event-listener, unicorn/no-global-object-property-assignment
   globalThis.onerror = onError as unknown as typeof globalThis.onerror;
   globalThis.addEventListener('error', listener);
   on('error', rsvpListener);
 
-  await Promise.all([
-    waitUntil(() => error, options).finally(() => {
-      // eslint-disable-next-line unicorn/prefer-add-event-listener
-      globalThis.onerror = originalOnError;
+  try {
+    await Promise.all([waitUntil(() => error, options), callback()]);
+  } finally {
+    // eslint-disable-next-line unicorn/prefer-add-event-listener, unicorn/no-global-object-property-assignment
+    globalThis.onerror = originalOnError;
 
-      globalThis.removeEventListener('error', listener);
-      off('error', rsvpListener);
-    }),
-    callback()
-  ]);
+    globalThis.removeEventListener('error', listener);
+    off('error', rsvpListener);
+  }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!error) throw new Error('No Error was thrown.');

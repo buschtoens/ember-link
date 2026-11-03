@@ -9,76 +9,11 @@ import type Transition from '@ember/routing/transition';
 export default class TestLink extends Link {
   // Overwritable properties
   @tracked private active = false;
-
-  get isActive(): boolean {
-    return this.active;
-  }
-
-  set isActive(active: boolean) {
-    this.active = active;
-  }
-
   @tracked private activeWithoutQueryParams = false;
-
-  get isActiveWithoutQueryParams(): boolean {
-    return this.activeWithoutQueryParams;
-  }
-
-  set isActiveWithoutQueryParams(active: boolean) {
-    this.activeWithoutQueryParams = active;
-  }
-
   @tracked private activeWithoutModels = false;
-
-  get isActiveWithoutModels(): boolean {
-    return this.activeWithoutModels;
-  }
-
-  set isActiveWithoutModels(active: boolean) {
-    this.activeWithoutModels = active;
-  }
-
   @tracked private entering = false;
-
-  get isEntering(): boolean {
-    return this.entering;
-  }
-
-  set isEntering(entering: boolean) {
-    this.entering = entering;
-  }
-
   @tracked private exiting = false;
-
-  get isExiting(): boolean {
-    return this.exiting;
-  }
-
-  set isExiting(exiting: boolean) {
-    this.exiting = exiting;
-  }
-
   @tracked private internalUrl = guidFor(this);
-
-  get url(): string {
-    if (this.isExternal) {
-      return this._params.route;
-    }
-
-    return this.internalUrl;
-  }
-
-  set url(url: string) {
-    this.internalUrl = url;
-  }
-
-  // Event handlers
-  onTransitionTo?(): void;
-  onReplaceWith?(): void;
-
-  get qualifiedRouteName() {
-    return this.routeName;
-  }
 
   transitionTo = (event?: unknown): Transition => {
     this._preventTransitionOut(event);
@@ -139,5 +74,65 @@ export default class TestLink extends Link {
         return this;
       }
     } as unknown as Transition;
+  }
+
+  get isActive(): boolean {
+    return this.active;
+  }
+
+  set isActive(active: boolean) {
+    this.active = active;
+  }
+
+  get isActiveWithoutQueryParams(): boolean {
+    return this.activeWithoutQueryParams;
+  }
+
+  set isActiveWithoutQueryParams(active: boolean) {
+    this.activeWithoutQueryParams = active;
+  }
+
+  get isActiveWithoutModels(): boolean {
+    return this.activeWithoutModels;
+  }
+
+  set isActiveWithoutModels(active: boolean) {
+    this.activeWithoutModels = active;
+  }
+
+  get isEntering(): boolean {
+    return this.entering;
+  }
+
+  set isEntering(entering: boolean) {
+    this.entering = entering;
+  }
+
+  get isExiting(): boolean {
+    return this.exiting;
+  }
+
+  set isExiting(exiting: boolean) {
+    this.exiting = exiting;
+  }
+
+  get url(): string {
+    if (this.isExternal) {
+      return this._params.route;
+    }
+
+    return this.internalUrl;
+  }
+
+  set url(url: string) {
+    this.internalUrl = url;
+  }
+
+  // Event handlers
+  onTransitionTo?(): void;
+  onReplaceWith?(): void;
+
+  get qualifiedRouteName() {
+    return this.routeName;
   }
 }

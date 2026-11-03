@@ -93,7 +93,7 @@ module('Unit | Test Helpers | TestLink', function (hooks) {
       preventDefault() {
         assert.ok(true, 'calls preventDefault in transitionTo action');
       }
-    } as Event);
+    });
   });
 
   // eslint-disable-next-line qunit/require-expect
@@ -113,6 +113,6 @@ module('Unit | Test Helpers | TestLink', function (hooks) {
       preventDefault() {
         assert.ok(true, 'calls preventDefault in replaceWith action');
       }
-    } as Event);
+    });
   });
 });
