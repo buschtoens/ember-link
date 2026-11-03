@@ -15,6 +15,51 @@ export default class Link {
 
   protected _linkManager: LinkManagerService;
 
+  /**
+   * Transition into the target route.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  transitionTo = (event?: Event | unknown): Transition | undefined => {
+    if (!this.canOpen(event)) {
+      return;
+    }
+
+    this._params.onTransitionTo?.();
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this._linkManager.router.transitionTo(...this._routeArgs);
+  };
+
+  /**
+   * Transition into the target route while replacing the current URL, if
+   * possible.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  replaceWith = (event?: Event | unknown): Transition | undefined => {
+    if (!this.canOpen(event)) {
+      return;
+    }
+
+    this._params.onReplaceWith?.();
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this._linkManager.router.replaceWith(...this._routeArgs);
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  open = (event?: Event | unknown): Transition | undefined => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    const method = this.behavior.open ?? 'transition';
+
+    if (method === 'replace') {
+      return this.replaceWith(event);
+    }
+
+    return this.transitionTo(event);
+  };
+
   constructor(linkManager: LinkManagerService, params: LinkParams) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     setOwner(this, getOwner(linkManager)!);
@@ -205,49 +250,4 @@ export default class Link {
 
     return true;
   }
-
-  /**
-   * Transition into the target route.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  transitionTo = (event?: Event | unknown): Transition | undefined => {
-    if (!this.canOpen(event)) {
-      return;
-    }
-
-    this._params.onTransitionTo?.();
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    return this._linkManager.router.transitionTo(...this._routeArgs);
-  };
-
-  /**
-   * Transition into the target route while replacing the current URL, if
-   * possible.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  replaceWith = (event?: Event | unknown): Transition | undefined => {
-    if (!this.canOpen(event)) {
-      return;
-    }
-
-    this._params.onReplaceWith?.();
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    return this._linkManager.router.replaceWith(...this._routeArgs);
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  open = (event?: Event | unknown): Transition | undefined => {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    const method = this.behavior.open ?? 'transition';
-
-    if (method === 'replace') {
-      return this.replaceWith(event);
-    }
-
-    return this.transitionTo(event);
-  };
 }

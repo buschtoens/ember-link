@@ -15,9 +15,41 @@ export default class TestLink extends Link {
   @tracked private exiting = false;
   @tracked private internalUrl = guidFor(this);
 
-  private _preventTransitionOut(event?: Event) {
+  transitionTo = (event?: unknown): Transition => {
+    this._preventTransitionOut(event);
+
+    // Fire both the `onTransitionTo` event used for testing, as well as the
+    // optional `onTransitionTo` event used by the code being tested
+    this._params.onTransitionTo?.();
+    this.onTransitionTo?.();
+
+    return this._createDummyTransition();
+  };
+
+  replaceWith = (event?: unknown): Transition => {
+    this._preventTransitionOut(event);
+
+    // Fire both the `onReplaceWith` event used for testing, as well as the
+    // optional `onReplaceWith` event used by the code being tested
+    this._params.onReplaceWith?.();
+    this.onReplaceWith?.();
+
+    return this._createDummyTransition();
+  };
+
+  open = (event?: unknown): Transition | undefined => {
+    const method = this.behavior.open;
+
+    if (method === 'replace') {
+      return this.replaceWith(event);
+    }
+
+    return this.transitionTo(event);
+  };
+
+  private _preventTransitionOut(event?: unknown) {
     // Make sure we don't transition out of the testing page
-    event?.preventDefault();
+    preventDefault(event);
   }
 
   private _createDummyTransition(): Transition {
@@ -102,37 +134,5 @@ export default class TestLink extends Link {
 
   get qualifiedRouteName() {
     return this.routeName;
-  }
-
-  transitionTo = (event?: unknown): Transition => {
-    this._preventTransitionOut(event);
-
-    // Fire both the `onTransitionTo` event used for testing, as well as the
-    // optional `onTransitionTo` event used by the code being tested
-    this._params.onTransitionTo?.();
-    this.onTransitionTo?.();
-
-    return this._createDummyTransition();
-  };
-
-  replaceWith = (event?: unknown): Transition => {
-    this._preventTransitionOut(event);
-
-    // Fire both the `onReplaceWith` event used for testing, as well as the
-    // optional `onReplaceWith` event used by the code being tested
-    this._params.onReplaceWith?.();
-    this.onReplaceWith?.();
-
-    return this._createDummyTransition();
-  };
-
-  open = (event?: unknown): Transition | undefined => {
-    const method = this.behavior.open;
-
-    if (method === 'replace') {
-      return this.replaceWith(event);
-    }
-
-    return this.transitionTo(event);
   }
 }
