@@ -1,5 +1,21 @@
 # Changelog
 
+## Release (2026-11-03)
+
+* ember-link 3.5.1 (patch)
+
+#### :house: Internal
+* `ember-link`
+  * [#1075](https://github.com/buschtoens/ember-link/pull/1075) update release-plan to v0.20 ([@gossi](https://github.com/gossi))
+  * [#1072](https://github.com/buschtoens/ember-link/pull/1072) up linting ([@gossi](https://github.com/gossi))
+  * [#1069](https://github.com/buschtoens/ember-link/pull/1069) Declare Link's actions as arrow functions ([@johanrd](https://github.com/johanrd))
+  * [#1070](https://github.com/buschtoens/ember-link/pull/1070) Listen to router events with router.on and router.off ([@johanrd](https://github.com/johanrd))
+  * [#1071](https://github.com/buschtoens/ember-link/pull/1071) Fix ember-alpha ([@gossi](https://github.com/gossi))
+
+#### Committers: 2
+- Johan Røed ([@johanrd](https://github.com/johanrd))
+- Thomas Gossmann ([@gossi](https://github.com/gossi))
+
 ## Release (2025-08-07)
 
 * ember-link 3.5.0 (minor)
