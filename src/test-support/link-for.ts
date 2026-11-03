@@ -6,10 +6,10 @@ import TestInstrumentedLinkManagerService from './-services/test-instrumented-li
 import type { RouteModel } from '../-models.ts';
 import type { QueryParams } from '../-params.ts';
 import type TestLink from './test-link.ts';
-import type Ember from 'ember';
+import type ApplicationInstance from '@ember/application/instance';
 
 function getLinkManager() {
-  const { owner } = getContext() as { owner: Ember.ApplicationInstance };
+  const { owner } = getContext() as { owner: ApplicationInstance };
   const linkManager = owner.lookup('service:link-manager') as TestInstrumentedLinkManagerService;
 
   assert(

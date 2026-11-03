@@ -1,52 +1,65 @@
-import Ember from 'ember';
 import { waitUntil } from '@ember/test-helpers';
 
 import { off, on } from 'rsvp';
 
 /**
- * I would be using `ember-qunit-assert-helpers` here, but it does not work with
- * async rendering. :(
+ * `Ember.onerror` used to be needed here, but it can no longer be imported
+ * from the `ember` barrel file since ember-source 7.0.0 (see
+ * https://deprecations.emberjs.com/id/import-onerror-from-ember). Instead,
+ * uncaught errors are observed via the global `onerror` property as well as
+ * the window `error` event, and promise rejections via RSVP's `error` event.
  *
- * Adapted from https://github.com/workmanw/ember-qunit-assert-helpers/issues/18#issuecomment-390003905
+ * Adapted from
+ * https://github.com/workmanw/ember-qunit-assert-helpers/issues/18#issuecomment-390003905
+ *
+ * Note that QUnit itself wraps `globalThis.onerror` and turns any uncaught error
+ * into a "Global error" failure, which would end the entire test run. While
+ * the handler is installed, it is therefore swapped out with our own, which
+ * is why errors from the wrapped `callback` of this helper must always be
+ * captured here.
  */
 export default async function waitForError(
   callback: () => Promise<unknown>,
   options?: Parameters<typeof waitUntil>[1]
 ): Promise<Error> {
-  const originalEmberListener = Ember.onerror;
-  const originalWindowListener = globalThis.onerror;
+  const originalOnError = globalThis.onerror;
 
   let error: Error | undefined = undefined;
 
-  // eslint-disable-next-line unicorn/prefer-add-event-listener
-  Ember.onerror = (uncaughtError) => {
-    error = uncaughtError;
+  const capture = (uncaughtError: unknown) => {
+    error ??= uncaughtError instanceof Error ? uncaughtError : undefined;
   };
 
-  // eslint-disable-next-line unicorn/consistent-function-scoping
+  const onError = (message: string, ...args: unknown[]) => {
+    const errorObj = args[3] as Error | undefined;
+
+    error ??= errorObj instanceof Error ? errorObj : new Error(message);
+
+    // suppress default reporting (and QUnit's own global error handling)
+    return true;
+  };
+
   const listener = (e: ErrorEvent) => {
+    capture(e.error);
     e.preventDefault();
   };
 
-  // eslint-disable-next-line unicorn/prefer-add-event-listener
-  globalThis.onerror = (_message, _source, _lineNumber, _columnNumber, uncaughtError) => {
-    error = uncaughtError;
+  const rsvpListener = (reason: unknown) => {
+    capture(reason);
   };
 
+  // eslint-disable-next-line unicorn/prefer-add-event-listener
+  globalThis.onerror = onError as unknown as typeof globalThis.onerror;
   globalThis.addEventListener('error', listener);
-
-  on('error', Ember.onerror);
+  on('error', rsvpListener);
 
   await Promise.all([
     waitUntil(() => error, options).finally(() => {
       // eslint-disable-next-line unicorn/prefer-add-event-listener
-      Ember.onerror = originalEmberListener;
+      globalThis.onerror = originalOnError;
 
-      // eslint-disable-next-line unicorn/prefer-add-event-listener
-      globalThis.onerror = originalWindowListener;
       globalThis.removeEventListener('error', listener);
-
-      off('error', Ember.onerror);
+      off('error', rsvpListener);
     }),
     callback()
   ]);
