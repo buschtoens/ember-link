@@ -93,7 +93,7 @@
     "@glint/template": "^1.7.3",
     "@gossi/config-eslint": "^1.4.0",
     "@gossi/config-prettier": "^1.2.3",
-    "@rollup/plugin-babel": "^7.0.0",
+    "@rollup/plugin-babel": "^7.1.0",
     "@types/qunit": "^2.19.14",
     "@types/rsvp": "^4.0.9",
     "@types/sinon": "^21.0.1",
