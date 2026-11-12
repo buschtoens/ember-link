@@ -76,8 +76,8 @@ importers:
         specifier: ^1.2.3
         version: 1.2.3(prettier@3.9.10)
       '@rollup/plugin-babel':
-        specifier: ^7.0.0
-        version: 7.0.0(@babel/core@7.29.0)(rollup@4.59.1)
+        specifier: ^7.1.0
+        version: 7.1.0(@babel/core@7.29.0)(rollup@4.59.1)
       '@types/qunit':
         specifier: ^2.19.14
         version: 2.19.14
@@ -1814,8 +1814,8 @@ packages:
   '@rolldown/pluginutils@1.0.0-rc.12':
     resolution: {integrity: sha512-HHMwmarRKvoFsJorqYlFeFRzXZqCt2ETQlEDOb9aqssrnVBB1/+xgTGtuTrIk5vzLNX1MjMtTf7W9z3tsSbrxw==}
 
-  '@rollup/plugin-babel@7.0.0':
-    resolution: {integrity: sha512-NS2+P7v80N3MQqehZEjgpaFb9UyX3URNMW/zvoECKGo4PY4DvJfQusTI7BX/Ks+CPvtTfk3TqcR6S9VYBi/C+A==}
+  '@rollup/plugin-babel@7.1.0':
+    resolution: {integrity: sha512-h9Y+xYha6p4wKO+FwdiPIkE+eIYCm8MzZPpX1iARIoFBnmKP9CnpT1p9dDf/DTFm6fyN8PmuLyRI5qZgchnitw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
@@ -6111,6 +6111,9 @@ packages:
   workerpool@6.5.1:
     resolution: {integrity: sha512-Fs4dNYcsdpYSAfVxhnl1L5zTksjvOJxtC5hzMNl+1t9B8hTJTdKDyZ5ju7ztgPy+ft9tBFXoOlDNiOT9WUXZlA==}
 
+  workerpool@9.3.4:
+    resolution: {integrity: sha512-TmPRQYYSAnnDiEB0P/Ytip7bFGvqnSU6I2BcuSw7Hx+JSg/DsUi5ebYfc8GYaSdpuvOcEs6dXxPurOYpe9QFwg==}
+
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
@@ -8031,11 +8034,12 @@ snapshots:
 
   '@rolldown/pluginutils@1.0.0-rc.12': {}
 
-  '@rollup/plugin-babel@7.0.0(@babel/core@7.29.0)(rollup@4.59.1)':
+  '@rollup/plugin-babel@7.1.0(@babel/core@7.29.0)(rollup@4.59.1)':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-module-imports': 7.29.7
       '@rollup/pluginutils': 5.3.0(rollup@4.59.1)
+      workerpool: 9.3.4
     optionalDependencies:
       rollup: 4.59.1
     transitivePeerDependencies:
@@ -12803,6 +12807,8 @@ snapshots:
       - supports-color
 
   workerpool@6.5.1: {}
+
+  workerpool@9.3.4: {}
 
   wrap-ansi@7.0.0:
     dependencies:
