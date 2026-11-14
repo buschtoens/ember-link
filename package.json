@@ -82,7 +82,7 @@
     "@ember/app-tsconfig": "^2.1.0",
     "@ember/library-tsconfig": "^2.0.0",
     "@ember/test-helpers": "^5.7.0",
-    "@embroider/addon-dev": "^8.4.2",
+    "@embroider/addon-dev": "^8.5.0",
     "@embroider/compat": "^4.1.28",
     "@embroider/core": "^4.6.10",
     "@embroider/vite": "^1.8.0",
