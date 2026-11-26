@@ -1,5 +1,10 @@
 # Changelog
 
+
+
+
+
+
 ## Release (2026-11-03)
 
 * ember-link 3.5.1 (patch)
