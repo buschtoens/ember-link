@@ -97,7 +97,7 @@
     "@types/qunit": "^2.19.14",
     "@types/rsvp": "^4.0.9",
     "@types/sinon": "^21.0.1",
-    "ember-qunit": "^9.2.0",
+    "ember-qunit": "^9.2.1",
     "ember-resolver": "^13.2.0",
     "ember-sinon-qunit": "^7.5.0",
     "ember-source": "~6.12.1",
