@@ -85,8 +85,8 @@ importers:
         specifier: ^4.0.9
         version: 4.0.9
       '@types/sinon':
-        specifier: ^21.0.1
-        version: 21.0.1
+        specifier: ^22.0.2
+        version: 22.0.2
       ember-qunit:
         specifier: ^9.2.0
         version: 9.2.0(@ember/test-helpers@5.8.0(@babel/core@7.29.0)(@glint/template@1.7.3))(qunit@2.26.0)
@@ -2099,8 +2099,8 @@ packages:
   '@types/sinon@17.0.4':
     resolution: {integrity: sha512-RHnIrhfPO3+tJT0s7cFaXGZvsL4bbR3/k7z3P312qMS4JaS2Tk+KiwiLx1S0rQ56ERj00u1/BtdyVd0FY+Pdew==}
 
-  '@types/sinon@21.0.1':
-    resolution: {integrity: sha512-5yoJSqLbjH8T9V2bksgRayuhpZy+723/z6wBOR+Soe4ZlXC0eW8Na71TeaZPUWDQvM7LYKa9UGFc6LRqxiR5fQ==}
+  '@types/sinon@22.0.2':
+    resolution: {integrity: sha512-2qLRFlluKkn6mci189eKhlOsHcdFpsn/9+29S4VmwKCpfb+vseKrZSSOSy5259yzIpP/y4gLfqQfIIR/lZn4Ng==}
 
   '@types/sinonjs__fake-timers@8.1.5':
     resolution: {integrity: sha512-mQkU2jY8jJEF7YHjHvsQO8+3ughTL1mcnn96igfhONmR+fUPSKIkefQYpSe8bsly2Ep7oQbn/6VG5/9/0qcArQ==}
@@ -8205,9 +8205,9 @@ snapshots:
     dependencies:
       '@types/sinonjs__fake-timers': 8.1.5
 
-  '@types/sinon@21.0.1':
+  '@types/sinon@22.0.2':
     dependencies:
-      '@types/sinonjs__fake-timers': 8.1.5
+      '@sinonjs/fake-timers': 15.4.0
 
   '@types/sinonjs__fake-timers@8.1.5': {}
 
