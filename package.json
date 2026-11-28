@@ -100,7 +100,7 @@
     "ember-qunit": "^9.2.0",
     "ember-resolver": "^13.2.0",
     "ember-sinon-qunit": "^7.5.0",
-    "ember-source": "~6.12.1",
+    "ember-source": "~7.4.1",
     "ember-route-template": "^1.0.3",
     "eslint": "^10.14.0",
     "eslint-plugin-ember": "^13.9.1",
